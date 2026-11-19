@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "prepared_date": "2026-11-18",
+  "protocol_version": "0.1-draft",
+  "public_preregistration": false,
+  "claims": [
+    {
+      "claim_id": "C01",
+      "title": "Numerical and physical verification",
+      "experiments": [
+        "E01"
+      ],
+      "confirmatory_status": "NOT_TESTED",
+      "superiority_demonstrated": false
+    },
+    {
+      "claim_id": "C02",
+      "title": "Configurable domain and extensibility",
+      "experiments": [
+        "E04",
+        "E05"
+      ],
+      "confirmatory_status": "NOT_TESTED",
+      "superiority_demonstrated": false
+    },
+    {
+      "claim_id": "C03",
+      "title": "Identifiability-aware decisions",
+      "experiments": [
+        "E02"
+      ],
+      "confirmatory_status": "NOT_TESTED",
+      "superiority_demonstrated": false
+    },
+    {
+      "claim_id": "C04",
+      "title": "Uncertainty and coverage",
+      "experiments": [
+        "E02",
+        "E04"
+      ],
+      "confirmatory_status": "NOT_TESTED",
+      "superiority_demonstrated": false
+    },
+    {
+      "claim_id": "C05",
+      "title": "Robust out-of-sample decision benefit",
+      "experiments": [
+        "E03"
+      ],
+      "confirmatory_status": "NOT_TESTED",
+      "superiority_demonstrated": false
+    },
+    {
+      "claim_id": "C06",
+      "title": "Numerical-error-aware feasibility",
+      "experiments": [
+        "E01",
+        "E03"
+      ],
+      "confirmatory_status": "NOT_TESTED",
+      "superiority_demonstrated": false
+    },
+    {
+      "claim_id": "C07",
+      "title": "Reconstruction, parallel execution and recovery",
+      "experiments": [
+        "E05"
+      ],
+      "confirmatory_status": "NOT_TESTED",
+      "superiority_demonstrated": false
+    },
+    {
+      "claim_id": "C08",
+      "title": "Independent environmental transfer",
+      "experiments": [
+        "E04"
+      ],
+      "confirmatory_status": "NOT_TESTED",
+      "superiority_demonstrated": false
+    }
+  ],
+  "experiments": {
+    "E01": {
+      "status": "PARTIAL_REFERENCE_ONLY",
+      "scope": "selected numerical references in 0.2; full protocol not run"
+    },
+    "E02": {
+      "status": "PLANNED",
+      "scope": "simple synthetic recovery exists, confirmatory inverse study not run"
+    },
+    "E03": {
+      "status": "PLANNED",
+      "scope": "three-scenario demonstration is not a robust-design benchmark"
+    },
+    "E04": {
+      "status": "BLOCKED_METADATA",
+      "scope": "six external sources catalogued; zero curves ready for independent physical validation; metadata and model compatibility unresolved"
+    },
+    "E05": {
+      "status": "PLANNED",
+      "scope": "local package/smoke evidence is not a distributed scaling study"
+    }
+  },
+  "decision_rule": {
+    "primary_effect": "p_failure_B1 - p_failure_B3",
+    "practical_effect_threshold": "TO_BE_SET_BEFORE_CONFIRMATORY_RUN",
+    "direction_crosses_zero": "INCONCLUSIVE",
+    "practical_target": "compare confidence interval against preregistered delta_min; not an equivalence test"
+  }
+}

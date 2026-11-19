@@ -1,0 +1,288 @@
+{
+  "schema_version": 1,
+  "dataset_root": "C:\\Users\\Karel\\Documents\\Codex\\2026-11-18\\empaqueta-x20\\PyFAST\\datasets_benchmark_pyfast",
+  "client_date": "2026-11-19",
+  "status": "preparation_registry_not_validation",
+  "source_count": 6,
+  "physical_validation_ready_count": 0,
+  "sources": [
+    {
+      "source_id": "MAR2PROTECT",
+      "relative_directory": "01_MAR2PROTECT",
+      "domain": "aqueous_experimental_with_reservations",
+      "readiness": "blocked_for_independent_physical_validation",
+      "ready_for_pyfast_physical_validation": false,
+      "roles": {
+        "allowed_for_preparation": [
+          "provenance_review"
+        ],
+        "candidate_not_yet_admitted": [
+          "exploratory_calibration_after_resolution",
+          "independent_validation_after_resolution"
+        ],
+        "training_validation_assignment": "pending_pre_registered_experiment_split"
+      },
+      "license": {
+        "status": "reported_by_local_inventory",
+        "reported_license": "CC-BY-4.0",
+        "local_evidence": "metadata.json metadata.license.id",
+        "web_reverified_this_review": false
+      },
+      "provenance": {
+        "source_urls_reported": "https://zenodo.org/records/21068675",
+        "doi_reported": "10.5281/zenodo.21068675",
+        "evidence": "00_Inventario/inventario_datasets.csv",
+        "integrity_claims_reverified": false
+      },
+      "units_conditions_reported": {
+        "variables": "tiempo min/dias; BV; C mg/L; C/C0; replicas analiticas HPLC; LOQ",
+        "conditions": "C0=5 mg/L; Q=170 mL/min; volumen activo 4.4 L; arena 1.1 L; EBCT reportado 25.882",
+        "status": "requires_model_and_unit_alignment"
+      },
+      "local_curve_records": 3,
+      "blockers_reported_by_local_audit": [
+        "Mass labels Kg/g and volume labels L/ml conflict",
+        "Third HPLC block repeats DCF; identify analyte/run",
+        "HPLC/column averages differ",
+        "Geometry, particle properties and porosity not verified",
+        "LOQ/2 values retained, censoring unresolved",
+        "Independence of three analyte series not established"
+      ],
+      "evidence": [
+        "README.md",
+        "00_Inventario/inventario_datasets.csv",
+        "00_Inventario/curvas_utilizables_y_pendientes.csv"
+      ]
+    },
+    {
+      "source_id": "Banana peel MB",
+      "relative_directory": "02_Methylene_Blue_Banana_Peel",
+      "domain": "aqueous_MB_article_figures",
+      "readiness": "blocked_for_independent_physical_validation",
+      "ready_for_pyfast_physical_validation": false,
+      "roles": {
+        "allowed_for_preparation": [
+          "article_review"
+        ],
+        "candidate_not_yet_admitted": [
+          "curve_digitization_with_uncertainty",
+          "author_supplied_data_request"
+        ],
+        "training_validation_assignment": "pending_pre_registered_experiment_split"
+      },
+      "license": {
+        "status": "reported_by_local_inventory",
+        "reported_license": "CC-BY-4.0",
+        "local_evidence": "article_deploy.xml license",
+        "web_reverified_this_review": false
+      },
+      "provenance": {
+        "source_urls_reported": "https://www.mdpi.com/2227-9717/8/11/1467",
+        "doi_reported": "10.3390/pr8111467",
+        "evidence": "00_Inventario/inventario_datasets.csv",
+        "integrity_claims_reverified": false
+      },
+      "units_conditions_reported": {
+        "variables": "figuras isotermas/cinetica/ruptura; tablas parametros",
+        "conditions": "Table 7: D=0.0168m; porosidad=0.35; lechos 0.0186/0.0372/0.0558m; C0=0.1/0.2 kg/m3",
+        "status": "requires_model_and_unit_alignment"
+      },
+      "local_curve_records": 1,
+      "blockers_reported_by_local_audit": [
+        "No separate numerical curve table identified in local audit",
+        "Supplement candidate reportedly 404, not a downloaded supplement",
+        "Digitization/author data and provenance/uncertainty review required"
+      ],
+      "evidence": [
+        "README.md",
+        "00_Inventario/inventario_datasets.csv",
+        "00_Inventario/curvas_utilizables_y_pendientes.csv"
+      ]
+    },
+    {
+      "source_id": "Chitosan fixed-bed",
+      "relative_directory": "03_Chitosan_Fixed_Bed",
+      "domain": "aqueous_MB_article_figures",
+      "readiness": "blocked_for_independent_physical_validation",
+      "ready_for_pyfast_physical_validation": false,
+      "roles": {
+        "allowed_for_preparation": [
+          "article_review"
+        ],
+        "candidate_not_yet_admitted": [
+          "curve_digitization_with_uncertainty",
+          "author_supplied_data_request"
+        ],
+        "training_validation_assignment": "pending_pre_registered_experiment_split"
+      },
+      "license": {
+        "status": "reported_by_local_inventory",
+        "reported_license": "CC-BY-4.0",
+        "local_evidence": "metadata.json metadata.license.id",
+        "web_reverified_this_review": false
+      },
+      "provenance": {
+        "source_urls_reported": "https://zenodo.org/records/3452554",
+        "doi_reported": "10.5281/zenodo.3452554",
+        "evidence": "00_Inventario/inventario_datasets.csv",
+        "integrity_claims_reverified": false
+      },
+      "units_conditions_reported": {
+        "variables": "figuras BTC; tablas parametros; caches Word contradictorios",
+        "conditions": "H=1/2/3cm; Q=5/10/15mL/min; C0=10/12/15mg/L; Dcol=5cm; dpart=4mm; T=30+/-2 C",
+        "status": "requires_model_and_unit_alignment"
+      },
+      "local_curve_records": 1,
+      "blockers_reported_by_local_audit": [
+        "No verified numerical observations admitted",
+        "Word chart caches labelled 2/4/6 cm conflict with article 1/2/3 cm",
+        "Digitization/author data and experimental metadata review required"
+      ],
+      "evidence": [
+        "README.md",
+        "00_Inventario/inventario_datasets.csv",
+        "00_Inventario/curvas_utilizables_y_pendientes.csv"
+      ]
+    },
+    {
+      "source_id": "RUPTURA",
+      "relative_directory": "04_RUPTURA",
+      "domain": "gas_multicomponent_out_of_domain",
+      "readiness": "blocked_for_independent_physical_validation",
+      "ready_for_pyfast_physical_validation": false,
+      "roles": {
+        "allowed_for_preparation": [
+          "out_of_domain_reference_cataloguing"
+        ],
+        "candidate_not_yet_admitted": [
+          "future_gas_model_comparison"
+        ],
+        "training_validation_assignment": "not_admitted_to_aqueous_training_or_validation"
+      },
+      "license": {
+        "status": "reported_by_local_inventory",
+        "reported_license": "CC-BY-4.0 (dataset)",
+        "local_evidence": "ro-crate-metadata.json y datacite.json",
+        "web_reverified_this_review": false
+      },
+      "provenance": {
+        "source_urls_reported": "https://data.4tu.nl/datasets/4943dc0f-d908-4215-89ce-b9a6163930d2",
+        "doi_reported": "10.4121/4943dc0f-d908-4215-89ce-b9a6163930d2.v1",
+        "evidence": "00_Inventario/inventario_datasets.csv",
+        "integrity_claims_reverified": false
+      },
+      "units_conditions_reported": {
+        "variables": "dos series exp; simulaciones separadas; isotermas/inputs",
+        "conditions": "473K; 5bar; mezcla binaria",
+        "status": "requires_model_and_unit_alignment"
+      },
+      "local_curve_records": 2,
+      "blockers_reported_by_local_audit": [
+        "Binary gas mixture at 473 K and 5 bar, outside aqueous single-solute domain",
+        "Secondary experimental data; confirm original attribution and axis units",
+        "Two species are not independent replicate experiments"
+      ],
+      "evidence": [
+        "README.md",
+        "00_Inventario/inventario_datasets.csv",
+        "00_Inventario/curvas_utilizables_y_pendientes.csv"
+      ]
+    },
+    {
+      "source_id": "Ogata-Banks",
+      "relative_directory": "05_Ogata_Banks",
+      "domain": "analytical_ADE_conservative_tracer",
+      "readiness": "blocked_for_independent_physical_validation",
+      "ready_for_pyfast_physical_validation": false,
+      "roles": {
+        "allowed_for_preparation": [
+          "analytical_reference_review"
+        ],
+        "candidate_not_yet_admitted": [
+          "ADE_verification_after_boundary_alignment"
+        ],
+        "training_validation_assignment": "not_applicable_analytical_or_simulated_reference"
+      },
+      "license": {
+        "status": "reported_by_local_inventory",
+        "reported_license": "Public domain USGS, segun politica oficial",
+        "local_evidence": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits (verificado web; descarga local fallo)",
+        "web_reverified_this_review": false
+      },
+      "provenance": {
+        "source_urls_reported": "https://pubs.usgs.gov/publication/pp411A",
+        "doi_reported": "10.3133/pp411A",
+        "evidence": "00_Inventario/inventario_datasets.csv",
+        "integrity_claims_reverified": false
+      },
+      "units_conditions_reported": {
+        "variables": "solucion ADE 1D; x,t,v,D,C0",
+        "conditions": "dominio semiinfinito; entrada constante; concentracion inicial cero; sin reaccion",
+        "status": "requires_model_and_unit_alignment"
+      },
+      "local_curve_records": 0,
+      "blockers_reported_by_local_audit": [
+        "Analytical reference, not an experimental dataset",
+        "Semi-infinite boundary assumptions must match the intended ADE test",
+        "USGS rights-policy webpage not available in local collection for this review"
+      ],
+      "evidence": [
+        "README.md",
+        "00_Inventario/inventario_datasets.csv",
+        "00_Inventario/curvas_utilizables_y_pendientes.csv"
+      ]
+    },
+    {
+      "source_id": "PSDM/EPA",
+      "relative_directory": "06_PSDM_EPA",
+      "domain": "aqueous_simulated_software_references",
+      "readiness": "blocked_for_independent_physical_validation",
+      "ready_for_pyfast_physical_validation": false,
+      "roles": {
+        "allowed_for_preparation": [
+          "simulated_reference_cataloguing"
+        ],
+        "candidate_not_yet_admitted": [
+          "cross_implementation_model_aligned_comparison"
+        ],
+        "training_validation_assignment": "not_applicable_analytical_or_simulated_reference"
+      },
+      "license": {
+        "status": "reported_by_local_inventory",
+        "reported_license": "MIT",
+        "local_evidence": "EPA_LICENSE.md; psdm_distribution/LICENSE",
+        "web_reverified_this_review": false
+      },
+      "provenance": {
+        "source_urls_reported": "https://pypi.org/project/psdm/; https://github.com/USEPA/Water_Treatment_Models/tree/3f514c2/PSDM",
+        "doi_reported": "",
+        "evidence": "00_Inventario/inventario_datasets.csv",
+        "integrity_claims_reverified": false
+      },
+      "units_conditions_reported": {
+        "variables": "columnSpecs;Properties;Kdata;entrada;curvas simuladas",
+        "conditions": "Ver XLSX y scripts fijados a commit EPA 3f514c2f6aa6afe210a55fa069594260bc90ae15; PSDM 0.4.0",
+        "status": "requires_model_and_unit_alignment"
+      },
+      "local_curve_records": 17,
+      "blockers_reported_by_local_audit": [
+        "Reference outputs are simulated, not experimental validation data",
+        "Pore/surface diffusion and fouling assumptions may differ from PyFAST LDF/HSDM",
+        "Match configuration, units, boundary conditions and time axes before comparison",
+        "Template effluent zero values are not admitted as observations"
+      ],
+      "evidence": [
+        "README.md",
+        "00_Inventario/inventario_datasets.csv",
+        "00_Inventario/curvas_utilizables_y_pendientes.csv"
+      ]
+    }
+  ],
+  "local_inventory_sources": [
+    "00_Inventario/inventario_datasets.csv",
+    "00_Inventario/curvas_utilizables_y_pendientes.csv",
+    "README.md"
+  ],
+  "previous_dataset_root": "D:\\PyFAST\\datasets_benchmark_pyfast",
+  "relocation_note": "User moved the project; readiness and provenance declarations unchanged"
+}

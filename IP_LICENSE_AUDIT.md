@@ -80,3 +80,7 @@ NSGA-II usa el extra pymoo 0.6.2 (metadatos Apache-2.0). Su dependencia moocore 
 No se descargaron fuentes de competidores ni se incorporó FAST a ninguna distribución. Las referencias de antecedentes se mantienen en RELATED_WORK.md. El adaptador externo FAST no se implementa sin contrato I/O y condiciones compatibles.
 
 PyArrow es un extra de exportación Parquet, con licencia principal Apache-2.0 y avisos de sus componentes; no es dependencia obligatoria del solver. ezdxf (MIT) se usa para verificar los archivos DXF en desarrollo, no en el runtime del exportador geométrico. Sus metadatos y versiones figuran en el inventario local.
+
+## Frontera de apertura del artículo
+
+El objetivo EnvSoft exige, como decisión del proyecto, que ninguna capacidad, configuración o script indispensable para reconstruir resultados centrales quede detrás de pyfast-design-pro. Ver PAPER_ENVSOFT/IP_AND_LICENSING.md. Esto no afirma que Apache-2.0 sea una licencia impuesta por la revista: su concesión sigue pendiente de titularidad universitaria y revisión de dependencias.

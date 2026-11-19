@@ -17,3 +17,7 @@ demostrada. Requiere revisión bibliográfica sistemática y comparación reprod
 DXF/STEP se delegarán en un adaptador CAD optativo, con unidades, cotas y alcance
 constructivo explícitos. No generar planos de fabricación certificados a partir de
 un dimensionamiento hidráulico sin ingeniería mecánica y revisión aplicable.
+
+## Ampliación para EnvSoft
+
+El análisis de SWAT-UQ, Optienv, UQPyL y frameworks de decisión robusta, además de software de adsorción, se detalla en PAPER_ENVSOFT/NOVELTY_MATRIX.md. Distingue hechos documentales, integración, aplicación y metodología candidata; cada claim C01–C08 tiene prueba y refutación posibles. Ninguno de esos comparadores fue ejecutado en el estudio actual.

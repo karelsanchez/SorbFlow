@@ -14,13 +14,13 @@ caudal/entrada constantes y columna cilíndrica uniforme.
 ## Instalación y ejemplo
 
 Python >=3.11. En este equipo usar el Python del entorno local: el `python` global
-es 3.7 y el launcher `py` selecciona 2.7. Desde `D:\PyFAST`:
+es 3.7 y el launcher `py` selecciona 2.7. Desde la raíz del repositorio PyFAST:
 
 ```powershell
 & .\.venv\Scripts\python.exe -m pip install -e '.[dev,optimize]'
-& .\.venv\Scripts\python.exe examples\run_ldf.py --output D:\PyFAST\runs\mi_columna
-& .\.venv\Scripts\python.exe examples\scientific_demo.py --output D:\PyFAST\runs\demo
-& .\.venv\Scripts\python.exe examples\robust_column_design.py --output D:\PyFAST\runs\diseno
+& .\.venv\Scripts\python.exe examples\run_ldf.py --output runs\mi_columna
+& .\.venv\Scripts\python.exe examples\scientific_demo.py --output runs\demo
+& .\.venv\Scripts\python.exe examples\robust_column_design.py --output runs\diseno
 ```
 
 Las carpetas de resultados deben ser nuevas. El entorno ya contiene las dependencias.
@@ -89,3 +89,22 @@ están pendientes; LICENSE.md y `LicenseRef-Proprietary` no afirman una licencia
 aún no otorgada. NSGA-II es extra opcional: pymoo Apache-2.0 incorpora moocore LGPL,
 con obligaciones propias que deben revisarse para redistribución. No se incluyen
 binarios FAST ni wheels de terceros. No se ha publicado en PyPI; el nombre es provisional.
+
+## Objetivo científico: Environmental Modelling & Software
+
+El dossier PAPER_ENVSOFT define hipótesis refutables, antecedentes, formulación, experimentos E01–E05 y condiciones de apertura/reproducibilidad. No se afirma novedad o superioridad por integrar módulos conocidos. El prototipo 0.2 no es todavía un software científicamente publicable ni validado experimentalmente.
+
+Reproducción SMOKE de referencias/demos sintéticos (con las dependencias del ejemplo):
+
+```powershell
+& .\.venv\Scripts\python.exe PAPER_ENVSOFT\reproduce_smoke.py --output runs\paper_smoke --jobs 2
+& .\.venv\Scripts\python.exe PAPER_ENVSOFT\reproduce_smoke.py --output runs\paper_smoke --jobs 2 --resume
+```
+
+El arnés registra comandos/fuentes/entorno, tiempos, artefactos y hashes y solo reutiliza tareas intactas. No es checkpoint de integrador, ejecución distribuida ni reconstrucción del artículo completo. No transforma benchmarks pendientes en resultados.
+
+
+Actualización de datos 2026-11-19: el inventario externo y los bloqueos científicos
+se documentan en `benchmarks/data_catalog/`. E04 está BLOCKED_METADATA;
+ninguna curva se considera lista para validación física independiente.
+Retomar las etapas 2, 3 y 4 según `CONTINUE_HERE.md`.

@@ -4,3 +4,7 @@ recursive-include examples *.py *.json
 recursive-include audit *.json *.txt
 exclude audit/verification*.txt
 exclude audit/distribution_hashes*.json
+
+recursive-include PAPER_ENVSOFT *.md *.json *.csv *.py
+
+recursive-include benchmarks/data_catalog *.md *.json *.csv *.py

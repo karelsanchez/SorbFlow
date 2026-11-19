@@ -16,3 +16,6 @@ runs/
 *.gif
 *.jpg
 *.zip
+
+# External downloads: retain locally; do not redistribute in Git/package.
+/datasets_benchmark_pyfast/

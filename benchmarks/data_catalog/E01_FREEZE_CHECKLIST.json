@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "protocol_status": "DRAFT_NOT_FROZEN",
+  "confirmatory_runs_authorized_by_this_file": false,
+  "case_matrix": "E01_CASE_MATRIX.csv",
+  "meaning_of_existing_references": "Selected references exist; their availability does not complete E01",
+  "required_before_freeze": [
+    "Fix physical domains, parameters, initial and boundary conditions for every case",
+    "Distinguish cell averages from pointwise analytical values",
+    "Fix independent axial, radial and temporal refinement sequences",
+    "Define mass normalization and absolute plus relative tolerances per case",
+    "Fix norms, time horizons and treatment of absent breakthrough crossings",
+    "Define t10 t50 t90 and capacity corrected for dissolved storage",
+    "Set case-specific convergence and stability acceptance thresholds with justification",
+    "Record all failures and computational budgets including retries",
+    "Fix environment, seeds when applicable, scripts and configuration hashes",
+    "Version and hash a reviewed E01 subprotocol; document later amendments"
+  ],
+  "excluded_claims": [
+    "Experimental physical validation",
+    "General scientific superiority",
+    "Identifiability or coverage validation",
+    "Robust-design out-of-sample reliability",
+    "Distributed execution scaling"
+  ]
+}

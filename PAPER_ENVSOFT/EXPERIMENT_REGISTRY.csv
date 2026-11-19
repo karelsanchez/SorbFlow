@@ -1,0 +1,6 @@
+experiment_id,status,claim_ids,confirmatory_result_available
+E01,PARTIAL_REFERENCE_ONLY,C01;C06,false
+E02,PLANNED,C03;C04,false
+E03,PLANNED,C05;C06,false
+E04,BLOCKED_METADATA,C02;C04;C08,false
+E05,PLANNED,C02;C07,false

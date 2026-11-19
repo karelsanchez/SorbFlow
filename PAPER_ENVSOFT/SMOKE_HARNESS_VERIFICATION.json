@@ -1,0 +1,20 @@
+{
+  "scope": "harness SMOKE only; not confirmatory benchmarks",
+  "script_sha256": "bb671eb21f5286e6a75008585f331aa80cfb2ed5a2ebbc40fd1c0169c1050d08",
+  "physical_lines": 250,
+  "actual_smoke_status": "smoke_completed",
+  "resume": "both intact final-source attempts reused without rerun",
+  "parallel_workers_overlap": true,
+  "protocol_status": "E01 completo PENDIENTE (solo referencias seleccionadas); E02-E05 pendientes",
+  "experimental_validation": false,
+  "fixture_checks": [
+    "failure stderr/returncode preserved",
+    "retry in fresh directory",
+    "intact task reuse",
+    "artifact corruption causes rerun",
+    "source/environment invalidation",
+    "existing output rejected without --resume"
+  ],
+  "lint": "Ruff passed",
+  "typing": "mypy strict passed"
+}

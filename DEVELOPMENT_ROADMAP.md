@@ -63,3 +63,15 @@ Ampliar V1 con casos manufacturados suaves, un barrido sistemático de rigidez/t
 - E7: NSGA-II opcional, restricciones, hidráulica, costos limitados y ejemplo robusto con escenarios comunes; 11 candidatos preliminares pasan factibilidad en malla refinada. Pendientes hipervolumen/múltiples semillas, más escenarios y diseño mecánico.
 - Exportación: CSV/JSON y envolvente DXF implementados. Parquet de salida/balance y CSV experimental con unidades implementados; STEP y aplicación web pendientes.
 - E8/E9: requieren datos autorizados, revisión científica externa, titularidad/licencia y preparación editorial. No se han cerrado.
+
+## Ruta editorial EnvSoft y gates de evidencia
+
+P0: dossier PAPER_ENVSOFT con C01–C08/E01–E05 y revisión de antecedentes; protocolo en borrador, no prerregistro público. P1: cerrar verificación E01 con MMS, mapas de régimen y error de cantidades de decisión. P2: E02 con multi-inicio, perfiles, errores de observación/entradas y cobertura. P3: E03 convencional/determinista/robusto y ablaciones a igual información/cómputo, test independiente e hipervolumen común. P4: E04 con ensayos retenidos autorizados, sin reajustar con test. P5: E05 con reconstrucción externa, recursos medidos y persistencia/fallos. La infraestructura de trazabilidad y particiones se implementa antes de campañas grandes, no al final.
+
+Priorizar esos gates sobre interfaz web, CAD empresarial o nuevas funcionalidades no necesarias para responder la pregunta científica. El arnés SMOKE permite reconstruir referencias/demos existentes; no acredita los experimentos confirmatorios. No declarar software publicable solo porque los módulos estén presentes.
+
+
+Actualización de datos 2026-11-19: el inventario externo y los bloqueos científicos
+se documentan en `benchmarks/data_catalog/`. E04 está BLOCKED_METADATA;
+ninguna curva se considera lista para validación física independiente.
+Retomar las etapas 2, 3 y 4 según `CONTINUE_HERE.md`.

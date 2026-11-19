@@ -1,0 +1,9 @@
+case_id,scope,reference_kind,reference_status,refinement_required,confirmatory_status,acceptance_status
+E01_BATCH_LINEAR,closed batch with linear equilibrium,analytic exact balance and kinetics,selected reference exists,time tolerances,NOT_RUN,draft definitions and thresholds
+E01_LINEAR_LDF_MATRIX,fixed finite-volume semi-discretization,affine matrix exponential,selected reference exists,time tolerances at fixed spatial grid,NOT_RUN,draft definitions and thresholds
+E01_TRACER_DAX_ZERO,nonadsorbing advective front,analytic compatible front or tanks model,selected reference exists,axial grid and time independently,NOT_RUN,draft definitions and thresholds
+E01_SPHERE_DIFFUSION,uniform sphere with compatible prescribed surface,analytic sphere series,selected reference exists,radial grid and time independently,NOT_RUN,draft definitions and thresholds
+E01_ADE_FINITE_PE,advection dispersion with compatible IC and BC,continuous MMS or compatible exact reference,benchmark implementation pending,axial grid and time independently,NOT_RUN,draft definitions and thresholds
+E01_HSDM_COUPLED,full column film and particle diffusion,verified independent reference or extrapolation with limitations,confirmatory matrix pending,axial radial and temporal errors separately,NOT_RUN,draft definitions and thresholds
+E01_DESORPTION_NONLINEAR,preload desorption and nonlinear equilibrium,limits balance and refinement,confirmatory matrix pending,axial radial and temporal errors separately,NOT_RUN,draft definitions and thresholds
+E01_FILM_LIMITS,finite film across weak and strong resistance,flux conditioning limits and convergence,regression evidence exists not confirmatory matrix,film regime radial grid and time,NOT_RUN,draft definitions and thresholds

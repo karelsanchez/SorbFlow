@@ -106,3 +106,15 @@ Referencias técnicas: [Pint](https://pint.readthedocs.io/en/stable/getting/tuto
 ## Ampliación acordada
 
 La investigación de cuatro materiales es una primera aplicación, no un límite del producto. AdsorbentBlend admite N componentes sin una ley de mezcla implícita. Open Core propuesto: Apache-2.0 para core y distribución independiente pyfast-design-pro; la titularidad universitaria se resuelve antes de conceder/publicar la licencia. El nombre de distribución actual sigue siendo provisional. Detalles de ecuaciones implementadas, patrones dispersos y flujo robusto en IMPLEMENTATION_NOTES.md.
+
+## Objetivo editorial y cambios exigidos (2026-11-18)
+
+El objetivo científico de PyFAST es un framework publicable en Environmental Modelling & Software, condicionado a demostrar aporte y evaluar sus límites. PAPER_ENVSOFT contiene pregunta, matriz C01–C08, formulación y protocolo E01–E05; es la referencia para el estudio confirmatorio, sin cambiar retroactivamente lo que el prototipo ya verificó.
+
+Cambios requeridos: contratos separados de problema físico, dominio validado, observación/likelihood, calibración multiexperimento, identificabilidad de parámetros y cantidades de decisión, fuentes de incertidumbre, riesgo y clasificación con error numérico. Agregar un registro de estudio/particiones/presupuesto y un ejecutor persistente de tareas por contenido con caché, reintentos, semillas jerárquicas y artefactos verificables. No representar estas propuestas como capacidades completas del prototipo.
+
+Los checkpoints actuales del solver son arrays RAM para controles; no son reinicio persistente de BDF. El arnés PAPER_ENVSOFT/reproduce_smoke.py orquesta referencias/demos sintéticos y reutiliza tareas completas verificadas. No implementa distribución multinodo ni reanudación interna de optimizador/integrador, y no cierra E05.
+
+La metodología debe definir qué acción produce cada diagnóstico; perfiles paramétricos abiertos no invalidan automáticamente una cantidad de decisión bien determinada. La búsqueda robusta y la validación probabilística usan conjuntos distintos. Un contador de candidatos NSGA-II no sustituye el costo total de solves físicos.
+
+El caso de cuatro materiales se mantiene en un paquete de datos independiente. Ninguna función o script esencial para reproducir resultados centrales del artículo dependerá de una edición comercial. Apache-2.0 sigue condicionado a titularidad/licencia y acceso efectivos.

@@ -1,0 +1,1001 @@
+{
+  "schema_version": 1,
+  "root_read_only": "D:\\PyFAST\\datasets_benchmark_pyfast",
+  "client_date": "2026-11-19",
+  "started_utc": "2026-11-19T05:02:53.114037+00:00",
+  "finished_utc": "2026-11-19T05:02:53.131037+00:00",
+  "method": "scandir/lstat without following reparse points; .gitignore not applied",
+  "scope": "metadata snapshot and local readiness declarations only; no model execution or extraction",
+  "no_large_or_active_file_hashing": true,
+  "dataset_validation_performed": false,
+  "files": [
+    {
+      "relative_path": "00_Inventario/INFORME.md",
+      "bytes": 5167,
+      "mtime_ns": 1795064126617066100,
+      "mtime_utc": "2026-11-19T04:55:26.617066+00:00",
+      "reparse_point": false,
+      "extension": ".md",
+      "suffixes": [
+        ".md"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": true,
+      "hash_role": "small_stable_metadata_sentinel",
+      "sha256": "eb9da649719bc7378e48c0e3febd4e1970e9db874d6defd4058b4ee93d491296"
+    },
+    {
+      "relative_path": "00_Inventario/curvas_utilizables_y_pendientes.csv",
+      "bytes": 9227,
+      "mtime_ns": 1795064126615064000,
+      "mtime_utc": "2026-11-19T04:55:26.615064+00:00",
+      "reparse_point": false,
+      "extension": ".csv",
+      "suffixes": [
+        ".csv"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": true,
+      "hash_role": "small_stable_metadata_sentinel",
+      "sha256": "9d24c3f63d16c9dbe0fc2a75d75f40d697382153aaa1a03b9ee38482780047a3"
+    },
+    {
+      "relative_path": "00_Inventario/descargas.csv",
+      "bytes": 13996,
+      "mtime_ns": 1795064125486066100,
+      "mtime_utc": "2026-11-19T04:55:25.486066+00:00",
+      "reparse_point": false,
+      "extension": ".csv",
+      "suffixes": [
+        ".csv"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": true,
+      "hash_role": "small_stable_metadata_sentinel",
+      "sha256": "84018458f953a740aac0c895480697e326fe4ac737c42784545fe0a7cac27712"
+    },
+    {
+      "relative_path": "00_Inventario/downloads.json",
+      "bytes": 21652,
+      "mtime_ns": 1795064125484069400,
+      "mtime_utc": "2026-11-19T04:55:25.484069+00:00",
+      "reparse_point": false,
+      "extension": ".json",
+      "suffixes": [
+        ".json"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": true,
+      "hash_role": "small_stable_metadata_sentinel",
+      "sha256": "b36086c86560057c805d2e76d3c880e91b2e65403ffaa9ecb4ec44c29f3d7038"
+    },
+    {
+      "relative_path": "00_Inventario/fallos.csv",
+      "bytes": 4070,
+      "mtime_ns": 1795064125486066100,
+      "mtime_utc": "2026-11-19T04:55:25.486066+00:00",
+      "reparse_point": false,
+      "extension": ".csv",
+      "suffixes": [
+        ".csv"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": true,
+      "hash_role": "small_stable_metadata_sentinel",
+      "sha256": "1a2e7dfb9f3244192c9708a0e5504bc3e777095843cba3138a214b395691d8de"
+    },
+    {
+      "relative_path": "00_Inventario/inventario_datasets.csv",
+      "bytes": 2958,
+      "mtime_ns": 1795064126616066900,
+      "mtime_utc": "2026-11-19T04:55:26.616067+00:00",
+      "reparse_point": false,
+      "extension": ".csv",
+      "suffixes": [
+        ".csv"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": true,
+      "hash_role": "small_stable_metadata_sentinel",
+      "sha256": "7e0c9e3371dcabc4d0d7bbfabaeb80960248d38116de53cbb5dd3f1bc7fdc870"
+    },
+    {
+      "relative_path": "00_Inventario/manifest_sha256.csv",
+      "bytes": 7818,
+      "mtime_ns": 1795064127044067600,
+      "mtime_utc": "2026-11-19T04:55:27.044068+00:00",
+      "reparse_point": false,
+      "extension": ".csv",
+      "suffixes": [
+        ".csv"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": true,
+      "hash_role": "small_stable_metadata_sentinel",
+      "sha256": "72e605312ddeaa6a02d2f4abe6e18fe708cf398de815c48e874ff62fbac2c884"
+    },
+    {
+      "relative_path": "00_Inventario/resumen.json",
+      "bytes": 448,
+      "mtime_ns": 1795064126616066900,
+      "mtime_utc": "2026-11-19T04:55:26.616067+00:00",
+      "reparse_point": false,
+      "extension": ".json",
+      "suffixes": [
+        ".json"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": true,
+      "hash_role": "small_stable_metadata_sentinel",
+      "sha256": "068b4cb954618b3d7905eb6f71d27f93896a16f07a799790249419c89b830b49"
+    },
+    {
+      "relative_path": "00_Inventario/ruptura_contenido_zip.csv",
+      "bytes": 6447,
+      "mtime_ns": 1795064126607066100,
+      "mtime_utc": "2026-11-19T04:55:26.607066+00:00",
+      "reparse_point": false,
+      "extension": ".csv",
+      "suffixes": [
+        ".csv"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": true,
+      "hash_role": "small_stable_metadata_sentinel",
+      "sha256": "3e17ab25d1f7a6c54fa7bf53d1194497c7f76ae244ba91c951bc32aab8c4211b"
+    },
+    {
+      "relative_path": "01_MAR2PROTECT/PILOT FIXED BED COLUMN ADSORPTION-BPA-DCF-IBU.xlsx",
+      "bytes": 80923,
+      "mtime_ns": 1795063662185200900,
+      "mtime_utc": "2026-11-19T04:47:42.185201+00:00",
+      "reparse_point": false,
+      "extension": ".xlsx",
+      "suffixes": [
+        ".xlsx"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "01_MAR2PROTECT/curvas_extraidas_sin_corregir.csv",
+      "bytes": 7237,
+      "mtime_ns": 1795064125572065800,
+      "mtime_utc": "2026-11-19T04:55:25.572066+00:00",
+      "reparse_point": false,
+      "extension": ".csv",
+      "suffixes": [
+        ".csv"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "01_MAR2PROTECT/metadata.json",
+      "bytes": 4720,
+      "mtime_ns": 1795063654902483000,
+      "mtime_utc": "2026-11-19T04:47:34.902483+00:00",
+      "reparse_point": false,
+      "extension": ".json",
+      "suffixes": [
+        ".json"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "02_Methylene_Blue_Banana_Peel/article_deploy.xml",
+      "bytes": 231133,
+      "mtime_ns": 1795063756186050200,
+      "mtime_utc": "2026-11-19T04:49:16.186050+00:00",
+      "reparse_point": false,
+      "extension": ".xml",
+      "suffixes": [
+        ".xml"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "02_Methylene_Blue_Banana_Peel/crossref.json",
+      "bytes": 20359,
+      "mtime_ns": 1795063716482505900,
+      "mtime_utc": "2026-11-19T04:48:36.482506+00:00",
+      "reparse_point": false,
+      "extension": ".json",
+      "suffixes": [
+        ".json"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "02_Methylene_Blue_Banana_Peel/extracted_text.txt",
+      "bytes": 59894,
+      "mtime_ns": 1795063884957576900,
+      "mtime_utc": "2026-11-19T04:51:24.957577+00:00",
+      "reparse_point": false,
+      "extension": ".txt",
+      "suffixes": [
+        ".txt"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "02_Methylene_Blue_Banana_Peel/processes-08-01467.pdf",
+      "bytes": 4065149,
+      "mtime_ns": 1795063716880742200,
+      "mtime_utc": "2026-11-19T04:48:36.880742+00:00",
+      "reparse_point": false,
+      "extension": ".pdf",
+      "suffixes": [
+        ".pdf"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "03_Chitosan_Fixed_Bed/GJESRM_003.docx",
+      "bytes": 584519,
+      "mtime_ns": 1795063664330078700,
+      "mtime_utc": "2026-11-19T04:47:44.330079+00:00",
+      "reparse_point": false,
+      "extension": ".docx",
+      "suffixes": [
+        ".docx"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "03_Chitosan_Fixed_Bed/extracted_text.txt",
+      "bytes": 51489,
+      "mtime_ns": 1795063734756584200,
+      "mtime_utc": "2026-11-19T04:48:54.756584+00:00",
+      "reparse_point": false,
+      "extension": ".txt",
+      "suffixes": [
+        ".txt"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "03_Chitosan_Fixed_Bed/metadata.json",
+      "bytes": 5326,
+      "mtime_ns": 1795063654915481000,
+      "mtime_utc": "2026-11-19T04:47:34.915481+00:00",
+      "reparse_point": false,
+      "extension": ".json",
+      "suffixes": [
+        ".json"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "04_RUPTURA/Data_RUPTURA.zip",
+      "bytes": 67632758,
+      "mtime_ns": 1795063906626413600,
+      "mtime_utc": "2026-11-19T04:51:46.626414+00:00",
+      "reparse_point": false,
+      "extension": ".zip",
+      "suffixes": [
+        ".zip"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "04_RUPTURA/datacite.json",
+      "bytes": 12977,
+      "mtime_ns": 1795063716772604400,
+      "mtime_utc": "2026-11-19T04:48:36.772604+00:00",
+      "reparse_point": false,
+      "extension": ".json",
+      "suffixes": [
+        ".json"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "04_RUPTURA/doi_resolution.html",
+      "bytes": 27180,
+      "mtime_ns": 1795063857098435600,
+      "mtime_utc": "2026-11-19T04:50:57.098436+00:00",
+      "reparse_point": false,
+      "extension": ".html",
+      "suffixes": [
+        ".html"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "04_RUPTURA/extracted/Data_RUPTURA/README",
+      "bytes": 1836,
+      "mtime_ns": 1795064126608067600,
+      "mtime_utc": "2026-11-19T04:55:26.608068+00:00",
+      "reparse_point": false,
+      "extension": "[none]",
+      "suffixes": [],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "04_RUPTURA/extracted/Data_RUPTURA/break_validation/break_2mC4_2mC5_validation.pdf",
+      "bytes": 26814,
+      "mtime_ns": 1795064126610065500,
+      "mtime_utc": "2026-11-19T04:55:26.610065+00:00",
+      "reparse_point": false,
+      "extension": ".pdf",
+      "suffixes": [
+        ".pdf"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "04_RUPTURA/extracted/Data_RUPTURA/break_validation/break_2mC4_exp",
+      "bytes": 719,
+      "mtime_ns": 1795064126608067600,
+      "mtime_utc": "2026-11-19T04:55:26.608068+00:00",
+      "reparse_point": false,
+      "extension": "[none]",
+      "suffixes": [],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "04_RUPTURA/extracted/Data_RUPTURA/break_validation/break_2mC5_exp",
+      "bytes": 372,
+      "mtime_ns": 1795064126609067900,
+      "mtime_utc": "2026-11-19T04:55:26.609068+00:00",
+      "reparse_point": false,
+      "extension": "[none]",
+      "suffixes": [],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "04_RUPTURA/github_metadata.json",
+      "bytes": 5901,
+      "mtime_ns": 1795063756303352700,
+      "mtime_utc": "2026-11-19T04:49:16.303353+00:00",
+      "reparse_point": false,
+      "extension": ".json",
+      "suffixes": [
+        ".json"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "04_RUPTURA/github_tree.json",
+      "bytes": 166739,
+      "mtime_ns": 1795063852136429300,
+      "mtime_utc": "2026-11-19T04:50:52.136429+00:00",
+      "reparse_point": false,
+      "extension": ".json",
+      "suffixes": [
+        ".json"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "04_RUPTURA/ro-crate-metadata.json",
+      "bytes": 3184,
+      "mtime_ns": 1795063908123578400,
+      "mtime_utc": "2026-11-19T04:51:48.123578+00:00",
+      "reparse_point": false,
+      "extension": ".json",
+      "suffixes": [
+        ".json"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "05_Ogata_Banks/extracted_text.txt",
+      "bytes": 15084,
+      "mtime_ns": 1795063909463577600,
+      "mtime_utc": "2026-11-19T04:51:49.463578+00:00",
+      "reparse_point": false,
+      "extension": ".txt",
+      "suffixes": [
+        ".txt"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "05_Ogata_Banks/pp411A.pdf",
+      "bytes": 326194,
+      "mtime_ns": 1795063717055583200,
+      "mtime_utc": "2026-11-19T04:48:37.055583+00:00",
+      "reparse_point": false,
+      "extension": ".pdf",
+      "suffixes": [
+        ".pdf"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "05_Ogata_Banks/source.html",
+      "bytes": 85400,
+      "mtime_ns": 1795063660920708500,
+      "mtime_utc": "2026-11-19T04:47:40.920708+00:00",
+      "reparse_point": false,
+      "extension": ".html",
+      "suffixes": [
+        ".html"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/EPA_Example_Multi.py",
+      "bytes": 5408,
+      "mtime_ns": 1795063755689962800,
+      "mtime_utc": "2026-11-19T04:49:15.689963+00:00",
+      "reparse_point": false,
+      "extension": ".py",
+      "suffixes": [
+        ".py"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/EPA_Example_Multi.xlsx",
+      "bytes": 25483,
+      "mtime_ns": 1795063755775967300,
+      "mtime_utc": "2026-11-19T04:49:15.775967+00:00",
+      "reparse_point": false,
+      "extension": ".xlsx",
+      "suffixes": [
+        ".xlsx"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/EPA_Example_TCE.py",
+      "bytes": 14241,
+      "mtime_ns": 1795063755681979800,
+      "mtime_utc": "2026-11-19T04:49:15.681980+00:00",
+      "reparse_point": false,
+      "extension": ".py",
+      "suffixes": [
+        ".py"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/EPA_Example_TCE.xlsx",
+      "bytes": 27510,
+      "mtime_ns": 1795063755714964000,
+      "mtime_utc": "2026-11-19T04:49:15.714964+00:00",
+      "reparse_point": false,
+      "extension": ".xlsx",
+      "suffixes": [
+        ".xlsx"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/EPA_LICENSE.md",
+      "bytes": 1037,
+      "mtime_ns": 1795063755948905300,
+      "mtime_utc": "2026-11-19T04:49:15.948905+00:00",
+      "reparse_point": false,
+      "extension": ".md",
+      "suffixes": [
+        ".md"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/EPA_Simple_Example.ipynb",
+      "bytes": 259698,
+      "mtime_ns": 1795063756072051400,
+      "mtime_utc": "2026-11-19T04:49:16.072051+00:00",
+      "reparse_point": false,
+      "extension": ".ipynb",
+      "suffixes": [
+        ".ipynb"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/epa_source.html",
+      "bytes": 65764,
+      "mtime_ns": 1795063654842484800,
+      "mtime_utc": "2026-11-19T04:47:34.842485+00:00",
+      "reparse_point": false,
+      "extension": ".html",
+      "suffixes": [
+        ".html"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/epa_tree.json",
+      "bytes": 51287,
+      "mtime_ns": 1795063717246587600,
+      "mtime_utc": "2026-11-19T04:48:37.246588+00:00",
+      "reparse_point": false,
+      "extension": ".json",
+      "suffixes": [
+        ".json"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/etdot_tree.json",
+      "bytes": 3066183,
+      "mtime_ns": 1795063718062608200,
+      "mtime_utc": "2026-11-19T04:48:38.062608+00:00",
+      "reparse_point": false,
+      "extension": ".json",
+      "suffixes": [
+        ".json"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/psdm-0.4.0.tar.gz",
+      "bytes": 758154,
+      "mtime_ns": 1795063719624758700,
+      "mtime_utc": "2026-11-19T04:48:39.624759+00:00",
+      "reparse_point": false,
+      "extension": ".gz",
+      "suffixes": [
+        ".4",
+        ".0",
+        ".tar",
+        ".gz"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/psdm_distribution/LICENSE",
+      "bytes": 1461,
+      "mtime_ns": 1795063885073576800,
+      "mtime_utc": "2026-11-19T04:51:25.073577+00:00",
+      "reparse_point": false,
+      "extension": "[none]",
+      "suffixes": [],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/psdm_distribution/examples/Example_Multi.xlsx",
+      "bytes": 25483,
+      "mtime_ns": 1795063885052574900,
+      "mtime_utc": "2026-11-19T04:51:25.052575+00:00",
+      "reparse_point": false,
+      "extension": ".xlsx",
+      "suffixes": [
+        ".xlsx"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/psdm_distribution/examples/Example_TCE.xlsx",
+      "bytes": 27510,
+      "mtime_ns": 1795063885053572500,
+      "mtime_utc": "2026-11-19T04:51:25.053572+00:00",
+      "reparse_point": false,
+      "extension": ".xlsx",
+      "suffixes": [
+        ".xlsx"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/psdm_distribution/scripts/benchmark.py",
+      "bytes": 47579,
+      "mtime_ns": 1795063885055575400,
+      "mtime_utc": "2026-11-19T04:51:25.055575+00:00",
+      "reparse_point": false,
+      "extension": ".py",
+      "suffixes": [
+        ".py"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/psdm_distribution/tests/data/addesigns_test.xlsx",
+      "bytes": 124180,
+      "mtime_ns": 1795063885057573700,
+      "mtime_utc": "2026-11-19T04:51:25.057574+00:00",
+      "reparse_point": false,
+      "extension": ".xlsx",
+      "suffixes": [
+        ".xlsx"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/psdm_distribution/tests/data/reference/addesigns_single.csv",
+      "bytes": 31141,
+      "mtime_ns": 1795063885060573000,
+      "mtime_utc": "2026-11-19T04:51:25.060573+00:00",
+      "reparse_point": false,
+      "extension": ".csv",
+      "suffixes": [
+        ".csv"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/psdm_distribution/tests/data/reference/generate.py",
+      "bytes": 3148,
+      "mtime_ns": 1795063885061584100,
+      "mtime_utc": "2026-11-19T04:51:25.061584+00:00",
+      "reparse_point": false,
+      "extension": ".py",
+      "suffixes": [
+        ".py"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/psdm_distribution/tests/data/reference/generate_io.py",
+      "bytes": 3964,
+      "mtime_ns": 1795063885061584100,
+      "mtime_utc": "2026-11-19T04:51:25.061584+00:00",
+      "reparse_point": false,
+      "extension": ".py",
+      "suffixes": [
+        ".py"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/psdm_distribution/tests/data/reference/generate_tce.py",
+      "bytes": 4403,
+      "mtime_ns": 1795063885062575300,
+      "mtime_utc": "2026-11-19T04:51:25.062575+00:00",
+      "reparse_point": false,
+      "extension": ".py",
+      "suffixes": [
+        ".py"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/psdm_distribution/tests/data/reference/io_process_input_file.csv",
+      "bytes": 7265,
+      "mtime_ns": 1795063885064584100,
+      "mtime_utc": "2026-11-19T04:51:25.064584+00:00",
+      "reparse_point": false,
+      "extension": ".csv",
+      "suffixes": [
+        ".csv"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/psdm_distribution/tests/data/reference/multi_organic_free.csv",
+      "bytes": 18983,
+      "mtime_ns": 1795063885065618100,
+      "mtime_utc": "2026-11-19T04:51:25.065618+00:00",
+      "reparse_point": false,
+      "extension": ".csv",
+      "suffixes": [
+        ".csv"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/psdm_distribution/tests/data/reference/multi_rhine.csv",
+      "bytes": 20936,
+      "mtime_ns": 1795063885067576200,
+      "mtime_utc": "2026-11-19T04:51:25.067576+00:00",
+      "reparse_point": false,
+      "extension": ".csv",
+      "suffixes": [
+        ".csv"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/psdm_distribution/tests/data/reference/tce_curves.csv",
+      "bytes": 55724,
+      "mtime_ns": 1795063885070589400,
+      "mtime_utc": "2026-11-19T04:51:25.070589+00:00",
+      "reparse_point": false,
+      "extension": ".csv",
+      "suffixes": [
+        ".csv"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/psdm_distribution/tests/data/reference/tce_params.csv",
+      "bytes": 443,
+      "mtime_ns": 1795063885071579100,
+      "mtime_utc": "2026-11-19T04:51:25.071579+00:00",
+      "reparse_point": false,
+      "extension": ".csv",
+      "suffixes": [
+        ".csv"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/pypi_metadata.json",
+      "bytes": 12509,
+      "mtime_ns": 1795063654766480000,
+      "mtime_utc": "2026-11-19T04:47:34.766480+00:00",
+      "reparse_point": false,
+      "extension": ".json",
+      "suffixes": [
+        ".json"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": false
+    },
+    {
+      "relative_path": "README.md",
+      "bytes": 5167,
+      "mtime_ns": 1795064126617066100,
+      "mtime_utc": "2026-11-19T04:55:26.617066+00:00",
+      "reparse_point": false,
+      "extension": ".md",
+      "suffixes": [
+        ".md"
+      ],
+      "temporary_name_hint": false,
+      "content_hash_computed": true,
+      "hash_role": "small_stable_metadata_sentinel",
+      "sha256": "eb9da649719bc7378e48c0e3febd4e1970e9db874d6defd4058b4ee93d491296"
+    }
+  ],
+  "directories": [
+    {
+      "relative_path": "00_Inventario",
+      "bytes": 0,
+      "mtime_ns": 1795064080861327800,
+      "mtime_utc": "2026-11-19T04:54:40.861328+00:00",
+      "reparse_point": false
+    },
+    {
+      "relative_path": "01_MAR2PROTECT",
+      "bytes": 0,
+      "mtime_ns": 1795064079349330200,
+      "mtime_utc": "2026-11-19T04:54:39.349330+00:00",
+      "reparse_point": false
+    },
+    {
+      "relative_path": "02_Methylene_Blue_Banana_Peel",
+      "bytes": 0,
+      "mtime_ns": 1795063787557277100,
+      "mtime_utc": "2026-11-19T04:49:47.557277+00:00",
+      "reparse_point": false
+    },
+    {
+      "relative_path": "03_Chitosan_Fixed_Bed",
+      "bytes": 0,
+      "mtime_ns": 1795063734756584200,
+      "mtime_utc": "2026-11-19T04:48:54.756584+00:00",
+      "reparse_point": false
+    },
+    {
+      "relative_path": "04_RUPTURA",
+      "bytes": 0,
+      "mtime_ns": 1795064080394331800,
+      "mtime_utc": "2026-11-19T04:54:40.394332+00:00",
+      "reparse_point": false
+    },
+    {
+      "relative_path": "04_RUPTURA/extracted",
+      "bytes": 0,
+      "mtime_ns": 1795064080395330800,
+      "mtime_utc": "2026-11-19T04:54:40.395331+00:00",
+      "reparse_point": false
+    },
+    {
+      "relative_path": "04_RUPTURA/extracted/Data_RUPTURA",
+      "bytes": 0,
+      "mtime_ns": 1795064080396329100,
+      "mtime_utc": "2026-11-19T04:54:40.396329+00:00",
+      "reparse_point": false
+    },
+    {
+      "relative_path": "04_RUPTURA/extracted/Data_RUPTURA/break_validation",
+      "bytes": 0,
+      "mtime_ns": 1795064080398330300,
+      "mtime_utc": "2026-11-19T04:54:40.398330+00:00",
+      "reparse_point": false
+    },
+    {
+      "relative_path": "05_Ogata_Banks",
+      "bytes": 0,
+      "mtime_ns": 1795063909463577600,
+      "mtime_utc": "2026-11-19T04:51:49.463578+00:00",
+      "reparse_point": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA",
+      "bytes": 0,
+      "mtime_ns": 1795063859063809700,
+      "mtime_utc": "2026-11-19T04:50:59.063810+00:00",
+      "reparse_point": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/psdm_distribution",
+      "bytes": 0,
+      "mtime_ns": 1795063859085806200,
+      "mtime_utc": "2026-11-19T04:50:59.085806+00:00",
+      "reparse_point": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/psdm_distribution/examples",
+      "bytes": 0,
+      "mtime_ns": 1795063859073812300,
+      "mtime_utc": "2026-11-19T04:50:59.073812+00:00",
+      "reparse_point": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/psdm_distribution/scripts",
+      "bytes": 0,
+      "mtime_ns": 1795063859074807600,
+      "mtime_utc": "2026-11-19T04:50:59.074808+00:00",
+      "reparse_point": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/psdm_distribution/tests",
+      "bytes": 0,
+      "mtime_ns": 1795063859075806400,
+      "mtime_utc": "2026-11-19T04:50:59.075806+00:00",
+      "reparse_point": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/psdm_distribution/tests/data",
+      "bytes": 0,
+      "mtime_ns": 1795063859077807300,
+      "mtime_utc": "2026-11-19T04:50:59.077807+00:00",
+      "reparse_point": false
+    },
+    {
+      "relative_path": "06_PSDM_EPA/psdm_distribution/tests/data/reference",
+      "bytes": 0,
+      "mtime_ns": 1795063859084806300,
+      "mtime_utc": "2026-11-19T04:50:59.084806+00:00",
+      "reparse_point": false
+    }
+  ],
+  "summary": {
+    "file_count": 58,
+    "directory_count": 16,
+    "bytes_at_snapshot": 78152351,
+    "extensions": {
+      ".csv": 13,
+      ".docx": 1,
+      ".gz": 1,
+      ".html": 3,
+      ".ipynb": 1,
+      ".json": 12,
+      ".md": 3,
+      ".pdf": 3,
+      ".py": 6,
+      ".txt": 3,
+      ".xlsx": 6,
+      ".xml": 1,
+      ".zip": 1,
+      "[none]": 4
+    },
+    "temporary_name_candidates": [],
+    "changed_during_inspection": [],
+    "added_during_inspection": [],
+    "removed_during_inspection": []
+  },
+  "metadata_sentinels": [
+    {
+      "relative_path": "README.md",
+      "bytes": 5167,
+      "stable_stat_before_after": true,
+      "status": "sentinel_hashed",
+      "sha256": "eb9da649719bc7378e48c0e3febd4e1970e9db874d6defd4058b4ee93d491296"
+    },
+    {
+      "relative_path": "00_Inventario/curvas_utilizables_y_pendientes.csv",
+      "bytes": 9227,
+      "stable_stat_before_after": true,
+      "status": "sentinel_hashed",
+      "sha256": "9d24c3f63d16c9dbe0fc2a75d75f40d697382153aaa1a03b9ee38482780047a3"
+    },
+    {
+      "relative_path": "00_Inventario/descargas.csv",
+      "bytes": 13996,
+      "stable_stat_before_after": true,
+      "status": "sentinel_hashed",
+      "sha256": "84018458f953a740aac0c895480697e326fe4ac737c42784545fe0a7cac27712"
+    },
+    {
+      "relative_path": "00_Inventario/downloads.json",
+      "bytes": 21652,
+      "stable_stat_before_after": true,
+      "status": "sentinel_hashed",
+      "sha256": "b36086c86560057c805d2e76d3c880e91b2e65403ffaa9ecb4ec44c29f3d7038"
+    },
+    {
+      "relative_path": "00_Inventario/fallos.csv",
+      "bytes": 4070,
+      "stable_stat_before_after": true,
+      "status": "sentinel_hashed",
+      "sha256": "1a2e7dfb9f3244192c9708a0e5504bc3e777095843cba3138a214b395691d8de"
+    },
+    {
+      "relative_path": "00_Inventario/INFORME.md",
+      "bytes": 5167,
+      "stable_stat_before_after": true,
+      "status": "sentinel_hashed",
+      "sha256": "eb9da649719bc7378e48c0e3febd4e1970e9db874d6defd4058b4ee93d491296"
+    },
+    {
+      "relative_path": "00_Inventario/inventario_datasets.csv",
+      "bytes": 2958,
+      "stable_stat_before_after": true,
+      "status": "sentinel_hashed",
+      "sha256": "7e0c9e3371dcabc4d0d7bbfabaeb80960248d38116de53cbb5dd3f1bc7fdc870"
+    },
+    {
+      "relative_path": "00_Inventario/manifest_sha256.csv",
+      "bytes": 7818,
+      "stable_stat_before_after": true,
+      "status": "sentinel_hashed",
+      "sha256": "72e605312ddeaa6a02d2f4abe6e18fe708cf398de815c48e874ff62fbac2c884"
+    },
+    {
+      "relative_path": "00_Inventario/resumen.json",
+      "bytes": 448,
+      "stable_stat_before_after": true,
+      "status": "sentinel_hashed",
+      "sha256": "068b4cb954618b3d7905eb6f71d27f93896a16f07a799790249419c89b830b49"
+    },
+    {
+      "relative_path": "00_Inventario/ruptura_contenido_zip.csv",
+      "bytes": 6447,
+      "stable_stat_before_after": true,
+      "status": "sentinel_hashed",
+      "sha256": "3e17ab25d1f7a6c54fa7bf53d1194497c7f76ae244ba91c951bc32aab8c4211b"
+    }
+  ],
+  "errors": [],
+  "limits": [
+    "No detected change does not prove downloads have completed",
+    "Existing checksums/CRC statements are local prior-audit claims, not reverified here",
+    "No new archive/PDF/DOCX/XLSX checksum, extraction or scientific validation"
+  ],
+  "current_root_after_user_move": "C:\\Users\\Karel\\Documents\\Codex\\2026-11-18\\empaqueta-x20\\PyFAST\\datasets_benchmark_pyfast",
+  "relocation_note": "root_read_only refers to the historical inspection; no raw files changed here"
+}

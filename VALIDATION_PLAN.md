@@ -56,7 +56,7 @@ Para transporte con discontinuidad usar errores integrales y posición del frent
 no exigir orden puntual. Para difusión/esquema centrado suave esperar orden 2 y
 verificarlo en una prueba separada de convección. Refinar Nz=50,100,200,400;
 Nr=10,20,40,80 para HSDM, separando refinamientos. Reducir tolerancias temporales
-1e-4→1e-6→1e-8 con atol por estado; primero aislar error espacial del temporal.
+1e-4â†’1e-6â†’1e-8 con atol por estado; primero aislar error espacial del temporal.
 Exigir cambio <0.5% en t10/t50/t90 y capacidad entre las dos mallas más finas.
 Si no hay ruptura en el horizonte, marcar el indicador censurado, no inventar un tiempo.
 
@@ -106,3 +106,15 @@ verificación de todas las soluciones finales en malla fina y con incertidumbre.
 Artículo: derivación, benchmarks independientes, datasets autorizados con DOI,
 entorno exacto, versión/commit, limitaciones, costos computacionales y scripts
 reproducibles. No publicar afirmación de validación antes de cerrar V1 y V2.
+
+## Protocolo del artículo objetivo
+
+PAPER_ENVSOFT/BENCHMARK_PROTOCOL.md amplía este plan con E01–E05, presupuestos, particiones, unidades de repetición, métricas, criterios y refutaciones por claim C01–C08. Sus valores son propuestas a congelar antes del estudio, no mandatos editoriales ni resultados. La evidencia 0.2 se conserva como referencias seleccionadas; E02/E03 completos, E04 y E05 no se infieren de pruebas unitarias o demos.
+
+Distinguir calibración, desarrollo, escenarios de búsqueda y test independiente. Si q se deriva de c_eq, modelar la correlación de errores. La transferibilidad de kf/k_LDF entre Q/dp requiere mapping validado. La factibilidad terminal no sustituye cumplimiento de trayectoria; tres escenarios de búsqueda no certifican una probabilidad de fallo.
+
+
+Actualización de datos 2026-11-19: el inventario externo y los bloqueos científicos
+se documentan en `benchmarks/data_catalog/`. E04 está BLOCKED_METADATA;
+ninguna curva se considera lista para validación física independiente.
+Retomar las etapas 2, 3 y 4 según `CONTINUE_HERE.md`.

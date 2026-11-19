@@ -33,7 +33,7 @@ where = ["src"]
 pyfast = ["py.typed"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = ["tests", "benchmarks/data_catalog"]
 addopts = "-ra --strict-markers"
 
 [tool.ruff]
