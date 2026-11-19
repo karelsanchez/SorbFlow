@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "review_id": "claude-e04-20261119",
+  "import_status": "ARCHIVED_UNCHANGED_WITH_QUALIFIED_INTEGRATION",
+  "artifacts": [
+    {
+      "path": "E04_METADATA_MATRIX.csv",
+      "sha256": "e14f4604263985e17b8dcbf5085b765fad4b9e8d52532b4ab0ecb6c5f953db8b",
+      "source_workspace_path": "outputs/CLAUDE_E04_REVIEW/E04_METADATA_MATRIX.csv"
+    },
+    {
+      "path": "SOURCE_EVIDENCE.json",
+      "sha256": "0b6d155255bd0e436be69e6b1e94fad9ebf631abeb9f09879f5088e44fcbd960",
+      "source_workspace_path": "outputs/CLAUDE_E04_REVIEW/SOURCE_EVIDENCE.json"
+    },
+    {
+      "path": "E04_ISSUES.md",
+      "sha256": "e414d2679f30f74c74ad1039be54d2b56d3518d844761d41b1826ec144779068",
+      "source_workspace_path": "outputs/CLAUDE_E04_REVIEW/E04_ISSUES.md"
+    },
+    {
+      "path": "RECOMMENDED_FIRST_CASE.md",
+      "sha256": "157807ef7e1f0090838d430791a78100f94db9c427fd128ce4bceb5b1fdf8738",
+      "source_workspace_path": "outputs/CLAUDE_E04_REVIEW/RECOMMENDED_FIRST_CASE.md"
+    },
+    {
+      "path": "INPUT_MANIFEST.json",
+      "sha256": "bbcf15867187d34bbfb365df08df465a4d6d8dbad56f24ff05d11cc7825c5f0d",
+      "source_workspace_path": "outputs/CLAUDE_E04_REVIEW/INPUT_MANIFEST.json"
+    }
+  ],
+  "path_bases": {
+    "PyFAST/": "$REPO/",
+    "outputs/CLAUDE_E04_REVIEW/": "$REPO/audit/claude_e04_20261119/",
+    "_aux/": "$WORKSPACE/outputs/CLAUDE_E04_REVIEW/_aux/ (NOT_BUNDLED)"
+  },
+  "auxiliary_scripts_executed_by_codex": false,
+  "auxiliary_files_bundled": false,
+  "input_hashes_matched_before_integration": 7,
+  "source_hashes_and_sizes_matched": 5,
+  "original_datasets_modified_by_this_integration": false,
+  "reported_transient_file_incident": {
+    "description": "cd fallido creo datasets_benchmark_pyfast/mar_formulas.txt (76 bytes, mensaje de error de Python); se inspecciono y borro de inmediato. Ningun otro archivo de PyFAST modificado.",
+    "time_utc_approx": "2026-11-19"
+  },
+  "reported_transient_file_currently_present": false,
+  "verification_scope": "Selected primary XML/XLSX/DOCX facts checked independently; not every assertion certified",
+  "lapse_checks": {
+    "attempts_reported": 3,
+    "reported_http_status": 429,
+    "transport_attempts_independently_verified": false,
+    "new_requests_by_codex": 0,
+    "file_list_verified": false,
+    "supplement_exists": null,
+    "status": "PENDING_429"
+  },
+  "xml_locator_aliases": {
+    "sec2dot1": "sec2dot1-processes-08-01467",
+    "sec2dot4": "sec2dot4-processes-08-01467",
+    "sec4dot3": "sec4dot3-processes-08-01467"
+  },
+  "auxiliary_reference_status": "EXTERNAL_NOT_BUNDLED"
+}

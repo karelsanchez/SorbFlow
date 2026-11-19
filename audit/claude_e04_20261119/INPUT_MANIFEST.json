@@ -1,0 +1,15 @@
+{
+  "purpose": "read-only Claude E04 handoff",
+  "git_base_revision": "3155b72f2d39e6dec40f4cf0bb46c9807673d49f",
+  "worktree_has_in_progress_changes": true,
+  "input_sha256": {
+    "MODEL_SPECIFICATION.md": "b2a8e5318947a051461b1ed46d8d35bc8a4131217cb17ac8b545a98d1775294a",
+    "PAPER_ENVSOFT/EXPERIMENTAL_VALIDATION.md": "51c6a54fea66726e81470c8f0ddcb474d4bc11af5a15dc589433664bee12e398",
+    "benchmarks/data_catalog/DATASET_REGISTRY.json": "6454699a6e2e4a708ab6842f1072ecfde27417c740026115d2325b7bdea0fe04",
+    "benchmarks/data_catalog/DATASET_READINESS.md": "e7867d92a1a4e55278a3b72b425ab9a6ffec7f72d221e22869dcedd0ee6a97ca",
+    "datasets_benchmark_pyfast/README.md": "eb9da649719bc7378e48c0e3febd4e1970e9db874d6defd4058b4ee93d491296",
+    "datasets_benchmark_pyfast/00_Inventario/inventario_datasets.csv": "7e0c9e3371dcabc4d0d7bbfabaeb80960248d38116de53cbb5dd3f1bc7fdc870",
+    "datasets_benchmark_pyfast/00_Inventario/curvas_utilizables_y_pendientes.csv": "9d24c3f63d16c9dbe0fc2a75d75f40d697382153aaa1a03b9ee38482780047a3"
+  },
+  "outputs_must_stay_separate": true
+}

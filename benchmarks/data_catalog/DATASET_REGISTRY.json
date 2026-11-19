@@ -52,7 +52,12 @@
         "README.md",
         "00_Inventario/inventario_datasets.csv",
         "00_Inventario/curvas_utilizables_y_pendientes.csv"
-      ]
+      ],
+      "integrated_e04_review": {
+        "review_id": "claude-e04-20261119",
+        "physical_admission": false,
+        "records": 3
+      }
     },
     {
       "source_id": "Banana peel MB",
@@ -97,7 +102,12 @@
         "README.md",
         "00_Inventario/inventario_datasets.csv",
         "00_Inventario/curvas_utilizables_y_pendientes.csv"
-      ]
+      ],
+      "integrated_e04_review": {
+        "review_id": "claude-e04-20261119",
+        "physical_admission": false,
+        "records": 8
+      }
     },
     {
       "source_id": "Chitosan fixed-bed",
@@ -142,7 +152,12 @@
         "README.md",
         "00_Inventario/inventario_datasets.csv",
         "00_Inventario/curvas_utilizables_y_pendientes.csv"
-      ]
+      ],
+      "integrated_e04_review": {
+        "review_id": "claude-e04-20261119",
+        "physical_admission": false,
+        "records": 7
+      }
     },
     {
       "source_id": "RUPTURA",
@@ -186,7 +201,12 @@
         "README.md",
         "00_Inventario/inventario_datasets.csv",
         "00_Inventario/curvas_utilizables_y_pendientes.csv"
-      ]
+      ],
+      "integrated_e04_review": {
+        "review_id": "claude-e04-20261119",
+        "physical_admission": false,
+        "records": 1
+      }
     },
     {
       "source_id": "Ogata-Banks",
@@ -230,7 +250,12 @@
         "README.md",
         "00_Inventario/inventario_datasets.csv",
         "00_Inventario/curvas_utilizables_y_pendientes.csv"
-      ]
+      ],
+      "integrated_e04_review": {
+        "review_id": "claude-e04-20261119",
+        "physical_admission": false,
+        "records": 1
+      }
     },
     {
       "source_id": "PSDM/EPA",
@@ -275,7 +300,12 @@
         "README.md",
         "00_Inventario/inventario_datasets.csv",
         "00_Inventario/curvas_utilizables_y_pendientes.csv"
-      ]
+      ],
+      "integrated_e04_review": {
+        "review_id": "claude-e04-20261119",
+        "physical_admission": false,
+        "records": 4
+      }
     }
   ],
   "local_inventory_sources": [
@@ -284,5 +314,11 @@
     "README.md"
   ],
   "previous_dataset_root": "D:\\PyFAST\\datasets_benchmark_pyfast",
-  "relocation_note": "User moved the project; readiness and provenance declarations unchanged"
+  "relocation_note": "User moved the project; readiness and provenance declarations unchanged",
+  "current_e04_review": {
+    "review_id": "claude-e04-20261119",
+    "path": "benchmarks/data_catalog/E04_REVIEW.json",
+    "decision": "NOT_READY",
+    "preferred_candidate": "Banana peel MB"
+  }
 }

@@ -1,0 +1,421 @@
+{
+  "schema": "E04 source evidence v1",
+  "review_date": "2026-11-19",
+  "reviewer": "Claude (revision independiente; repositorio en solo lectura)",
+  "scope_note": "Localizadores y observaciones; no se copian articulos ni recursos completos. Licencias: reportadas, no revisadas juridicamente.",
+  "input_hash_check": {
+    "reference": "outputs/CLAUDE_E04_REVIEW/INPUT_MANIFEST.json",
+    "result": "7/7 SHA-256 coinciden",
+    "files": [
+      "MODEL_SPECIFICATION.md",
+      "PAPER_ENVSOFT/EXPERIMENTAL_VALIDATION.md",
+      "benchmarks/data_catalog/DATASET_REGISTRY.json",
+      "benchmarks/data_catalog/DATASET_READINESS.md",
+      "datasets_benchmark_pyfast/README.md",
+      "datasets_benchmark_pyfast/00_Inventario/inventario_datasets.csv",
+      "datasets_benchmark_pyfast/00_Inventario/curvas_utilizables_y_pendientes.csv"
+    ]
+  },
+  "stable_file_hashes": {
+    "note": "Recalculados en esta revision (archivos pequenos y estables). Data_RUPTURA.zip NO se reproceso ni re-hasheo.",
+    "files": [
+      {
+        "path": "PyFAST/datasets_benchmark_pyfast/01_MAR2PROTECT/PILOT FIXED BED COLUMN ADSORPTION-BPA-DCF-IBU.xlsx",
+        "bytes": 80923,
+        "sha256": "3c5c0ae4f6d0d6877843fdbfd35fbec9679cba51c1f3f3a45cb2806dadebc5ac",
+        "md5": "08033f28fd2f3e6b88679ed36cfb26ce",
+        "matches": [
+          "00_Inventario/manifest_sha256.csv",
+          "Zenodo md5 publicado (API, 2026-11-19)"
+        ]
+      },
+      {
+        "path": "PyFAST/datasets_benchmark_pyfast/02_Methylene_Blue_Banana_Peel/article_deploy.xml",
+        "bytes": 231133,
+        "sha256": "76cd2ff538e18e54fb86c8071904cefd9cc3bab8df4e5628041b5626c81d9226",
+        "matches": [
+          "00_Inventario/manifest_sha256.csv"
+        ]
+      },
+      {
+        "path": "PyFAST/datasets_benchmark_pyfast/02_Methylene_Blue_Banana_Peel/processes-08-01467.pdf",
+        "bytes": 4065149,
+        "sha256": "c5e716ae9872015a7b978fcd7254c27a2d71ca6fcdb55a2205be22b4e4d01648",
+        "matches": [
+          "00_Inventario/manifest_sha256.csv"
+        ]
+      },
+      {
+        "path": "PyFAST/datasets_benchmark_pyfast/03_Chitosan_Fixed_Bed/GJESRM_003.docx",
+        "bytes": 584519,
+        "sha256": "cc73e689d37769cbb7d2f0601dad110c1edc71eb266298aed360360f9d0325f6",
+        "md5": "5c4c864057e55fb714499eb4461d8c9b",
+        "matches": [
+          "00_Inventario/manifest_sha256.csv",
+          "Zenodo md5 publicado (pagina web, 2026-11-19)"
+        ]
+      },
+      {
+        "path": "PyFAST/datasets_benchmark_pyfast/01_MAR2PROTECT/curvas_extraidas_sin_corregir.csv",
+        "bytes": 7237,
+        "sha256": "dbeabb87ebc8a27b6c69f513c7247a2dae7ed9e5b1e1cb0d6f35f21aa9a2e0a0",
+        "role": "derivado del inventario; coincide en valores con hojas de columna (46/31/17 filas)"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "MAR2PROTECT",
+      "doi": "10.5281/zenodo.21068675",
+      "concept_doi": "10.5281/zenodo.21068673",
+      "license_reported": "CC-BY-4.0 (metadata.json metadata.license.id; ficha Zenodo API 2026-11-19)",
+      "local_files": [
+        "PyFAST/datasets_benchmark_pyfast/01_MAR2PROTECT/PILOT FIXED BED COLUMN ADSORPTION-BPA-DCF-IBU.xlsx",
+        "PyFAST/datasets_benchmark_pyfast/01_MAR2PROTECT/metadata.json"
+      ],
+      "workbook_structure": {
+        "sheets": [
+          "BPA FIXED BED COLUMN (A2:Q93; datos B16:F61)",
+          "DCF FIXED BED COLUMN (datos B16:F46)",
+          "IBP FIXED BED COLUMN (datos B16:F32)",
+          "HPLC MICROPOLLUTANTS CONCENTRAT (B1:AC52; bloques B:F, H:L, N:R)",
+          "BPA-IBU-DCF BT CURVES (C2:F49; = F de hojas de columna, 0 discrepancias)"
+        ],
+        "chartsheets": [
+          "BPA Breakthrough",
+          "DCF BREAKTHROUGH",
+          "IBP Breakthrough"
+        ],
+        "app_locale": "Excel frances (docProps/app.xml 'Feuilles de calcul'; 'Moyenne', 'Ecartype')",
+        "personal_metadata_note": "docProps/core.xml contiene correo del autor: no propagar"
+      },
+      "locators": [
+        {
+          "cell": "*!C4",
+          "value": "Sand/Biochar: 4,4 L Biochar/1,1 L Sand (V/V)",
+          "status": "PUBLISHED"
+        },
+        {
+          "cell": "*!C5:D7",
+          "value": "4400 ml / 1100 ml / =SUM 5500 ml",
+          "status": "PUBLISHED; CONFLICT con L en C4/I4"
+        },
+        {
+          "cell": "*!C8:D8",
+          "value": "1400 'Kg of active phase'",
+          "status": "CONFLICT con J4 'Adsorbent amount (g)' y qe=J16/C8 en mg/g"
+        },
+        {
+          "cell": "*!C9:D9",
+          "value": "170 ml/min",
+          "status": "PUBLISHED"
+        },
+        {
+          "cell": "*!C11:D11",
+          "value": "5 mg/L (CC)",
+          "status": "PUBLISHED nominal"
+        },
+        {
+          "cell": "*!C12",
+          "formula": "=MAX(B16:Bn)/60",
+          "observation": "duracion total de la corrida (1080/720/384 h), no tiempo de ruptura"
+        },
+        {
+          "cell": "*!C14",
+          "formula": "=C5/C9",
+          "cached": 25.88235294117647,
+          "observation": "sin unidad; coherente en min solo si C5 en mL"
+        },
+        {
+          "cell": "*!D16",
+          "formula": "=B16*C9/C5",
+          "observation": "BV sobre volumen activo 4400 mL"
+        },
+        {
+          "cell": "*!B18..",
+          "formula": "=B17+1440",
+          "observation": "rejilla temporal diaria generada"
+        },
+        {
+          "cell": "*!F16..",
+          "formula": "=E16/5",
+          "observation": "C0 fijo, no medido"
+        },
+        {
+          "cell": "BPA!J19, DCF!J19",
+          "formula": "=SUM(H17:H39)*(C9/1000*60)/C8",
+          "observation": "rango fijo; en DCF incluye C>BP"
+        },
+        {
+          "cell": "HPLC!B1; DCF!A49; IBP!A34",
+          "value": "LOQ/2 para representacion y analisis",
+          "status": "PUBLISHED; LOQ numerico ausente"
+        },
+        {
+          "cell": "HPLC!C6:D14",
+          "value": "'<LOQ' (BPA dias 0-8) -> E6:E14 = 0.03",
+          "status": "PUBLISHED sustitucion"
+        },
+        {
+          "cell": "HPLC!N3",
+          "value": "DCF concentration",
+          "observation": "Q6:Q22 identicos a IBP!E16:E32 (17/17) -> interpretacion IBU"
+        },
+        {
+          "cell": "HPLC!Q8,Q9,Q10,Q11,Q18,Q19,Q20",
+          "observation": "7 medias IBU != promedio de O,P"
+        },
+        {
+          "cell": "DCF!E16:E46 vs HPLC!K6:K36",
+          "observation": "18/31 difieren (|d|<=0.005 mg/L); DCF!E29,E30 comparten colas decimales con HPLC!Q19,Q20"
+        },
+        {
+          "cell": "HPLC!R6:R22",
+          "observation": "desviacion tipica tecleada (no formula), a diferencia de F y L"
+        }
+      ],
+      "web_checks": [
+        {
+          "url": "https://zenodo.org/api/records/21068675",
+          "accessed": "2026-11-19",
+          "result": "OK; revision 6; sin related_identifiers, references ni notas; descripcion cita 'bed height' sin valor; sin T, pH, porosidad, particula, LOQ ni modo mezcla"
+        },
+        {
+          "url": "https://zenodo.org/records/17962329",
+          "accessed": "2026-11-19",
+          "result": "registro relacionado (Ennouri et al., ESFC 2025, proceedings): biochar de palma+arcilla, columna de vidrio 3 cm DI, 2 mL/min, BPA 10 mg/L. Sistema distinto; no se transfieren valores"
+        }
+      ],
+      "aux_outputs": [
+        "_aux/mar_cells.txt",
+        "_aux/mar_compare.txt",
+        "_aux/dump_xlsx.py",
+        "_aux/compare_mar.py",
+        "_aux/cmp_bt.py"
+      ]
+    },
+    {
+      "id": "Banana peel MB",
+      "doi": "10.3390/pr8111467",
+      "citation": "Stavrinou, Aggelopoulos, Tsakiroglou, Processes 2020, 8(11), 1467",
+      "license_reported": "CC BY 4.0 (article_deploy.xml <license license-type='open-access'>)",
+      "local_files": [
+        "PyFAST/datasets_benchmark_pyfast/02_Methylene_Blue_Banana_Peel/article_deploy.xml",
+        "PyFAST/datasets_benchmark_pyfast/02_Methylene_Blue_Banana_Peel/processes-08-01467.pdf"
+      ],
+      "locators": [
+        {
+          "loc": "XML sec2dot1",
+          "content": "MB en agua destilada desgasificada; BP secada 110 C 24 h; tamiz 125-500 um",
+          "status": "PUBLISHED"
+        },
+        {
+          "loc": "XML sec2dot4",
+          "content": "columna acero L=6.65 cm D=1.68 cm; C0=100/200 mg/L; ms=2.43/4.86/7.29 g; Q=1/3 mL/min; incubadora termostatizada; lavado 1 L",
+          "status": "PUBLISHED"
+        },
+        {
+          "loc": "XML table-wrap processes-08-01467-t007",
+          "content": "D, L, C0, u0 (2.15e-4/6.45e-4), Lb (0.0186/0.0372/0.0558), rho_b 590, phi 0.35, F 4.0, k 0.8e-12, <dg> 3e-4, aL 3e-4, Dm 4.6e-10",
+          "status": "PUBLISHED"
+        },
+        {
+          "loc": "XML table-wrap processes-08-01467-t008",
+          "content": "8 condiciones con Smax, a ajustados y SSR; caption T=25 C, KL=141.9, kd=1.05e-5",
+          "status": "PUBLISHED (parametros ajustados)"
+        },
+        {
+          "loc": "XML fig processes-08-01467-f005",
+          "content": "BTC experimentales vs modelo (a) C0, (b) Lb a Q baja, (c) Lb a Q alta",
+          "status": "solo figura; ejes no verificados (render PDF no disponible)"
+        },
+        {
+          "loc": "XML sec4dot3",
+          "content": "Smax y a estimados por condicion minimizando distancia a la curva medida (ATHENA, estimador bayesiano)",
+          "status": "PUBLISHED"
+        },
+        {
+          "loc": "XML (todo)",
+          "content": "sin <supplementary-material> ni declaracion de disponibilidad de datos",
+          "status": "observacion"
+        }
+      ],
+      "derived_conversions": [
+        {
+          "what": "A",
+          "value": "2.2167e-4 m2",
+          "from": "D=0.0168 m"
+        },
+        {
+          "what": "ms recalculada",
+          "value": "2.433/4.865/7.298 g",
+          "from": "rho_b*A*Lb",
+          "observation": "coherente con ms publicada"
+        },
+        {
+          "what": "u superficial",
+          "value": "7.519e-5 / 2.256e-4 m/s",
+          "from": "Q/A"
+        },
+        {
+          "what": "u/phi",
+          "value": "2.148e-4 / 6.445e-4 m/s",
+          "observation": "= u0 Tabla 7 -> u0 es intersticial"
+        },
+        {
+          "what": "rho_p",
+          "value": "907.7 kg/m3",
+          "from": "rho_b/(1-phi)",
+          "condition": "solo si phi es interparticula (no declarado)"
+        }
+      ],
+      "web_checks": [
+        {
+          "url": "https://www.mdpi.com/2227-9717/8/11/1467",
+          "accessed": "2026-11-19",
+          "result": "HTTP 403"
+        },
+        {
+          "url": "https://www.mdpi.com/2227-9717/8/11/1467/s1",
+          "accessed": "2026-11-19",
+          "result": "HTTP 403"
+        },
+        {
+          "url": "https://psecommunity.org/LAPSE:2021.0468",
+          "accessed": "2026-11-19",
+          "result": "HTTP 429; PENDIENTE (posible copia archivada; no verificada)"
+        },
+        {
+          "url": "https://psecommunity.org/LAPSE:2021.0468 (reintento, tambien con barra final)",
+          "accessed": "2026-11-19",
+          "result": "HTTP 429 en ambos intentos; lista de archivos NO verificada; PENDIENTE"
+        },
+        {
+          "url": "busqueda web 'LAPSE:2021.0468 psecommunity banana peels methylene blue'",
+          "accessed": "2026-11-19",
+          "result": "el indice confirma que el registro existe (Stavrinou, Aggelopoulos, Tsakiroglou; enlaza DOI 10.3390/pr8111467; enviado 2020-11-16, verificado 2021-05-27); no informa archivos ni suplemento"
+        },
+        {
+          "url": "https://mdpi-res.com/d_attachment/processes/processes-08-01467/s1/processes-08-01467-s001.pdf",
+          "accessed": "segun 00_Inventario/fallos.csv",
+          "result": "404 (no reintentado)"
+        }
+      ]
+    },
+    {
+      "id": "Chitosan fixed-bed",
+      "doi": "10.5281/zenodo.3452554",
+      "citation": "Amarasooriya & Rajapakse, GJESRM 6(9):32-48, 2019",
+      "license_reported": "CC-BY-4.0 (metadata.json; pagina Zenodo 2026-11-19)",
+      "local_files": [
+        "PyFAST/datasets_benchmark_pyfast/03_Chitosan_Fixed_Bed/GJESRM_003.docx"
+      ],
+      "locators": [
+        {
+          "loc": "document.xml parrafo 43 (Fixed-bed column adsorption studies)",
+          "content": "columna vidrio 25.5 cm x 5 cm DI; flujo descendente; H 1/2/3 cm; Q 5/10/15 mL/min; C0 10/12/15 mg/L; 30+-2 C; UV-vis 665 nm"
+        },
+        {
+          "loc": "document.xml parrafo 57",
+          "content": "GCLCB esfericas, 4.00+-0.02 mm"
+        },
+        {
+          "loc": "Preparation of GCLCBs",
+          "content": "perlas almacenadas en agua desionizada hasta su uso"
+        },
+        {
+          "loc": "Ec. (3)-(6)",
+          "content": "Veff=Q tt; q_total=QA/1000; qe=q_total/X (X peso seco); m_total=C0 Q t/1000"
+        },
+        {
+          "loc": "Tables 1-3",
+          "content": "tb, Veff, tt, m_total, q_total, qe, HUNB, Hb",
+          "observation": "Veff != Q tt; m_total != C0 Q tt/1000 (x~10); q_total>m_total en 2 filas; fila H3/Q5/C10 repetida en 3 tablas"
+        },
+        {
+          "loc": "Table 4",
+          "content": "Thomas q0 3.38-8.60 mg/g",
+          "observation": "incompatible con qe(exp) 62-225 mg/g"
+        },
+        {
+          "loc": "word/charts/chart1.xml (rId19, parrafo 174) = Figure 9",
+          "content": "series 5/10/15 mL/min, C/C0 vs Time/min, 19/22/18 pts",
+          "observation": "OLE externo a XLSX local no publicado; tt coincide, tb no"
+        },
+        {
+          "loc": "word/charts/chart2.xml (rId27, parrafo 475) = Figure 17 Adams-Bohart",
+          "content": "series '4 cm','6 cm','2 cm', ln[C/C0] vs Time/min",
+          "observation": "rotulos contradicen 1/2/3 cm; nx!=ny (21/17,19/16,17/14); ln>0; x de '6 cm' = x de '5 mL/min'"
+        },
+        {
+          "loc": "word/media/image10.png (Figure 8), image11.png (Figure 10)",
+          "content": "raster, sin cache numerica"
+        }
+      ],
+      "personal_metadata_note": "Las rutas OLE externas incluyen nombres de usuario locales: no propagar",
+      "web_checks": [
+        {
+          "url": "https://zenodo.org/records/3452554",
+          "accessed": "2026-11-19",
+          "result": "v1; unico archivo GJESRM_003.docx (md5 coincide); sin datos suplementarios"
+        },
+        {
+          "url": "https://zenodo.org/api/records/3452554",
+          "accessed": "2026-11-19",
+          "result": "fallo de verificacion de dominio por la herramienta; se uso la pagina HTML"
+        }
+      ]
+    },
+    {
+      "id": "RUPTURA",
+      "doi": "10.4121/4943dc0f-d908-4215-89ce-b9a6163930d2.v1",
+      "classification": "OUT_OF_DOMAIN",
+      "locators": [
+        {
+          "loc": "PyFAST/datasets_benchmark_pyfast/04_RUPTURA/extracted/Data_RUPTURA/README lineas 59-68",
+          "content": "experimental (Jolimaitre et al.) y simulacion; 2mC4/2mC5 en MFI a 473 K y 5 bar"
+        },
+        {
+          "loc": "break_validation/break_2mC4_exp",
+          "observation": "2 columnas sin cabecera; x monotona; y alterna valores bajos y altos (p.ej. 0.039, 1.235, 0.058, 1.729): posibles series intercaladas; unidades sin cabecera"
+        }
+      ],
+      "note": "ZIP grande no reabierto ni re-hasheado; se usaron solo los extraidos del inventario"
+    },
+    {
+      "id": "Ogata-Banks",
+      "doi": "10.3133/pp411A",
+      "classification": "ANALYTICAL_REFERENCE_ONLY",
+      "locators": [
+        {
+          "loc": "PyFAST/datasets_benchmark_pyfast/05_Ogata_Banks/extracted_text.txt lineas 194-199",
+          "content": "solucion con erfc (Ec. 12)"
+        }
+      ],
+      "license_reported": "dominio publico USGS segun inventario; no reverificado"
+    },
+    {
+      "id": "PSDM/EPA",
+      "classification": "SIMULATED_REFERENCE_ONLY",
+      "locators": [
+        {
+          "loc": "PyFAST/datasets_benchmark_pyfast/06_PSDM_EPA/psdm_distribution/tests/data/reference/tce_params.csv",
+          "content": "6 casos; optimize_* con k, 1/n ajustados"
+        },
+        {
+          "loc": "addesigns_single.csv / multi_organic_free.csv / multi_rhine.csv / tce_curves.csv",
+          "content": "5 + 3 + 3 + 6 = 17 series de salida"
+        },
+        {
+          "loc": "generate_tce.py lineas 41-96",
+          "content": "RTOL/ATOL, columnSpecs, Kdata, water_type; leido, no ejecutado"
+        }
+      ],
+      "license_reported": "MIT (EPA_LICENSE.md; psdm_distribution/LICENSE); no reverificado"
+    }
+  ],
+  "process_incident": {
+    "description": "cd fallido creo datasets_benchmark_pyfast/mar_formulas.txt (76 bytes, mensaje de error de Python); se inspecciono y borro de inmediato. Ningun otro archivo de PyFAST modificado.",
+    "time_utc_approx": "2026-11-19"
+  }
+}

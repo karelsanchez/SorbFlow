@@ -9,6 +9,7 @@ listas** para validación física independiente.
 
 1. [Primeros pasos](getting_started.md): entorno, casos sintéticos y CLI.
 2. [Preparación de datos](data_preparation.md): unidades, procedencia y mezclas.
+   [Revisión E04 integrada](e04_integration.md): salvedades y candidato condicionado.
 3. [Estado científico](scientific_status.md): implementación, evidencia y pendientes.
 4. [Desarrollo y comprobaciones](developer_workflow.md): pruebas y trazabilidad.
 5. [Interfaz web local opcional](web_interface.md): mismo núcleo, acceso desde navegador.

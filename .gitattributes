@@ -4,6 +4,7 @@ audit/e01_a_20261119/** -text -diff
 audit/e01_a_20261119_recheck/** -text -diff
 audit/e01_b_20261119/** -text -diff
 audit/e01_b_20261119_recheck/** -text -diff
+audit/claude_e04_20261119/** -text -diff
 *.png binary
 *.whl binary
 *.gz binary

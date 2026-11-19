@@ -4,6 +4,10 @@
 
 ## Identidad, unidades y procedencia
 
+La [revisión integrada E04](e04_integration.md) conserva cero curvas admitidas y
+prioriza banana peel solo de forma condicionada. No transforma la matriz de
+metadatos en entradas del solver ni corrige unidades por suposición.
+
 Conserve originales sin editar y genere derivados identificados por separado.
 Registre especie, material/receta, lote, protocolo, tiempo, concentración, incertidumbre,
 límites analíticos, geometría, flujo, temperatura y base de masa seca. No deduzca

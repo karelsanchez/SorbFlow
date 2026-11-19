@@ -18,3 +18,4 @@ recursive-include REGISTRATION_PREPARATION *.md *.json
 recursive-include audit/e01_b_20261119 *.json *.csv *.png
 recursive-include audit/e01_a_20261119_recheck *.json *.csv *.png
 recursive-include audit/e01_b_20261119_recheck *.json *.csv *.png
+recursive-include audit/claude_e04_20261119 *.json *.csv *.md

@@ -1,0 +1,256 @@
+{
+  "schema_version": 1,
+  "review_id": "claude-e04-20261119",
+  "decision": "NOT_READY",
+  "integration_status": "INTEGRATED_WITH_QUALIFICATIONS",
+  "preferred_candidate": {
+    "source_id": "Banana peel MB",
+    "state": "CONDITIONAL_NOT_ADMITTED"
+  },
+  "case_count": 24,
+  "record_kind": "candidate_conditions_and_reference_groups",
+  "physical_validation_ready_count": 0,
+  "matrix_value_representation": "LEXICAL_TEXT",
+  "automatic_numeric_conversion_performed": false,
+  "split_status": "DRAFT_NOT_FROZEN",
+  "status_counts": {
+    "NOT_ADMITTED_BLOCKED_METADATA": 3,
+    "NOT_ADMITTED_FIGURE_ONLY": 8,
+    "NOT_ADMITTED_CONFLICT": 7,
+    "OUT_OF_DOMAIN": 1,
+    "ANALYTICAL_REFERENCE_ONLY": 1,
+    "SIMULATED_REFERENCE_ONLY": 4
+  },
+  "cases": [
+    {
+      "case_id": "MAR_BPA",
+      "source_id": "MAR2PROTECT",
+      "matrix_row": 2,
+      "admission_status": "NOT_ADMITTED_BLOCKED_METADATA",
+      "admitted_for_physical_validation": false,
+      "numeric_model_configuration_generated": false
+    },
+    {
+      "case_id": "MAR_DCF",
+      "source_id": "MAR2PROTECT",
+      "matrix_row": 3,
+      "admission_status": "NOT_ADMITTED_BLOCKED_METADATA",
+      "admitted_for_physical_validation": false,
+      "numeric_model_configuration_generated": false
+    },
+    {
+      "case_id": "MAR_IBU",
+      "source_id": "MAR2PROTECT",
+      "matrix_row": 4,
+      "admission_status": "NOT_ADMITTED_BLOCKED_METADATA",
+      "admitted_for_physical_validation": false,
+      "numeric_model_configuration_generated": false
+    },
+    {
+      "case_id": "BP_Q1_L18.6mm_C100",
+      "source_id": "Banana peel MB",
+      "matrix_row": 5,
+      "admission_status": "NOT_ADMITTED_FIGURE_ONLY",
+      "admitted_for_physical_validation": false,
+      "numeric_model_configuration_generated": false
+    },
+    {
+      "case_id": "BP_Q1_L18.6mm_C200",
+      "source_id": "Banana peel MB",
+      "matrix_row": 6,
+      "admission_status": "NOT_ADMITTED_FIGURE_ONLY",
+      "admitted_for_physical_validation": false,
+      "numeric_model_configuration_generated": false
+    },
+    {
+      "case_id": "BP_Q1_L37.2mm_C100",
+      "source_id": "Banana peel MB",
+      "matrix_row": 7,
+      "admission_status": "NOT_ADMITTED_FIGURE_ONLY",
+      "admitted_for_physical_validation": false,
+      "numeric_model_configuration_generated": false
+    },
+    {
+      "case_id": "BP_Q1_L55.8mm_C100",
+      "source_id": "Banana peel MB",
+      "matrix_row": 8,
+      "admission_status": "NOT_ADMITTED_FIGURE_ONLY",
+      "admitted_for_physical_validation": false,
+      "numeric_model_configuration_generated": false
+    },
+    {
+      "case_id": "BP_Q3_L18.6mm_C100",
+      "source_id": "Banana peel MB",
+      "matrix_row": 9,
+      "admission_status": "NOT_ADMITTED_FIGURE_ONLY",
+      "admitted_for_physical_validation": false,
+      "numeric_model_configuration_generated": false
+    },
+    {
+      "case_id": "BP_Q3_L18.6mm_C200",
+      "source_id": "Banana peel MB",
+      "matrix_row": 10,
+      "admission_status": "NOT_ADMITTED_FIGURE_ONLY",
+      "admitted_for_physical_validation": false,
+      "numeric_model_configuration_generated": false
+    },
+    {
+      "case_id": "BP_Q3_L37.2mm_C100",
+      "source_id": "Banana peel MB",
+      "matrix_row": 11,
+      "admission_status": "NOT_ADMITTED_FIGURE_ONLY",
+      "admitted_for_physical_validation": false,
+      "numeric_model_configuration_generated": false
+    },
+    {
+      "case_id": "BP_Q3_L55.8mm_C100",
+      "source_id": "Banana peel MB",
+      "matrix_row": 12,
+      "admission_status": "NOT_ADMITTED_FIGURE_ONLY",
+      "admitted_for_physical_validation": false,
+      "numeric_model_configuration_generated": false
+    },
+    {
+      "case_id": "CHI_H1_Q5_C10",
+      "source_id": "Chitosan fixed-bed",
+      "matrix_row": 13,
+      "admission_status": "NOT_ADMITTED_CONFLICT",
+      "admitted_for_physical_validation": false,
+      "numeric_model_configuration_generated": false
+    },
+    {
+      "case_id": "CHI_H2_Q5_C10",
+      "source_id": "Chitosan fixed-bed",
+      "matrix_row": 14,
+      "admission_status": "NOT_ADMITTED_CONFLICT",
+      "admitted_for_physical_validation": false,
+      "numeric_model_configuration_generated": false
+    },
+    {
+      "case_id": "CHI_H3_Q5_C10",
+      "source_id": "Chitosan fixed-bed",
+      "matrix_row": 15,
+      "admission_status": "NOT_ADMITTED_CONFLICT",
+      "admitted_for_physical_validation": false,
+      "numeric_model_configuration_generated": false
+    },
+    {
+      "case_id": "CHI_H3_Q10_C10",
+      "source_id": "Chitosan fixed-bed",
+      "matrix_row": 16,
+      "admission_status": "NOT_ADMITTED_CONFLICT",
+      "admitted_for_physical_validation": false,
+      "numeric_model_configuration_generated": false
+    },
+    {
+      "case_id": "CHI_H3_Q15_C10",
+      "source_id": "Chitosan fixed-bed",
+      "matrix_row": 17,
+      "admission_status": "NOT_ADMITTED_CONFLICT",
+      "admitted_for_physical_validation": false,
+      "numeric_model_configuration_generated": false
+    },
+    {
+      "case_id": "CHI_H3_Q5_C12",
+      "source_id": "Chitosan fixed-bed",
+      "matrix_row": 18,
+      "admission_status": "NOT_ADMITTED_CONFLICT",
+      "admitted_for_physical_validation": false,
+      "numeric_model_configuration_generated": false
+    },
+    {
+      "case_id": "CHI_H3_Q5_C15",
+      "source_id": "Chitosan fixed-bed",
+      "matrix_row": 19,
+      "admission_status": "NOT_ADMITTED_CONFLICT",
+      "admitted_for_physical_validation": false,
+      "numeric_model_configuration_generated": false
+    },
+    {
+      "case_id": "RUPTURA_2mC4_2mC5_binary",
+      "source_id": "RUPTURA",
+      "matrix_row": 20,
+      "admission_status": "OUT_OF_DOMAIN",
+      "admitted_for_physical_validation": false,
+      "numeric_model_configuration_generated": false
+    },
+    {
+      "case_id": "OGATA_BANKS_ADE",
+      "source_id": "Ogata-Banks",
+      "matrix_row": 21,
+      "admission_status": "ANALYTICAL_REFERENCE_ONLY",
+      "admitted_for_physical_validation": false,
+      "numeric_model_configuration_generated": false
+    },
+    {
+      "case_id": "PSDM_addesigns_single",
+      "source_id": "PSDM/EPA",
+      "matrix_row": 22,
+      "admission_status": "SIMULATED_REFERENCE_ONLY",
+      "admitted_for_physical_validation": false,
+      "numeric_model_configuration_generated": false
+    },
+    {
+      "case_id": "PSDM_multi_organic_free",
+      "source_id": "PSDM/EPA",
+      "matrix_row": 23,
+      "admission_status": "SIMULATED_REFERENCE_ONLY",
+      "admitted_for_physical_validation": false,
+      "numeric_model_configuration_generated": false
+    },
+    {
+      "case_id": "PSDM_multi_rhine",
+      "source_id": "PSDM/EPA",
+      "matrix_row": 24,
+      "admission_status": "SIMULATED_REFERENCE_ONLY",
+      "admitted_for_physical_validation": false,
+      "numeric_model_configuration_generated": false
+    },
+    {
+      "case_id": "PSDM_tce_curves",
+      "source_id": "PSDM/EPA",
+      "matrix_row": 25,
+      "admission_status": "SIMULATED_REFERENCE_ONLY",
+      "admitted_for_physical_validation": false,
+      "numeric_model_configuration_generated": false
+    }
+  ],
+  "archive_manifest": "audit/claude_e04_20261119/IMPORT_MANIFEST.json",
+  "canonical_decision_document": "docs/e04_integration.md",
+  "qualifications": {
+    "banana": [
+      "Better documented candidate, not physically complete metadata",
+      "Dry basis, interparticle porosity and dead volume unresolved",
+      "Eight partially crossed conditions, not a complete 2x3x2 factorial",
+      "Batch/lot identity remains UNKNOWN",
+      "C200 is outside calibration range but already occurs in proposed development",
+      "Time-axis figure units remain UNKNOWN; velocities are separate quantities",
+      "Per-condition fitted Table8 parameters cannot leak into held-out prediction"
+    ],
+    "mar": [
+      "Unit interpretations are not authorized corrections",
+      "Nonmatching values need clarification; no deliberate editing or copying attributed",
+      "Mixture versus independent mono-solute trials remains unresolved"
+    ],
+    "chitosan": [
+      "2/4/6cm cache refers to Fig17 Adams-Bohart, not a primary breakthrough dataset",
+      "Cache x/y alignment and inconsistent mass tables unresolved"
+    ],
+    "psdm": [
+      "Fouling is not present in every reference case",
+      "tce_curves uses variable influent; current PyFAST inlet is constant",
+      "Pore-fluid storage and physical bases must also be reconciled for HSDM comparisons"
+    ]
+  },
+  "lapse_checks": {
+    "attempts_reported": 3,
+    "reported_http_status": 429,
+    "transport_attempts_independently_verified": false,
+    "new_requests_by_codex": 0,
+    "file_list_verified": false,
+    "supplement_exists": null,
+    "status": "PENDING_429"
+  },
+  "scientific_validation_claimed": false,
+  "licensing_rights_determined": false
+}

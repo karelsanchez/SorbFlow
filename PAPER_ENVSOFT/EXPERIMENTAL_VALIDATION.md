@@ -14,6 +14,12 @@ de los cuatro materiales. No se inventan mediciones ni resultados.
 
 ## 1. Preguntas y unidad experimental
 
+La revisión externa de 2026-11-19 está integrada con salvedades en
+`../docs/e04_integration.md` y `../benchmarks/data_catalog/E04_REVIEW.json`.
+Sus 24 registros son condiciones candidatas y grupos de referencia, no 24 ensayos
+independientes. Banana peel es candidato condicionado. La decisión sigue NOT_READY;
+la partición propuesta no está congelada y LAPSE continúa pendiente por HTTP 429.
+
 Evaluar predicción de efluente, ruptura/capacidad y confiabilidad de diseño con datos
 no utilizados para estimar los parámetros de ese ensayo. Separar desempeño del
 adsorbente de desempeño de la metodología/modelo. Un material puede remover bien

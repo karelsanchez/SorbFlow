@@ -121,7 +121,7 @@
     },
     "E04": {
       "status": "BLOCKED_METADATA",
-      "scope": "six external sources catalogued; zero curves ready for independent physical validation; metadata and model compatibility unresolved"
+      "scope": "External E04 metadata review integrated with qualifications: 24 condition/reference-group records, zero admitted; banana peel is a conditional first candidate, not validation data"
     },
     "E05": {
       "status": "PLANNED",
