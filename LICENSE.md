@@ -2,7 +2,7 @@
 
 Publication license and copyright holder for the newly authored PyFAST code are
 pending confirmation by the project owner. No public redistribution license is
-granted by this file. BSD-3-Clause is proposed for the independent scientific core.
+granted by this file. Apache-2.0 is proposed for the independent scientific core.
 Package metadata uses LicenseRef-Proprietary to avoid asserting an unapproved
 open-source grant. Change this file and metadata together before public release.
 

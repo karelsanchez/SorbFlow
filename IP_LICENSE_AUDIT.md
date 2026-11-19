@@ -42,7 +42,7 @@ La ausencia de aviso textual dentro del ZIP no elimina derechos.
 | Adaptador opcional | Solo diseño, sin binarios ni invocaciones | Contrato I/O, permisos aplicables y pruebas aisladas |
 | Código nuevo PyFAST | Original de esta tarea, sin derivación del binario | Titular y licencia de publicación por confirmar |
 
-Se propone BSD-3-Clause para el core por compatibilidad con extensiones comerciales,
+Se propone Apache-2.0 para el core por compatibilidad con extensiones comerciales,
 pero no se concede licencia en nombre de un titular aún no definido. LICENSE.md deja
 esta situación explícita. El paquete se prepara técnicamente para pip; publicación y
 licencia abierta definitiva son hitos posteriores. No registrar como BSD código ajeno.
@@ -70,3 +70,13 @@ antes de añadirse. Mantener avisos exigidos y SBOM por cada distribución publi
    permiso para copiar figuras, tablas o datos de terceros.
 
 El ZIP original se verifica por hash al finalizar; no se mueve, modifica ni ejecuta.
+
+## Actualización 0.2 — Open Core y dependencias opcionales
+
+Se adopta la propuesta del usuario: core Apache-2.0 y pyfast-design-pro independiente, sujetos a titularidad universitaria. No se concede una licencia pública en nombre de titulares no confirmados. NumPy y SciPy se incorporan como dependencias de sus integradores/arrays, con avisos de sus respectivos paquetes; no se copia código ni se incluyen sus wheels en PyFAST.
+
+NSGA-II usa el extra pymoo 0.6.2 (metadatos Apache-2.0). Su dependencia moocore 0.3.2 declara LGPL-2.1-or-later: no debe describirse todo el árbol como permisivo ni eliminar avisos/obligaciones en una distribución comercial. El extra está separado del core obligatorio; no se cargan sus módulos hasta llamar nsga2. Fuentes: [pymoo](https://pymoo.org/algorithms/moo/nsga2.html) y [moocore](https://pypi.org/project/moocore/). El inventario local de metadatos se actualiza con versiones y licencias; no sustituye revisión jurídica completa de una edición comercial empaquetada.
+
+No se descargaron fuentes de competidores ni se incorporó FAST a ninguna distribución. Las referencias de antecedentes se mantienen en RELATED_WORK.md. El adaptador externo FAST no se implementa sin contrato I/O y condiciones compatibles.
+
+PyArrow es un extra de exportación Parquet, con licencia principal Apache-2.0 y avisos de sus componentes; no es dependencia obligatoria del solver. ezdxf (MIT) se usa para verificar los archivos DXF en desarrollo, no en el runtime del exportador geométrico. Sus metadatos y versiones figuran en el inventario local.

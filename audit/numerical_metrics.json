@@ -1,0 +1,53 @@
+{
+  "status": "selected numerical references; not experimental validation",
+  "batch_linear_max_absolute_c_error_kg_m3": 1.441919847411377e-11,
+  "batch_linear_max_scaled_mass_residual": 5.082197683525802e-16,
+  "tracer": [
+    {
+      "axial_cells": 25,
+      "max_absolute_error_against_tanks": 2.5615971899206613e-08,
+      "l1_front_error_normalized": 0.15898147491624406,
+      "t50_relative_error": 0.013300804332226024,
+      "max_scaled_mass_residual": 3.969992585648189e-12
+    },
+    {
+      "axial_cells": 50,
+      "max_absolute_error_against_tanks": 3.4292128692214874e-08,
+      "l1_front_error_normalized": 0.11260593083525969,
+      "t50_relative_error": 0.0066582256642773174,
+      "max_scaled_mass_residual": 5.862728349268883e-12
+    },
+    {
+      "axial_cells": 100,
+      "max_absolute_error_against_tanks": 4.499187300499585e-08,
+      "l1_front_error_normalized": 0.0796929049912971,
+      "t50_relative_error": 0.003330903573973587,
+      "max_scaled_mass_residual": 8.716087430939943e-12
+    },
+    {
+      "axial_cells": 200,
+      "max_absolute_error_against_tanks": 5.805839087269504e-08,
+      "l1_front_error_normalized": 0.0563778272565006,
+      "t50_relative_error": 0.001665668094681716,
+      "max_scaled_mass_residual": 1.2978846958882175e-11
+    }
+  ],
+  "spherical_diffusion": [
+    {
+      "radial_cells": 10,
+      "max_mean_loading_error": 0.017739200819547885
+    },
+    {
+      "radial_cells": 20,
+      "max_mean_loading_error": 0.003808242599140532
+    },
+    {
+      "radial_cells": 40,
+      "max_mean_loading_error": 0.0009282141572689584
+    },
+    {
+      "radial_cells": 80,
+      "max_mean_loading_error": 0.0002306878654821376
+    }
+  ]
+}

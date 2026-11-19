@@ -46,6 +46,21 @@ def _canonical(data: object) -> str:
     return json.dumps(data, sort_keys=True, separators=(",", ":"), allow_nan=False)
 
 
+def _json_object(payload: str) -> dict[str, Any]:
+    def unique(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+        result: dict[str, Any] = {}
+        for key, value in pairs:
+            if key in result:
+                raise ValueError(f"Duplicate JSON field: {key}")
+            result[key] = value
+        return result
+
+    data = json.loads(payload, object_pairs_hook=unique)
+    if not isinstance(data, dict):
+        raise ValueError("Configuration must be a JSON object")
+    return data
+
+
 @dataclass(frozen=True, slots=True, kw_only=True)
 class Species:
     """Solute identity; mass basis is kg of this solute, never inferred ppm."""
@@ -57,6 +72,47 @@ class Species:
         _text(self.name, "name")
         if self.molar_mass_kg_mol is not None:
             _number(self, "molar_mass_kg_mol", positive=True)
+
+
+@dataclass(frozen=True, slots=True, kw_only=True)
+class BlendComponent:
+    """One arbitrary adsorbent component, expressed as a dry mass fraction."""
+
+    material_id: str
+    dry_mass_fraction: float
+
+    def __post_init__(self) -> None:
+        _text(self.material_id, "material_id")
+        _number(self, "dry_mass_fraction", positive=True)
+        if self.dry_mass_fraction > 1:
+            raise ValueError("dry_mass_fraction cannot exceed one")
+
+
+@dataclass(frozen=True, slots=True, kw_only=True)
+class AdsorbentBlend:
+    """Recipe metadata only; no mixing law for equilibrium/kinetics is assumed."""
+
+    name: str
+    components: tuple[BlendComponent, ...]
+
+    def __post_init__(self) -> None:
+        _text(self.name, "name")
+        if not isinstance(self.components, (tuple, list)) or not self.components:
+            raise ValueError("components must be a nonempty sequence")
+        for component in self.components:
+            _instance(component, BlendComponent, "component")
+        ids = [c.material_id for c in self.components]
+        if len(set(ids)) != len(ids):
+            raise ValueError("Blend material identifiers must be unique")
+        if not math.isclose(
+            sum(c.dry_mass_fraction for c in self.components), 1, abs_tol=1e-9, rel_tol=0
+        ):
+            raise ValueError("Dry mass fractions must sum to one")
+        object.__setattr__(self, "components", tuple(self.components))
+
+    def to_json(self) -> str:
+        """Serialize recipe provenance; supply fitted properties separately."""
+        return _canonical(asdict(self))
 
 
 @dataclass(frozen=True, slots=True, kw_only=True)
@@ -184,6 +240,17 @@ class Freundlich:
 
 
 @dataclass(frozen=True, slots=True, kw_only=True)
+class Linear:
+    """Linear equilibrium q*=K*c; K=0 is the nonadsorbing tracer reference."""
+
+    distribution_m3_kg: float
+    kind: Literal["linear"] = field(default="linear", init=False)
+
+    def __post_init__(self) -> None:
+        _number(self, "distribution_m3_kg")
+
+
+@dataclass(frozen=True, slots=True, kw_only=True)
 class LDF:
     """Effective overall rate. It must not be interpreted as film coefficient."""
 
@@ -238,7 +305,7 @@ class SimulationConfig:
     species: Species
     bed: Bed
     operation: Operation
-    equilibrium: Langmuir | Freundlich
+    equilibrium: Langmuir | Freundlich | Linear
     kinetics: LDF | HSDM
     schema_version: int = 1
 
@@ -249,7 +316,7 @@ class SimulationConfig:
             (self.species, Species, "species"),
             (self.bed, Bed, "bed"),
             (self.operation, Operation, "operation"),
-            (self.equilibrium, (Langmuir, Freundlich), "equilibrium"),
+            (self.equilibrium, (Langmuir, Freundlich, Linear), "equilibrium"),
             (self.kinetics, (LDF, HSDM), "kinetics"),
         ):
             _instance(value, cls, name)
@@ -270,17 +337,7 @@ class SimulationConfig:
     def from_json(cls, payload: str) -> SimulationConfig:
         """Load strict version-1 JSON; reject unknown fields and model kinds."""
 
-        def unique(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
-            result: dict[str, Any] = {}
-            for key, value in pairs:
-                if key in result:
-                    raise ValueError(f"Duplicate JSON field: {key}")
-                result[key] = value
-            return result
-
-        data = json.loads(payload, object_pairs_hook=unique)
-        if not isinstance(data, dict):
-            raise ValueError("Configuration must be a JSON object")
+        data = _json_object(payload)
         expected = {f.name for f in fields(cls)}
         if set(data) != expected:
             raise ValueError("Configuration fields must match schema v1 exactly")
@@ -289,11 +346,66 @@ class SimulationConfig:
             bed=_construct(Bed, data["bed"]),
             operation=_construct(Operation, data["operation"]),
             equilibrium=_model(
-                data["equilibrium"], {"langmuir": Langmuir, "freundlich": Freundlich}
+                data["equilibrium"],
+                {"langmuir": Langmuir, "freundlich": Freundlich, "linear": Linear},
             ),
             kinetics=_model(data["kinetics"], {"ldf": LDF, "hsdm": HSDM}),
             schema_version=data["schema_version"],
         )
+
+
+@dataclass(frozen=True, slots=True, kw_only=True)
+class BatchConfig:
+    """Closed, perfectly mixed liquid plus dry adsorbent; all fields are SI."""
+
+    species: Species
+    material: str
+    liquid_volume_m3: float
+    adsorbent_mass_kg: float
+    duration_s: float
+    initial_concentration_kg_m3: float
+    initial_loading_kg_kg: float
+    equilibrium: Langmuir | Freundlich | Linear
+    kinetics: LDF
+    temperature_k: float = 298.15
+    schema_version: int = 1
+
+    def __post_init__(self) -> None:
+        _instance(self.species, Species, "species")
+        _instance(self.equilibrium, (Langmuir, Freundlich, Linear), "equilibrium")
+        _instance(self.kinetics, LDF, "kinetics")
+        _text(self.material, "material")
+        for name in ("liquid_volume_m3", "adsorbent_mass_kg", "duration_s", "temperature_k"):
+            _number(self, name, positive=True)
+        for name in ("initial_concentration_kg_m3", "initial_loading_kg_kg"):
+            _number(self, name)
+        if type(self.schema_version) is not int or self.schema_version != 1:
+            raise ValueError("Only integer schema_version=1 is supported")
+        if isinstance(self.equilibrium, Langmuir):
+            if self.initial_loading_kg_kg > self.equilibrium.qmax_kg_kg:
+                raise ValueError("Initial loading exceeds Langmuir capacity")
+
+    def to_json(self) -> str:
+        """Canonical SI problem description, independent of numerical options."""
+        return _canonical(asdict(self))
+
+    @property
+    def sha256(self) -> str:
+        """SHA-256 of the canonical physical configuration."""
+        return hashlib.sha256(self.to_json().encode("utf-8")).hexdigest()
+
+    @classmethod
+    def from_json(cls, payload: str) -> BatchConfig:
+        """Read strict batch schema v1, without dropping unknown data."""
+        data = _json_object(payload)
+        if set(data) != {f.name for f in fields(cls)}:
+            raise ValueError("Batch fields must match schema v1 exactly")
+        data["species"] = _construct(Species, data["species"])
+        data["equilibrium"] = _model(
+            data["equilibrium"], {"langmuir": Langmuir, "freundlich": Freundlich, "linear": Linear}
+        )
+        data["kinetics"] = _model(data["kinetics"], {"ldf": LDF})
+        return cls(**data)
 
 
 @dataclass(frozen=True, slots=True, kw_only=True)

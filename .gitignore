@@ -10,6 +10,7 @@ htmlcov/
 *.egg-info/
 build/
 dist/
+runs/
 *.exe
 *.dll
 *.gif

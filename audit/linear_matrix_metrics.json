@@ -1,0 +1,12 @@
+{
+  "ldf": {
+    "max_concentration_error_kg_m3": 1.1726288343116842e-12,
+    "max_loading_error_kg_kg": 1.1940142342729831e-14,
+    "max_scaled_mass_residual": 3.693510615299227e-16
+  },
+  "hsdm": {
+    "max_concentration_error_kg_m3": 8.135361308225786e-12,
+    "max_loading_error_kg_kg": 1.1174073547958602e-13,
+    "max_scaled_mass_residual": 5.713432844632934e-16
+  }
+}

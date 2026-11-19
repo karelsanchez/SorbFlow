@@ -1,6 +1,7 @@
-# Informe de auditoría y fundación PyFAST
+# Informe histórico de auditoría y fundación PyFAST 0.1
 
 Fecha: 2026-11-18, contexto del usuario America/Bogota.
+Este informe conserva el estado de la entrega 0.1. El estado actual 0.2 y sus algoritmos se documentan en NUMERICAL_VERIFICATION.md y README.md.
 Repositorio independiente: `D:\PyFAST`. No se modificó el proyecto experimental.
 
 ## Insumo localizado y alcance real

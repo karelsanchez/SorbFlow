@@ -1,7 +1,7 @@
 # Roadmap de desarrollo
 
 Fecha: 2026-11-18. Orden por dependencias y evidencia, sin prometer fechas sin equipo
-y datos disponibles. Esta tarea implementa exclusivamente E0 y la fundación E1.
+y datos disponibles. La primera entrega cerró E0/E1. La continuación implementa prototipos E2–E7; sus criterios científicos completos aún no se consideran cerrados.
 
 | Etapa | Entregables | Criterio de aceptación | Dependencia |
 |---|---|---|---|
@@ -51,6 +51,15 @@ el alcance y requiere nuevas especificaciones antes de escribir algoritmos.
 
 ## Próxima acción técnica
 
-Revisar MODEL_SPECIFICATION y aprobar casos analíticos de E2. Implementar primero
-isotermas y batch LDF, sin saltar a HSDM ni a optimización. Incorporar datos medidos
-solo con procedencia y derechos registrados. La entrega actual no inicia E2.
+Ampliar V1 con casos manufacturados suaves, un barrido sistemático de rigidez/transferencia y criterios de t10/t90/capacidad por malla. Después, calibración multiexperimento con perfiles de likelihood e integración de datos autorizados para V2. El prototipo funcional no sustituye esas evidencias.
+
+## Estado 0.2 y trabajo restante
+
+- E2: isotermas y batch LDF con solución exacta, masa y recuperación sintética.
+- E3: columna LDF conservativa, trazador, refinamiento y BDF/Radau. Pendiente caso manufacturado suave y barrido extenso de rigidez.
+- E4: HSDM con película, referencias esféricas, refinamiento radial y masa. Pendiente matriz amplia de regímenes y comparación externa autorizada.
+- E5: ajuste de isotermas/k_LDF y SVD local. Pendientes perfiles de likelihood, multi-inicio, censura y calibración HSDM multiexperimento.
+- E6: Monte Carlo con correlaciones y sensibilidad local. Pendientes cobertura, discrepancia de modelo y convergencia estadística por problema.
+- E7: NSGA-II opcional, restricciones, hidráulica, costos limitados y ejemplo robusto con escenarios comunes; 11 candidatos preliminares pasan factibilidad en malla refinada. Pendientes hipervolumen/múltiples semillas, más escenarios y diseño mecánico.
+- Exportación: CSV/JSON y envolvente DXF implementados. Parquet de salida/balance y CSV experimental con unidades implementados; STEP y aplicación web pendientes.
+- E8/E9: requieren datos autorizados, revisión científica externa, titularidad/licencia y preparación editorial. No se han cerrado.

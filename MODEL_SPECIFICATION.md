@@ -1,6 +1,6 @@
 # Especificación matemática — PyFAST
 
-Estado: diseño, sin implementación del solver. Fecha: 2026-11-18.
+Estado: formulación implementada para batch LDF y columna LDF/HSDM; validación experimental pendiente. Fecha: 2026-11-18.
 Ecuaciones formuladas desde balances físicos; no transcripción de código FAST.
 
 ## Hipótesis y unidades
@@ -77,7 +77,7 @@ Incluye resistencia global empírica; no sumar película aparte ni identificar
 k_LDF con k_f. La aproximación k_LDF≈15 D_s/R² se limita a hipótesis de difusión
 en esfera y equilibrio apropiadas; no es una identidad general para isotermas no lineales.
 
-HSDM futuro:
+HSDM:
 
     dq/dt = D_s/r² d/dr(r² dq/dr), 0<r<R
     dq/dr(0)=0
@@ -113,7 +113,7 @@ con moneda/año base y energía integral Q DeltaP dt. Restricciones: concentraci
 máxima, pérdida de carga, geometría y disponibilidad de material. No optimizar un
 modelo fuera del rango calibrado sin declarar extrapolación e incertidumbre.
 
-## Discretización propuesta
+## Discretización implementada en el prototipo
 
 Volúmenes finitos axiales: flujos convectivos upwind iniciales y dispersión centrada;
 integración temporal rígida BDF/Radau, escalamiento por especie y fase, Jacobiano
@@ -128,3 +128,6 @@ solver abierto ni demuestra equivalencia con esta formulación. La página gener
 de documentación menciona solo Freundlich, mientras descargas y ayuda local indican
 Langmuir para 2.1 beta: la versión debe constar en cualquier comparación.
 Fuente contextual: [FAST](https://www.fast-software.de/documentation.html).
+
+
+Detalles de mallas, película, tratamiento de iteraciones fuera del dominio y API numérica: IMPLEMENTATION_NOTES.md. La formulación lineal q*=Kc, K>=0 [m³/kg], agrega referencias exactas y el límite de trazador K=0. HSDM usa la carga media con pesos exactos de cascarón; conserva los perfiles radiales en resultados.

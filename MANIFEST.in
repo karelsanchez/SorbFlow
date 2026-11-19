@@ -2,5 +2,5 @@ include *.md
 recursive-include tests *.py
 recursive-include examples *.py
 recursive-include audit *.json *.txt
-exclude audit/verification.txt
-exclude audit/distribution_hashes.json
+exclude audit/verification*.txt
+exclude audit/distribution_hashes*.json

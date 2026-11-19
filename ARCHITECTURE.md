@@ -1,6 +1,6 @@
 # PyFAST — arquitectura propuesta
 
-Fecha: 2026-11-18. Estado: fundación 0.1.0.dev0; ningún solver implementado ni validado.
+Fecha: 2026-11-18. Estado: prototipo 0.2.0.dev0 con LDF/HSDM propios y referencias numéricas seleccionadas; validación experimental pendiente.
 
 ## Alcance y procedencia
 
@@ -14,7 +14,7 @@ Los cinco documentos de diseño preceden a la implementación de unidades y esqu
 1. Python >=3.11, distribución con layout `src`, `pyproject.toml`, wheel/sdist,
    anotaciones, `py.typed`, dataclasses congeladas y pytest. Sin estado global de ejecución.
 2. Pint convierte magnitudes escalares al ingresar; los esquemas almacenan floats SI.
-   El núcleo numérico futuro operará sobre arrays SI y recibirá parámetros explícitos.
+   El núcleo numérico opera sobre arrays SI y recibirá parámetros explícitos.
    No habrá conversiones silenciosas de concentración molar a másica ni de base húmeda a seca.
 3. Dominio inicial: una especie acuosa, lecho uniforme, operación isotérmica, flujo
    positivo constante, adsorción reversible, densidades en base seca. Extensiones
@@ -23,30 +23,30 @@ Los cinco documentos de diseño preceden a la implementación de unidades y esqu
    desarrollados aquí. Se reutilizarán integradores públicos de SciPy, no se escribirá
    un integrador rígido desde cero. No se dependerá de FAST para resolver el modelo.
 5. Ninguna dependencia del core importa ejecutables, plugins comerciales ni interfaces gráficas.
-6. La API pública documentada se mantiene durante la serie 0.1; cambios incompatibles
+6. La API pública documentada se mantiene durante la serie 0.2; cambios incompatibles
    requieren versión menor, migración y advertencia. La estabilidad 1.0 es un hito posterior.
 
 ## Módulos y dirección de dependencias
 
-| Módulo | Responsabilidad | Estado inicial |
+| Módulo | Responsabilidad | Estado actual |
 |---|---|---|
 | `units` | Validación dimensional, escalares finitos, conversiones SI | Implementado |
 | `schemas` | Especie, material, geometría, operación, observaciones, manifiestos | Implementado |
-| `equilibrium` | Langmuir, Freundlich normalizado y protocolos de extensión | Reservado |
-| `kinetics` | LDF efectiva, HSDM con película | Reservado |
-| `reactors` | Columna 1D; batch conservativo para referencias | Reservado |
-| `solvers` | Volúmenes finitos, integración, eventos, diagnósticos | Reservado |
-| `calibration` | Likelihood, errores, límites, perfiles e identificabilidad | Reservado |
-| `uncertainty` | Muestreo con semillas, propagación, sensibilidad | Reservado |
-| `optimization` | Restricciones, objetivos y Pareto | Reservado |
-| `io` | Formatos versionados, resultados y trazabilidad | Reservado |
+| `equilibrium` | Langmuir, Freundlich, lineal y derivadas | Prototipo implementado |
+| `kinetics` | LDF y FV radial HSDM/película | Prototipo implementado |
+| `reactors` | Batch LDF y columna LDF/HSDM | Prototipo implementado |
+| `solvers` | FV e integración BDF/Radau con comprobaciones | Prototipo implementado |
+| `calibration` | Ajuste inicial y diagnóstico local SVD | Prototipo implementado |
+| `uncertainty` | Monte Carlo reproducible y sensibilidad local | Prototipo implementado |
+| `optimization` | NSGA-II opcional y verificación de factibilidad | Prototipo implementado |
+| `io` | JSON/CSV y huellas de resultados | Prototipo implementado |
 | `adapters` | Interoperabilidad externa optativa y aislada | Reservado |
 
 `units <- schemas <- modelos <- reactores <- solvers <- workflows`.
 `io` y adaptadores dependen de contratos públicos; el núcleo nunca depende de ellos.
-No se ofrecen funciones `simulate` ficticias en esta entrega.
+La fachada `pyfast.simulate` ejecuta modelos propios; `fit`, `optimize`, `uncertainty`, `design` y `validate` son superficies públicas. API/CLI implementadas; interfaz web futura.
 
-## Contratos científicos futuros
+## Contratos científicos y extensiones
 
 Isotherm: `loading(c, temperature)` y derivada con unidades declaradas y dominio.
 Kinetics: fuente de masa sólida, estados adicionales y parámetros validados.
@@ -83,7 +83,7 @@ simulaciones existentes. No se distribuyen binarios ni ayuda FAST. Sin especific
 documentada de I/O ni autorización compatible, el adaptador queda sin implementar.
 Comparar contra FAST será una prueba de compatibilidad, nunca la única validación.
 
-Propuesta de core BSD-3-Clause sujeta a aprobación del titular; no se atribuye ni concede
+Propuesta de core Apache-2.0 sujeta a aprobación del titular; no se atribuye ni concede
 una licencia sin esa decisión. Componentes comerciales en repositorios y distribuciones
 separados, conectados por contratos públicos. Los derechos sobre datos se controlan aparte.
 
@@ -95,11 +95,14 @@ puede darse por verificada hoy. Sin publicación automática ni credenciales.
 Nombre de distribución provisional `pyfast-adsorption`; import `pyfast`.
 Disponibilidad en PyPI y posibles marcas pendientes; no afirmar reserva del nombre.
 
-Dependencia runtime inicial: Pint. Desarrollo: pytest, pytest-cov, Ruff, mypy,
-build y setuptools. NumPy/SciPy se incorporarán al iniciar solver; optimización y UQ
-como extras después de revisar sus licencias, mantenimiento y necesidad científica.
+Dependencias runtime del core: Pint, NumPy y SciPy. Desarrollo: pytest, pytest-cov, Ruff, mypy,
+build y setuptools. NSGA-II usa pymoo como extra opcional; su dependencia moocore LGPL requiere revisión específica de distribución. UQ usa NumPy del core. No se cargan dependencias comerciales desde el core.
 Rangos en pyproject para instalación; snapshot exacto del entorno para reproducibilidad local.
 
 Referencias técnicas: [Pint](https://pint.readthedocs.io/en/stable/getting/tutorial.html),
 [integración SciPy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html),
 [empaquetado](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/).
+
+## Ampliación acordada
+
+La investigación de cuatro materiales es una primera aplicación, no un límite del producto. AdsorbentBlend admite N componentes sin una ley de mezcla implícita. Open Core propuesto: Apache-2.0 para core y distribución independiente pyfast-design-pro; la titularidad universitaria se resuelve antes de conceder/publicar la licencia. El nombre de distribución actual sigue siendo provisional. Detalles de ecuaciones implementadas, patrones dispersos y flujo robusto en IMPLEMENTATION_NOTES.md.

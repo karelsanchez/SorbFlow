@@ -1,11 +1,16 @@
-"""PyFAST foundation. No numerical solver or experimental validation is provided."""
+"""Independent aqueous adsorption models; experimental validation is pending."""
 
+from ._version import VERSION as __version__
 from .schemas import (
     HSDM,
     LDF,
+    AdsorbentBlend,
+    BatchConfig,
     Bed,
+    BlendComponent,
     Freundlich,
     Langmuir,
+    Linear,
     Observations,
     Operation,
     RunManifest,
@@ -14,13 +19,17 @@ from .schemas import (
 )
 from .units import UnitError, quantity, to_si
 
-__version__ = "0.1.0.dev0"
 __all__ = [
+    "__version__",
     "HSDM",
     "LDF",
+    "AdsorbentBlend",
+    "BatchConfig",
     "Bed",
+    "BlendComponent",
     "Freundlich",
     "Langmuir",
+    "Linear",
     "Observations",
     "Operation",
     "RunManifest",

@@ -1,54 +1,109 @@
-# API pública v0.1
+# API pública — prototipo 0.2
 
-Importar desde `pyfast`. Python >=3.11. API inicial con contrato documentado durante
-la serie 0.1; la versión 1.0 estable llegará después de la evidencia científica.
+Python >=3.11, unidades SI y masa seca. Se conservan las API de datos de 0.1;
+`Linear` se añade como variante del esquema v1. Un lector antiguo no entenderá esa
+variante nueva; los archivos antiguos siguen siendo legibles. No hay migración implícita.
 
-| Símbolo | Contrato |
-|---|---|
-| `quantity(value, unit)` | Magnitud escalar Pint; acepta unidades con offset como degC |
-| `to_si(quantity, target_unit)` | Float finito en la unidad SI solicitada; errores dimensionales -> UnitError |
-| `UnitError` | Subclase de ValueError para unidades ausentes o incompatibles |
-| `Species` | Identidad y masa molar opcional en kg/mol |
-| `Bed` | Geometría cilíndrica, partícula, porosidad, densidad y material; solo masa seca |
-| `Operation` | Caudal, concentración de entrada, duración, T, dispersión y condiciones iniciales |
-| `Langmuir` | Parámetros qmax [kg/kg] y afinidad [m³/kg], sin evaluación |
-| `Freundlich` | Parámetros normalizados q_ref, c_ref y exponente, sin evaluación |
-| `LDF` | Tasa global efectiva [1/s], sin integración |
-| `HSDM` | Difusividad [m²/s] y película [m/s], sin integración |
-| `SimulationConfig` | Composición tipada de modelos y parámetros; schema_version=1 |
-| `Observations` | Serie de salida por ensayo/especie con hash de origen e incertidumbre opcional |
-| `RunManifest` | UUID, fecha UTC, commit, hash de configuración, versiones y semilla |
+## Datos y unidades
 
-Todos los esquemas son dataclasses congeladas y de argumentos nombrados. Sus
-constructores directos reciben SI según el sufijo de campo. Las fábricas
-`Bed.from_quantities` y `Operation.from_quantities` convierten magnitudes dimensionales;
-la segunda crea condiciones iniciales nulas y dispersión cero. Para otras condiciones,
-usar `dataclasses.replace` o el constructor SI. No se presupone que el estado inicial
-esté en equilibrio.
+Desde `pyfast`: `quantity`, `to_si`, `UnitError`, `Species`, `Bed`, `Operation`,
+`Langmuir`, `Freundlich`, `Linear`, `LDF`, `HSDM`, `SimulationConfig`, `BatchConfig`,
+`Observations`, `RunManifest`, `BlendComponent`, `AdsorbentBlend`.
+Constructores SI validan rangos/tipos; dataclasses congeladas. Las fábricas dimensionales
+`Bed.from_quantities` y `Operation.from_quantities` convierten Pint a SI.
+Configuraciones soportan `to_json`, `from_json`, `sha256`; claves duplicadas o desconocidas
+se rechazan. Blend tiene `to_json` y N componentes de fracción másica seca positiva,
+suma uno y nombres distintos, sin ley de mezcla implícita.
 
-`Bed.bulk_density_kg_m3=(1-porosity)*particle_density_kg_m3` y `Bed.volume_m3`
-son propiedades geométricas, sin cálculo dinámico. El esquema no verifica razones
-geométricas suficientes para hipótesis de continuo; eso corresponde al dominio validado.
+## Equilibrio
 
-`SimulationConfig.to_json()` emite representación SI canónica y versionada;
-`SimulationConfig.from_json(payload)` rechaza claves desconocidas, duplicadas,
-modelos desconocidos y datos inválidos. `config.sha256` identifica el contenido
-normalizado, sin fecha/UUID. No admite migraciones de versiones futuras.
+`pyfast.equilibrium.isotherm_from_parameters(parameters)` construye un `Isotherm`.
+`loading(c)` devuelve kg/kg y `derivative(c)` devuelve m³/kg conservando la forma
+del array de entrada. c se expresa en kg/m³, no puede ser negativo, NaN o infinito.
+Langmuir, Freundlich normalizado y lineal implementan el protocolo. Freundlich con
+exponente<1 informa derivada singular en c=0; no la regulariza.
+Temperatura fija: parámetros deben corresponder a la temperatura del ensayo.
 
-`Observations` acepta listas o tuplas y las copia a tuplas. No admite tiempos
-repetidos dentro de una serie; réplicas son series separadas. Los datos censurados
-requieren un esquema posterior. No hay agregación ni importación automática.
+## Simulación
 
-`RunManifest.to_json()` ordena versiones y hashes. La fecha debe contener zona UTC,
-la semilla es entero de 64 bits sin signo y `code_revision` es hash Git o
-`uncommitted`. Este último indica estado no congelado, inadecuado para una release.
-El manifiesto no lee archivos ni ejecuta simulaciones: el llamador proporciona evidencia.
+`pyfast.simulate.batch(BatchConfig, time_s=None, options=None, code_revision='uncommitted')`
+resuelve dos estados LDF en batch cerrado.
+`pyfast.simulate.column(SimulationConfig, ...)` selecciona LDF o HSDM de forma explícita.
+HSDM agrega difusión radial esférica y película; no incluye agua intrapartícula.
 
-Errores de rango/tipo: ValueError. Los datos numéricos rechazan bool, strings,
-arrays y valores no finitos. La validación dimensional no puede distinguir kg de
-soluto y kg de adsorbente por sí sola: los nombres de campos fijan su significado.
-Conversiones molares, ppm y base húmeda no se infieren. No se expone registro Pint
-mutable como API; se aceptan cantidades escalares de otros registros compatibles.
+`SolverOptions` en `pyfast.solvers`: BDF/Radau, rtol, tolerancias absolutas separadas
+de c, q y masa, tolerancia relativa/escala de masa, max_step_s, axial_cells y radial_cells.
+`time_s` es una malla de observación estrictamente creciente desde 0 hasta duración;
+no prescribe los pasos internos. Por defecto son 201 observaciones.
+Fallos de integración, estados no finitos, negatividad superior a diez atol o balance
+fuera de tolerancia generan `SimulationError`, sin reparar ni recortar los resultados.
 
-Ejemplo completo: `examples/configuration.py`. No existe función pública `simulate`
-en esta entrega ni protocolo de uso de FAST implementado.
+`SimulationResult`: arrays de c y carga media con forma (tiempo, celda axial), inventario
+y masas acumuladas, centros z, diagnósticos en pasos internos y salidas, configuración,
+opciones, `numerical_sha256` y manifiesto con versiones/UUID/UTC/revisión. Batch tiene
+una celda. HSDM agrega `radial_loading_kg_kg` (tiempo, axial, radial) y `r_m`.
+`outlet_concentration_kg_m3` es última celda FV o líquido batch. Arrays son snapshots
+de solo lectura. `to_json` conserva datos/unidades; ningún resultado afirma validación
+experimental. La revisión Git se aporta explícitamente; el valor por defecto indica
+estado no congelado. La huella numérica incluye configuración, opciones, tipo y tiempos;
+las versiones se guardan en el manifiesto.
+
+`pyfast.io.export_result(result, nueva_carpeta)` escribe JSON, CSV de salida/balance
+y huellas de archivos. Rechaza carpetas existentes. La CLI `python -m pyfast` acepta
+`batch|column`, configuración JSON y `--output`; opciones `--cells`, `--radial-cells`,
+`--method`, `--rtol`, `--samples`, `--code-revision`.
+
+## Ajuste inverso
+
+`pyfast.fit.isotherm(c, q, initial, std_loading_kg_kg=None, max_nfev=1000)` estima
+parámetros positivos con least_squares en log-coordenadas. Freundlich conserva c_ref.
+`pyfast.fit.batch_rate(config, observations, max_nfev=100)` estima solo k_LDF.
+Condiciones, equilibrio, identidad de especie y tiempos deben ser coherentes.
+No admite datos censurados ni errores en las concentraciones de equilibrio.
+
+`FitResult` contiene parámetros, predicciones/residuales, SVD, rango/condición y
+covarianza local en log-parámetros (None si rango/condición no son adecuados).
+`locally_identifiable` no establece identificabilidad global. Con sigma conocida
+se usa su modelo de error; sin ella se estima varianza residual con grados de libertad.
+Un optimizador no convergente produce FitError, no un resultado exitoso.
+
+## Incertidumbre y sensibilidad
+
+`pyfast.uncertainty.monte_carlo(evaluate, sampler, n_samples, seed, model_id, probabilities)`
+usa Generator local y registra muestras SI, salidas, media, desviación, error estándar
+de la media y cuantiles. El sampler recibe (Generator,n) y devuelve matriz (n,p);
+evaluate recibe un vector p y devuelve escalar/vector. Un fallo aborta con índice,
+sin condicionar sobre casos sobrevivientes. El usuario preserva código del muestreador,
+correlaciones e identidad del modelo. Cuantiles de propagación no son automáticamente
+intervalos de credibilidad o confianza con cobertura demostrada.
+`local_sensitivity(evaluate, point_si, steps_si)` calcula Jacobiano central;
+pasos por parámetro explícitos, sin cambios de frontera automáticos.
+
+## Diseño y multiobjetivo
+
+`pyfast.design.hydraulics(bed, flow_m3_s, fluid_density_kg_m3, viscosity_pa_s, pump_efficiency)`
+devuelve EBCT, residencia líquida, masa seca, pérdida Ergun, potencia y Re de partícula.
+Se excluyen soporte, pared, forma no esférica, hinchamiento y ensuciamiento.
+`cost_estimate(design, CostBasis(...), service_time_s)` suma adsorbente y electricidad
+con precios, moneda/año declarados; no es costo de ciclo de vida.
+`export_dxf(bed,path)` crea envolvente cilíndrica de proceso en metros, sin sobrescribir.
+No calcula estructura, espesor ni accesorios; STEP requiere un adaptador posterior.
+
+`pyfast.optimize.nsga2(evaluate, lower_bounds_si, upper_bounds_si, objective_units,
+variable_units, problem_id, seed, n_constraints=0, population_size=80, generations=100)`
+usa el extra optativo pymoo. Evaluate devuelve `Evaluation(objectives, constraints)`;
+todos los objetivos se minimizan y las restricciones normalizadas satisfacen g<=0.
+Las unidades son metadatos explícitos del evaluador: no se convierten precios ni
+funciones objetivo automáticamente. Se reevalúa cada punto final, se exige repetibilidad
+y factibilidad y se registra la especificación/versiones. Para diseño robusto usar
+escenarios congelados comunes entre candidatos. El usuario debe demostrar convergencia,
+reevaluar en malla fina y ampliar escenarios antes de aceptar un diseño industrial.
+
+`pyfast.validate.mass_balance(result)` recalcula el cierre en tiempos exportados;
+los diagnósticos del solver incluyen también pasos internos. No es validación física.
+
+## CSV experimental y Parquet opcional
+
+`pyfast.io.load_breakthrough_csv(path, experiment_id, species_name, time_column, concentration_column, time_unit, concentration_unit, std_column=None, std_unit=None, delimiter=",")` exige argumentos nombrados y unidades. Devuelve Observations en SI con SHA-256 de bytes originales, BOM opcional y errores por fila/columna. Rechaza cabeceras repetidas, registros vacíos, censura no declarada y tiempos no ordenados; no limpia ni modifica el original. Columnas de metadatos adicionales quedan intactas en el CSV fuente y no se incluyen en Observations.
+
+`export_parquet(result, destination)` usa el extra `[parquet]` (PyArrow), con importación perezosa. Guarda tabla temporal de salida y balance, unidades por campo y metadatos de configuración/opciones/manifiesto/diagnósticos/huella. No guarda perfiles completos: para ellos usar JSON. Rechaza sobrescritura mediante apertura exclusiva; un fallo I/O durante escritura puede dejar un archivo parcial nuevo.
