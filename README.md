@@ -30,6 +30,21 @@ científico usa matplotlib, disponible también como dependencia de pymoo.
 
 ## API
 
+La [documentación funcional](docs/index.md) enlaza primeros pasos, preparación de
+datos, límites científicos, desarrollo y la [interfaz local](docs/web_interface.md).
+En Windows, `INICIAR_GUI.cmd` inicia el servidor; también se puede ejecutar:
+
+```powershell
+& .\.venv\Scripts\python.exe -m pyfast.web --output runs/gui
+```
+
+La GUI usa la misma API para validar configuraciones y simular batch/columnas.
+Los casos son sintéticos y los controles de entrada no certifican validez física.
+
+El subestudio [E01-A](benchmarks/e01/README.md), congelado antes de ejecutarse,
+pasó sus 219 criterios en 40 integraciones. Verifica únicamente cuatro familias
+de referencia; E01 general permanece parcial y E04 bloqueado por metadatos.
+
 ```python
 from pyfast.simulate import batch, column
 from pyfast.fit import isotherm, batch_rate
@@ -56,6 +71,7 @@ LDF o HSDM por el contrato cinético; no invoca FAST. API detallada en API_REFER
 ## Calidad y evidencia
 
 ```powershell
+& .\.venv\Scripts\python.exe scripts/project_checks.py --output runs/control_nuevo
 & .\.venv\Scripts\python.exe -m pytest --cov=pyfast --cov-report=term-missing --cov-fail-under=90
 & .\.venv\Scripts\python.exe -m ruff check .
 & .\.venv\Scripts\python.exe -m mypy

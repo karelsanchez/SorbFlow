@@ -107,3 +107,10 @@ los diagnósticos del solver incluyen también pasos internos. No es validación
 `pyfast.io.load_breakthrough_csv(path, experiment_id, species_name, time_column, concentration_column, time_unit, concentration_unit, std_column=None, std_unit=None, delimiter=",")` exige argumentos nombrados y unidades. Devuelve Observations en SI con SHA-256 de bytes originales, BOM opcional y errores por fila/columna. Rechaza cabeceras repetidas, registros vacíos, censura no declarada y tiempos no ordenados; no limpia ni modifica el original. Columnas de metadatos adicionales quedan intactas en el CSV fuente y no se incluyen en Observations.
 
 `export_parquet(result, destination)` usa el extra `[parquet]` (PyArrow), con importación perezosa. Guarda tabla temporal de salida y balance, unidades por campo y metadatos de configuración/opciones/manifiesto/diagnósticos/huella. No guarda perfiles completos: para ellos usar JSON. Rechaza sobrescritura mediante apertura exclusiva; un fallo I/O durante escritura puede dejar un archivo parcial nuevo.
+
+## Interfaz local opcional
+
+`python -m pyfast.web --host 127.0.0.1 --port 8765 --output runs/gui` inicia un
+servidor local que invoca los mismos esquemas y simuladores. No requiere extras
+de interfaz. El contrato HTTP es interno de este prototipo, no una API remota
+estable. Flujo, límites y descargas: [guía de la GUI](docs/web_interface.md).

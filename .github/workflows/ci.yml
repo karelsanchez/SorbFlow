@@ -1,5 +1,7 @@
 name: scientific-prototype
 on: [push, pull_request]
+permissions:
+  contents: read
 jobs:
   contracts:
     strategy:
@@ -13,7 +15,5 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
       - run: python -m pip install -e '.[dev,optimize,parquet]'
-      - run: python -m pytest --cov=pyfast --cov-report=term-missing --cov-fail-under=90
-      - run: python -m ruff check .
-      - run: python -m mypy
+      - run: python scripts/project_checks.py --output runs/ci-quality
       - run: python -m build

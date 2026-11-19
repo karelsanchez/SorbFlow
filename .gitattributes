@@ -1,4 +1,6 @@
 * text=auto eol=lf
+# Preserve byte-level checksums of frozen scientific evidence across platforms.
+audit/e01_a_20261119/** -text -diff
 *.png binary
 *.whl binary
 *.gz binary

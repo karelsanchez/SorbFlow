@@ -83,7 +83,20 @@
   "experiments": {
     "E01": {
       "status": "PARTIAL_REFERENCE_ONLY",
-      "scope": "selected numerical references in 0.2; full protocol not run"
+      "scope": "selected numerical references in 0.2; full protocol not run",
+      "substudies": [
+        {
+          "id": "E01-A",
+          "status": "PASS_SCOPED_E01_A",
+          "protocol_commit": "e60dba9",
+          "protocol_sha256": "a62addb00e66e283ff413b8169f0fbd910dc6789aa7509cb2e207446fa1992c6",
+          "integrations": 40,
+          "criteria": 219,
+          "failures": 0,
+          "evidence": "audit/e01_a_20261119/summary.json",
+          "full_e01_complete": false
+        }
+      ]
     },
     "E02": {
       "status": "PLANNED",

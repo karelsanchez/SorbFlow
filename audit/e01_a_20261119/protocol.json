@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "protocol_id": "E01-A",
+  "protocol_version": "1.0",
+  "prepared_date": "2026-11-19",
+  "scope": "Selected existing numerical references only; not full E01 or experimental validation",
+  "prior_development_evidence": "Examples and regression tests already exercised these reference families. This prospective execution is not blinded or independent of that pilot knowledge.",
+  "full_e01_confirmatory": false,
+  "experimental_validation": false,
+  "methods": ["BDF", "Radau"],
+  "common": {
+    "mass_scaled_max": 0.000001,
+    "mass_absolute_max_kg": 0.000000000001,
+    "mass_reference_kg": 0.000000000001,
+    "negative_atol_multiplier": 10.0
+  },
+  "batch": {
+    "liquid_volume_m3": 0.001,
+    "adsorbent_mass_kg": 0.002,
+    "distribution_m3_kg": 0.5,
+    "rate_s_inv": 0.02,
+    "duration_s": 300.0,
+    "sample_count": 201,
+    "concentration_scale_kg_m3": 0.01,
+    "loading_scale_kg_kg": 0.01,
+    "initial_states": [
+      {"state_id": "adsorption", "concentration_kg_m3": 0.01, "loading_kg_kg": 0.0},
+      {"state_id": "desorption", "concentration_kg_m3": 0.01, "loading_kg_kg": 0.02},
+      {"state_id": "equilibrium", "concentration_kg_m3": 0.01, "loading_kg_kg": 0.005},
+      {"state_id": "empty", "concentration_kg_m3": 0.0, "loading_kg_kg": 0.0}
+    ],
+    "tolerances": [
+      {"rtol": 0.0001, "atol_concentration_kg_m3": 0.000000001, "atol_loading_kg_kg": 0.00000000001},
+      {"rtol": 0.000001, "atol_concentration_kg_m3": 0.00000000001, "atol_loading_kg_kg": 0.0000000000001},
+      {"rtol": 0.00000001, "atol_concentration_kg_m3": 0.0000000000001, "atol_loading_kg_kg": 0.000000000000001}
+    ],
+    "criteria": {
+      "scaled_rms_all_max": 0.001,
+      "scaled_rms_finest_max": 0.00001,
+      "transient_finest_to_coarsest_error_ratio_max": 0.1,
+      "method_disagreement_scaled_max": 0.00001
+    }
+  },
+  "tracer": {
+    "bed": {"length_m": 0.1, "diameter_m": 0.01, "particle_diameter_m": 0.0001, "porosity": 0.4, "particle_density_kg_m3": 1000.0},
+    "flow_m3_s": 0.0000001,
+    "inlet_concentration_kg_m3": 0.01,
+    "axial_dispersion_m2_s": 0.0,
+    "distribution_m3_kg": 0.0,
+    "initial_concentration_kg_m3": 0.0,
+    "initial_loading_kg_kg": 0.0,
+    "rate_s_inv": 0.1,
+    "horizon_residence_times": 3.0,
+    "sample_count": 1201,
+    "axial_cells": [25, 50, 100, 200, 400],
+    "tolerance": {"rtol": 0.000000001, "atol_concentration_kg_m3": 0.0000000000001, "atol_loading_kg_kg": 0.000000000000001},
+    "criteria": {
+      "tanks_linf_normalized_max": 0.000001,
+      "front_l1_successive_ratio_max": 0.8,
+      "finest_t50_relative_error_max": 0.01
+    }
+  },
+  "sphere": {
+    "radius_m": 0.0001,
+    "surface_diffusivity_m2_s": 0.00000000001,
+    "particle_density_kg_m3": 1000.0,
+    "surface_loading_kg_kg": 0.01,
+    "initial_loading_kg_kg": 0.0,
+    "fourier_times": [0.01, 0.03, 0.1, 0.3, 1.0],
+    "radial_cells": [10, 20, 40, 80],
+    "series_terms": 1000,
+    "rtol": 0.0000000001,
+    "atol_loading_kg_kg": 0.00000000000001,
+    "criteria": {
+      "finest_mean_relative_error_max": 0.001,
+      "last_two_refinement_orders_min": 1.8,
+      "series_tail_absolute_fraction_max": 0.000000000001,
+      "sampled_radial_balance_scaled_max": 0.0000000001
+    }
+  },
+  "matrix_ldf": {
+    "bed": {"length_m": 0.1, "diameter_m": 0.01, "particle_diameter_m": 0.0002, "porosity": 0.4, "particle_density_kg_m3": 1000.0},
+    "flow_m3_s": 0.0000001,
+    "inlet_concentration_kg_m3": 0.01,
+    "axial_dispersion_m2_s": 0.00001,
+    "initial_concentration_kg_m3": 0.003,
+    "initial_loading_kg_kg": 0.0001,
+    "distribution_m3_kg": 0.03,
+    "rate_s_inv": 0.02,
+    "duration_s": 100.0,
+    "sample_count": 11,
+    "axial_cells": 4,
+    "tolerance": {"rtol": 0.0000000001, "atol_concentration_kg_m3": 0.00000000000001, "atol_loading_kg_kg": 0.0000000000000001},
+    "criteria": {"concentration_linf_kg_m3_max": 0.0000000002, "loading_linf_kg_kg_max": 0.000000000002}
+  }
+}
