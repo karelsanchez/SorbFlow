@@ -114,3 +114,15 @@ los diagnósticos del solver incluyen también pasos internos. No es validación
 servidor local que invoca los mismos esquemas y simuladores. No requiere extras
 de interfaz. El contrato HTTP es interno de este prototipo, no una API remota
 estable. Flujo, límites y descargas: [guía de la GUI](docs/web_interface.md).
+
+## Calibración experimental con sigma conocida
+
+`pyfast.calibration.profile.profile_gaussian_known_sigma` conserva multiinicios,
+reoptimización de nuisance, fallos y presupuestos reales de callback. Su salida
+es evidencia sobre una malla de parámetros positivos: no un intervalo continuo
+ni una prueba de identificabilidad global. [Contrato](docs/profile_likelihood.md).
+
+`pyfast.calibration.batch_objective.LinearBatchObjective` conecta esa interfaz con
+varios batches lineales/LDF y sigma declarada conocida. Comparte K/k entre ensayos
+compatibles y cuenta intentos físicos de simulación. No sustituye la API existente
+`batch_rate` ni implementa una likelihood censurada. [Contrato](docs/batch_objective.md).

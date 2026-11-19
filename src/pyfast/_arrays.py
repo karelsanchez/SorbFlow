@@ -8,8 +8,21 @@ from numpy.typing import ArrayLike, NDArray
 FloatArray = NDArray[np.float64]
 
 
+def _contains_boolean(value: object) -> bool:
+    # Inspect containers before NumPy can turn mixed bool/float inputs into floats.
+    if isinstance(value, (bool, np.bool_)):
+        return True
+    if isinstance(value, np.ndarray):
+        return bool(value.dtype.kind == "b")
+    if isinstance(value, (list, tuple)):
+        return any(_contains_boolean(item) for item in value)
+    return False
+
+
 def real_array(value: ArrayLike, name: str) -> FloatArray:
     """Copy numeric input, preserving shape, rejecting booleans/complex/NaN."""
+    if _contains_boolean(value):
+        raise ValueError(f"{name} must contain real numbers, not booleans")
     raw = np.asarray(value)
     if raw.dtype.kind not in "iuf":
         raise ValueError(f"{name} must contain real numbers")

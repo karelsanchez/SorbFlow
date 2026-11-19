@@ -26,6 +26,12 @@ en `e60dba9`, declarando conocimiento de pilotos anteriores. Batch lineal, traza
 Dax=0, esfera con superficie prescrita y matriz LDF discreta no cubren todo E01.
 La [evidencia JSON](../audit/e01_a_20261119/summary.json) conserva esos límites.
 
+E01-B añadió una referencia continua finita con entrada Danckwerts y salida de
+gradiente cero, Pe=2/10 y refinamiento axial. Sus 138 criterios pasaron en 16
+integraciones. El protocolo se fijó en `3155b72`; la comparación usa promedios de
+celda de la referencia, separados de valores puntuales. No cubre adsorción HSDM
+acoplada ni todos los regímenes. [Alcance](../benchmarks/e01b/README.md).
+
 ## Qué está implementado
 
 | Entrada pública | Implementación actual | Límite principal |
@@ -47,7 +53,10 @@ no un modelo nuevo. Los balances, IC/BC y bases físicas están en la
 
 - Completar E01: casos suaves/manufacturados, límites, regímenes rígidos y refinamientos
   que resuelvan los indicadores utilizados en cada decisión.
-- Identificabilidad global, perfiles, multi-inicio, censura y calibración multiexperimento.
+- Estudio de identificabilidad global, cobertura, censura y calibración multiexperimento.
+- Los [perfiles con sigma conocida](profile_likelihood.md) y el objetivo batch K/k
+  ya existen como API experimental; su estudio de cobertura/identificabilidad E02
+  sigue pendiente. Una malla aceptada no es un intervalo continuo.
 - Cobertura predictiva y separación de error numérico, paramétrico, de observación y modelo.
 - Estudios de semillas/escenarios/convergencia de Pareto y diseño robusto.
 - Validación experimental independiente con unidades, procedencia y condiciones completas.

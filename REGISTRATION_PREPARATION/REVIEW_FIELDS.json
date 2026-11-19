@@ -1,0 +1,13 @@
+{
+  "schema_version": "pyfast.registration-review-fields/1",
+  "status": "pending_human_review",
+  "authors": null,
+  "rights_holder": null,
+  "jurisdiction": null,
+  "institutional_contract_review": null,
+  "contribution_provenance_review": null,
+  "third_party_notices_review": null,
+  "publication_license_decision": null,
+  "filing_submitted": false,
+  "scope": "Technical preparation only; no determination of ownership, originality or rights"
+}

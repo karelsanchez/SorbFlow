@@ -2,6 +2,14 @@
 
 ## Cambios locales sin publicar — 2026-11-19
 
+- E01-B: referencia ADE continua finita independiente, Pe2/10, promedios de celda,
+  refinamiento y criterios fijados previamente; 16 integraciones, 138 criterios satisfechos.
+- Perfiles gaussianos experimentales de sigma conocida con nuisance reoptimizados,
+  multiinicio y presupuesto; objetivo batch K/k compatible con múltiples condiciones.
+- Rechazo de booleanos mezclados con números antes de la coerción de NumPy.
+- Preparación técnica de registro con inventario SHA y campos de derechos pendientes;
+  no se realiza registro ni se determina autoría.
+
 - Integración del dossier EnvSoft y catálogo separado de las seis fuentes externas.
 - E01-A: protocolo congelado en e60dba9 y ejecución de 40 integraciones, 219 criterios
   satisfechos; evidencia sintética conservada. E01 general sigue parcial.

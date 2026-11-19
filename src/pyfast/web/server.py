@@ -6,6 +6,7 @@ import argparse
 import hmac
 import json
 import sys
+import time
 from dataclasses import asdict
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -49,6 +50,8 @@ class RequestHandler(BaseHTTPRequestHandler):
         """Do not log tokens, arbitrary URL contents or control characters."""
 
     def _send(self, status: int, payload: bytes, kind: str, filename: str | None = None) -> None:
+        if status >= 400 and self.command == "POST":
+            self._discard_rejected_body()
         self.send_response(status)
         self.send_header("Content-Type", kind)
         self.send_header("Content-Length", str(len(payload)))
@@ -71,6 +74,42 @@ class RequestHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(payload)
         self.close_connection = True
+
+    def _discard_rejected_body(self) -> None:
+        """Avoid closing over an unread small POST, without trusting its framing.
+
+        A close with incoming bytes can reset TCP before the client receives its
+        error. Discard only an unambiguous bounded body, never parse or execute
+        it. The total drain has a hard deadline, including fragmented uploads.
+        """
+        if getattr(self, "_post_body_started", False):
+            return
+        self._post_body_started = True
+        lengths = self.headers.get_all("Content-Length", [])
+        if self.headers.get("Transfer-Encoding") is not None or len(lengths) != 1:
+            return
+        text = lengths[0]
+        if not text.isascii() or not text.isdigit() or len(text) > 10:
+            return
+        remaining = int(text)
+        if not 0 < remaining <= MAX_REQUEST_BYTES:
+            return
+        timeout = self.connection.gettimeout()
+        deadline = time.monotonic() + 0.5
+        try:
+            while remaining:
+                available = deadline - time.monotonic()
+                if available <= 0:
+                    break
+                self.connection.settimeout(available)
+                chunk = self.rfile.read1(min(remaining, 8192))
+                if not chunk:
+                    break
+                remaining -= len(chunk)
+        except OSError:
+            pass  # Still attempt the original error response; this connection closes.
+        finally:
+            self.connection.settimeout(timeout)
 
     def _json(self, status: int, data: object) -> None:
         self._send(
@@ -171,6 +210,7 @@ class RequestHandler(BaseHTTPRequestHandler):
             self._json(500, {"error": "Local output could not be read"})
 
     def do_POST(self) -> None:
+        self._post_body_started = False
         if not self._security(token=True, mutation=True):
             return
         try:
@@ -192,6 +232,7 @@ class RequestHandler(BaseHTTPRequestHandler):
             if not 0 < length <= MAX_REQUEST_BYTES:
                 self._json(413, {"error": "Request exceeds the 64 KiB local limit"})
                 return
+            self._post_body_started = True
             raw = self.rfile.read(length)
             if len(raw) != length:
                 raise ValueError("Incomplete request body")

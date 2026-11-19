@@ -1,0 +1,88 @@
+{
+  "started_utc": "2026-11-19T19:03:16.941670+00:00",
+  "finished_utc": "2026-11-19T19:03:27.533983+00:00",
+  "python": "3.11.2 (tags/v3.11.2:878ead1, Feb  7 2023, 16:38:35) [MSC v.1934 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "versions": {
+    "pyfast-adsorption": "0.2.0.dev0",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1"
+  },
+  "pyfast_import_path": "C:\\Users\\Karel\\Documents\\Codex\\2026-11-18\\empaqueta-x20\\PyFAST\\src\\pyfast\\__init__.py",
+  "git_before": {
+    "head": "3155b72f2d39e6dec40f4cf0bb46c9807673d49f",
+    "status_porcelain": "M .gitattributes\n M MANIFEST.in\n M docs/index.md\n M docs/inverse_study_plan.md\n M scripts/project_checks.py\n M src/pyfast/_arrays.py\n?? REGISTRATION_PREPARATION/\n?? benchmarks/e01b/README.md\n?? benchmarks/e01b/reference.py\n?? benchmarks/e01b/run.py\n?? docs/batch_objective.md\n?? docs/profile_likelihood.md\n?? examples/profile_batch.py\n?? scripts/software_manifest.py\n?? src/pyfast/calibration/batch_objective.py\n?? src/pyfast/calibration/profile.py\n?? tests/test_arrays.py\n?? tests/test_batch_objective.py\n?? tests/test_e01b_reference.py\n?? tests/test_profile.py\n?? tests/test_software_manifest.py",
+    "protocol_baseline_commit": "e60dba9"
+  },
+  "git_after": {
+    "head": "3155b72f2d39e6dec40f4cf0bb46c9807673d49f",
+    "status_porcelain": "M .gitattributes\n M MANIFEST.in\n M docs/index.md\n M docs/inverse_study_plan.md\n M scripts/project_checks.py\n M src/pyfast/_arrays.py\n?? REGISTRATION_PREPARATION/\n?? benchmarks/e01b/README.md\n?? benchmarks/e01b/reference.py\n?? benchmarks/e01b/run.py\n?? docs/batch_objective.md\n?? docs/profile_likelihood.md\n?? examples/profile_batch.py\n?? scripts/software_manifest.py\n?? src/pyfast/calibration/batch_objective.py\n?? src/pyfast/calibration/profile.py\n?? tests/test_arrays.py\n?? tests/test_batch_objective.py\n?? tests/test_e01b_reference.py\n?? tests/test_profile.py\n?? tests/test_software_manifest.py"
+  },
+  "source_before": {
+    "files": {
+      "src/pyfast/__init__.py": "7be2717408645f719f41109a849a2a10bdf914d12435f2a05271becc9b8a5d0d",
+      "src/pyfast/__main__.py": "8473deb1f02a281201486eae4dd059dd0ddefbaa190d82bf41384478fff1f5f9",
+      "src/pyfast/_arrays.py": "13b2da82317ae2b23ec360c382f3261b2449a471637abfcb54f071041705f0dd",
+      "src/pyfast/_version.py": "c7062e4d3eb3d25de9c63f14c135bc7f96543a8c5d2507922cc9975febb01642",
+      "src/pyfast/cli.py": "7bcaa1e3030ba6fb7f2124016c221b6ffe60e59537ba120c4acc3842debb0c54",
+      "src/pyfast/fit.py": "b25f663b386e9db86eccad6b41b60511b0c599976cf3e77d5d9b756df5a0836a",
+      "src/pyfast/optimize.py": "a8f8d3045f14fb0f1057878e205e1f68925ace483afbeda25700fa7eb18035bb",
+      "src/pyfast/schemas.py": "c8a9d892c951fd00b7eeea6432d80eee112b2d7b3fbafbca30c99c1bc87f5e60",
+      "src/pyfast/simulate.py": "8fe04d75407767b1eb0d02a82681e4c6ab173cfb272f5041c479b74cca26fd40",
+      "src/pyfast/units.py": "c5650194b34fa1256ae990a3f298f7dce8a05274234247626e36903806b76eaf",
+      "src/pyfast/equilibrium/__init__.py": "ca3f6dea0d3508306ed7fa20c0f65d42476170c69e41845211d56f07de09fbde",
+      "src/pyfast/equilibrium/isotherms.py": "32296d7f6cca315a74187147ea0dbcba240eef5899ba8fa118ec9353c7a68017",
+      "src/pyfast/kinetics/__init__.py": "649ca3e6d6b66bbea1b770bc741d2b0119c2834b9ecd92f97a0bfee48d538b6d",
+      "src/pyfast/kinetics/sphere.py": "62302c119bc6848901fb6a651a54014a5d1b02812332d87ac3be96f207a581eb",
+      "src/pyfast/reactors/__init__.py": "12da736d41fd213bf2daff936fc6a7d38e09784f073caef31ef8693d767a49a2",
+      "src/pyfast/reactors/batch.py": "ec9a6da2e16bce4ad9df35982e0c1d7526d315b6266ed65a38932e1c4508034c",
+      "src/pyfast/reactors/column.py": "a571f5be629e38a1c79636cb20af9583ea2b73691bd4600753824a2b5c8d587a",
+      "src/pyfast/reactors/hsdm.py": "97dcab9169ec3f785670735eeae2a7616d309e09a9ff0c2a6e4c45abd134ae0f",
+      "src/pyfast/solvers/__init__.py": "25f3e079fb88aa7cda41b292b5ee429385122096d98e02011cc46e552c38b15b",
+      "src/pyfast/solvers/integration.py": "6f3f9b6ac3493ba2daa0015b6fae59be2e146e4ef8ec306e43fc1625a0888f7a",
+      "src/pyfast/solvers/options.py": "d8e7fc7535013e4370e7ad00400cefc30a9e54c200c4edb8f1101fef9f94f7fd",
+      "src/pyfast/solvers/results.py": "179b263b01d522025fb92dc4e69462268544f4501c389e7f29f1273ca3bdd492",
+      "benchmarks/e01/run.py": "84dc86a24c1f8ba2a93eed5f4aeda6967e81a576187602e1b8026e738b576a3c"
+    },
+    "combined_sha256": "f6faf676b043f5e6884fa39f2078c862b5a3e9725b121e0b39bb7cee0743323c"
+  },
+  "source_after": {
+    "files": {
+      "src/pyfast/__init__.py": "7be2717408645f719f41109a849a2a10bdf914d12435f2a05271becc9b8a5d0d",
+      "src/pyfast/__main__.py": "8473deb1f02a281201486eae4dd059dd0ddefbaa190d82bf41384478fff1f5f9",
+      "src/pyfast/_arrays.py": "13b2da82317ae2b23ec360c382f3261b2449a471637abfcb54f071041705f0dd",
+      "src/pyfast/_version.py": "c7062e4d3eb3d25de9c63f14c135bc7f96543a8c5d2507922cc9975febb01642",
+      "src/pyfast/cli.py": "7bcaa1e3030ba6fb7f2124016c221b6ffe60e59537ba120c4acc3842debb0c54",
+      "src/pyfast/fit.py": "b25f663b386e9db86eccad6b41b60511b0c599976cf3e77d5d9b756df5a0836a",
+      "src/pyfast/optimize.py": "a8f8d3045f14fb0f1057878e205e1f68925ace483afbeda25700fa7eb18035bb",
+      "src/pyfast/schemas.py": "c8a9d892c951fd00b7eeea6432d80eee112b2d7b3fbafbca30c99c1bc87f5e60",
+      "src/pyfast/simulate.py": "8fe04d75407767b1eb0d02a82681e4c6ab173cfb272f5041c479b74cca26fd40",
+      "src/pyfast/units.py": "c5650194b34fa1256ae990a3f298f7dce8a05274234247626e36903806b76eaf",
+      "src/pyfast/equilibrium/__init__.py": "ca3f6dea0d3508306ed7fa20c0f65d42476170c69e41845211d56f07de09fbde",
+      "src/pyfast/equilibrium/isotherms.py": "32296d7f6cca315a74187147ea0dbcba240eef5899ba8fa118ec9353c7a68017",
+      "src/pyfast/kinetics/__init__.py": "649ca3e6d6b66bbea1b770bc741d2b0119c2834b9ecd92f97a0bfee48d538b6d",
+      "src/pyfast/kinetics/sphere.py": "62302c119bc6848901fb6a651a54014a5d1b02812332d87ac3be96f207a581eb",
+      "src/pyfast/reactors/__init__.py": "12da736d41fd213bf2daff936fc6a7d38e09784f073caef31ef8693d767a49a2",
+      "src/pyfast/reactors/batch.py": "ec9a6da2e16bce4ad9df35982e0c1d7526d315b6266ed65a38932e1c4508034c",
+      "src/pyfast/reactors/column.py": "a571f5be629e38a1c79636cb20af9583ea2b73691bd4600753824a2b5c8d587a",
+      "src/pyfast/reactors/hsdm.py": "97dcab9169ec3f785670735eeae2a7616d309e09a9ff0c2a6e4c45abd134ae0f",
+      "src/pyfast/solvers/__init__.py": "25f3e079fb88aa7cda41b292b5ee429385122096d98e02011cc46e552c38b15b",
+      "src/pyfast/solvers/integration.py": "6f3f9b6ac3493ba2daa0015b6fae59be2e146e4ef8ec306e43fc1625a0888f7a",
+      "src/pyfast/solvers/options.py": "d8e7fc7535013e4370e7ad00400cefc30a9e54c200c4edb8f1101fef9f94f7fd",
+      "src/pyfast/solvers/results.py": "179b263b01d522025fb92dc4e69462268544f4501c389e7f29f1273ca3bdd492",
+      "benchmarks/e01/run.py": "84dc86a24c1f8ba2a93eed5f4aeda6967e81a576187602e1b8026e738b576a3c"
+    },
+    "combined_sha256": "f6faf676b043f5e6884fa39f2078c862b5a3e9725b121e0b39bb7cee0743323c"
+  },
+  "protocol_sha256": "a62addb00e66e283ff413b8169f0fbd910dc6789aa7509cb2e207446fa1992c6",
+  "known_concurrency": "Other workers active on GUI/documentation; elapsed times describe this execution, not comparative performance benchmarks.",
+  "limitations": "Selected existing numerical references only; not full E01 or experimental validation",
+  "artifacts": {
+    "metrics.csv": "774889b9d3fb3f4b3373108e73af6116bf104ba808ca8adca908414e81918933",
+    "protocol.json": "a62addb00e66e283ff413b8169f0fbd910dc6789aa7509cb2e207446fa1992c6",
+    "sphere_uptake.png": "91c0d8009cacd79215d0f3c5611440f07f45e69a86260564bebb76c418b8145b",
+    "summary.json": "843e69ab383e3769aae9c95f4da91043dff0faa96d3dc98faac65a04c0789fbd",
+    "tracer_convergence.png": "1c4022dde0368d192631142183a64d057055d107706c437f9c4b2c83389be42b",
+    "trajectories.csv": "cf80583edce3ee68cc7e7ae2edb94c9816fc5106e5c668eb2f0bea2a98e9730e"
+  }
+}

@@ -1,7 +1,9 @@
 # E02-A: diseño sintético de identificabilidad e intervalos
 
-**Estado: DISEÑO PROPUESTO; no ejecutado ni confirmatorio.** Este documento prepara
-la siguiente implementación y no incorpora algoritmos. E01 continúa parcial;
+**Estado: DISEÑO PROPUESTO; estudio no ejecutado ni confirmatorio.** Ya existen
+una [API experimental de perfiles](profile_likelihood.md) y un
+[objetivo batch K/k](batch_objective.md), probados separadamente. El estudio de
+identificabilidad/cobertura completo sigue pendiente. E01 continúa parcial;
 E04 continúa BLOCKED_METADATA, con 0 curvas listas. La interfaz web es opcional y
 no participa en los criterios científicos del artículo.
 
@@ -25,8 +27,10 @@ enmienda registrada; sus datos no se reutilizan como confirmación independiente
 La [API pública](../API_REFERENCE.md) actual `isotherm` estima parámetros de un
 modelo con c sin error; Freundlich mantiene c_ref fijo. `batch_rate` estima
 únicamente k_LDF, tratando equilibrio y condiciones como conocidos. No presentar
-esta última función como ajuste conjunto de k y equilibrio. Ninguna API actual
-entrega perfiles de likelihood ni una prueba de identificabilidad global.
+esta última función como ajuste conjunto de k y equilibrio. La nueva API de perfiles
+reoptimiza nuisance en una malla positiva con sigma conocida: no entrega un intervalo
+continuo ni una prueba de identificabilidad global. El ejemplo `examples/profile_batch.py`
+es una demostración sintética de ingeniería, no el estudio E02-A.
 
 ## 2. Problemas y verdad sintética
 
@@ -199,7 +203,8 @@ debe conservar semillas y resultados, sin presentarlo como ejecución distribuid
 1. Esquema congelable de casos/semillas/ruido y manifiesto de fuente, entorno y hashes.
 2. Generador exacto probado separadamente, contador de solves y ajuste conjunto
    con límites/nuisance; API experimental separada de la estable hasta revisión.
-3. Perfil con reoptimización y estados CLOSED, OPEN, BOUND_LIMITED, INCOMPLETE;
+3. Extender la evidencia de perfil con reoptimización y malla explícita; la API actual
+   no emite intervalos continuos CLOSED/OPEN. Conservar estados de límite e incompletitud;
    pruebas de redundancias y mínimos alternativos además de recuperación favorable.
 4. Piloto reproducible, enmienda explícita si procede y registro de cobertura
    independiente con presupuesto autorizado antes del estudio confirmatorio.

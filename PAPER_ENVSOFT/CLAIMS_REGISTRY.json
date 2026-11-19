@@ -94,13 +94,26 @@
           "criteria": 219,
           "failures": 0,
           "evidence": "audit/e01_a_20261119/summary.json",
+          "full_e01_complete": false,
+          "recheck_evidence": "audit/e01_a_20261119_recheck/summary.json"
+        },
+        {
+          "id": "E01-B",
+          "status": "PASS_SCOPED_E01_B",
+          "protocol_commit": "3155b72",
+          "protocol_sha256": "e189b9cfee6c4b7e97b109e6c5081d366fe93398e45fae062038beebe381bdf1",
+          "integrations": 16,
+          "criteria": 138,
+          "failures": 0,
+          "evidence": "audit/e01_b_20261119/summary.json",
+          "recheck_evidence": "audit/e01_b_20261119_recheck/summary.json",
           "full_e01_complete": false
         }
       ]
     },
     "E02": {
       "status": "PLANNED",
-      "scope": "simple synthetic recovery exists, confirmatory inverse study not run"
+      "scope": "Known-sigma profile and shared batch objective implemented; synthetic engineering demo only; confirmatory identifiability and coverage study not run"
     },
     "E03": {
       "status": "PLANNED",

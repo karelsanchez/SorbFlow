@@ -15,19 +15,23 @@ import tomllib
 from datetime import UTC, datetime
 from pathlib import Path
 
-INPUT_DIRS = ("src", "tests", "examples", "scripts", "docs", "PAPER_ENVSOFT", "benchmarks")
+INPUT_DIRS = ("src", "tests", "examples", "scripts", "docs", "PAPER_ENVSOFT", "benchmarks",
+              "REGISTRATION_PREPARATION")
 SUFFIXES = {".py", ".json", ".csv", ".md", ".toml", ".yml", ".yaml", ".html", ".js", ".css"}
 
 
 def source_snapshot(repo: Path) -> dict[str, str]:
-    files = set(repo.glob("*.md")) | {repo / "pyproject.toml"}
+    metadata = {repo / name for name in ("pyproject.toml", "MANIFEST.in", ".gitignore",
+                                         ".gitattributes", "INICIAR_GUI.cmd")}
+    files = set(repo.glob("*.md")) | metadata
     files.update((repo / ".github/workflows").glob("*.yml"))
     for directory in INPUT_DIRS:
         files.update((repo / directory).rglob("*"))
     return {
         path.relative_to(repo).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()
         for path in sorted(files)
-        if path.is_file() and not path.is_symlink() and path.suffix in SUFFIXES
+        if path.is_file() and not path.is_symlink()
+        and (path.suffix in SUFFIXES or path in metadata)
         and "__pycache__" not in path.parts
     }
 
@@ -88,8 +92,9 @@ def main() -> int:
         started = time.perf_counter()
         environment = os.environ.copy()
         if name == "build":
-            build_temp = output / "build_tmp"
-            build_temp.mkdir()
+            # The build frontend creates unique children; a short base avoids MAX_PATH.
+            build_temp = repo / ".work"
+            build_temp.mkdir(parents=True, exist_ok=True)
             environment.update(TEMP=str(build_temp), TMP=str(build_temp), TMPDIR=str(build_temp))
         try:
             result = subprocess.run(command, cwd=repo, capture_output=True, text=True,

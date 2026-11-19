@@ -1,0 +1,89 @@
+{
+  "started_utc": "2026-11-19T19:03:32.179186+00:00",
+  "finished_utc": "2026-11-19T19:03:41.299549+00:00",
+  "python": "3.11.2 (tags/v3.11.2:878ead1, Feb  7 2023, 16:38:35) [MSC v.1934 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "versions": {
+    "pyfast-adsorption": "0.2.0.dev0",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1"
+  },
+  "pyfast_import_path": "C:\\Users\\Karel\\Documents\\Codex\\2026-11-18\\empaqueta-x20\\PyFAST\\src\\pyfast\\__init__.py",
+  "git_before": {
+    "head": "3155b72f2d39e6dec40f4cf0bb46c9807673d49f",
+    "status_porcelain": "M .gitattributes\n M MANIFEST.in\n M docs/index.md\n M docs/inverse_study_plan.md\n M scripts/project_checks.py\n M src/pyfast/_arrays.py\n?? REGISTRATION_PREPARATION/\n?? benchmarks/e01b/README.md\n?? benchmarks/e01b/reference.py\n?? benchmarks/e01b/run.py\n?? docs/batch_objective.md\n?? docs/profile_likelihood.md\n?? examples/profile_batch.py\n?? scripts/software_manifest.py\n?? src/pyfast/calibration/batch_objective.py\n?? src/pyfast/calibration/profile.py\n?? tests/test_arrays.py\n?? tests/test_batch_objective.py\n?? tests/test_e01b_reference.py\n?? tests/test_profile.py\n?? tests/test_software_manifest.py",
+    "protocol_last_commit": "3155b72f2d39e6dec40f4cf0bb46c9807673d49f"
+  },
+  "git_after": {
+    "head": "3155b72f2d39e6dec40f4cf0bb46c9807673d49f",
+    "status_porcelain": "M .gitattributes\n M MANIFEST.in\n M docs/index.md\n M docs/inverse_study_plan.md\n M scripts/project_checks.py\n M src/pyfast/_arrays.py\n?? REGISTRATION_PREPARATION/\n?? benchmarks/e01b/README.md\n?? benchmarks/e01b/reference.py\n?? benchmarks/e01b/run.py\n?? docs/batch_objective.md\n?? docs/profile_batch_example.md\n?? docs/profile_likelihood.md\n?? examples/profile_batch.py\n?? scripts/software_manifest.py\n?? src/pyfast/calibration/batch_objective.py\n?? src/pyfast/calibration/profile.py\n?? tests/test_arrays.py\n?? tests/test_batch_objective.py\n?? tests/test_e01b_reference.py\n?? tests/test_profile.py\n?? tests/test_software_manifest.py"
+  },
+  "protocol_sha256": "e189b9cfee6c4b7e97b109e6c5081d366fe93398e45fae062038beebe381bdf1",
+  "source_before": {
+    "files": {
+      "src/pyfast/__init__.py": "7be2717408645f719f41109a849a2a10bdf914d12435f2a05271becc9b8a5d0d",
+      "src/pyfast/__main__.py": "8473deb1f02a281201486eae4dd059dd0ddefbaa190d82bf41384478fff1f5f9",
+      "src/pyfast/_arrays.py": "13b2da82317ae2b23ec360c382f3261b2449a471637abfcb54f071041705f0dd",
+      "src/pyfast/_version.py": "c7062e4d3eb3d25de9c63f14c135bc7f96543a8c5d2507922cc9975febb01642",
+      "src/pyfast/cli.py": "7bcaa1e3030ba6fb7f2124016c221b6ffe60e59537ba120c4acc3842debb0c54",
+      "src/pyfast/fit.py": "b25f663b386e9db86eccad6b41b60511b0c599976cf3e77d5d9b756df5a0836a",
+      "src/pyfast/optimize.py": "a8f8d3045f14fb0f1057878e205e1f68925ace483afbeda25700fa7eb18035bb",
+      "src/pyfast/schemas.py": "c8a9d892c951fd00b7eeea6432d80eee112b2d7b3fbafbca30c99c1bc87f5e60",
+      "src/pyfast/simulate.py": "8fe04d75407767b1eb0d02a82681e4c6ab173cfb272f5041c479b74cca26fd40",
+      "src/pyfast/units.py": "c5650194b34fa1256ae990a3f298f7dce8a05274234247626e36903806b76eaf",
+      "src/pyfast/equilibrium/__init__.py": "ca3f6dea0d3508306ed7fa20c0f65d42476170c69e41845211d56f07de09fbde",
+      "src/pyfast/equilibrium/isotherms.py": "32296d7f6cca315a74187147ea0dbcba240eef5899ba8fa118ec9353c7a68017",
+      "src/pyfast/kinetics/__init__.py": "649ca3e6d6b66bbea1b770bc741d2b0119c2834b9ecd92f97a0bfee48d538b6d",
+      "src/pyfast/kinetics/sphere.py": "62302c119bc6848901fb6a651a54014a5d1b02812332d87ac3be96f207a581eb",
+      "src/pyfast/reactors/__init__.py": "12da736d41fd213bf2daff936fc6a7d38e09784f073caef31ef8693d767a49a2",
+      "src/pyfast/reactors/batch.py": "ec9a6da2e16bce4ad9df35982e0c1d7526d315b6266ed65a38932e1c4508034c",
+      "src/pyfast/reactors/column.py": "a571f5be629e38a1c79636cb20af9583ea2b73691bd4600753824a2b5c8d587a",
+      "src/pyfast/reactors/hsdm.py": "97dcab9169ec3f785670735eeae2a7616d309e09a9ff0c2a6e4c45abd134ae0f",
+      "src/pyfast/solvers/__init__.py": "25f3e079fb88aa7cda41b292b5ee429385122096d98e02011cc46e552c38b15b",
+      "src/pyfast/solvers/integration.py": "6f3f9b6ac3493ba2daa0015b6fae59be2e146e4ef8ec306e43fc1625a0888f7a",
+      "src/pyfast/solvers/options.py": "d8e7fc7535013e4370e7ad00400cefc30a9e54c200c4edb8f1101fef9f94f7fd",
+      "src/pyfast/solvers/results.py": "179b263b01d522025fb92dc4e69462268544f4501c389e7f29f1273ca3bdd492",
+      "benchmarks/e01b/reference.py": "6f0c5334a40e5385d4b5f4ed00b8d0c371b178e3230dab7b604638f7bfb9e4e0",
+      "benchmarks/e01b/run.py": "4b4d1e6574d815ef00fe3e86d4e9d15399de19214f3def3a4a02996260ff1d13"
+    },
+    "combined_sha256": "95c16e109bdd518e7c975663f70ecb471ae244e4e1855859d3730c9bc3291fd6"
+  },
+  "source_after": {
+    "files": {
+      "src/pyfast/__init__.py": "7be2717408645f719f41109a849a2a10bdf914d12435f2a05271becc9b8a5d0d",
+      "src/pyfast/__main__.py": "8473deb1f02a281201486eae4dd059dd0ddefbaa190d82bf41384478fff1f5f9",
+      "src/pyfast/_arrays.py": "13b2da82317ae2b23ec360c382f3261b2449a471637abfcb54f071041705f0dd",
+      "src/pyfast/_version.py": "c7062e4d3eb3d25de9c63f14c135bc7f96543a8c5d2507922cc9975febb01642",
+      "src/pyfast/cli.py": "7bcaa1e3030ba6fb7f2124016c221b6ffe60e59537ba120c4acc3842debb0c54",
+      "src/pyfast/fit.py": "b25f663b386e9db86eccad6b41b60511b0c599976cf3e77d5d9b756df5a0836a",
+      "src/pyfast/optimize.py": "a8f8d3045f14fb0f1057878e205e1f68925ace483afbeda25700fa7eb18035bb",
+      "src/pyfast/schemas.py": "c8a9d892c951fd00b7eeea6432d80eee112b2d7b3fbafbca30c99c1bc87f5e60",
+      "src/pyfast/simulate.py": "8fe04d75407767b1eb0d02a82681e4c6ab173cfb272f5041c479b74cca26fd40",
+      "src/pyfast/units.py": "c5650194b34fa1256ae990a3f298f7dce8a05274234247626e36903806b76eaf",
+      "src/pyfast/equilibrium/__init__.py": "ca3f6dea0d3508306ed7fa20c0f65d42476170c69e41845211d56f07de09fbde",
+      "src/pyfast/equilibrium/isotherms.py": "32296d7f6cca315a74187147ea0dbcba240eef5899ba8fa118ec9353c7a68017",
+      "src/pyfast/kinetics/__init__.py": "649ca3e6d6b66bbea1b770bc741d2b0119c2834b9ecd92f97a0bfee48d538b6d",
+      "src/pyfast/kinetics/sphere.py": "62302c119bc6848901fb6a651a54014a5d1b02812332d87ac3be96f207a581eb",
+      "src/pyfast/reactors/__init__.py": "12da736d41fd213bf2daff936fc6a7d38e09784f073caef31ef8693d767a49a2",
+      "src/pyfast/reactors/batch.py": "ec9a6da2e16bce4ad9df35982e0c1d7526d315b6266ed65a38932e1c4508034c",
+      "src/pyfast/reactors/column.py": "a571f5be629e38a1c79636cb20af9583ea2b73691bd4600753824a2b5c8d587a",
+      "src/pyfast/reactors/hsdm.py": "97dcab9169ec3f785670735eeae2a7616d309e09a9ff0c2a6e4c45abd134ae0f",
+      "src/pyfast/solvers/__init__.py": "25f3e079fb88aa7cda41b292b5ee429385122096d98e02011cc46e552c38b15b",
+      "src/pyfast/solvers/integration.py": "6f3f9b6ac3493ba2daa0015b6fae59be2e146e4ef8ec306e43fc1625a0888f7a",
+      "src/pyfast/solvers/options.py": "d8e7fc7535013e4370e7ad00400cefc30a9e54c200c4edb8f1101fef9f94f7fd",
+      "src/pyfast/solvers/results.py": "179b263b01d522025fb92dc4e69462268544f4501c389e7f29f1273ca3bdd492",
+      "benchmarks/e01b/reference.py": "6f0c5334a40e5385d4b5f4ed00b8d0c371b178e3230dab7b604638f7bfb9e4e0",
+      "benchmarks/e01b/run.py": "4b4d1e6574d815ef00fe3e86d4e9d15399de19214f3def3a4a02996260ff1d13"
+    },
+    "combined_sha256": "95c16e109bdd518e7c975663f70ecb471ae244e4e1855859d3730c9bc3291fd6"
+  },
+  "known_concurrency": "Other workers active on independent modules/docs; CPU and wall times are local execution measurements, not performance comparisons.",
+  "scope": "Independent continuous finite-Pe ADE tracer reference; partial E01, no coupled HSDM or experimental validation",
+  "artifacts": {
+    "continuous_convergence.png": "25375c58101aae07afab52e8fde95f4451db755c7a7d9f3a308a4e908bbb9f10",
+    "metrics.csv": "023deb5a9d4a8f59dd1f8082bdae99098f15a9089ce5da1fffc99f769fcbf76c",
+    "protocol.json": "e189b9cfee6c4b7e97b109e6c5081d366fe93398e45fae062038beebe381bdf1",
+    "summary.json": "bafb207e14ff5b322ff9fe4ab26f8dcb55a035c7a84cfc34dbc3c6107c7092ef",
+    "trajectories.csv": "f1fbba1e09c84db4fa4d8788bf7dcc05675f20303e69d19f6841372d4b5f493c"
+  }
+}

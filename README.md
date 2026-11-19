@@ -44,6 +44,15 @@ Los casos son sintéticos y los controles de entrada no certifican validez físi
 El subestudio [E01-A](benchmarks/e01/README.md), congelado antes de ejecutarse,
 pasó sus 219 criterios en 40 integraciones. Verifica únicamente cuatro familias
 de referencia; E01 general permanece parcial y E04 bloqueado por metadatos.
+E01-B añadió 138 criterios satisfactorios en 16 integraciones frente a una
+[referencia continua a Pe finito](benchmarks/e01b/README.md). Ambos subprotocolos
+se fijaron antes de correr. No sustituyen el estudio acoplado completo HSDM.
+
+La calibración incorpora [perfiles gaussianos con sigma conocida](docs/profile_likelihood.md)
+y un [objetivo batch compartido](docs/batch_objective.md), como API experimental.
+La [demostración sintética](docs/profile_batch_example.md) no demuestra cobertura.
+El [inventario técnico](REGISTRATION_PREPARATION/README.md) prepara una revisión
+posterior; autoría, titularidad y jurisdicción siguen pendientes de confirmar.
 
 ```python
 from pyfast.simulate import batch, column

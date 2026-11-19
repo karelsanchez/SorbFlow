@@ -13,6 +13,11 @@ listas** para validación física independiente.
 4. [Desarrollo y comprobaciones](developer_workflow.md): pruebas y trazabilidad.
 5. [Interfaz web local opcional](web_interface.md): mismo núcleo, acceso desde navegador.
 6. [Diseño del estudio inverso E02-A](inverse_study_plan.md): propuesta aún no ejecutada.
+7. [Perfiles con sigma conocida](profile_likelihood.md) y
+   [objetivo batch compartido](batch_objective.md): API experimental, no estudio de cobertura.
+   [Ejemplo sintético](profile_batch_example.md).
+8. [Preparación técnica de registro](../REGISTRATION_PREPARATION/README.md):
+   inventario y campos pendientes de revisión humana.
 
 ## Referencias del proyecto
 
@@ -28,6 +33,8 @@ listas** para validación física independiente.
 - [Subprotocolo E01-A](../PAPER_ENVSOFT/E01_SUBPROTOCOL.md),
   [ejecución y límites](../benchmarks/e01/README.md) y
   [evidencia conservada](../audit/e01_a_20261119/summary.json).
+- [Subprotocolo E01-B](../PAPER_ENVSOFT/E01B_SUBPROTOCOL.md) y
+  [referencia continua a Pe finito](../benchmarks/e01b/README.md).
 
 Las materias primas y el azul de metileno del estudio inicial son una aplicación,
 no constantes del motor. Especies, materiales y recetas de N componentes son datos

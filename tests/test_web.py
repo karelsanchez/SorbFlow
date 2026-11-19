@@ -1,18 +1,133 @@
+import io
 import json
+import socket
 import threading
 import time
 from dataclasses import dataclass
+from email.message import Message
 from http import HTTPStatus
+from http.client import HTTPResponse
 from pathlib import Path
+from types import SimpleNamespace
 from urllib.error import HTTPError
 from urllib.request import ProxyHandler, Request, build_opener
 
 import pytest
 
+import pyfast.web.server as web_server
 from pyfast.web import create_server
 from pyfast.web.app import guarded_output_root
 from pyfast.web.config import MAX_REQUEST_BYTES, examples, parse_request, strict_object
-from pyfast.web.server import PyFASTHTTPServer, main
+from pyfast.web.server import PyFASTHTTPServer, RequestHandler, main
+
+
+class DrainConnection:
+    def __init__(self):
+        self.timeout = 5
+
+    def gettimeout(self):
+        return self.timeout
+
+    def settimeout(self, timeout):
+        self.timeout = timeout
+
+
+@pytest.mark.parametrize(
+    "framing,expected",
+    [
+        ({"Content-Length": "4"}, 4),
+        ({"Content-Length": str(MAX_REQUEST_BYTES + 1)}, 0),
+        ({"Content-Length": "bad"}, 0),
+        ({"Content-Length": "-1"}, 0),
+        ({"Content-Length": "4", "Transfer-Encoding": "chunked"}, 0),
+        ({}, 0),
+    ],
+)
+def test_rejected_post_drain_trusts_only_bounded_framing(framing, expected):
+    handler = RequestHandler.__new__(RequestHandler)
+    handler.headers = Message()
+    for key, value in framing.items():
+        handler.headers[key] = value
+    handler.rfile = io.BytesIO(b"bodytrailing")
+    handler.connection = DrainConnection()
+    handler._discard_rejected_body()
+    assert handler.rfile.tell() == expected
+    assert handler.connection.timeout == 5
+    handler._discard_rejected_body()
+    assert handler.rfile.tell() == expected  # An error response never drains twice.
+
+
+def test_rejected_post_drain_does_not_read_duplicate_or_consumed_body():
+    handler = RequestHandler.__new__(RequestHandler)
+    handler.headers = Message()
+    handler.headers["Content-Length"] = "4"
+    handler.headers["Content-Length"] = "4"
+    handler.rfile = io.BytesIO(b"body")
+    handler.connection = DrainConnection()
+    handler._discard_rejected_body()
+    assert handler.rfile.tell() == 0
+    del handler.headers["Content-Length"]
+    handler.headers["Content-Length"] = "4"
+    handler._discard_rejected_body()
+    assert handler.rfile.tell() == 0
+
+
+def test_rejected_post_drain_has_total_deadline_for_fragmented_input(monkeypatch):
+    class FragmentedBody(io.BytesIO):
+        def read1(self, size):
+            assert size <= 8192
+            return super().read1(1)
+
+    handler = RequestHandler.__new__(RequestHandler)
+    handler.headers = Message()
+    handler.headers["Content-Length"] = "4"
+    handler.connection = DrainConnection()
+    handler.rfile = FragmentedBody(b"body")
+    ticks = iter((0.0, 0.1, 0.6))
+    monkeypatch.setattr(web_server, "time", SimpleNamespace(monotonic=lambda: next(ticks)))
+    handler._discard_rejected_body()
+    assert handler.rfile.tell() == 1
+    assert handler.connection.timeout == 5
+
+
+def test_rejected_post_drain_restores_timeout_after_read_error():
+    class FailedBody(io.BytesIO):
+        def read1(self, size):
+            raise TimeoutError("fragment did not arrive")
+
+    handler = RequestHandler.__new__(RequestHandler)
+    handler.headers = Message()
+    handler.headers["Content-Length"] = "4"
+    handler.connection = DrainConnection()
+    handler.rfile = FailedBody()
+    handler._discard_rejected_body()
+    assert handler.connection.timeout == 5
+    assert handler._post_body_started
+
+
+def test_fragmented_unauthorized_post_returns_403_after_bounded_discard(client):
+    body = b"x" * 128
+    with socket.create_connection(
+        ("127.0.0.1", client.server.server_port), timeout=8
+    ) as connection:
+        headers = (
+            "POST /api/validate HTTP/1.1\r\n"
+            f"Host: 127.0.0.1:{client.server.server_port}\r\n"
+            "Origin: https://other.example\r\n"
+            "Content-Type: application/json\r\n"
+            f"Content-Length: {len(body)}\r\n\r\n"
+        ).encode("ascii")
+        connection.sendall(headers + body[:1])
+        connection.settimeout(0.05)
+        with pytest.raises(TimeoutError):
+            connection.recv(1)
+        connection.sendall(body[1:])
+        connection.settimeout(8)
+        response = HTTPResponse(connection)
+        response.begin()
+        assert response.status == 403
+        assert "Cross-origin" in json.loads(response.read())["error"]
+    assert not client.output.exists()
 
 
 @dataclass

@@ -1,0 +1,688 @@
+{
+  "protocol_id": "E01-A",
+  "protocol_sha256": "a62addb00e66e283ff413b8169f0fbd910dc6789aa7509cb2e207446fa1992c6",
+  "status": "PASS_SCOPED_E01_A",
+  "full_e01_complete": false,
+  "experimental_validation": false,
+  "source_stable_during_execution": true,
+  "cases": [
+    {
+      "case_id": "batch_adsorption_BDF_0",
+      "solver_diagnostics": {
+        "nfev": 98,
+        "njev": 1,
+        "nlu": 14,
+        "accepted_steps": 48,
+        "max_abs_mass_residual_kg": 3.3881317890172014e-21,
+        "max_scaled_mass_residual": 3.388131789017201e-16,
+        "min_concentration_kg_m3": 0.005000046716557794,
+        "min_loading_kg_kg": 0.0
+      },
+      "numerical_sha256": "f192f163a8afe019455b38f31cdcc6ba641b0e1b7aeafd9751efdbe5896217dd",
+      "status": "PASS",
+      "elapsed_s": 0.021865899907425046
+    },
+    {
+      "case_id": "batch_adsorption_BDF_1",
+      "solver_diagnostics": {
+        "nfev": 206,
+        "njev": 1,
+        "nlu": 19,
+        "accepted_steps": 84,
+        "max_abs_mass_residual_kg": 5.082197683525802e-21,
+        "max_scaled_mass_residual": 5.082197683525802e-16,
+        "min_concentration_kg_m3": 0.005000031906825933,
+        "min_loading_kg_kg": 0.0
+      },
+      "numerical_sha256": "ddc41e3a51230541851c29bcb2814353cbaf5201e25b01417c5bc6ca381c466a",
+      "status": "PASS",
+      "elapsed_s": 0.03132890001870692
+    },
+    {
+      "case_id": "batch_adsorption_BDF_2",
+      "solver_diagnostics": {
+        "nfev": 414,
+        "njev": 1,
+        "nlu": 30,
+        "accepted_steps": 152,
+        "max_abs_mass_residual_kg": 3.3881317890172014e-21,
+        "max_scaled_mass_residual": 3.388131789017201e-16,
+        "min_concentration_kg_m3": 0.005000030735367749,
+        "min_loading_kg_kg": 0.0
+      },
+      "numerical_sha256": "8a76bc515f5401b1fc8ff897e1b55a1b6fba1bf653bfe6d1149f34ae4bd3efd9",
+      "status": "PASS",
+      "elapsed_s": 0.05148250004276633
+    },
+    {
+      "case_id": "batch_adsorption_Radau_0",
+      "solver_diagnostics": {
+        "nfev": 138,
+        "njev": 2,
+        "nlu": 30,
+        "accepted_steps": 19,
+        "max_abs_mass_residual_kg": 1.6940658945086007e-21,
+        "max_scaled_mass_residual": 1.6940658945086004e-16,
+        "min_concentration_kg_m3": 0.005000031974636889,
+        "min_loading_kg_kg": 0.0
+      },
+      "numerical_sha256": "a42ef8f1a66f1f13bc4e6fc99232573aa5c205913eb14fb67c696db1251db01b",
+      "status": "PASS",
+      "elapsed_s": 0.0218923999927938
+    },
+    {
+      "case_id": "batch_adsorption_Radau_1",
+      "solver_diagnostics": {
+        "nfev": 355,
+        "njev": 2,
+        "nlu": 44,
+        "accepted_steps": 50,
+        "max_abs_mass_residual_kg": 3.3881317890172014e-21,
+        "max_scaled_mass_residual": 3.388131789017201e-16,
+        "min_concentration_kg_m3": 0.0050000307503300905,
+        "min_loading_kg_kg": 0.0
+      },
+      "numerical_sha256": "68356d9af5c68448e50469e3bb0d0dc1bbe9cf420499772864ed9c5ca4ae7094",
+      "status": "PASS",
+      "elapsed_s": 0.03442509984597564
+    },
+    {
+      "case_id": "batch_adsorption_Radau_2",
+      "solver_diagnostics": {
+        "nfev": 1029,
+        "njev": 3,
+        "nlu": 52,
+        "accepted_steps": 145,
+        "max_abs_mass_residual_kg": 3.3881317890172014e-21,
+        "max_scaled_mass_residual": 3.388131789017201e-16,
+        "min_concentration_kg_m3": 0.005000030721248916,
+        "min_loading_kg_kg": 0.0
+      },
+      "numerical_sha256": "704d717c4ce6ce1b0158dca7f51df19df2b160c34f72aea0d907da9e7c3f725a",
+      "status": "PASS",
+      "elapsed_s": 0.07575999991968274
+    },
+    {
+      "case_id": "batch_desorption_BDF_0",
+      "solver_diagnostics": {
+        "nfev": 76,
+        "njev": 1,
+        "nlu": 11,
+        "accepted_steps": 37,
+        "max_abs_mass_residual_kg": 6.776263578034403e-21,
+        "max_scaled_mass_residual": 1.3552527156068805e-16,
+        "min_concentration_kg_m3": 0.01,
+        "min_loading_kg_kg": 0.012500103258341866
+      },
+      "numerical_sha256": "0b05db953686b0f53b8ff17c901ca57c5d4f35d37f11f4a8fff348486df55ef8",
+      "status": "PASS",
+      "elapsed_s": 0.01865179999731481
+    },
+    {
+      "case_id": "batch_desorption_BDF_1",
+      "solver_diagnostics": {
+        "nfev": 142,
+        "njev": 1,
+        "nlu": 16,
+        "accepted_steps": 70,
+        "max_abs_mass_residual_kg": 1.3552527156068805e-20,
+        "max_scaled_mass_residual": 2.710505431213761e-16,
+        "min_concentration_kg_m3": 0.01,
+        "min_loading_kg_kg": 0.012500047969294333
+      },
+      "numerical_sha256": "de2163609e07afef3b76600dccb64bd44340c2bd870e2772af1a1fdbf348116b",
+      "status": "PASS",
+      "elapsed_s": 0.02443210012279451
+    },
+    {
+      "case_id": "batch_desorption_BDF_2",
+      "solver_diagnostics": {
+        "nfev": 262,
+        "njev": 1,
+        "nlu": 27,
+        "accepted_steps": 130,
+        "max_abs_mass_residual_kg": 4.743384504624082e-20,
+        "max_scaled_mass_residual": 9.486769009248164e-16,
+        "min_concentration_kg_m3": 0.01,
+        "min_loading_kg_kg": 0.012500046137150455
+      },
+      "numerical_sha256": "f02976ca3d6de2f73837833e7b85f245429df40e22548ed675f69a5d766bfc9e",
+      "status": "PASS",
+      "elapsed_s": 0.03608689992688596
+    },
+    {
+      "case_id": "batch_desorption_Radau_0",
+      "solver_diagnostics": {
+        "nfev": 107,
+        "njev": 1,
+        "nlu": 24,
+        "accepted_steps": 15,
+        "max_abs_mass_residual_kg": 6.776263578034403e-21,
+        "max_scaled_mass_residual": 1.3552527156068805e-16,
+        "min_concentration_kg_m3": 0.01,
+        "min_loading_kg_kg": 0.012500047497241156
+      },
+      "numerical_sha256": "915e75fbd36f30f10745bc02929949ab811c5c88fb30fe81a80976ef319099b6",
+      "status": "PASS",
+      "elapsed_s": 0.017332199960947037
+    },
+    {
+      "case_id": "batch_desorption_Radau_1",
+      "solver_diagnostics": {
+        "nfev": 282,
+        "njev": 1,
+        "nlu": 32,
+        "accepted_steps": 40,
+        "max_abs_mass_residual_kg": 6.776263578034403e-21,
+        "max_scaled_mass_residual": 1.3552527156068805e-16,
+        "min_concentration_kg_m3": 0.01,
+        "min_loading_kg_kg": 0.012500046123199004
+      },
+      "numerical_sha256": "76b5ea0c58d7d806cbe0a5705ea9b61cb53899abad219cceb2850461e407d3a9",
+      "status": "PASS",
+      "elapsed_s": 0.027878099819645286
+    },
+    {
+      "case_id": "batch_desorption_Radau_2",
+      "solver_diagnostics": {
+        "nfev": 848,
+        "njev": 2,
+        "nlu": 38,
+        "accepted_steps": 120,
+        "max_abs_mass_residual_kg": 2.0328790734103208e-20,
+        "max_scaled_mass_residual": 4.0657581468206416e-16,
+        "min_concentration_kg_m3": 0.01,
+        "min_loading_kg_kg": 0.012500046082017945
+      },
+      "numerical_sha256": "0482b5958f9cc387286702c01981eddfa8355470bb98e03ee4e8b94eef350097",
+      "status": "PASS",
+      "elapsed_s": 0.06118620000779629
+    },
+    {
+      "case_id": "batch_equilibrium_BDF_0",
+      "solver_diagnostics": {
+        "nfev": 21,
+        "njev": 1,
+        "nlu": 10,
+        "accepted_steps": 19,
+        "max_abs_mass_residual_kg": 0.0,
+        "max_scaled_mass_residual": 0.0,
+        "min_concentration_kg_m3": 0.01,
+        "min_loading_kg_kg": 0.005
+      },
+      "numerical_sha256": "751ccf20fcdb1409c4741ed5c95d0fa9d7d2b8bed48c3b97cdb41e0e8f0e65bb",
+      "status": "PASS",
+      "elapsed_s": 0.01278810016810894
+    },
+    {
+      "case_id": "batch_equilibrium_BDF_1",
+      "solver_diagnostics": {
+        "nfev": 21,
+        "njev": 1,
+        "nlu": 10,
+        "accepted_steps": 19,
+        "max_abs_mass_residual_kg": 0.0,
+        "max_scaled_mass_residual": 0.0,
+        "min_concentration_kg_m3": 0.01,
+        "min_loading_kg_kg": 0.005
+      },
+      "numerical_sha256": "74a3506af2e4dd2aa4dbb168c2fc4c07bb3ff96c912022bd991a411bade7f838",
+      "status": "PASS",
+      "elapsed_s": 0.0125343999825418
+    },
+    {
+      "case_id": "batch_equilibrium_BDF_2",
+      "solver_diagnostics": {
+        "nfev": 21,
+        "njev": 1,
+        "nlu": 10,
+        "accepted_steps": 19,
+        "max_abs_mass_residual_kg": 0.0,
+        "max_scaled_mass_residual": 0.0,
+        "min_concentration_kg_m3": 0.01,
+        "min_loading_kg_kg": 0.005
+      },
+      "numerical_sha256": "a8aa3aa32290c6e01010c60ae03f0ee566a6111881061fa2f94e9a730684c1f1",
+      "status": "PASS",
+      "elapsed_s": 0.013140599941834807
+    },
+    {
+      "case_id": "batch_equilibrium_Radau_0",
+      "solver_diagnostics": {
+        "nfev": 42,
+        "njev": 1,
+        "nlu": 20,
+        "accepted_steps": 10,
+        "max_abs_mass_residual_kg": 0.0,
+        "max_scaled_mass_residual": 0.0,
+        "min_concentration_kg_m3": 0.01,
+        "min_loading_kg_kg": 0.005
+      },
+      "numerical_sha256": "68d96b07bec1c667409dc8e60d6f6bb81d6cea534af25b3433f52efe9e272f0c",
+      "status": "PASS",
+      "elapsed_s": 0.012785200029611588
+    },
+    {
+      "case_id": "batch_equilibrium_Radau_1",
+      "solver_diagnostics": {
+        "nfev": 42,
+        "njev": 1,
+        "nlu": 20,
+        "accepted_steps": 10,
+        "max_abs_mass_residual_kg": 0.0,
+        "max_scaled_mass_residual": 0.0,
+        "min_concentration_kg_m3": 0.01,
+        "min_loading_kg_kg": 0.005
+      },
+      "numerical_sha256": "65a33d5ab21bc6407737930cca14695702dcf249b8853ac2f38d2e9759ad9597",
+      "status": "PASS",
+      "elapsed_s": 0.012701699975878
+    },
+    {
+      "case_id": "batch_equilibrium_Radau_2",
+      "solver_diagnostics": {
+        "nfev": 42,
+        "njev": 1,
+        "nlu": 20,
+        "accepted_steps": 10,
+        "max_abs_mass_residual_kg": 0.0,
+        "max_scaled_mass_residual": 0.0,
+        "min_concentration_kg_m3": 0.01,
+        "min_loading_kg_kg": 0.005
+      },
+      "numerical_sha256": "ed46866d7cc93e48ad979c0bdc1bb65866462f62dc6c5739c70526d157de662a",
+      "status": "PASS",
+      "elapsed_s": 0.01269709994085133
+    },
+    {
+      "case_id": "batch_empty_BDF_0",
+      "solver_diagnostics": {
+        "nfev": 21,
+        "njev": 1,
+        "nlu": 10,
+        "accepted_steps": 19,
+        "max_abs_mass_residual_kg": 0.0,
+        "max_scaled_mass_residual": 0.0,
+        "min_concentration_kg_m3": 0.0,
+        "min_loading_kg_kg": 0.0
+      },
+      "numerical_sha256": "262229106c604cd243366a494e5ed70b766cf166d2a09f87c3298316f4e801b6",
+      "status": "PASS",
+      "elapsed_s": 0.012684999965131283
+    },
+    {
+      "case_id": "batch_empty_BDF_1",
+      "solver_diagnostics": {
+        "nfev": 21,
+        "njev": 1,
+        "nlu": 10,
+        "accepted_steps": 19,
+        "max_abs_mass_residual_kg": 0.0,
+        "max_scaled_mass_residual": 0.0,
+        "min_concentration_kg_m3": 0.0,
+        "min_loading_kg_kg": 0.0
+      },
+      "numerical_sha256": "0e4c5ae7f2ef2712385d4bb3c53e039d8a84277ca0d98801bc622fb99b1a64e2",
+      "status": "PASS",
+      "elapsed_s": 0.012520200107246637
+    },
+    {
+      "case_id": "batch_empty_BDF_2",
+      "solver_diagnostics": {
+        "nfev": 21,
+        "njev": 1,
+        "nlu": 10,
+        "accepted_steps": 19,
+        "max_abs_mass_residual_kg": 0.0,
+        "max_scaled_mass_residual": 0.0,
+        "min_concentration_kg_m3": 0.0,
+        "min_loading_kg_kg": 0.0
+      },
+      "numerical_sha256": "ad8863a56bf1a38404f7f8b25a41ec9e6d76d0d4f078bd67700a4d542c99bf4a",
+      "status": "PASS",
+      "elapsed_s": 0.012851800071075559
+    },
+    {
+      "case_id": "batch_empty_Radau_0",
+      "solver_diagnostics": {
+        "nfev": 42,
+        "njev": 1,
+        "nlu": 20,
+        "accepted_steps": 10,
+        "max_abs_mass_residual_kg": 0.0,
+        "max_scaled_mass_residual": 0.0,
+        "min_concentration_kg_m3": 0.0,
+        "min_loading_kg_kg": 0.0
+      },
+      "numerical_sha256": "0ea2cb5c6e60a4c1e84aa39d8ecec5eb9a361009e757b80bb1792dcb36cd491d",
+      "status": "PASS",
+      "elapsed_s": 0.013075300026685
+    },
+    {
+      "case_id": "batch_empty_Radau_1",
+      "solver_diagnostics": {
+        "nfev": 42,
+        "njev": 1,
+        "nlu": 20,
+        "accepted_steps": 10,
+        "max_abs_mass_residual_kg": 0.0,
+        "max_scaled_mass_residual": 0.0,
+        "min_concentration_kg_m3": 0.0,
+        "min_loading_kg_kg": 0.0
+      },
+      "numerical_sha256": "be5b6c38542c4aa55a7c2fcdd584e98c511c1ce8570442ab0fcf3d701594c152",
+      "status": "PASS",
+      "elapsed_s": 0.012534599984064698
+    },
+    {
+      "case_id": "batch_empty_Radau_2",
+      "solver_diagnostics": {
+        "nfev": 42,
+        "njev": 1,
+        "nlu": 20,
+        "accepted_steps": 10,
+        "max_abs_mass_residual_kg": 0.0,
+        "max_scaled_mass_residual": 0.0,
+        "min_concentration_kg_m3": 0.0,
+        "min_loading_kg_kg": 0.0
+      },
+      "numerical_sha256": "14a34af6a60e189f9f057b5333246e7c449eb2e0baa451eeaabca95b81e619a0",
+      "status": "PASS",
+      "elapsed_s": 0.012763499980792403
+    },
+    {
+      "case_id": "tracer_BDF_25",
+      "front_l1_normalized": 0.15898147491624406,
+      "residence_time_s": 31.41592653589794,
+      "t10_s": 23.680308231601494,
+      "t50_s": 30.998069444128372,
+      "t90_s": 39.689203969634576,
+      "solver_diagnostics": {
+        "nfev": 1040,
+        "njev": 1,
+        "nlu": 92,
+        "accepted_steps": 519,
+        "max_abs_mass_residual_kg": 3.791299619575547e-20,
+        "max_scaled_mass_residual": 3.969992585648189e-12,
+        "min_concentration_kg_m3": 0.0,
+        "min_loading_kg_kg": 0.0
+      },
+      "numerical_sha256": "2b0972466d1b4cb6c90c0ab3ddeee904d05d96d4eb43e15139c28427cb29d727",
+      "status": "PASS",
+      "elapsed_s": 0.14625500002875924
+    },
+    {
+      "case_id": "tracer_BDF_50",
+      "front_l1_normalized": 0.11260593083525969,
+      "residence_time_s": 31.41592653589794,
+      "t10_s": 25.873342832289808,
+      "t50_s": 31.206752207569572,
+      "t90_s": 37.227252229766535,
+      "solver_diagnostics": {
+        "nfev": 1344,
+        "njev": 1,
+        "nlu": 117,
+        "accepted_steps": 671,
+        "max_abs_mass_residual_kg": 2.809105360230082e-20,
+        "max_scaled_mass_residual": 5.862728349268883e-12,
+        "min_concentration_kg_m3": 0.0,
+        "min_loading_kg_kg": 0.0
+      },
+      "numerical_sha256": "1101ecbf985ab7b9b29981ef2c2281b6ed9bbb073f5d3c632a3ed50554760a37",
+      "status": "PASS",
+      "elapsed_s": 0.1864157000090927
+    },
+    {
+      "case_id": "tracer_BDF_100",
+      "front_l1_normalized": 0.0796929049912971,
+      "residence_time_s": 31.41592653589794,
+      "t10_s": 27.462771684416055,
+      "t50_s": 31.311283113919824,
+      "t90_s": 35.503352607694715,
+      "solver_diagnostics": {
+        "nfev": 1746,
+        "njev": 1,
+        "nlu": 151,
+        "accepted_steps": 872,
+        "max_abs_mass_residual_kg": 2.0881002280307945e-20,
+        "max_scaled_mass_residual": 8.716087430939943e-12,
+        "min_concentration_kg_m3": 0.0,
+        "min_loading_kg_kg": 0.0
+      },
+      "numerical_sha256": "9e4a1a281a1edc31b3858b998c03333014896fedfddc56c3a909b948bf252adb",
+      "status": "PASS",
+      "elapsed_s": 0.2634419999085367
+    },
+    {
+      "case_id": "tracer_BDF_200",
+      "front_l1_normalized": 0.0563778272565006,
+      "residence_time_s": 31.41592653589794,
+      "t10_s": 28.604487953374495,
+      "t50_s": 31.36359802940223,
+      "t90_s": 34.29472520890079,
+      "solver_diagnostics": {
+        "nfev": 2296,
+        "njev": 1,
+        "nlu": 197,
+        "accepted_steps": 1147,
+        "max_abs_mass_residual_kg": 1.5603935075200314e-20,
+        "max_scaled_mass_residual": 1.2978846958882175e-11,
+        "min_concentration_kg_m3": 0.0,
+        "min_loading_kg_kg": 0.0
+      },
+      "numerical_sha256": "92b41d523c5065de2b6768e7a38fba04dd87c94f30799629be12239dce98c8a2",
+      "status": "PASS",
+      "elapsed_s": 0.39877480012364686
+    },
+    {
+      "case_id": "tracer_BDF_400",
+      "front_l1_normalized": 0.039877609615716465,
+      "residence_time_s": 31.41592653589794,
+      "t10_s": 29.41981484515854,
+      "t50_s": 31.38976262991936,
+      "t90_s": 33.44538549914142,
+      "solver_diagnostics": {
+        "nfev": 3040,
+        "njev": 1,
+        "nlu": 259,
+        "accepted_steps": 1519,
+        "max_abs_mass_residual_kg": 1.1678135888023645e-20,
+        "max_scaled_mass_residual": 1.934756878162625e-11,
+        "min_concentration_kg_m3": -5e-324,
+        "min_loading_kg_kg": 0.0
+      },
+      "numerical_sha256": "758703d05a8c43526bc98ff5a31d69f4ad3ca7317881b4bd62dad36f95cfb802",
+      "status": "PASS",
+      "elapsed_s": 0.5784334000200033
+    },
+    {
+      "case_id": "tracer_Radau_25",
+      "front_l1_normalized": 0.15898147001932664,
+      "residence_time_s": 31.41592653589794,
+      "t10_s": 23.680308342994845,
+      "t50_s": 30.998069266101705,
+      "t90_s": 39.68920451983334,
+      "solver_diagnostics": {
+        "nfev": 5290,
+        "njev": 1,
+        "nlu": 72,
+        "accepted_steps": 755,
+        "max_abs_mass_residual_kg": 2.0536930055736864e-20,
+        "max_scaled_mass_residual": 2.917290916074954e-12,
+        "min_concentration_kg_m3": 0.0,
+        "min_loading_kg_kg": 0.0
+      },
+      "numerical_sha256": "9d228a69a946c43fbc3a849bfee2fb9574747ba039162691d04e3f5fc1482460",
+      "status": "PASS",
+      "elapsed_s": 0.4308317000977695
+    },
+    {
+      "case_id": "tracer_Radau_50",
+      "front_l1_normalized": 0.11260592547067826,
+      "residence_time_s": 31.41592653589794,
+      "t10_s": 25.873342934108404,
+      "t50_s": 31.206752083494234,
+      "t90_s": 37.22725250997495,
+      "solver_diagnostics": {
+        "nfev": 6984,
+        "njev": 1,
+        "nlu": 76,
+        "accepted_steps": 997,
+        "max_abs_mass_residual_kg": 1.5820036010229793e-20,
+        "max_scaled_mass_residual": 4.442489353698782e-12,
+        "min_concentration_kg_m3": 0.0,
+        "min_loading_kg_kg": 0.0
+      },
+      "numerical_sha256": "fd1ce897e09dfb1ae609c9baafdeec4ae70437f8e5d8213a09aff4b1328b97a3",
+      "status": "PASS",
+      "elapsed_s": 0.5658384999260306
+    },
+    {
+      "case_id": "tracer_Radau_100",
+      "front_l1_normalized": 0.07969289885818953,
+      "residence_time_s": 31.41592653589794,
+      "t10_s": 27.462771772287272,
+      "t50_s": 31.31128303534939,
+      "t90_s": 35.50335270493414,
+      "solver_diagnostics": {
+        "nfev": 9301,
+        "njev": 1,
+        "nlu": 80,
+        "accepted_steps": 1328,
+        "max_abs_mass_residual_kg": 1.19563434694337e-20,
+        "max_scaled_mass_residual": 6.8179247152209395e-12,
+        "min_concentration_kg_m3": 0.0,
+        "min_loading_kg_kg": 0.0
+      },
+      "numerical_sha256": "2115ee6c2fb06d71d43d31d266d37c2db96ea3b62fd091b5fd852a6870ff9d48",
+      "status": "PASS",
+      "elapsed_s": 0.7931290999986231
+    },
+    {
+      "case_id": "tracer_Radau_200",
+      "front_l1_normalized": 0.05637782146286987,
+      "residence_time_s": 31.41592653589794,
+      "t10_s": 28.604488026065237,
+      "t50_s": 31.363597984659922,
+      "t90_s": 34.29472518707195,
+      "solver_diagnostics": {
+        "nfev": 12451,
+        "njev": 1,
+        "nlu": 82,
+        "accepted_steps": 1778,
+        "max_abs_mass_residual_kg": 9.213137662615622e-21,
+        "max_scaled_mass_residual": 1.0516996398978696e-11,
+        "min_concentration_kg_m3": 0.0,
+        "min_loading_kg_kg": 0.0
+      },
+      "numerical_sha256": "206b0572acaacdc7a2df04d59cde16b889475809920f763a999cffc149325335",
+      "status": "PASS",
+      "elapsed_s": 1.1675738000776619
+    },
+    {
+      "case_id": "tracer_Radau_400",
+      "front_l1_normalized": 0.039877604680598214,
+      "residence_time_s": 31.41592653589794,
+      "t10_s": 29.419814907962053,
+      "t50_s": 31.389762608655396,
+      "t90_s": 33.44538540287508,
+      "solver_diagnostics": {
+        "nfev": 16787,
+        "njev": 1,
+        "nlu": 86,
+        "accepted_steps": 2397,
+        "max_abs_mass_residual_kg": 7.337092033345355e-21,
+        "max_scaled_mass_residual": 1.60149575369982e-11,
+        "min_concentration_kg_m3": -1e-323,
+        "min_loading_kg_kg": 0.0
+      },
+      "numerical_sha256": "b9fe54445a2faa007715608367161fccc55f41a0674bd194961e3c2d80092544",
+      "status": "PASS",
+      "elapsed_s": 1.8881121000740677
+    },
+    {
+      "case_id": "sphere_BDF_10",
+      "max_mean_relative_error": 0.05749889855037405,
+      "nfev": 1388,
+      "njev": 2,
+      "nlu": 111,
+      "accepted_steps": 628,
+      "status": "PASS",
+      "elapsed_s": 0.19971869979053736
+    },
+    {
+      "case_id": "sphere_BDF_20",
+      "max_mean_relative_error": 0.012343834262013183,
+      "nfev": 1671,
+      "njev": 2,
+      "nlu": 133,
+      "accepted_steps": 760,
+      "status": "PASS",
+      "elapsed_s": 0.22603040002286434
+    },
+    {
+      "case_id": "sphere_BDF_40",
+      "max_mean_relative_error": 0.0030086638176794515,
+      "nfev": 1920,
+      "njev": 2,
+      "nlu": 153,
+      "accepted_steps": 883,
+      "status": "PASS",
+      "elapsed_s": 0.2642679000273347
+    },
+    {
+      "case_id": "sphere_BDF_80",
+      "max_mean_relative_error": 0.0007477393321671386,
+      "nfev": 2157,
+      "njev": 2,
+      "nlu": 172,
+      "accepted_steps": 998,
+      "status": "PASS",
+      "elapsed_s": 0.3612244001124054
+    },
+    {
+      "case_id": "matrix_ldf_BDF",
+      "solver_diagnostics": {
+        "nfev": 488,
+        "njev": 1,
+        "nlu": 46,
+        "accepted_steps": 243,
+        "max_abs_mass_residual_kg": 1.7753363896919356e-22,
+        "max_scaled_mass_residual": 3.693510615299227e-16,
+        "min_concentration_kg_m3": 0.003,
+        "min_loading_kg_kg": 9.978649194130229e-05
+      },
+      "numerical_sha256": "4da929012f554e1c516a35a829421138e3d08ab35f9ae70d686ea54f6ead05eb",
+      "status": "PASS",
+      "elapsed_s": 0.07892880006693304
+    },
+    {
+      "case_id": "matrix_ldf_Radau",
+      "solver_diagnostics": {
+        "nfev": 1961,
+        "njev": 2,
+        "nlu": 54,
+        "accepted_steps": 279,
+        "max_abs_mass_residual_kg": 1.7368207924199353e-22,
+        "max_scaled_mass_residual": 3.613380580110004e-16,
+        "min_concentration_kg_m3": 0.003,
+        "min_loading_kg_kg": 9.978649141116539e-05
+      },
+      "numerical_sha256": "5a1ce1891b150418f67eaf4650ec8cad80ec30ea435dd18db66f7e91d40f1bd3",
+      "status": "PASS",
+      "elapsed_s": 0.1643340999726206
+    },
+    {
+      "case_id": "cross_case_criteria",
+      "status": "PASS",
+      "elapsed_s": 0.0001278999261558056
+    }
+  ],
+  "criteria_count": 219,
+  "criteria_failed": 0,
+  "elapsed_s": 8.290413900045678,
+  "plots": {
+    "status": "generated",
+    "matplotlib_version": "3.11.2"
+  }
+}
