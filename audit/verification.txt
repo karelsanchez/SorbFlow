@@ -1,0 +1,282 @@
+PyFAST foundation verification — 2026-11-18 (America/Bogota)
+Scope: units/schemas/packaging only; no numerical solver implemented or validated.
+
+COMMAND: D:\PyFAST\.venv\Scripts\python.exe -m pip check
+EXIT: 0
+No broken requirements found.
+
+
+COMMAND: D:\PyFAST\.venv\Scripts\python.exe -m pytest -p pytest_cov --cov=pyfast --cov-report=term-missing --cov-fail-under=90
+EXIT: 0
+============================= test session starts =============================
+platform win32 -- Python 3.11.2, pytest-9.2.0, pluggy-1.7.0
+rootdir: D:\PyFAST
+configfile: pyproject.toml
+testpaths: tests
+plugins: cov-7.1.0
+collected 101 items
+
+tests\test_schemas.py .................................................. [ 49%]
+..........................                                               [ 75%]
+tests\test_units.py .........................                            [100%]
+
+=============================== tests coverage ================================
+_______________ coverage: platform win32, python 3.11.2-final-0 _______________
+
+Name                                  Stmts   Miss  Cover   Missing
+-------------------------------------------------------------------
+src\pyfast\__init__.py                    4      0   100%
+src\pyfast\adapters\__init__.py           0      0   100%
+src\pyfast\calibration\__init__.py        0      0   100%
+src\pyfast\equilibrium\__init__.py        0      0   100%
+src\pyfast\io\__init__.py                 0      0   100%
+src\pyfast\kinetics\__init__.py           0      0   100%
+src\pyfast\optimization\__init__.py       0      0   100%
+src\pyfast\reactors\__init__.py           0      0   100%
+src\pyfast\schemas.py                   236      0   100%
+src\pyfast\solvers\__init__.py            0      0   100%
+src\pyfast\uncertainty\__init__.py        0      0   100%
+src\pyfast\units.py                      30      0   100%
+-------------------------------------------------------------------
+TOTAL                                   270      0   100%
+Required test coverage of 90% reached. Total coverage: 100.00%
+============================= 101 passed in 1.33s =============================
+
+
+COMMAND: D:\PyFAST\.venv\Scripts\python.exe -m ruff check .
+EXIT: 0
+All checks passed!
+
+
+COMMAND: D:\PyFAST\.venv\Scripts\python.exe -m ruff format --check .
+EXIT: 0
+25 files already formatted
+
+
+COMMAND: D:\PyFAST\.venv\Scripts\python.exe -m mypy
+EXIT: 0
+Success: no issues found in 12 source files
+
+
+COMMAND: D:\PyFAST\.venv\Scripts\python.exe examples/configuration.py
+EXIT: 0
+{"bed":{"diameter_m":0.02,"length_m":0.3,"mass_basis":"dry","material":"synthetic-adsorbent","particle_density_kg_m3":1200.0,"particle_diameter_m":0.0005,"porosity":0.4},"equilibrium":{"affinity_m3_kg":10.0,"kind":"langmuir","qmax_kg_kg":0.05},"kinetics":{"kind":"ldf","rate_s_inv":0.001},"operation":{"axial_dispersion_m2_s":0.0,"duration_s":28800.0,"flow_m3_s":8.333333333333335e-08,"initial_concentration_kg_m3":0.0,"initial_loading_kg_kg":0.0,"inlet_concentration_kg_m3":0.009999999999999998,"temperature_k":298.15},"schema_version":1,"species":{"molar_mass_kg_mol":null,"name":"synthetic-solute"}}
+fd0ef94edeff7fb8c62deb0c212e61db7f7349e72882049a4d14dd4300bfde7c
+
+
+COMMAND: D:\PyFAST\.venv\Scripts\python.exe -m build --no-isolation
+EXIT: 0
+* Getting build dependencies for sdist...
+running egg_info
+writing src\pyfast_adsorption.egg-info\PKG-INFO
+writing dependency_links to src\pyfast_adsorption.egg-info\dependency_links.txt
+writing requirements to src\pyfast_adsorption.egg-info\requires.txt
+writing top-level names to src\pyfast_adsorption.egg-info\top_level.txt
+reading manifest file 'src\pyfast_adsorption.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+adding license file 'LICENSE.md'
+writing manifest file 'src\pyfast_adsorption.egg-info\SOURCES.txt'
+* Building sdist...
+running sdist
+running egg_info
+writing src\pyfast_adsorption.egg-info\PKG-INFO
+writing dependency_links to src\pyfast_adsorption.egg-info\dependency_links.txt
+writing requirements to src\pyfast_adsorption.egg-info\requires.txt
+writing top-level names to src\pyfast_adsorption.egg-info\top_level.txt
+reading manifest file 'src\pyfast_adsorption.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+adding license file 'LICENSE.md'
+writing manifest file 'src\pyfast_adsorption.egg-info\SOURCES.txt'
+running check
+creating pyfast_adsorption-0.1.0.dev0
+creating pyfast_adsorption-0.1.0.dev0\audit
+creating pyfast_adsorption-0.1.0.dev0\examples
+creating pyfast_adsorption-0.1.0.dev0\src\pyfast
+creating pyfast_adsorption-0.1.0.dev0\src\pyfast\adapters
+creating pyfast_adsorption-0.1.0.dev0\src\pyfast\calibration
+creating pyfast_adsorption-0.1.0.dev0\src\pyfast\equilibrium
+creating pyfast_adsorption-0.1.0.dev0\src\pyfast\io
+creating pyfast_adsorption-0.1.0.dev0\src\pyfast\kinetics
+creating pyfast_adsorption-0.1.0.dev0\src\pyfast\optimization
+creating pyfast_adsorption-0.1.0.dev0\src\pyfast\reactors
+creating pyfast_adsorption-0.1.0.dev0\src\pyfast\solvers
+creating pyfast_adsorption-0.1.0.dev0\src\pyfast\uncertainty
+creating pyfast_adsorption-0.1.0.dev0\src\pyfast_adsorption.egg-info
+creating pyfast_adsorption-0.1.0.dev0\tests
+copying files to pyfast_adsorption-0.1.0.dev0...
+copying API_REFERENCE.md -> pyfast_adsorption-0.1.0.dev0
+copying ARCHITECTURE.md -> pyfast_adsorption-0.1.0.dev0
+copying AUDIT_REPORT.md -> pyfast_adsorption-0.1.0.dev0
+copying DEVELOPMENT_ROADMAP.md -> pyfast_adsorption-0.1.0.dev0
+copying IP_LICENSE_AUDIT.md -> pyfast_adsorption-0.1.0.dev0
+copying LICENSE.md -> pyfast_adsorption-0.1.0.dev0
+copying MANIFEST.in -> pyfast_adsorption-0.1.0.dev0
+copying MODEL_SPECIFICATION.md -> pyfast_adsorption-0.1.0.dev0
+copying README.md -> pyfast_adsorption-0.1.0.dev0
+copying VALIDATION_PLAN.md -> pyfast_adsorption-0.1.0.dev0
+copying pyproject.toml -> pyfast_adsorption-0.1.0.dev0
+copying audit\dependency_metadata.json -> pyfast_adsorption-0.1.0.dev0\audit
+copying audit\fast_inventory.json -> pyfast_adsorption-0.1.0.dev0\audit
+copying audit\requirements-local.txt -> pyfast_adsorption-0.1.0.dev0\audit
+copying examples\configuration.py -> pyfast_adsorption-0.1.0.dev0\examples
+copying src\pyfast\__init__.py -> pyfast_adsorption-0.1.0.dev0\src\pyfast
+copying src\pyfast\py.typed -> pyfast_adsorption-0.1.0.dev0\src\pyfast
+copying src\pyfast\schemas.py -> pyfast_adsorption-0.1.0.dev0\src\pyfast
+copying src\pyfast\units.py -> pyfast_adsorption-0.1.0.dev0\src\pyfast
+copying src\pyfast\adapters\__init__.py -> pyfast_adsorption-0.1.0.dev0\src\pyfast\adapters
+copying src\pyfast\calibration\__init__.py -> pyfast_adsorption-0.1.0.dev0\src\pyfast\calibration
+copying src\pyfast\equilibrium\__init__.py -> pyfast_adsorption-0.1.0.dev0\src\pyfast\equilibrium
+copying src\pyfast\io\__init__.py -> pyfast_adsorption-0.1.0.dev0\src\pyfast\io
+copying src\pyfast\kinetics\__init__.py -> pyfast_adsorption-0.1.0.dev0\src\pyfast\kinetics
+copying src\pyfast\optimization\__init__.py -> pyfast_adsorption-0.1.0.dev0\src\pyfast\optimization
+copying src\pyfast\reactors\__init__.py -> pyfast_adsorption-0.1.0.dev0\src\pyfast\reactors
+copying src\pyfast\solvers\__init__.py -> pyfast_adsorption-0.1.0.dev0\src\pyfast\solvers
+copying src\pyfast\uncertainty\__init__.py -> pyfast_adsorption-0.1.0.dev0\src\pyfast\uncertainty
+copying src\pyfast_adsorption.egg-info\PKG-INFO -> pyfast_adsorption-0.1.0.dev0\src\pyfast_adsorption.egg-info
+copying src\pyfast_adsorption.egg-info\SOURCES.txt -> pyfast_adsorption-0.1.0.dev0\src\pyfast_adsorption.egg-info
+copying src\pyfast_adsorption.egg-info\dependency_links.txt -> pyfast_adsorption-0.1.0.dev0\src\pyfast_adsorption.egg-info
+copying src\pyfast_adsorption.egg-info\requires.txt -> pyfast_adsorption-0.1.0.dev0\src\pyfast_adsorption.egg-info
+copying src\pyfast_adsorption.egg-info\top_level.txt -> pyfast_adsorption-0.1.0.dev0\src\pyfast_adsorption.egg-info
+copying tests\conftest.py -> pyfast_adsorption-0.1.0.dev0\tests
+copying tests\test_schemas.py -> pyfast_adsorption-0.1.0.dev0\tests
+copying tests\test_units.py -> pyfast_adsorption-0.1.0.dev0\tests
+Writing pyfast_adsorption-0.1.0.dev0\setup.cfg
+Creating tar archive
+removing 'pyfast_adsorption-0.1.0.dev0' (and everything under it)
+* Building wheel from sdist
+* Getting build dependencies for wheel...
+running egg_info
+writing src\pyfast_adsorption.egg-info\PKG-INFO
+writing dependency_links to src\pyfast_adsorption.egg-info\dependency_links.txt
+writing requirements to src\pyfast_adsorption.egg-info\requires.txt
+writing top-level names to src\pyfast_adsorption.egg-info\top_level.txt
+reading manifest file 'src\pyfast_adsorption.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+adding license file 'LICENSE.md'
+writing manifest file 'src\pyfast_adsorption.egg-info\SOURCES.txt'
+* Building wheel...
+running bdist_wheel
+running build
+running build_py
+creating build\lib\pyfast
+copying src\pyfast\schemas.py -> build\lib\pyfast
+copying src\pyfast\units.py -> build\lib\pyfast
+copying src\pyfast\__init__.py -> build\lib\pyfast
+creating build\lib\pyfast\adapters
+copying src\pyfast\adapters\__init__.py -> build\lib\pyfast\adapters
+creating build\lib\pyfast\calibration
+copying src\pyfast\calibration\__init__.py -> build\lib\pyfast\calibration
+creating build\lib\pyfast\equilibrium
+copying src\pyfast\equilibrium\__init__.py -> build\lib\pyfast\equilibrium
+creating build\lib\pyfast\io
+copying src\pyfast\io\__init__.py -> build\lib\pyfast\io
+creating build\lib\pyfast\kinetics
+copying src\pyfast\kinetics\__init__.py -> build\lib\pyfast\kinetics
+creating build\lib\pyfast\optimization
+copying src\pyfast\optimization\__init__.py -> build\lib\pyfast\optimization
+creating build\lib\pyfast\reactors
+copying src\pyfast\reactors\__init__.py -> build\lib\pyfast\reactors
+creating build\lib\pyfast\solvers
+copying src\pyfast\solvers\__init__.py -> build\lib\pyfast\solvers
+creating build\lib\pyfast\uncertainty
+copying src\pyfast\uncertainty\__init__.py -> build\lib\pyfast\uncertainty
+running egg_info
+writing src\pyfast_adsorption.egg-info\PKG-INFO
+writing dependency_links to src\pyfast_adsorption.egg-info\dependency_links.txt
+writing requirements to src\pyfast_adsorption.egg-info\requires.txt
+writing top-level names to src\pyfast_adsorption.egg-info\top_level.txt
+reading manifest file 'src\pyfast_adsorption.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+adding license file 'LICENSE.md'
+writing manifest file 'src\pyfast_adsorption.egg-info\SOURCES.txt'
+copying src\pyfast\py.typed -> build\lib\pyfast
+installing to build\bdist.win-amd64\wheel
+running install
+running install_lib
+creating build\bdist.win-amd64\wheel
+creating build\bdist.win-amd64\wheel\pyfast
+creating build\bdist.win-amd64\wheel\pyfast\adapters
+copying build\lib\pyfast\adapters\__init__.py -> build\bdist.win-amd64\wheel\.\pyfast\adapters
+creating build\bdist.win-amd64\wheel\pyfast\calibration
+copying build\lib\pyfast\calibration\__init__.py -> build\bdist.win-amd64\wheel\.\pyfast\calibration
+creating build\bdist.win-amd64\wheel\pyfast\equilibrium
+copying build\lib\pyfast\equilibrium\__init__.py -> build\bdist.win-amd64\wheel\.\pyfast\equilibrium
+creating build\bdist.win-amd64\wheel\pyfast\io
+copying build\lib\pyfast\io\__init__.py -> build\bdist.win-amd64\wheel\.\pyfast\io
+creating build\bdist.win-amd64\wheel\pyfast\kinetics
+copying build\lib\pyfast\kinetics\__init__.py -> build\bdist.win-amd64\wheel\.\pyfast\kinetics
+creating build\bdist.win-amd64\wheel\pyfast\optimization
+copying build\lib\pyfast\optimization\__init__.py -> build\bdist.win-amd64\wheel\.\pyfast\optimization
+copying build\lib\pyfast\py.typed -> build\bdist.win-amd64\wheel\.\pyfast
+creating build\bdist.win-amd64\wheel\pyfast\reactors
+copying build\lib\pyfast\reactors\__init__.py -> build\bdist.win-amd64\wheel\.\pyfast\reactors
+copying build\lib\pyfast\schemas.py -> build\bdist.win-amd64\wheel\.\pyfast
+creating build\bdist.win-amd64\wheel\pyfast\solvers
+copying build\lib\pyfast\solvers\__init__.py -> build\bdist.win-amd64\wheel\.\pyfast\solvers
+creating build\bdist.win-amd64\wheel\pyfast\uncertainty
+copying build\lib\pyfast\uncertainty\__init__.py -> build\bdist.win-amd64\wheel\.\pyfast\uncertainty
+copying build\lib\pyfast\units.py -> build\bdist.win-amd64\wheel\.\pyfast
+copying build\lib\pyfast\__init__.py -> build\bdist.win-amd64\wheel\.\pyfast
+running install_egg_info
+Copying src\pyfast_adsorption.egg-info to build\bdist.win-amd64\wheel\.\pyfast_adsorption-0.1.0.dev0-py3.11.egg-info
+running install_scripts
+creating build\bdist.win-amd64\wheel\pyfast_adsorption-0.1.0.dev0.dist-info\WHEEL
+creating 'D:\\PyFAST\\dist\\.tmp-5qiwy2n4\\pyfast_adsorption-0.1.0.dev0-py3-none-any.whl' and adding 'build\\bdist.win-amd64\\wheel' to it
+adding 'pyfast/__init__.py'
+adding 'pyfast/py.typed'
+adding 'pyfast/schemas.py'
+adding 'pyfast/units.py'
+adding 'pyfast/adapters/__init__.py'
+adding 'pyfast/calibration/__init__.py'
+adding 'pyfast/equilibrium/__init__.py'
+adding 'pyfast/io/__init__.py'
+adding 'pyfast/kinetics/__init__.py'
+adding 'pyfast/optimization/__init__.py'
+adding 'pyfast/reactors/__init__.py'
+adding 'pyfast/solvers/__init__.py'
+adding 'pyfast/uncertainty/__init__.py'
+adding 'pyfast_adsorption-0.1.0.dev0.dist-info/licenses/LICENSE.md'
+adding 'pyfast_adsorption-0.1.0.dev0.dist-info/METADATA'
+adding 'pyfast_adsorption-0.1.0.dev0.dist-info/WHEEL'
+adding 'pyfast_adsorption-0.1.0.dev0.dist-info/top_level.txt'
+adding 'pyfast_adsorption-0.1.0.dev0.dist-info/RECORD'
+removing build\bdist.win-amd64\wheel
+Successfully built pyfast_adsorption-0.1.0.dev0.tar.gz and pyfast_adsorption-0.1.0.dev0-py3-none-any.whl
+
+PASS: wheel and sdist contain no FAST binary/images, virtualenv or work assets.
+
+COMMAND: D:\PyFAST\.venv\Scripts\python.exe D:\PyFAST\.work\pip_local.py install --target D:\PyFAST\.work\wheel_env\Lib\site-packages --no-index --disable-pip-version-check --find-links D:\PyFAST\.work\pip-unpack-s007p32g D:\PyFAST\dist\pyfast_adsorption-0.1.0.dev0-py3-none-any.whl pytest
+EXIT: 0
+Looking in links: d:\PyFAST\.work\pip-unpack-s007p32g
+Processing .\dist\pyfast_adsorption-0.1.0.dev0-py3-none-any.whl
+Processing .\.work\pip-unpack-s007p32g\pytest-9.2.0-py3-none-any.whl
+Processing .\.work\pip-unpack-s007p32g\pint-0.25.3-py3-none-any.whl (from pyfast-adsorption==0.1.0.dev0)
+Processing .\.work\pip-unpack-s007p32g\flexcache-0.3-py3-none-any.whl (from pint<0.26,>=0.24->pyfast-adsorption==0.1.0.dev0)
+Processing .\.work\pip-unpack-s007p32g\flexparser-0.4-py3-none-any.whl (from pint<0.26,>=0.24->pyfast-adsorption==0.1.0.dev0)
+Processing .\.work\pip-unpack-s007p32g\platformdirs-4.14.7-py3-none-any.whl (from pint<0.26,>=0.24->pyfast-adsorption==0.1.0.dev0)
+Processing .\.work\pip-unpack-s007p32g\typing_extensions-4.16.0-py3-none-any.whl (from pint<0.26,>=0.24->pyfast-adsorption==0.1.0.dev0)
+Processing .\.work\pip-unpack-s007p32g\colorama-0.4.6-py2.py3-none-any.whl (from pytest)
+Processing .\.work\pip-unpack-s007p32g\iniconfig-2.3.1-py3-none-any.whl (from pytest)
+Processing .\.work\pip-unpack-s007p32g\packaging-26.3-py3-none-any.whl (from pytest)
+Processing .\.work\pip-unpack-s007p32g\pluggy-1.7.0-py3-none-any.whl (from pytest)
+Processing .\.work\pip-unpack-s007p32g\pygments-2.21.0-py3-none-any.whl (from pytest)
+Installing collected packages: typing-extensions, pygments, pluggy, platformdirs, packaging, iniconfig, colorama, pytest, flexparser, flexcache, pint, pyfast-adsorption
+
+Successfully installed colorama-0.4.6 flexcache-0.3 flexparser-0.4 iniconfig-2.3.1 packaging-26.3 pint-0.25.3 platformdirs-4.14.7 pluggy-1.7.0 pyfast-adsorption-0.1.0.dev0 pygments-2.21.0 pytest-9.2.0 typing-extensions-4.16.0
+
+
+COMMAND: D:\PyFAST\.work\wheel_env\Scripts\python.exe -c from pathlib import Path; import pyfast; assert Path(pyfast.__file__).is_relative_to(Path(r'D:\PyFAST\.work\wheel_env')); assert pyfast.to_si(pyfast.quantity(10,'mg/L'),'kg/m^3') > 0; print('Installed wheel import:',pyfast.__file__)
+EXIT: 0
+Installed wheel import: D:\PyFAST\.work\wheel_env\Lib\site-packages\pyfast\__init__.py
+
+
+COMMAND: D:\PyFAST\.work\wheel_env\Scripts\python.exe -m pytest D:\PyFAST\tests -q
+EXIT: 0
+........................................................................ [ 71%]
+.............................                                            [100%]
+101 passed in 0.54s
+
+PASS: original FAST archive SHA-256 unchanged: 535519e5388cb74728e8cb4c3c33c230d04a4c17cc99ac36fb58c46102589f23
+PASS: all checks completed. CI on other OS/Python versions not executed.
+FINAL DOCUMENTATION REBUILD: PASS. Final wheel package contents match tested installed wheel byte-for-byte.
+Final wheel/sdist exclude FAST resources; hashes refreshed after documentation rebuild.

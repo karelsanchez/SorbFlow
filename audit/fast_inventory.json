@@ -1,0 +1,358 @@
+{
+  "audit_date": "2026-11-18",
+  "source": "C:\\Users\\Karel\\Downloads\\FAST2.1beta.zip",
+  "archive_bytes": 1207065,
+  "archive_sha256": "535519e5388cb74728e8cb4c3c33c230d04a4c17cc99ac36fb58c46102589f23",
+  "original_size_and_mtime_unchanged": true,
+  "archive_crc_check": "PASS",
+  "executables_invoked": false,
+  "resources_extracted": false,
+  "counts": {
+    ".exe": 4,
+    ".jpg": 2,
+    ".gif": 43
+  },
+  "entries": [
+    {
+      "path": "FAST2.1beta.exe",
+      "bytes": 216385,
+      "sha256": "2f3ced4d557c0ebe3d6cea98cbb35e0ac2a4f701ccf3f475fc99d35f8cd047eb",
+      "crc32": "d7f43991",
+      "pe_header": {
+        "signature": "50450000",
+        "machine": "0x014c",
+        "sections": 3,
+        "linker_timestamp": 1180629293
+      },
+      "imported_dll_names": [
+        "ADVAPI32.dll",
+        "COMCTL32.dll",
+        "GDI32.dll",
+        "KERNEL32.DLL",
+        "OLEAUT32.dll",
+        "SHELL32.dll",
+        "USER32.dll",
+        "VERSION.dll",
+        "WINMM.dll",
+        "WSOCK32.dll",
+        "comdlg32.dll",
+        "ole32.dll"
+      ]
+    },
+    {
+      "path": "bin/Ellex150.jpg",
+      "bytes": 4964,
+      "sha256": "395e4e0989a1d05bf0301e64cb88bad94f0cc6544f4b983bf28d75f0b480e835",
+      "crc32": "80e9a77f"
+    },
+    {
+      "path": "bin/Point.gif",
+      "bytes": 43,
+      "sha256": "e4c8efe0cd4a34ef45c313760fe5bd92c0d0d61cf444ca99d53519d9d3657608",
+      "crc32": "d8fa16f5"
+    },
+    {
+      "path": "bin/Schimmel150.jpg",
+      "bytes": 21552,
+      "sha256": "d684fbfcea789646b229b2ab5b95481b0f7ef655ac2938c6e032bae1402b57ab",
+      "crc32": "b9d5dc39"
+    },
+    {
+      "path": "bin/HSDM.exe",
+      "bytes": 301056,
+      "sha256": "7f7e60d73876e6753d458fa5f3507bca69d23241e84e6e16f2bccee18d511f5b",
+      "crc32": "ac38ae43",
+      "pe_header": {
+        "signature": "50450000",
+        "machine": "0x014c",
+        "sections": 3,
+        "linker_timestamp": 1315646948
+      },
+      "imported_dll_names": [
+        "KERNEL32.dll"
+      ]
+    },
+    {
+      "path": "bin/LDF.exe",
+      "bytes": 174080,
+      "sha256": "caca97d53988bf485ac1aa9fb84fc2228383a9cc60135f4ad6b39b6ee97897b3",
+      "crc32": "e59ee995",
+      "pe_header": {
+        "signature": "50450000",
+        "machine": "0x014c",
+        "sections": 3,
+        "linker_timestamp": 1315646949
+      },
+      "imported_dll_names": [
+        "KERNEL32.dll"
+      ]
+    },
+    {
+      "path": "bin/DCBR.exe",
+      "bytes": 209920,
+      "sha256": "47b6bdce40d416cc162c9f9d1a1362b0786a9dfb971334a9903e8ababa059975",
+      "crc32": "e0cdabce",
+      "pe_header": {
+        "signature": "50450000",
+        "machine": "0x014c",
+        "sections": 3,
+        "linker_timestamp": 1315646950
+      },
+      "imported_dll_names": [
+        "KERNEL32.dll"
+      ]
+    },
+    {
+      "path": "help/Bi.gif",
+      "bytes": 16538,
+      "sha256": "6d9e687999826bcb190c3dd49e0de39c2d29bfe0275990938d75282c326b0c8e",
+      "crc32": "e6f077ac"
+    },
+    {
+      "path": "help/Blanc.gif",
+      "bytes": 591,
+      "sha256": "981b26877439361e1f32ea273304e4ea9110e571755d7aa8b1bf81888bb97f33",
+      "crc32": "41b77713"
+    },
+    {
+      "path": "help/BTC.gif",
+      "bytes": 9672,
+      "sha256": "e7f456d878a23e252c815c37e0270b4620da24ba2cd06ec23f01063972c5ba02",
+      "crc32": "80c5a488"
+    },
+    {
+      "path": "help/BV.gif",
+      "bytes": 10940,
+      "sha256": "a067c10b7b3e5e225ca5a53c24196912dad5ec990d46a490aed5c6edec9c73f8",
+      "crc32": "4394ccfd"
+    },
+    {
+      "path": "help/CalculationTime.gif",
+      "bytes": 7149,
+      "sha256": "1d3487ad561502d019e8c4a5492762c0f8595796a88e8160b780e6f73968c855",
+      "crc32": "1471f185"
+    },
+    {
+      "path": "help/Co.gif",
+      "bytes": 7713,
+      "sha256": "520a856f9fda0a36e17a89bfb80c312468a00aaa5323bac535743751ec1f635a",
+      "crc32": "14191577"
+    },
+    {
+      "path": "help/DCBR.gif",
+      "bytes": 17462,
+      "sha256": "ebb69455bc614d0fba959703fde469845d8dc6a48295f0f4534d293c6eb0299b",
+      "crc32": "10488c0b"
+    },
+    {
+      "path": "help/Dg.gif",
+      "bytes": 18076,
+      "sha256": "1c4eeb15ebd6db756c3fcc21f8a15ac4055c4b2ef7038c11a0daa32c4087dcb2",
+      "crc32": "7e5657af"
+    },
+    {
+      "path": "help/dimless.gif",
+      "bytes": 17925,
+      "sha256": "f5c9c819697772d94fbd59981eb396a68a6c32bf794a1685c355f630c7314878",
+      "crc32": "2bb199a2"
+    },
+    {
+      "path": "help/dp.gif",
+      "bytes": 8576,
+      "sha256": "25213b9c0b30dfaf3d39f9702fdc5e65154cafc9cc485a42541f28e1e94f781e",
+      "crc32": "f1a7dd7e"
+    },
+    {
+      "path": "help/Ds.gif",
+      "bytes": 20352,
+      "sha256": "5e8be086e389234ca7224ec8f60accb5f7e825960923b464853f6d78aac1b6a4",
+      "crc32": "b67a99e6"
+    },
+    {
+      "path": "help/eB.gif",
+      "bytes": 18320,
+      "sha256": "13f350d764195d717bf78502bc6965e0a3fdd23f8a145f6b3c603c2804f6508b",
+      "crc32": "24039990"
+    },
+    {
+      "path": "help/ebct.gif",
+      "bytes": 22819,
+      "sha256": "6445cdadcd8a04ac3c264af55cc18b216d7ef829309f09ec54aa6a54a07b70e9",
+      "crc32": "30e70492"
+    },
+    {
+      "path": "help/Help.gif",
+      "bytes": 11929,
+      "sha256": "e510e52d980b10de6fda74ce67b640c4a31c59f67c47c94c981ecaf3e00bd691",
+      "crc32": "7501f36e"
+    },
+    {
+      "path": "help/HSDMa.gif",
+      "bytes": 14726,
+      "sha256": "5e6b04eb929b3047f6c84c0673471120f1d3521b60593d150caeac211e72e503",
+      "crc32": "584af1f1"
+    },
+    {
+      "path": "help/HSDMb.gif",
+      "bytes": 15197,
+      "sha256": "69f59588017adefc56ba7660407b9d273614ed283384d367f5f0a0f4818ad0f0",
+      "crc32": "053301dc"
+    },
+    {
+      "path": "help/Info.gif",
+      "bytes": 23925,
+      "sha256": "5a412a435493db5b743b96510b8f3838b76d78d3bdf85b68a8820a4c18638901",
+      "crc32": "ebbd3a7a"
+    },
+    {
+      "path": "help/KF.gif",
+      "bytes": 17113,
+      "sha256": "a412b06b5012760759613b7c13b82b18e8498240043e6b643b88ff73576407ba",
+      "crc32": "c8306962"
+    },
+    {
+      "path": "help/kL.gif",
+      "bytes": 28181,
+      "sha256": "440d44bdd59467520177cc8343eca3f971e945ec0ea7cd388b7b216722fa7847",
+      "crc32": "1360cc11"
+    },
+    {
+      "path": "help/LDF.gif",
+      "bytes": 11294,
+      "sha256": "71372d7aba92d9d320916594e8d1c8fef4ef3844faf90180dda1fb37895bf129",
+      "crc32": "5e29f1d7"
+    },
+    {
+      "path": "help/m.gif",
+      "bytes": 19851,
+      "sha256": "1d384e0e07b247afaf4ae50143e82907c6ba3edbd297eb485d94b7271eb857d2",
+      "crc32": "72c42965"
+    },
+    {
+      "path": "help/n.gif",
+      "bytes": 20531,
+      "sha256": "fe306843438b04028ca83575ac42617a8810f5c5a56e36bc2eba2c386b85e56c",
+      "crc32": "511f9432"
+    },
+    {
+      "path": "help/Name.gif",
+      "bytes": 3468,
+      "sha256": "380e70d99ed3a67e077f9f43c74c05fddb35e697430e833d129b50dd3695579f",
+      "crc32": "5b97b584"
+    },
+    {
+      "path": "help/nd.gif",
+      "bytes": 14531,
+      "sha256": "8f7021eb3352491ca05ec85282e508f18c62db67d86a9640c181aa64e6cd4a47",
+      "crc32": "821e7dd0"
+    },
+    {
+      "path": "help/nofilm.gif",
+      "bytes": 25613,
+      "sha256": "c4521ccec5eafbffd66c85b6c1f081496a13c71da88e1e1144bf823e5e272734",
+      "crc32": "c2e9a76b"
+    },
+    {
+      "path": "help/Q.gif",
+      "bytes": 5650,
+      "sha256": "46524edfc2f1842522e69ae0d0c44fa86b1239e539441a8fab91d0d8b4d4b342",
+      "crc32": "4a9a12f1"
+    },
+    {
+      "path": "help/rho_B.gif",
+      "bytes": 17011,
+      "sha256": "2d2e5ceeabf2b2a93621915bda87201eb1c01b2d850e0afb68d0c8599df118a9",
+      "crc32": "08381ee9"
+    },
+    {
+      "path": "help/rho_P.gif",
+      "bytes": 15433,
+      "sha256": "0d734dab4b328d5475d232927f4ebf18922f777d4660cdf6a501fdcd445c2eee",
+      "crc32": "170b213c"
+    },
+    {
+      "path": "help/St.gif",
+      "bytes": 14507,
+      "sha256": "5b644174236ee3485629779b59b4360359facc978e284b7725f07215ba3ec6f4",
+      "crc32": "9e870b9e"
+    },
+    {
+      "path": "help/Start.gif",
+      "bytes": 15623,
+      "sha256": "85e9a312cbbdb775be1e37f3e6e4f64fe567f209d05e216bf9b1a2e297dbedce",
+      "crc32": "be35cf5d"
+    },
+    {
+      "path": "help/StartVar.gif",
+      "bytes": 17552,
+      "sha256": "fe5d44ab940f0a8cea307d78d0abd419d3d1054a78067f00b56e6792957a1616",
+      "crc32": "644adf64"
+    },
+    {
+      "path": "help/treal.gif",
+      "bytes": 36826,
+      "sha256": "cd545804150de78482df41e9e0ec94bdd3105026f0e5a8a10dccbbb54eab92d9",
+      "crc32": "305636c1"
+    },
+    {
+      "path": "help/UKF.gif",
+      "bytes": 12978,
+      "sha256": "08ce1754479567a5aa0b7d9dbeacd4ea73aac78d2e5f6cfeb2ba9a7047a72672",
+      "crc32": "fec26ac4"
+    },
+    {
+      "path": "help/Variation.gif",
+      "bytes": 17798,
+      "sha256": "40f8e6d0a459c7b6a382a4e4808cdeca1546747f78f38bae5c756cb785372d6e",
+      "crc32": "65c20f7a"
+    },
+    {
+      "path": "help/VT.gif",
+      "bytes": 36981,
+      "sha256": "6a44b8749efd522467ff637f95115d1eda6e8ee0f8f38cb029a71e9898e94e79",
+      "crc32": "931eb69b"
+    },
+    {
+      "path": "help/VTbM.gif",
+      "bytes": 36959,
+      "sha256": "a6f63c95e3700476602e972b989b685f9d7f26684706689f7627c7f499fa466d",
+      "crc32": "e4899125"
+    },
+    {
+      "path": "help/KLang.gif",
+      "bytes": 10095,
+      "sha256": "883548813c0fe8117f59c0fa78526a9b01ab5e5d28d97698fb8b0ab42b41c414",
+      "crc32": "7033ea04"
+    },
+    {
+      "path": "help/KLc.gif",
+      "bytes": 9610,
+      "sha256": "19bfecfb0d0f8f1c35be953149a4794c7a1543b4e103a87aa3d2b13b472de126",
+      "crc32": "0f9f29fe"
+    },
+    {
+      "path": "help/Freundlich.gif",
+      "bytes": 10111,
+      "sha256": "cf3bddefe78fce2e479fb722b497ab104dfcd1df8fce9f0605b71dd67a63fef4",
+      "crc32": "ec2f999d"
+    },
+    {
+      "path": "help/Langmuir.gif",
+      "bytes": 9358,
+      "sha256": "32a5778a473985eae4765ef79f5a9a0070885f31ca906b8af19e6fc8613b2b83",
+      "crc32": "41b9ac12"
+    },
+    {
+      "path": "help/qmax.gif",
+      "bytes": 8282,
+      "sha256": "2412dabf177fa6898f9d13fadf8a1cf43ce81d88f59cb03299925fce83911545",
+      "crc32": "5b3dc374"
+    },
+    {
+      "path": "help/UKLang.gif",
+      "bytes": 10095,
+      "sha256": "883548813c0fe8117f59c0fa78526a9b01ab5e5d28d97698fb8b0ab42b41c414",
+      "crc32": "7033ea04"
+    }
+  ]
+}
