@@ -47,10 +47,10 @@ de salida y masa acumulada. DXF contiene únicamente la envolvente de proceso,
 no un plano de fabricación. CLI para simulaciones:
 
 ```powershell
-& .\.venv\Scripts\python.exe -m pyfast column configuracion.json --output runs\caso --cells 100 --radial-cells 20 --method BDF
+& .\.venv\Scripts\python.exe -m pyfast column examples\column_ldf.json --output runs\caso --cells 100 --radial-cells 20 --method BDF
 ```
 
-`examples/configuration.py` muestra cómo generar JSON. `SimulationConfig` selecciona
+`examples/column_ldf.json`, `column_hsdm.json` y `batch_ldf.json` son configuraciones sintéticas listas para la CLI. `examples/configuration.py` muestra cómo generar JSON. `SimulationConfig` selecciona
 LDF o HSDM por el contrato cinético; no invoca FAST. API detallada en API_REFERENCE.md.
 
 ## Calidad y evidencia

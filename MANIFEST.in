@@ -1,6 +1,6 @@
 include *.md
 recursive-include tests *.py
-recursive-include examples *.py
+recursive-include examples *.py *.json
 recursive-include audit *.json *.txt
 exclude audit/verification*.txt
 exclude audit/distribution_hashes*.json
