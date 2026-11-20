@@ -1,0 +1,171 @@
+{
+  "scope": "Selected numerical evidence only; no calibration, parameter uncertainty or experimental validation",
+  "default_history": "dense",
+  "source_sha256": {
+    "src\\pyfast\\__init__.py": "7be2717408645f719f41109a849a2a10bdf914d12435f2a05271becc9b8a5d0d",
+    "src\\pyfast\\__main__.py": "8473deb1f02a281201486eae4dd059dd0ddefbaa190d82bf41384478fff1f5f9",
+    "src\\pyfast\\_arrays.py": "13b2da82317ae2b23ec360c382f3261b2449a471637abfcb54f071041705f0dd",
+    "src\\pyfast\\_version.py": "c7062e4d3eb3d25de9c63f14c135bc7f96543a8c5d2507922cc9975febb01642",
+    "src\\pyfast\\adapters\\__init__.py": "33579a6c128a6fa8f6f909ee524f89a9364921916d05ff782feed14b29d22ea9",
+    "src\\pyfast\\calibration\\__init__.py": "31a7543b5dad31d6520043acb8d0076437f7ef6429f6a626f12c051bfe860262",
+    "src\\pyfast\\calibration\\batch_objective.py": "d6e7b75ba57a46f95bffeaa67f0a111fd1c4275715159ff63626031bb4a75262",
+    "src\\pyfast\\calibration\\least_squares.py": "64e1b26f39684dc21d8a7c79f6f8e048f83f7fa3de78699fae544bdcacb5edc2",
+    "src\\pyfast\\calibration\\measurements.py": "d7b7fe2ba0e2549e647640e01bb63698e7ba861b5c1f225977b36e16c3ec86d0",
+    "src\\pyfast\\calibration\\profile.py": "fbedd4b0c9e2bfcaa8e548804caecd479ff6e8bce4f572cbf9293d6716093230",
+    "src\\pyfast\\cli.py": "7bcaa1e3030ba6fb7f2124016c221b6ffe60e59537ba120c4acc3842debb0c54",
+    "src\\pyfast\\design\\__init__.py": "84d0793c32b17b2e03afb565f655bf68c0c5d6e70e9b5aeae435e07e3db357f0",
+    "src\\pyfast\\design\\cad.py": "0dcc3d0d43b0d40d3749f710b06d4f53f687579b4cff5d2f0118ac40741e9583",
+    "src\\pyfast\\design\\hydraulics.py": "ba93a2d7314e3cbcd63e009cada1b0bf2d9e75b491fff3f7c969751000a68d06",
+    "src\\pyfast\\equilibrium\\__init__.py": "ca3f6dea0d3508306ed7fa20c0f65d42476170c69e41845211d56f07de09fbde",
+    "src\\pyfast\\equilibrium\\isotherms.py": "32296d7f6cca315a74187147ea0dbcba240eef5899ba8fa118ec9353c7a68017",
+    "src\\pyfast\\fit.py": "b25f663b386e9db86eccad6b41b60511b0c599976cf3e77d5d9b756df5a0836a",
+    "src\\pyfast\\io\\__init__.py": "5dacde20ddec644dc8e2a142ee436093b08591a3d211430ae17fb91ab779a6bb",
+    "src\\pyfast\\io\\experimental.py": "95db6953ce0bfe73566026f823ee890df06fd83e70985a8b9c13823e004c08cb",
+    "src\\pyfast\\io\\parquet.py": "835ee49108f17a3d3c65ca1193dc25f1d08301261ed95cd6ec58316a3c2c5a0f",
+    "src\\pyfast\\io\\results.py": "ea357b30d92c58f2b95b7dd23171dfc6008694e34cea58f06b1f202cee4adbc8",
+    "src\\pyfast\\kinetics\\__init__.py": "649ca3e6d6b66bbea1b770bc741d2b0119c2834b9ecd92f97a0bfee48d538b6d",
+    "src\\pyfast\\kinetics\\sphere.py": "62302c119bc6848901fb6a651a54014a5d1b02812332d87ac3be96f207a581eb",
+    "src\\pyfast\\observation.py": "f91dfa76d174b0dc1d08261566339a29dee8342ae383ba23a4e3f932f2964335",
+    "src\\pyfast\\optimization\\__init__.py": "b1f55dfffca51bb0444084bd480ec71aff1a8b71cfdd28e887bc4a09510cf606",
+    "src\\pyfast\\optimization\\nsga2.py": "c533d90bcb5e24e239c52e72a81295ba455c9e99f2fd75f2d23e0122e072baf5",
+    "src\\pyfast\\optimize.py": "a8f8d3045f14fb0f1057878e205e1f68925ace483afbeda25700fa7eb18035bb",
+    "src\\pyfast\\reactors\\__init__.py": "12da736d41fd213bf2daff936fc6a7d38e09784f073caef31ef8693d767a49a2",
+    "src\\pyfast\\reactors\\_ldf_jacobian.py": "66f1b303cf6211a8ddebbee465a62e0f51bd71ad62b1ec6bc745b14ee635392b",
+    "src\\pyfast\\reactors\\batch.py": "ec9a6da2e16bce4ad9df35982e0c1d7526d315b6266ed65a38932e1c4508034c",
+    "src\\pyfast\\reactors\\column.py": "d3b2b9aabc8e2372d88a3e4911a416da191d4edaf600b769e36e85c48312ba0d",
+    "src\\pyfast\\reactors\\hsdm.py": "97dcab9169ec3f785670735eeae2a7616d309e09a9ff0c2a6e4c45abd134ae0f",
+    "src\\pyfast\\schemas.py": "c8a9d892c951fd00b7eeea6432d80eee112b2d7b3fbafbca30c99c1bc87f5e60",
+    "src\\pyfast\\simulate.py": "8fe04d75407767b1eb0d02a82681e4c6ab173cfb272f5041c479b74cca26fd40",
+    "src\\pyfast\\solvers\\__init__.py": "25f3e079fb88aa7cda41b292b5ee429385122096d98e02011cc46e552c38b15b",
+    "src\\pyfast\\solvers\\integration.py": "f226c8e89d96d1d971a4f75c2e35ca0999ee35c1a420d205932c76c220acfb8e",
+    "src\\pyfast\\solvers\\options.py": "e17761057951589c05ed6245e493a8f5b70784bb25ed292d72e3ba6e9d699b06",
+    "src\\pyfast\\solvers\\results.py": "01923ce1816ba6ff09c6af35dd5e6dd319f8d52ed8f65aa039f0c4f11d65ee5e",
+    "src\\pyfast\\uncertainty\\__init__.py": "1d746981d416ceb781ea871f3cd0a988543a9cb9c6e35fe8d0e4ac3510290bcd",
+    "src\\pyfast\\uncertainty\\monte_carlo.py": "9202a771b9ee9868b41a0fca53bd2acf56d283e65d8bc591d08da79094994fc9",
+    "src\\pyfast\\units.py": "c5650194b34fa1256ae990a3f298f7dce8a05274234247626e36903806b76eaf",
+    "src\\pyfast\\validate\\__init__.py": "eb9b5566b8a5990a0730d984f40520b06efe7e9c4e975451ebcd45f66a8536f8",
+    "src\\pyfast\\web\\__init__.py": "605f21c0a9d953a633ecdca7a207352e5c907d19ed826e7c76c84188ddddfc96",
+    "src\\pyfast\\web\\__main__.py": "9c9eb94d7bd2346fd7def54ac9a72cb294ece6178c5a48af5088c66203fc098b",
+    "src\\pyfast\\web\\app.py": "8a460dfd551e8843a7958936006af3dec70af2de1e3ee233a13d0cc3eb86a89c",
+    "src\\pyfast\\web\\config.py": "62789ed8591d5c62c3e1cd6e2ef7a3f25f80330481074dee0d4acb4f820c390e",
+    "src\\pyfast\\web\\server.py": "29710a5b615d4847dc5dd26dbff0f5091a2685b36f0f86ecbe274c953f35eeb9",
+    "src\\pyfast\\web\\ui.py": "6ebe886b9057369e920db23bdc34ab2d4c4a230a7f1ce5d5ff61f9e761729ffa"
+  },
+  "Q1": {
+    "producer": "new PyFAST public API with history=streaming and analytic Jacobian",
+    "status": "PASS_SAMPLED_PAIR",
+    "levels": [
+      930,
+      1860,
+      3720,
+      7440
+    ],
+    "comparisons": [
+      {
+        "coarse": 930,
+        "comparison": {
+          "max_abs_dCstar_observation": {
+            "7mL_end": 0.010653060273887894,
+            "7mL_start": 0.013996477935131757,
+            "instant": 0.01335803700910737,
+            "no_segment_7mL_mid": 0.01397663120091773,
+            "primary_7mL_mid": 0.013109648933892049
+          },
+          "max_abs_dCstar_outlet_sampled": 0.014533090074383942,
+          "n_times_compared": 4767,
+          "time_of_max_s": 655138.2139174232
+        },
+        "criteria_pass": false,
+        "fine": 1860,
+        "flags": []
+      },
+      {
+        "coarse": 1860,
+        "comparison": {
+          "max_abs_dCstar_observation": {
+            "7mL_end": 0.0038413042475963118,
+            "7mL_start": 0.006037622457013822,
+            "instant": 0.005161418515311857,
+            "no_segment_7mL_mid": 0.005806521145658716,
+            "primary_7mL_mid": 0.005108711083797679
+          },
+          "max_abs_dCstar_outlet_sampled": 0.006416531703341277,
+          "n_times_compared": 4767,
+          "time_of_max_s": 655280.5265566662
+        },
+        "criteria_pass": false,
+        "fine": 3720,
+        "flags": []
+      },
+      {
+        "coarse": 3720,
+        "comparison": {
+          "max_abs_dCstar_observation": {
+            "7mL_end": 0.0014287726341752661,
+            "7mL_start": 0.0027138918631551406,
+            "instant": 0.0020604225548726818,
+            "no_segment_7mL_mid": 0.0025180348380167417,
+            "primary_7mL_mid": 0.002067221820618498
+          },
+          "max_abs_dCstar_outlet_sampled": 0.003202538991918219,
+          "n_times_compared": 4767,
+          "time_of_max_s": 655348.2139174232
+        },
+        "criteria_pass": true,
+        "fine": 7440,
+        "flags": []
+      }
+    ],
+    "solves": 4,
+    "charged_seconds": 493.5427832999994,
+    "max_peak_private_bytes": 2018676736,
+    "max_peak_resident_bytes": 1227350016
+  },
+  "Q3": {
+    "producer": "Claude prototype under disclosed Amendment01; not rerun here",
+    "evidence_sha256": "4d6d810a1fe7d61355e87d5b647dca5579b3f8658571b202b312b9daf36ce007",
+    "condition": "BP_Q3_L55.8mm_C100",
+    "status": "PASS",
+    "last_comparison": {
+      "max_abs_dCstar_outlet_sampled": 0.002841305069043648,
+      "time_of_max_s": 218484.74347446414,
+      "n_times_compared": 4383,
+      "max_abs_dCstar_observation": {
+        "primary_7mL_mid": 0.00038339718061009,
+        "instant": 0.000380341567257525,
+        "7mL_start": 0.0003076429345126863,
+        "7mL_end": 0.0004776676508108091,
+        "no_segment_7mL_mid": 0.00033025768870764693
+      },
+      "levels": "4N-8N",
+      "pass_": true,
+      "flags": [
+        [],
+        []
+      ],
+      "mass_residual": [
+        1.452615164819987e-13,
+        1.3789703219468613e-13
+      ],
+      "min_states": [
+        [
+          -4.1776106614963e-311,
+          -1.16248947836507e-310
+        ],
+        [
+          -4.342303254956e-311,
+          -1.0018429263339e-310
+        ]
+      ]
+    }
+  },
+  "full_quality": {
+    "passed": 580,
+    "skipped": 2,
+    "coverage_percent": 95.46
+  },
+  "six_previously_missing_variants": "Re-executed against integrated code: samples and diagnostics bit-identical",
+  "original_failure_preserved": true,
+  "calibration_performed": false,
+  "experimental_data_distributed": false
+}

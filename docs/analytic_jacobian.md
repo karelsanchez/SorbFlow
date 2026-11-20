@@ -29,6 +29,6 @@ cero. Desorción utiliza una escala de masa que incluye el inventario inicial.
 
 Esta implementación puede reducir el coste de construir Jacobianos numéricos;
 la mejora depende del caso, plataforma y tolerancias. No corrige difusión
-numérica espacial ni demuestra convergencia en mallas grandes. Los casos E04 de
-lecho largo y tasa superior siguen sin una puerta de malla establecida; no hay
+numérica espacial ni demuestra convergencia en mallas grandes. Los controles E04
+requieren evidencia por malla y parámetros, separada de esta mejora. No hay
 calibración ni validación ambiental por incorporar esta opción.

@@ -36,3 +36,8 @@ Reducir memoria y completar una simulación no demuestran convergencia espacial,
 identificabilidad ni validación ambiental. E04 requiere controles de malla por
 condición y parámetros antes de calibrar; no hay calibración automática al activar
 esta opción.
+
+La [evidencia seleccionada](../audit/streaming_20261120/summary.json) conserva la
+distinción entre la nueva escalera Q1 del núcleo y la escalera Q3 del prototipo
+bajo enmienda. Ambas pasan sus pares declarados en 3720–7440 celdas; eso no
+certifica toda la caja de tasas ni constituye una calibración.

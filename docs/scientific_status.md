@@ -37,12 +37,16 @@ acoplada ni todos los regímenes. [Alcance](../benchmarks/e01b/README.md).
 Actualización técnica 2026-11-20: se importaron ocho curvas candidatas extraídas
 de una figura y se prepararon 379 puntos visibles con indicadores de calidad.
 Los operadores de observación están implementados. Las campañas numéricas E04
-no han establecido la puerta de malla para el lecho largo y tasa superior;
-no se ha calibrado ni evaluado el conjunto retenido. El estado formal histórico
+aportan controles de malla en casos seleccionados: la continuación Q3 del
+prototipo y la nueva ejecución Q1 del núcleo en streaming pasan en 3720–7440
+celdas para la tasa superior del lecho largo. Son máximos muestreados en casos
+declarados, no cotas continuas ni verificación de toda la caja de parámetros.
+No se ha calibrado ni evaluado el conjunto retenido. El estado formal histórico
 BLOCKED_METADATA del registro no debe interpretarse como ausencia actual de
 archivos candidatos ni como validación de estos. El
-[Jacobiano analítico opcional](analytic_jacobian.md) mejora una parte del cálculo,
-sin resolver por sí solo ese bloqueo científico.
+[Jacobiano analítico opcional](analytic_jacobian.md) y la
+[integración en streaming](streaming_integration.md) mejoran el coste de cálculo;
+su verificación no sustituye la calibración y validación física pendientes.
 
 | Entrada pública | Implementación actual | Límite principal |
 |---|---|---|
