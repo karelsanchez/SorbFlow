@@ -8,6 +8,10 @@ nuevos ensayos de laboratorio para publicar la versión experimental del softwar
 
 ## Recorrido recomendado
 
+El [sitio navegable y su publicación](documentation_site.md) se construyen desde
+estos documentos. Los [tutoriales funcionales](tutorials.md) conectan unidades,
+simulaciones, trazabilidad y evaluación de resultados.
+
 1. [Primeros pasos](getting_started.md): entorno, casos sintéticos y CLI.
 2. [Preparación de datos](data_preparation.md): unidades, procedencia y mezclas.
    [Revisión E04 integrada](e04_integration.md): salvedades y candidato condicionado.
@@ -25,6 +29,7 @@ nuevos ensayos de laboratorio para publicar la versión experimental del softwar
 ## Referencias del proyecto
 
 - [API pública](../API_REFERENCE.md): contratos, funciones y unidades.
+- [Equipo y contribuciones declaradas](../CONTRIBUTORS.md).
 - [Arquitectura](../ARCHITECTURE.md) y [notas de implementación](../IMPLEMENTATION_NOTES.md).
 - [Modelo matemático](../MODEL_SPECIFICATION.md): balances y condiciones de frontera.
 - [Plan de validación](../VALIDATION_PLAN.md) y [evidencia numérica seleccionada](../NUMERICAL_VERIFICATION.md).

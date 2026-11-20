@@ -1,0 +1,56 @@
+site_name: PyFAST
+site_description: Modelación reproducible de adsorción acuosa en Python
+site_url: ''
+docs_dir: .work/docs_source
+site_dir: .work/site
+use_directory_urls: false
+strict: true
+theme:
+  name: readthedocs
+  locale: es
+plugins:
+  - search:
+      lang: [es, en]
+markdown_extensions:
+  - tables
+  - fenced_code
+  - admonition
+  - toc:
+      permalink: true
+validation:
+  nav:
+    omitted_files: info
+  links:
+    not_found: warn
+    absolute_links: warn
+    unrecognized_links: warn
+    anchors: warn
+nav:
+  - Inicio: index.md
+  - Primeros pasos:
+      - Instalación y CLI: docs/getting_started.md
+      - Tutoriales: docs/tutorials.md
+      - Datos y unidades: docs/data_preparation.md
+      - Interfaz local: docs/web_interface.md
+  - API y modelos:
+      - Referencia pública: API_REFERENCE.md
+      - Formulación matemática: MODEL_SPECIFICATION.md
+      - Arquitectura: ARCHITECTURE.md
+      - Operadores de observación: docs/observation_operators.md
+      - Jacobiano analítico: docs/analytic_jacobian.md
+      - Integración en streaming: docs/streaming_integration.md
+  - Calibración e incertidumbre:
+      - Objetivo batch: docs/batch_objective.md
+      - Perfiles gaussianos: docs/profile_likelihood.md
+      - Ejemplo de perfiles: docs/profile_batch_example.md
+  - Benchmarks:
+      - Resultados y límites: docs/benchmark_results.md
+      - Estado científico: docs/scientific_status.md
+      - Verificación numérica: NUMERICAL_VERIFICATION.md
+      - Reproducción: benchmarks/reproduction_20261120/README.md
+  - Desarrollo:
+      - Flujo de trabajo: docs/developer_workflow.md
+      - Documentación y publicación: docs/documentation_site.md
+      - Licencias: IP_LICENSE_AUDIT.md
+      - Licencia actual: LICENSE.md
+      - Equipo: CONTRIBUTORS.md

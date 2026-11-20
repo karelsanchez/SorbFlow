@@ -1,5 +1,7 @@
 include *.md
 include INICIAR_GUI.cmd
+include mkdocs.yml .readthedocs.yaml
+include docs/requirements.txt
 recursive-include tests *.py
 recursive-include examples *.py *.json
 recursive-include audit *.json *.txt
