@@ -41,12 +41,21 @@ aportan controles de malla en casos seleccionados: la continuación Q3 del
 prototipo y la nueva ejecución Q1 del núcleo en streaming pasan en 3720–7440
 celdas para la tasa superior del lecho largo. Son máximos muestreados en casos
 declarados, no cotas continuas ni verificación de toda la caja de parámetros.
-No se ha calibrado ni evaluado el conjunto retenido. El estado formal histórico
+Posteriormente, la [campaña C-A](../audit/e04_ca_20261120/summary.json) ajustó una
+tasa LDF global con equilibrio batch fijo: 82 solves, candidato numéricamente
+estable, SSE=9.4663 y RMSE=0.22744 en C/C0 para 183 puntos de calibración.
+La evaluación registrada tras congelar el candidato no reajustó parámetros.
+El ajuste es deficiente entre condiciones; esto no establece identificabilidad
+ni valida el comportamiento ambiental. Las condiciones retenidas ya han sido
+evaluadas para C-A: decisiones posteriores informadas por sus resultados deben
+declarar esa exposición y no presentarlas como un test nuevo intacto.
+El estado formal histórico
 BLOCKED_METADATA del registro no debe interpretarse como ausencia actual de
 archivos candidatos ni como validación de estos. El
 [Jacobiano analítico opcional](analytic_jacobian.md) y la
 [integración en streaming](streaming_integration.md) mejoran el coste de cálculo;
-su verificación no sustituye la calibración y validación física pendientes.
+su verificación no sustituye la evaluación de adecuación del modelo ni la
+validación física pendientes.
 
 | Entrada pública | Implementación actual | Límite principal |
 |---|---|---|

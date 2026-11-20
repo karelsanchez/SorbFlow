@@ -1,0 +1,94 @@
+{
+  "status": "C_A_EXECUTED_NUMERICALLY_STABLE_POOR_DESCRIPTIVE_FIT",
+  "protocol_sha256": "07d494b2fdc48b31b0f5c8489f2301ebc40d6989899b22c44545b09008871012",
+  "code_revision_used": "1bdd1c84fcfba689c09e43ee8885358b3477ac2c",
+  "rate_s_inv": 6.728689191965996e-06,
+  "n_calibration": 183,
+  "sse": 9.466314827082002,
+  "rmse": 0.22743899472793241,
+  "calibration_conditions": {
+    "BP_Q1_L18.6mm_C100": {
+      "n": 30,
+      "sse": 2.5248011724932087,
+      "rmse": 0.2901034971921348,
+      "bias": -0.13673507018051206
+    },
+    "BP_Q3_L18.6mm_C100": {
+      "n": 26,
+      "sse": 2.8937044831524497,
+      "rmse": 0.3336110403974878,
+      "bias": -0.13925825721243237
+    },
+    "BP_Q1_L55.8mm_C100": {
+      "n": 92,
+      "sse": 2.5175623766335624,
+      "rmse": 0.16542311942914495,
+      "bias": 0.06590123468632549
+    },
+    "BP_Q3_L55.8mm_C100": {
+      "n": 35,
+      "sse": 1.5302467948027807,
+      "rmse": 0.20909647771869608,
+      "bias": -0.18474875857971937
+    }
+  },
+  "evaluation": [
+    {
+      "condition": "BP_Q1_L18.6mm_C200",
+      "partition": "development",
+      "n": 35,
+      "sse": 3.991414399147263,
+      "rmse": 0.33769869914497375
+    },
+    {
+      "condition": "BP_Q1_L37.2mm_C100",
+      "partition": "held_out",
+      "n": 79,
+      "sse": 0.8658589742782868,
+      "rmse": 0.10469116572441921
+    },
+    {
+      "condition": "BP_Q3_L37.2mm_C100",
+      "partition": "held_out",
+      "n": 45,
+      "sse": 0.6016306151911734,
+      "rmse": 0.11562685339691
+    },
+    {
+      "condition": "BP_Q3_L18.6mm_C200",
+      "partition": "held_out",
+      "n": 37,
+      "sse": 4.340614116338502,
+      "rmse": 0.3425111604549197
+    }
+  ],
+  "budget": {
+    "new_solves": 82,
+    "complete": 82,
+    "measured_s": 2395.002009599957,
+    "charged_s": 2395.002009599957
+  },
+  "isolated_runner_tests": 24,
+  "freeze_order_verified": true,
+  "identifiability_established": false,
+  "experimental_validation": false,
+  "known_measurement_sigma": false,
+  "weighting_diagnostic": {
+    "status": "POSTHOC_DIAGNOSTIC_NOT_A_NEW_CALIBRATION",
+    "primary": {
+      "file": "R_refine_08.json",
+      "k": 6.728689191965996e-06,
+      "primary_point_sse": 9.466314827082002,
+      "equal_curve_mse": 0.06663562769855887
+    },
+    "equal_curve": {
+      "file": "R_refine_01.json",
+      "k": 2.165377754306079e-05,
+      "primary_point_sse": 11.144606249459546,
+      "equal_curve_mse": 0.04964677180288539
+    },
+    "scope": "Reweights only existing calibration candidates; no solve, refinement or held-out selection"
+  },
+  "data_exposure": "Development and held-out already evaluated for C-A; any subsequent adaptive use must be disclosed",
+  "original_data_included": false
+}
