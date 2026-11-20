@@ -49,6 +49,16 @@ El ajuste es deficiente entre condiciones; esto no establece identificabilidad
 ni valida el comportamiento ambiental. Las condiciones retenidas ya han sido
 evaluadas para C-A: decisiones posteriores informadas por sus resultados deben
 declarar esa exposición y no presentarlas como un test nuevo intacto.
+La [campaña exploratoria C-B](../audit/e04_cb_20261120/summary.json) permitió
+ajustar también q_max, manteniendo una tasa común y afinidad fija: 216 solves
+completos, k=7.70119e-6 s^-1, q_max=0.1540245 kg/kg, SSE=9.26359 y
+RMSE=0.224991. La disminución descriptiva del SSE fue 2.14 % respecto a C-A;
+persisten discrepancias por condición. Los controles de malla del candidato
+y la evaluación posterior a congelación pasaron. Ambos refinamientos alcanzaron
+su tope de evaluaciones sin declarar convergencia: el resultado es el mejor
+candidato examinado, sin certificar un mínimo local o global. No demuestra
+identificabilidad, adecuación experimental ni significación estadística de la
+mejora. La evaluación reutiliza condiciones ya expuestas en C-A.
 El estado formal histórico
 BLOCKED_METADATA del registro no debe interpretarse como ausencia actual de
 archivos candidatos ni como validación de estos. El

@@ -1,0 +1,266 @@
+{
+  "status": "COMPLETED_WITH_PRIOR_EVALUATION_EXPOSURE",
+  "protocol_sha256": "c2b07637199b63c43363a8f40d962774e90d3250a1c3b93723947742698e02ad",
+  "code_revision_used": "ea2b3c220345afe0c3255f93d16e1d3a9c0b745f",
+  "candidate": {
+    "rate_s_inv": 7.701186719469814e-06,
+    "qmax_kg_kg": 0.15402448748393618
+  },
+  "objective": {
+    "sse_total": 9.263592857595937,
+    "n_points": 183,
+    "per_condition": {
+      "BP_Q1_L18.6mm_C100": {
+        "n": 30,
+        "sse": 2.61868296659609,
+        "rmse": 0.2954478502542702,
+        "mae": 0.23036331051877143,
+        "mean_bias": -0.1576927168212421,
+        "max_abs": 0.4948827072146088,
+        "sign_convention": "residual = observed - predicted"
+      },
+      "BP_Q3_L18.6mm_C100": {
+        "n": 26,
+        "sse": 2.7252737869609636,
+        "rmse": 0.3237564247631569,
+        "mae": 0.23836751145267462,
+        "mean_bias": -0.1388119788714386,
+        "max_abs": 0.6025840282809455,
+        "sign_convention": "residual = observed - predicted"
+      },
+      "BP_Q1_L55.8mm_C100": {
+        "n": 92,
+        "sse": 2.2737555133828855,
+        "rmse": 0.1572092040598079,
+        "mae": 0.12201771161923411,
+        "mean_bias": 0.03437456484186924,
+        "max_abs": 0.4206618117366469,
+        "sign_convention": "residual = observed - predicted"
+      },
+      "BP_Q3_L55.8mm_C100": {
+        "n": 35,
+        "sse": 1.6458805906559972,
+        "rmse": 0.21685285272052218,
+        "mae": 0.19897371592123614,
+        "mean_bias": -0.19472102707912725,
+        "max_abs": 0.2910635810748592,
+        "sign_convention": "residual = observed - predicted"
+      }
+    }
+  },
+  "numerical_gate": {
+    "pass": true,
+    "comparisons": {
+      "BP_Q1_L18.6mm_C100": {
+        "max_abs_dCstar_outlet_sampled": 7.930473833988455e-05,
+        "time_of_max_s": 59446.25777903992,
+        "n_times_compared": 4001,
+        "max_abs_dCstar_observation": {
+          "primary_7mL_mid": 1.6032118705266996e-05,
+          "instant": 1.6034985703572424e-05,
+          "7mL_start": 1.6036386144224757e-05,
+          "7mL_end": 1.602798967614838e-05,
+          "no_segment_7mL_mid": 1.6045539850351176e-05
+        },
+        "max_abs_dCstar_observation_all": 1.6045539850351176e-05
+      },
+      "BP_Q3_L18.6mm_C100": {
+        "max_abs_dCstar_outlet_sampled": 6.805417311461781e-06,
+        "time_of_max_s": 129.606616031052,
+        "n_times_compared": 4001,
+        "max_abs_dCstar_observation": {
+          "primary_7mL_mid": 2.817731690196723e-06,
+          "instant": 2.820789587354433e-06,
+          "7mL_start": 2.8128288892537157e-06,
+          "7mL_end": 2.8226363496530738e-06,
+          "no_segment_7mL_mid": 2.8028633868304453e-06
+        },
+        "max_abs_dCstar_observation_all": 2.8226363496530738e-06
+      },
+      "BP_Q1_L55.8mm_C100": {
+        "max_abs_dCstar_outlet_sampled": 8.278178681141862e-05,
+        "time_of_max_s": 475071.46208064543,
+        "n_times_compared": 4001,
+        "max_abs_dCstar_observation": {
+          "primary_7mL_mid": 8.166065488540708e-05,
+          "instant": 8.166169538258855e-05,
+          "7mL_start": 8.178193113185517e-05,
+          "7mL_end": 8.153389842259495e-05,
+          "no_segment_7mL_mid": 8.174352269103846e-05
+        },
+        "max_abs_dCstar_observation_all": 8.178193113185517e-05
+      },
+      "BP_Q3_L55.8mm_C100": {
+        "max_abs_dCstar_outlet_sampled": 3.203827248986907e-05,
+        "time_of_max_s": 58599.19940526594,
+        "n_times_compared": 4001,
+        "max_abs_dCstar_observation": {
+          "primary_7mL_mid": 1.6258101872973496e-05,
+          "instant": 1.6257652680068402e-05,
+          "7mL_start": 1.621225428347084e-05,
+          "7mL_end": 1.630400432844903e-05,
+          "no_segment_7mL_mid": 1.622702593787051e-05
+        },
+        "max_abs_dCstar_observation_all": 1.630400432844903e-05
+      }
+    },
+    "fine_sse": 9.263592857595937,
+    "coarse_sse": 9.263070868716653,
+    "absolute_sse_mesh_displacement": 0.0005219888792833416,
+    "ca_fine_sse": 9.46631482708204,
+    "improvement_sse": 0.20272196948610421,
+    "ca_mesh_sse_conservative_bound": 0.000490909368760839,
+    "improvement_resolved_against_sampled_mesh_change": true,
+    "historical_ca_gate_sha256": "a206d4db2e942926eb00886c64b2835253a840338f1758d56f184d40f116f8ba"
+  },
+  "optimizer": {
+    "coarse": {
+      "success": false,
+      "message": "Maximum number of function evaluations has been exceeded.",
+      "nfev": 20,
+      "x": [
+        -5.158911096774801,
+        -0.8156914776458575
+      ],
+      "fun": 9.311685361471731,
+      "initial_simplex": [
+        [
+          -4.242036096774792,
+          -0.7950664776458551
+        ],
+        [
+          -4.122036096774792,
+          -0.7950664776458551
+        ],
+        [
+          -4.242036096774792,
+          -0.7350664776458551
+        ]
+      ],
+      "final_simplex": [
+        [
+          -5.158911096774801,
+          -0.8156914776458575
+        ],
+        [
+          -5.1485985967748,
+          -0.7997539776458573
+        ],
+        [
+          -4.934848596774799,
+          -0.8185039776458569
+        ]
+      ],
+      "final_values": [
+        9.311685361471731,
+        9.385064041634067,
+        9.688612372179955
+      ],
+      "final_simplex_rank": 2
+    },
+    "fine": {
+      "success": false,
+      "message": "Maximum number of function evaluations has been exceeded.",
+      "nfev": 16,
+      "x": [
+        -5.113442346774802,
+        -0.8124102276458576
+      ],
+      "fun": 9.263592857595937,
+      "initial_simplex": [
+        [
+          -5.158911096774801,
+          -0.8156914776458575
+        ],
+        [
+          -5.038911096774801,
+          -0.8156914776458575
+        ],
+        [
+          -5.158911096774801,
+          -0.7556914776458574
+        ]
+      ],
+      "final_simplex": [
+        [
+          -5.113442346774802,
+          -0.8124102276458576
+        ],
+        [
+          -5.082036096774801,
+          -0.8175664776458575
+        ],
+        [
+          -5.122817346774801,
+          -0.8180352276458576
+        ]
+      ],
+      "final_values": [
+        9.263592857595937,
+        9.264800255109359,
+        9.267314905717612
+      ],
+      "final_simplex_rank": 2
+    }
+  },
+  "budget": {
+    "new_solves_attempted": 216,
+    "closed": 216,
+    "open_attempts": [],
+    "by_status": {
+      "COMPLETE": 216
+    },
+    "measured_s": 2961.169444799918,
+    "charged_closed_s": 2961.169444799918,
+    "reserved_open_s": 0,
+    "committed_s": 2961.169444799918,
+    "reserved_total_s": 194400.0,
+    "reconciled_closes": 0,
+    "failed_attempts": 0
+  },
+  "independent_metrics_verified": true,
+  "evaluation": {
+    "BP_Q1_L18.6mm_C200": {
+      "n": 35,
+      "sse": 3.8742256039923015,
+      "rmse": 0.3327043133385345,
+      "mean_bias": -0.1487267832556403,
+      "mae": 0.2963044873608483,
+      "partition": "development",
+      "numerical_pass": true
+    },
+    "BP_Q1_L37.2mm_C100": {
+      "n": 79,
+      "sse": 0.9915831540911719,
+      "rmse": 0.11203430499103817,
+      "mean_bias": 0.0071165374301859294,
+      "mae": 0.09533171100608515,
+      "partition": "held_out",
+      "numerical_pass": true
+    },
+    "BP_Q3_L37.2mm_C100": {
+      "n": 45,
+      "sse": 0.468676935558227,
+      "rmse": 0.10205411805706345,
+      "mean_bias": 0.011584795935719993,
+      "mae": 0.0851955742698664,
+      "partition": "held_out",
+      "numerical_pass": true
+    },
+    "BP_Q3_L18.6mm_C200": {
+      "n": 37,
+      "sse": 4.127146031115915,
+      "rmse": 0.33398276501558755,
+      "mean_bias": -0.20084974320272836,
+      "mae": 0.24589232081173037,
+      "partition": "held_out",
+      "numerical_pass": true
+    }
+  },
+  "experimental_validation": false,
+  "identifiability_established": false,
+  "synthetic_runner_tests": 17,
+  "original_data_included": false,
+  "data_exposure": "All evaluation conditions previously evaluated in C-A; not a fresh blind test",
+  "interpretation": "Exploratory candidate: both optimizers hit maxfev; 2.14 percent descriptive SSE improvement does not resolve poor fit; no converged optimum certified"
+}
