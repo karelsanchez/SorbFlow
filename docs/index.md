@@ -43,6 +43,9 @@ configurables; otro contaminante requiere parámetros y supuestos químicos adec
 
 ## Superficies públicas
 
+- [Integración en streaming](streaming_integration.md): memoria reducida y controles
+  sobre todos los pasos aceptados de columnas LDF.
+
 - [Jacobiano analítico opcional](analytic_jacobian.md): columna LDF Langmuir/lineal,
   BDF/Radau y límites de la mejora computacional.
 

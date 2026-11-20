@@ -10,9 +10,9 @@ from .._arrays import FloatArray
 from ..equilibrium import isotherm_from_parameters
 from ..equilibrium.isotherms import trial_loading
 from ..schemas import LDF, Langmuir, Linear, SimulationConfig
-from ..solvers.integration import integrate
+from ..solvers.integration import integrate, integrate_streaming
 from ..solvers.options import SolverOptions, sample_times
-from ..solvers.results import SimulationResult, check_physics, result_metadata
+from ..solvers.results import SimulationResult, StreamingPhysics, check_physics, result_metadata
 from ..units import finite_scalar
 from ._ldf_jacobian import LDFColumnJacobian
 
@@ -53,6 +53,8 @@ def simulate_column(
         or not isinstance(config.equilibrium, (Langmuir, Linear))
     ):
         raise ValueError("Analytic Jacobian supports only LDF with Langmuir or Linear")
+    if settings.history == "streaming" and not isinstance(config.kinetics, LDF):
+        raise ValueError("Streaming history supports LDF columns only")
     if not isinstance(config.kinetics, LDF):
         from .hsdm import simulate_hsdm_column
 
@@ -104,7 +106,6 @@ def simulate_column(
         )
     )
     jac = LDFColumnJacobian(config, cells) if settings.jacobian == "analytic" else None
-    solution = integrate(rhs, initial, times, atol, settings, _jacobian_pattern(cells), jac=jac)
 
     def inventory(states: FloatArray) -> FloatArray:
         return np.asarray(
@@ -116,18 +117,21 @@ def simulate_column(
             )
         )
 
-    checked = solution.checkpoints
-    diagnostics = check_physics(
-        checked[:cells],
-        checked[cells : 2 * cells],
-        inventory(checked),
-        checked[-2],
-        checked[-1],
-        initial_mass,
-        settings,
-        solution,
-    )
-    sampled = solution.samples
+    if settings.history == "streaming":
+        physics = StreamingPhysics(cells=cells, area=area, dz=dz, epsilon=epsilon,
+            rho_b=rho_b, initial_mass=initial_mass, options=settings, n_states=initial.size)
+        streamed = integrate_streaming(rhs, initial, times, atol, settings,
+            _jacobian_pattern(cells), jac=jac, on_state=physics.push_state)
+        sampled = streamed.samples
+        physics.push_block(sampled, [("sample", i, float(t)) for i, t in enumerate(times)])
+        diagnostics = physics.finalize(streamed.nfev, streamed.njev, streamed.nlu,
+                                       streamed.accepted_steps)
+    else:
+        solution = integrate(rhs, initial, times, atol, settings, _jacobian_pattern(cells), jac=jac)
+        checked = solution.checkpoints
+        diagnostics = check_physics(checked[:cells], checked[cells:2*cells], inventory(checked),
+            checked[-2], checked[-1], initial_mass, settings, solution)
+        sampled = solution.samples
     mass = inventory(sampled)
     return SimulationResult(
         reactor="column",
