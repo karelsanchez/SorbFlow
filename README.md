@@ -5,6 +5,12 @@ batch LDF y columna LDF/HSDM, ajuste inverso inicial, incertidumbre, sensibilida
 optimización multiobjetivo opcional e hidráulica con exportación DXF de proceso.
 **Tiene verificaciones numéricas seleccionadas; no tiene validación experimental.**
 
+Los [benchmarks ejecutados](docs/benchmark_results.md) incluyen 29 casos numéricos
+adicionales, 3.000 datasets sintéticos para perfiles y una comparación acotada
+de diseño determinista/robusto con evaluación refinada. Sus resultados y límites
+están documentados. No se requieren nuevos ensayos de laboratorio para publicar
+el software con este alcance.
+
 Materiales, biocarbones, contaminantes y recetas son configurables. No se limita a
 cuatro materias primas ni al azul de metileno. Las mezclas son datos de preparación:
 sus propiedades deben medirse/ajustarse, no se promedian automáticamente.

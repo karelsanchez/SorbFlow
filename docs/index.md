@@ -1,9 +1,10 @@
 # Documentación de PyFAST
 
-PyFAST es un prototipo Python para adsorción acuosa y diseño de columnas. Sus
-verificaciones numéricas seleccionadas no constituyen validación experimental.
-El estado confirmatorio es **E01 parcial** y **E04 BLOCKED_METADATA**, con **0 curvas
-listas** para validación física independiente.
+PyFAST es un prototipo Python para adsorción acuosa y diseño de columnas. Tiene
+[benchmarks ejecutados](benchmark_results.md) de verificación numérica,
+inferencia sintética y diseño bajo incertidumbre, con alcance explícito.
+El caso de columna disponible conserva discrepancias; no se exige generar
+nuevos ensayos de laboratorio para publicar la versión experimental del software.
 
 ## Recorrido recomendado
 
@@ -15,7 +16,8 @@ listas** para validación física independiente.
 5. [Interfaz web local opcional](web_interface.md): mismo núcleo, acceso desde navegador.
 6. [Diseño del estudio inverso E02-A](inverse_study_plan.md): propuesta aún no ejecutada.
 7. [Perfiles con sigma conocida](profile_likelihood.md) y
-   [objetivo batch compartido](batch_objective.md): API experimental, no estudio de cobertura.
+   [objetivo batch compartido](batch_objective.md): API experimental, con estudio
+   acotado de cobertura mediante predictor analítico en los benchmarks ejecutados.
    [Ejemplo sintético](profile_batch_example.md).
 8. [Preparación técnica de registro](../REGISTRATION_PREPARATION/README.md):
    inventario y campos pendientes de revisión humana.

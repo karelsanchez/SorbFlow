@@ -4,21 +4,25 @@
 
 ## Estado de los experimentos confirmatorios
 
-La fuente de estados es el [registro de experimentos](../PAPER_ENVSOFT/EXPERIMENT_REGISTRY.csv),
-junto con el [protocolo](../PAPER_ENVSOFT/BENCHMARK_PROTOCOL.md).
+El [registro de experimentos](../PAPER_ENVSOFT/EXPERIMENT_REGISTRY.csv) conserva
+el plan general inicial, que no está ejecutado íntegramente. Los
+[benchmarks ejecutados y sus enmiendas](benchmark_results.md) describen la
+evidencia actual, sin convertir subestudios en validación de todo ese plan.
 
 | Experimento | Estado registrado | Interpretación |
 |---|---|---|
-| E01 | PARTIAL_REFERENCE_ONLY | Referencias seleccionadas; verificación completa pendiente |
-| E02 | PLANNED | Estudio confirmatorio inverso/incertidumbre pendiente |
-| E03 | PLANNED | Estudio confirmatorio de decisiones robustas pendiente |
-| E04 | BLOCKED_METADATA | Validación física bloqueada; 0 curvas listas |
+| E01 | PASSED_SCOPED_SUPPLEMENT | Referencias seleccionadas y 29 casos adicionales; dominio general no agotado |
+| E02 | COMPLETED_ANALYTIC_COVERAGE | 3.000 datasets y 6.000 perfiles; predictor batch analítico, sin ODE |
+| E03 | PASSED_SCOPED_FIXED_DESIGN_REFINEMENT | Comparación sintética acotada; 200 pares refinados resueltos |
+| E04 | COMPLETED_CASE_POOR_FIT | C-A/C-B ejecutados; C-B con convergencia local y discrepancias |
 | E05 | PLANNED | Evaluación confirmatoria adicional según protocolo pendiente |
 
 Un resultado de smoke, la cobertura de tests o una figura sintética no cambia estos
 estados a PASSED. El prototipo no está validado experimentalmente y no certifica
 un diseño industrial. La [evidencia numérica seleccionada](../NUMERICAL_VERIFICATION.md)
 describe casos concretos y sus límites, no una garantía para todo parámetro.
+La generación de nuevos ensayos de laboratorio no es requisito de publicación
+de la librería con el alcance de sus benchmarks reproducibles.
 
 El subestudio [E01-A](../benchmarks/e01/README.md) sí pasó su alcance predefinido:
 40 integraciones y 219 criterios, sin fallos. El protocolo se fijó antes de correrlo
@@ -59,6 +63,9 @@ su tope de evaluaciones sin declarar convergencia: el resultado es el mejor
 candidato examinado, sin certificar un mínimo local o global. No demuestra
 identificabilidad, adecuación experimental ni significación estadística de la
 mejora. La evaluación reutiliza condiciones ya expuestas en C-A.
+La continuación posterior sí alcanzó convergencia local, con SSE=9.25617,
+k=7.78219e-6 s^-1 y q_max=0.152827 kg/kg, añadiendo 48 solves completos.
+Los controles numéricos pasaron, pero persiste el ajuste deficiente.
 El estado formal histórico
 BLOCKED_METADATA del registro no debe interpretarse como ausencia actual de
 archivos candidatos ni como validación de estos. El
@@ -86,10 +93,11 @@ no un modelo nuevo. Los balances, IC/BC y bases físicas están en la
 
 - Completar E01: casos suaves/manufacturados, límites, regímenes rígidos y refinamientos
   que resuelvan los indicadores utilizados en cada decisión.
-- Estudio de identificabilidad global, cobertura, censura y calibración multiexperimento.
+- Extender la evidencia a identificabilidad global, censura y calibración multiexperimento.
 - Los [perfiles con sigma conocida](profile_likelihood.md) y el objetivo batch K/k
-  ya existen como API experimental; su estudio de cobertura/identificabilidad E02
-  sigue pendiente. Una malla aceptada no es un intervalo continuo.
+  tienen evidencia acotada de inclusión marginal bajo predictor analítico;
+  cobertura predictiva de columnas e identificabilidad global siguen pendientes.
+  Una malla aceptada no es un intervalo continuo.
 - Cobertura predictiva y separación de error numérico, paramétrico, de observación y modelo.
 - Estudios de semillas/escenarios/convergencia de Pareto y diseño robusto.
 - Validación experimental independiente con unidades, procedencia y condiciones completas.

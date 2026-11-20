@@ -1,0 +1,19 @@
+{
+  "archive_sha256": "2fd7272f528aaa9da26d6cf8dda035f01d8e69faae30b780a7ca5d42260d18fc",
+  "source_files": {
+    "outputs/PyFAST_E01_CLOSURE_20261120/code/reference.py": "e30b5531e023796024c15c0a90bfd93547fcffe533ab6b08b43d6fd989c61d90",
+    "outputs/PyFAST_E01_CLOSURE_20261120/code/run.py": "56c9acf7eeec1e75ff8dde74164bd6bd57eb6ce74deb6d2a4100c3e95c94a447",
+    "outputs/PyFAST_E01_CLOSURE_20261120/README.md": "b398b2bf39b583b02ebcbbe52a9e799cc6553f4aabd5a3b6242aef8a8b22a594",
+    "outputs/PyFAST_E02_COVERAGE_20261120/code/coverage_run.py": "4f4555af14bc35f6c630621061764224bda7d97bb55421be0af1909b0390045a",
+    "outputs/PyFAST_E02_COVERAGE_20261120/protocol/SOURCE_SCENARIO_TABLE.json": "750f3265f4fb1b670856ae10ae0d22072d99cdd4f48bf66a7b3d97597f2a6dec",
+    "outputs/PyFAST_E02_COVERAGE_20261120/README.md": "9d77547b06f42ee6b7a5d85aaf4057670117ee17ede18ecb077363c364f7dcff",
+    "outputs/PyFAST_E02_COVERAGE_20261120/tests/test_runner.py": "6551aea87f9cb0cc9db3da709b5db89f54cdbf9db128dd2c8a71b54c8d913f7e",
+    "outputs/PyFAST_E03_BENCHMARK_20261120/code/run_e03.py": "1588cbd17a8e5e93ff657c0a13ea0fcbdf9e693d74feace275b04417d935cfa0",
+    "outputs/PyFAST_E03_BENCHMARK_20261120/README.md": "8b83a828387ba1796745837c42237d76af1d00de077007758082eca9da2e8f6f",
+    "outputs/PyFAST_E03_BENCHMARK_20261120/tests/test_e03.py": "59072c86a3c35b26dd30b491e72d36944c7ff3962e45e7e8cecff62da7a0c0cc",
+    "outputs/PyFAST_E03_REFINEMENT_20261120/code/refine.py": "4057698597da38baa31024776018de69672d66a7afbf9ad78c758533b74918ee",
+    "outputs/PyFAST_E03_REFINEMENT_20261120/code/run_e03.py": "1588cbd17a8e5e93ff657c0a13ea0fcbdf9e693d74feace275b04417d935cfa0"
+  },
+  "raw_results_included": false,
+  "third_party_data_included": false
+}

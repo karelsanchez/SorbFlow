@@ -14,6 +14,7 @@ recursive-include docs *.md
 recursive-include benchmarks/e01 *.py *.json *.md
 recursive-include audit/e01_a_20261119 *.json *.csv *.png
 recursive-include benchmarks/e01b *.py *.json *.md
+recursive-include benchmarks/reproduction_20261120 *.md *.json *.zip
 recursive-include REGISTRATION_PREPARATION *.md *.json
 recursive-include audit/e01_b_20261119 *.json *.csv *.png
 recursive-include audit/e01_a_20261119_recheck *.json *.csv *.png

@@ -1,0 +1,389 @@
+{
+  "date": "2026-11-20",
+  "scope": "Selected numerical/inferential/design benchmarks, not the entire initial confirmatory programme",
+  "E01": {
+    "status": "PASSED_SCOPED_SUPPLEMENT",
+    "cases": 29,
+    "criteria": 148,
+    "failed": 0,
+    "general_closed": false,
+    "excluded": [
+      "continuous nonlinear manufactured solution",
+      "full Pe/Da/Bi stiffness map",
+      "instantaneous-equilibrium reduced PDE",
+      "multicomponent/thermal/time-varying inputs",
+      "experimental validation",
+      "FAST concordance",
+      "nonlinear HSDM analytic reference and full spatial convergence"
+    ]
+  },
+  "E02": {
+    "status": "COMPLETED_ANALYTIC_PROFILE_COVERAGE",
+    "datasets": 3000,
+    "profiles": 6000,
+    "physical_ode_solves": 0,
+    "callbacks": 906907,
+    "rows": [
+      {
+        "completed_records": 1000,
+        "hit": 950,
+        "inconclusive_including_unfinished": 0,
+        "lower_hit_over_planned": 0.95,
+        "miss": 50,
+        "parameter": "K",
+        "planned_n": 1000,
+        "scenario": "S1",
+        "upper_hit_plus_inconclusive_over_planned": 0.95,
+        "wilson_lower_indicator": [
+          0.9346861797557492,
+          0.9618697376072513
+        ],
+        "wilson_upper_indicator": [
+          0.9346861797557492,
+          0.9618697376072513
+        ]
+      },
+      {
+        "completed_records": 1000,
+        "hit": 941,
+        "inconclusive_including_unfinished": 0,
+        "lower_hit_over_planned": 0.941,
+        "miss": 59,
+        "parameter": "k",
+        "planned_n": 1000,
+        "scenario": "S1",
+        "upper_hit_plus_inconclusive_over_planned": 0.941,
+        "wilson_lower_indicator": [
+          0.9246390972285408,
+          0.9539857017871995
+        ],
+        "wilson_upper_indicator": [
+          0.9246390972285408,
+          0.9539857017871995
+        ]
+      },
+      {
+        "completed_records": 1000,
+        "hit": 957,
+        "inconclusive_including_unfinished": 0,
+        "lower_hit_over_planned": 0.957,
+        "miss": 43,
+        "parameter": "K",
+        "planned_n": 1000,
+        "scenario": "S2W",
+        "upper_hit_plus_inconclusive_over_planned": 0.957,
+        "wilson_lower_indicator": [
+          0.942580996155916,
+          0.9679213465882865
+        ],
+        "wilson_upper_indicator": [
+          0.942580996155916,
+          0.9679213465882865
+        ]
+      },
+      {
+        "completed_records": 1000,
+        "hit": 960,
+        "inconclusive_including_unfinished": 0,
+        "lower_hit_over_planned": 0.96,
+        "miss": 40,
+        "parameter": "k",
+        "planned_n": 1000,
+        "scenario": "S2W",
+        "upper_hit_plus_inconclusive_over_planned": 0.96,
+        "wilson_lower_indicator": [
+          0.945990355878742,
+          0.9704890263145473
+        ],
+        "wilson_upper_indicator": [
+          0.945990355878742,
+          0.9704890263145473
+        ]
+      },
+      {
+        "completed_records": 200,
+        "hit": 188,
+        "inconclusive_including_unfinished": 0,
+        "lower_hit_over_planned": 0.94,
+        "miss": 12,
+        "parameter": "K",
+        "planned_n": 200,
+        "scenario": "S2",
+        "upper_hit_plus_inconclusive_over_planned": 0.94,
+        "wilson_lower_indicator": [
+          0.8980683070423372,
+          0.9653478057456681
+        ],
+        "wilson_upper_indicator": [
+          0.8980683070423372,
+          0.9653478057456681
+        ]
+      },
+      {
+        "completed_records": 200,
+        "hit": 186,
+        "inconclusive_including_unfinished": 0,
+        "lower_hit_over_planned": 0.93,
+        "miss": 14,
+        "parameter": "k",
+        "planned_n": 200,
+        "scenario": "S2",
+        "upper_hit_plus_inconclusive_over_planned": 0.93,
+        "wilson_lower_indicator": [
+          0.8859451911438936,
+          0.9578478281716571
+        ],
+        "wilson_upper_indicator": [
+          0.8859451911438936,
+          0.9578478281716571
+        ]
+      },
+      {
+        "completed_records": 200,
+        "hit": 191,
+        "inconclusive_including_unfinished": 0,
+        "lower_hit_over_planned": 0.955,
+        "miss": 9,
+        "parameter": "K",
+        "planned_n": 200,
+        "scenario": "S3_d1",
+        "upper_hit_plus_inconclusive_over_planned": 0.955,
+        "wilson_lower_indicator": [
+          0.9167032959981803,
+          0.976147456998507
+        ],
+        "wilson_upper_indicator": [
+          0.9167032959981803,
+          0.976147456998507
+        ]
+      },
+      {
+        "completed_records": 200,
+        "hit": 192,
+        "inconclusive_including_unfinished": 0,
+        "lower_hit_over_planned": 0.96,
+        "miss": 8,
+        "parameter": "k",
+        "planned_n": 200,
+        "scenario": "S3_d1",
+        "upper_hit_plus_inconclusive_over_planned": 0.96,
+        "wilson_lower_indicator": [
+          0.923067931799067,
+          0.9795943679338476
+        ],
+        "wilson_upper_indicator": [
+          0.923067931799067,
+          0.9795943679338476
+        ]
+      },
+      {
+        "completed_records": 200,
+        "hit": 188,
+        "inconclusive_including_unfinished": 0,
+        "lower_hit_over_planned": 0.94,
+        "miss": 12,
+        "parameter": "K",
+        "planned_n": 200,
+        "scenario": "S3_d2",
+        "upper_hit_plus_inconclusive_over_planned": 0.94,
+        "wilson_lower_indicator": [
+          0.8980683070423372,
+          0.9653478057456681
+        ],
+        "wilson_upper_indicator": [
+          0.8980683070423372,
+          0.9653478057456681
+        ]
+      },
+      {
+        "completed_records": 200,
+        "hit": 190,
+        "inconclusive_including_unfinished": 0,
+        "lower_hit_over_planned": 0.95,
+        "miss": 10,
+        "parameter": "k",
+        "planned_n": 200,
+        "scenario": "S3_d2",
+        "upper_hit_plus_inconclusive_over_planned": 0.95,
+        "wilson_lower_indicator": [
+          0.9104218518612239,
+          0.972617354399236
+        ],
+        "wilson_upper_indicator": [
+          0.9104218518612239,
+          0.972617354399236
+        ]
+      },
+      {
+        "completed_records": 200,
+        "hit": 195,
+        "inconclusive_including_unfinished": 0,
+        "lower_hit_over_planned": 0.975,
+        "miss": 5,
+        "parameter": "K",
+        "planned_n": 200,
+        "scenario": "S4a",
+        "upper_hit_plus_inconclusive_over_planned": 0.975,
+        "wilson_lower_indicator": [
+          0.942821659593358,
+          0.9892752803482386
+        ],
+        "wilson_upper_indicator": [
+          0.942821659593358,
+          0.9892752803482386
+        ]
+      },
+      {
+        "completed_records": 200,
+        "hit": 189,
+        "inconclusive_including_unfinished": 0,
+        "lower_hit_over_planned": 0.945,
+        "miss": 11,
+        "parameter": "k",
+        "planned_n": 200,
+        "scenario": "S4a",
+        "upper_hit_plus_inconclusive_over_planned": 0.945,
+        "wilson_lower_indicator": [
+          0.9042130012276914,
+          0.9690146582965411
+        ],
+        "wilson_upper_indicator": [
+          0.9042130012276914,
+          0.9690146582965411
+        ]
+      },
+      {
+        "completed_records": 200,
+        "hit": 188,
+        "inconclusive_including_unfinished": 0,
+        "lower_hit_over_planned": 0.94,
+        "miss": 12,
+        "parameter": "K",
+        "planned_n": 200,
+        "scenario": "S4b",
+        "upper_hit_plus_inconclusive_over_planned": 0.94,
+        "wilson_lower_indicator": [
+          0.8980683070423372,
+          0.9653478057456681
+        ],
+        "wilson_upper_indicator": [
+          0.8980683070423372,
+          0.9653478057456681
+        ]
+      },
+      {
+        "completed_records": 200,
+        "hit": 194,
+        "inconclusive_including_unfinished": 0,
+        "lower_hit_over_planned": 0.97,
+        "miss": 6,
+        "parameter": "k",
+        "planned_n": 200,
+        "scenario": "S4b",
+        "upper_hit_plus_inconclusive_over_planned": 0.97,
+        "wilson_lower_indicator": [
+          0.9361057075454807,
+          0.9861796856598887
+        ],
+        "wilson_upper_indicator": [
+          0.9361057075454807,
+          0.9861796856598887
+        ]
+      }
+    ],
+    "scope": "Analytic-predictor profile inference only; not column/ODE uncertainty validation",
+    "equivalence_claim": false,
+    "joint_coverage_claim": false
+  },
+  "E03": {
+    "original_status": "COMPLETED_WITH_NUMERICAL_LIMITATIONS",
+    "original_solves": 881,
+    "refinement_status": "PASSED_SCOPED_FIXED_DESIGN_REFINEMENT",
+    "refinement_solves": 200,
+    "designs": {
+      "baseline": {
+        "count": 40,
+        "unresolved": 0,
+        "violation_count_finest": 0,
+        "violation_fraction_finest": 0.0,
+        "wilson_95_descriptive": [
+          0.0,
+          0.08762160119728664
+        ]
+      },
+      "deterministic_202611201": {
+        "count": 40,
+        "unresolved": 0,
+        "violation_count_finest": 13,
+        "violation_fraction_finest": 0.325,
+        "wilson_95_descriptive": [
+          0.200845022317827,
+          0.47982253810122333
+        ]
+      },
+      "deterministic_202611202": {
+        "count": 40,
+        "unresolved": 0,
+        "violation_count_finest": 6,
+        "violation_fraction_finest": 0.15,
+        "wilson_95_descriptive": [
+          0.07061187717320358,
+          0.2907232436648971
+        ]
+      },
+      "robust_202611201": {
+        "count": 40,
+        "unresolved": 0,
+        "violation_count_finest": 0,
+        "violation_fraction_finest": 0.0,
+        "wilson_95_descriptive": [
+          0.0,
+          0.08762160119728664
+        ]
+      },
+      "robust_202611202": {
+        "count": 40,
+        "unresolved": 0,
+        "violation_count_finest": 0,
+        "violation_fraction_finest": 0.0,
+        "wilson_95_descriptive": [
+          0.0,
+          0.08762160119728664
+        ]
+      }
+    },
+    "optimizer_seeds": 2,
+    "pareto_convergence_established": false,
+    "uncertainty": "synthetic prescribed distributions",
+    "risk_guarantee": false
+  },
+  "E04_CB": {
+    "attempts_verified": 48,
+    "errors": [],
+    "source_hashes_unchanged": true,
+    "historical_inputs_unchanged": true,
+    "metric_checks_pass": true,
+    "freeze_precedes_evaluation": true,
+    "local_optimizer_success": true,
+    "rate_s_inv": 7.782190778049689e-06,
+    "qmax_kg_kg": 0.15282665825864197,
+    "sse": 9.256174823174598,
+    "budget": {
+      "new_solves_attempted": 48,
+      "closed": 48,
+      "open_attempts": [],
+      "by_status": {
+        "COMPLETE": 48
+      },
+      "measured_s": 276.73592789999384,
+      "charged_closed_s": 276.73592789999384,
+      "reserved_open_s": 0,
+      "committed_s": 276.73592789999384,
+      "reserved_total_s": 43200,
+      "reconciled_closes": 0,
+      "failed_attempts": 0
+    },
+    "historical_requests_reused": 20
+  },
+  "release_scope": "New laboratory experiments are not a prerequisite for scoped software publication; claims limited to tested synthetic/reference/dataset domains. Rights and distribution checks remain independent."
+}
