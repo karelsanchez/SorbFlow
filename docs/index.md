@@ -43,6 +43,9 @@ configurables; otro contaminante requiere parámetros y supuestos químicos adec
 
 ## Superficies públicas
 
+- [Operadores experimentales de observación](observation_operators.md): retardo,
+  ventanas y promedio a partir de masa acumulada, con historia explícita.
+
 | Módulo | Disponible en el prototipo |
 |---|---|
 | `pyfast.simulate` | Batch LDF y columna LDF/HSDM |
