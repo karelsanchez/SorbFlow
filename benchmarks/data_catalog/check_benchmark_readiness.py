@@ -11,6 +11,7 @@ import argparse
 import csv
 import json
 import math
+import ntpath
 from pathlib import Path, PureWindowsPath
 from typing import Any
 
@@ -49,6 +50,14 @@ def mapping(value: object, label: str) -> dict[str, Any]:
     return value
 
 
+def reserved_windows_name(value: str) -> bool:
+    # Explicit Windows semantics are needed even when the catalog is checked on Linux.
+    checker = getattr(ntpath, "isreserved", None)
+    if checker is not None:
+        return bool(checker(value))
+    return PureWindowsPath(value).is_reserved()  # Python 3.11/3.12 compatibility.
+
+
 def safe_relative(value: object) -> str:
     directory = text(value, "relative_directory")
     win = PureWindowsPath(directory)
@@ -58,7 +67,7 @@ def safe_relative(value: object) -> str:
         all(
             part not in ("", ".", "..")
             and part == part.strip()
-            and not PureWindowsPath(part).is_reserved()
+            and not reserved_windows_name(part)
             and not part.endswith(".")
             and not any(ord(c) < 32 or c in ':<>"|?*' for c in part)
             for part in parts

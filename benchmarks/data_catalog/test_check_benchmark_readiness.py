@@ -4,16 +4,29 @@ from __future__ import annotations
 
 import copy
 import json
+import runpy
 import subprocess
 import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 CHECKER = Path(__file__).with_name("check_benchmark_readiness.py")
 
 
 class ReadinessTests(unittest.TestCase):
+    def test_modern_windows_reserved_path_check_avoids_legacy_api(self) -> None:
+        namespace = runpy.run_path(str(CHECKER), run_name="readiness_test_import")
+        with (
+            patch.object(
+                namespace["ntpath"], "isreserved", lambda name: name == "AUX", create=True,
+            ),
+            patch.object(namespace["PureWindowsPath"], "is_reserved", side_effect=AssertionError),
+        ):
+            self.assertTrue(namespace["reserved_windows_name"]("AUX"))
+            self.assertFalse(namespace["reserved_windows_name"]("dataset"))
+
     def setUp(self) -> None:
         self.temporary = tempfile.TemporaryDirectory(prefix="readiness_test_", dir=CHECKER.parent)
         self.addCleanup(self.temporary.cleanup)
