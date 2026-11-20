@@ -9,11 +9,12 @@ from scipy.sparse import csc_matrix
 from .._arrays import FloatArray
 from ..equilibrium import isotherm_from_parameters
 from ..equilibrium.isotherms import trial_loading
-from ..schemas import LDF, SimulationConfig
+from ..schemas import LDF, Langmuir, Linear, SimulationConfig
 from ..solvers.integration import integrate
 from ..solvers.options import SolverOptions, sample_times
 from ..solvers.results import SimulationResult, check_physics, result_metadata
 from ..units import finite_scalar
+from ._ldf_jacobian import LDFColumnJacobian
 
 
 def _jacobian_pattern(cells: int) -> csc_matrix:
@@ -44,15 +45,20 @@ def simulate_column(
     """
     if not isinstance(config, SimulationConfig):
         raise ValueError("config must be a SimulationConfig")
+    settings = SolverOptions() if options is None else options
+    if not isinstance(settings, SolverOptions):
+        raise ValueError("options must be SolverOptions")
+    if settings.jacobian == "analytic" and (
+        not isinstance(config.kinetics, LDF)
+        or not isinstance(config.equilibrium, (Langmuir, Linear))
+    ):
+        raise ValueError("Analytic Jacobian supports only LDF with Langmuir or Linear")
     if not isinstance(config.kinetics, LDF):
         from .hsdm import simulate_hsdm_column
 
         return simulate_hsdm_column(
             config, time_s=time_s, options=options, code_revision=code_revision
         )
-    settings = SolverOptions() if options is None else options
-    if not isinstance(settings, SolverOptions):
-        raise ValueError("options must be SolverOptions")
     times = sample_times(config.operation.duration_s, time_s)
     options_json, fingerprint, manifest = result_metadata(
         config.to_json(), times, settings, "column", code_revision
@@ -97,7 +103,8 @@ def simulate_column(
             np.full(2, settings.atol_mass_kg),
         )
     )
-    solution = integrate(rhs, initial, times, atol, settings, _jacobian_pattern(cells))
+    jac = LDFColumnJacobian(config, cells) if settings.jacobian == "analytic" else None
+    solution = integrate(rhs, initial, times, atol, settings, _jacobian_pattern(cells), jac=jac)
 
     def inventory(states: FloatArray) -> FloatArray:
         return np.asarray(

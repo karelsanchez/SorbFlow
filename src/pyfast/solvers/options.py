@@ -26,10 +26,13 @@ class SolverOptions:
     max_step_s: float | None = None
     axial_cells: int = 100
     radial_cells: int = 20
+    jacobian: Literal["finite_difference", "analytic"] = "finite_difference"
 
     def __post_init__(self) -> None:
         if self.method not in ("BDF", "Radau"):
             raise ValueError("Only BDF and Radau are supported")
+        if self.jacobian not in ("finite_difference", "analytic"):
+            raise ValueError("jacobian must be finite_difference or analytic")
         for name in (
             "rtol",
             "atol_concentration_kg_m3",

@@ -34,8 +34,12 @@ def integrate(
     atol: FloatArray,
     options: SolverOptions,
     sparsity: csc_matrix | None = None,
+    jac: Callable[[float, FloatArray], csc_matrix] | None = None,
 ) -> IntegrationOutput:
     """Retain internal accepted states as well as dense output for diagnostics."""
+    if options.jacobian == "analytic" and jac is None:
+        raise ValueError("Analytic Jacobian is not implemented for this reactor/model")
+    jac_options = {"jac_sparsity": sparsity} if jac is None else {"jac": jac}
     try:
         solution = solve_ivp(
             rhs,
@@ -46,7 +50,7 @@ def integrate(
             atol=atol,
             dense_output=True,
             max_step=np.inf if options.max_step_s is None else options.max_step_s,
-            jac_sparsity=sparsity,
+            **jac_options,
         )
     except (ValueError, FloatingPointError, OverflowError) as exc:
         raise SimulationError(f"Integration failed: {exc}") from exc

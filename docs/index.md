@@ -43,6 +43,9 @@ configurables; otro contaminante requiere parámetros y supuestos químicos adec
 
 ## Superficies públicas
 
+- [Jacobiano analítico opcional](analytic_jacobian.md): columna LDF Langmuir/lineal,
+  BDF/Radau y límites de la mejora computacional.
+
 - [Operadores experimentales de observación](observation_operators.md): retardo,
   ventanas y promedio a partir de masa acumulada, con historia explícita.
 
