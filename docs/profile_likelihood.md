@@ -89,3 +89,55 @@ callback puede realizar cero, uno o varios; el evaluador debe instrumentarlos.
 
 Las pruebas analíticas controlan mínimos, nuisance y fallos. No son todavía el
 estudio E02-A de cobertura, ni una validación experimental. No se ejecuta FAST.
+
+
+## E02 review integration (2026-11-19)
+
+The baseline is the best convergent result found within the supplied box, not a
+certified global optimum. Any lower finite evaluated objective, including one
+from a failed attempt or a numerical Jacobian evaluation, invalidates acceptance
+when it exceeds baseline_tolerance. Failed attempts never become optima.
+Each trial retains lowest_evaluated_chi2 separately from its reported endpoint.
+
+bound_parameters combines geometric log proximity (recorded bound_log_tolerance,
+default 1e-7) and SciPy active_mask. Neither is proof of a binding scientific
+constraint. edge_status remains a coarse compatibility field; edge_diagnostics
+adds WITH_NUISANCE_BOUND_EVIDENCE where applicable. A rejected pair does not
+establish identifiability or a data-determined closed interval. In the C1 ridge
+reference, proximity at the exact nuisance transition is missed at the default
+tolerance: this remains a documented diagnostic limitation, not a fitted cutoff.
+A relaxed-domain comparison is required to investigate box dependence.
+
+Endpoint rounding within four physical floating-point spacings is canonicalized;
+requested_grid preserves the request, points record effective values, and duplicate
+points after canonicalization are rejected. This tolerance is independent of bound
+proximity. Singleton endpoint labels remain directional.
+
+The batch builder accepts only known diagonal sigma. A custom residual can encode
+fixed known covariance whitening, but estimated scale is a different likelihood.
+SciPy nfev, callback calls and cumulative attempted physical solves are distinct;
+physical solves are not ODE right-hand-side evaluations. budget_exhausted means a
+call was refused; exactly spending a cap need not set it. No successful baseline
+means no profile trials. Diagnostics add no objective calls.
+
+The observation schema rejects negative concentrations. A Gaussian coverage driver
+must not redraw or clip those observations: either implement an explicit signed
+measurement contract or freeze another justified observation likelihood. Every
+simulation, including inconclusive failures, belongs in the study denominator.
+No coverage pilot has run. Numerical likelihood error must inform a predeclared
+baseline tolerance; increasing it merely to suppress inconsistent fits is invalid.
+Continuation, warm starts and baseline repair remain proposed, not implemented.
+The demo uses one shared RNG stream: seed alone cannot regenerate an individual
+file without draw order/state. It is engineering evidence, not coverage evidence.
+
+
+## Signed Gaussian measurements (experimental, 2026-11-20)
+
+`pyfast.calibration.measurements.SignedGaussianMeasurements` now provides the
+explicit signed measurement contract with required known positive diagonal sigma.
+`BatchExperiment` accepts it alongside `Observations`; physical states and the
+existing nonnegative `Observations` contract are unchanged. Negative noisy
+measurements and negative zero are retained. The API does not establish that
+Gaussian independent errors describe a real experiment. The earlier paragraph
+requiring a signed contract is satisfied for the experimental linear batch
+objective; this does not implement censored likelihoods or estimated scale.

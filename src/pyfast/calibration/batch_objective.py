@@ -14,6 +14,7 @@ from ..reactors.batch import simulate_batch
 from ..schemas import LDF, BatchConfig, Linear, Observations
 from ..solvers import SolverOptions
 from ..units import finite_scalar
+from .measurements import SignedGaussianMeasurements
 
 
 @dataclass(frozen=True, slots=True)
@@ -21,12 +22,12 @@ class BatchExperiment:
     """One declared experiment with known measurement sigma and SI quantities."""
 
     config: BatchConfig
-    observations: Observations
+    observations: Observations | SignedGaussianMeasurements
 
     def __post_init__(self) -> None:
         if (not isinstance(self.config, BatchConfig)
-                or not isinstance(self.observations, Observations)):
-            raise ValueError("BatchExperiment requires BatchConfig and Observations")
+                or not isinstance(self.observations, (Observations, SignedGaussianMeasurements))):
+            raise ValueError("BatchExperiment requires BatchConfig and supported measurements")
         if (not isinstance(self.config.equilibrium, Linear)
                 or not isinstance(self.config.kinetics, LDF)):
             raise ValueError("This objective supports only linear equilibrium and LDF")

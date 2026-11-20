@@ -1,0 +1,1320 @@
+{
+  "title": "E02 independent analytic reference cases",
+  "status": "REFERENCE_PROPOSAL; PyFAST NOT executed; expected PyFAST statuses are proposed from code reading",
+  "provenance_legend": {
+    "analytic_derivation": "closed form derived by hand",
+    "own_oracle": "computed by aux_oracle/oracle.py (NumPy/SciPy only, no PyFAST)",
+    "proposed": "expected contract/tolerance proposed by this review; not observed"
+  },
+  "oracle": {
+    "script": "aux_oracle/oracle.py",
+    "sha256": "002b3500ef01b77eaeab950f5dce66187b56294eb9ef0d5b3f622f06f152b0ad",
+    "results": "aux_oracle/oracle_results.json",
+    "results_sha256": "04082a1152561a44d676072feddd0f38ca16a77246416793c844ff8be16a549d",
+    "environment": {
+      "python": "3.7.0 (v3.7.0:1bf9cc5093, Jun 27 2018, 04:59:51) [MSC v.1914 64 bit (AMD64)]",
+      "numpy": "1.19.5",
+      "scipy": "1.7.3",
+      "platform": "Windows-10-10.0.26100-SP0"
+    },
+    "checks_passed": 37,
+    "checks_total": 37
+  },
+  "cutoff_chi2_1_0.95": {
+    "value": 3.841458820694124,
+    "provenance": "own_oracle"
+  },
+  "tolerances": {
+    "oracle_internal": {
+      "value": {
+        "abs_chi2": 1e-09
+      },
+      "provenance": "own_oracle"
+    },
+    "oracle_internal_justification": "float64 closed forms vs independent BVLS/lstsq/direct sums; chi2 magnitudes <= 1e3, so rounding is ~1e-12 relative; 1e-9 absolute leaves margin.",
+    "comparison_to_pyfast": {
+      "value": {
+        "abs_chi2_and_delta": "1e-6 + 1e-8*|value|",
+        "rel_parameters_identified_interior": 1e-05,
+        "parameters_on_ridge": "not comparable (set-valued argmin)",
+        "accepted_decision": "exact"
+      },
+      "provenance": "proposed"
+    },
+    "comparison_justification": "profile.py:156-159 uses ftol=xtol=gtol=1e-10 on 0.5*chi2; for chi2 <= 1e3 that bounds the optimizer cost error at ~1e-7; 1e-6 matches the default baseline_tolerance (profile.py:198). All grid points sit >= 0.05 from the cutoff (checked by the oracle), so accept/reject decisions must match exactly. Bound-active optima: trf keeps strictly feasible iterates (SciPy docs), so chi2 at an active bound may exceed the exact restricted minimum by gradient*distance; see A2/B2 notes."
+  },
+  "naming_rule": "accepted grid points are NOT confidence intervals",
+  "cases": [
+    {
+      "id": "A1_gaussian_mean_interior",
+      "family": "gaussian_mean_known_sigma",
+      "hypotheses": "y_i = mu + sigma*z_i, z_i iid N(0,1), sigma known fixed; mu interior to bounds.",
+      "units_scale": "dimensionless (declare unit '1' or any recognised unit consistently); O(1) scale",
+      "data": {
+        "y": [
+          2.1,
+          1.7,
+          2.4,
+          1.9,
+          2.6,
+          2.2,
+          1.8,
+          2.3
+        ],
+        "sigma": 0.5,
+        "n": 8
+      },
+      "parameters": [
+        {
+          "name": "mu",
+          "lower": 0.1,
+          "upper": 10.0
+        }
+      ],
+      "profiled": "mu",
+      "grid": [
+        1.7,
+        1.8,
+        2.0,
+        2.4,
+        2.5
+      ],
+      "starts_proposed": [
+        [
+          0.5
+        ],
+        [
+          5.0
+        ]
+      ],
+      "formulas": {
+        "muhat": "mean(y)",
+        "chi2_min": "sum((y-muhat)^2)/sigma^2",
+        "delta": "n*(mu-muhat)^2/sigma^2",
+        "Lambda": "exp(-delta/2)"
+      },
+      "expected": {
+        "muhat": {
+          "value": 2.125,
+          "provenance": "analytic_derivation"
+        },
+        "chi2_baseline": {
+          "value": 2.7,
+          "provenance": "own_oracle"
+        },
+        "points": [
+          {
+            "grid_value": 1.7,
+            "delta_chi2": {
+              "value": 5.780000000000001,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": false,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 1.8,
+            "delta_chi2": {
+              "value": 3.379999999999999,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": true,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 2.0,
+            "delta_chi2": {
+              "value": 0.5,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": true,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 2.4,
+            "delta_chi2": {
+              "value": 2.4199999999999986,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": true,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 2.5,
+            "delta_chi2": {
+              "value": 4.5,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": false,
+              "provenance": "own_oracle"
+            }
+          }
+        ],
+        "accepted_grid": {
+          "value": [
+            1.8,
+            2.0,
+            2.4
+          ],
+          "provenance": "own_oracle"
+        },
+        "edge_status": {
+          "value": [
+            "REJECTED",
+            "REJECTED"
+          ],
+          "provenance": "proposed"
+        },
+        "status": {
+          "value": "COMPLETE",
+          "provenance": "proposed"
+        },
+        "profile_trials_status": {
+          "value": "EVALUATED (no nuisance)",
+          "provenance": "proposed"
+        }
+      },
+      "applicability": "Regular interior case; chi2(1) cutoff exact here because delta is exactly chi2(1) at the truth for Gaussian mean with known sigma."
+    },
+    {
+      "id": "A2_gaussian_mean_bound_projected",
+      "family": "gaussian_mean_known_sigma",
+      "hypotheses": "Same data as A1; bounds [2.3, 5] exclude muhat=2.125, so the restricted MLE is the projection mu_tilde = clip(muhat, lower, upper).",
+      "units_scale": "as A1",
+      "data": "same as A1",
+      "parameters": [
+        {
+          "name": "mu",
+          "lower": 2.3,
+          "upper": 5.0
+        }
+      ],
+      "profiled": "mu",
+      "grid": [
+        2.3,
+        2.5,
+        2.6,
+        2.7
+      ],
+      "starts_proposed": [
+        [
+          2.5
+        ],
+        [
+          4.0
+        ]
+      ],
+      "formulas": {
+        "mu_tilde": "clip(muhat, lower, upper)",
+        "chi2_baseline": "chi2_min + n*(mu_tilde-muhat)^2/sigma^2",
+        "delta": "n*[(mu-muhat)^2 - (mu_tilde-muhat)^2]/sigma^2"
+      },
+      "expected": {
+        "mu_tilde": {
+          "value": 2.3,
+          "provenance": "analytic_derivation"
+        },
+        "chi2_baseline_restricted": {
+          "value": 3.679999999999998,
+          "provenance": "own_oracle"
+        },
+        "points": [
+          {
+            "grid_value": 2.3,
+            "delta_chi2": {
+              "value": 0.0,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": true,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 2.5,
+            "delta_chi2": {
+              "value": 3.5200000000000022,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": true,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 2.6,
+            "delta_chi2": {
+              "value": 6.240000000000005,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": false,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 2.7,
+            "delta_chi2": {
+              "value": 9.600000000000009,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": false,
+              "provenance": "own_oracle"
+            }
+          }
+        ],
+        "accepted_grid": {
+          "value": [
+            2.3,
+            2.5
+          ],
+          "provenance": "own_oracle"
+        },
+        "edge_status": {
+          "value": [
+            "BOUND_LIMITED",
+            "REJECTED"
+          ],
+          "provenance": "proposed"
+        },
+        "bound_limited_point_2.3": {
+          "value": true,
+          "provenance": "proposed"
+        },
+        "status": {
+          "value": "COMPLETE, or BASELINE_INCONSISTENT only if the bound-active baseline stops more than baseline_tolerance above 3.68 (see note)",
+          "provenance": "proposed"
+        }
+      },
+      "wrong_formulas_for_contrast": {
+        "interior_formula_with_unrestricted_muhat": {
+          "value": [
+            0.979999999999998,
+            4.5,
+            7.220000000000002,
+            10.580000000000007
+          ],
+          "provenance": "own_oracle"
+        },
+        "interior_formula_centered_at_mu_tilde": {
+          "value": [
+            0.0,
+            1.2800000000000022,
+            2.8800000000000052,
+            5.120000000000009
+          ],
+          "provenance": "own_oracle"
+        }
+      },
+      "note": "The grid point 2.3 is evaluated exactly at the bound, the baseline is reached by trf from the interior: delta(2.3) = -(baseline excess), expected within [-1e-6, 0]. A larger excess would trigger BASELINE_INCONSISTENT spuriously (finding F12).",
+      "applicability": "Truth/estimate at a boundary: chi2(1) cutoff is NOT justified (Chernoff 1954; mixture-type limits). Use only as algebraic reference, not for coverage."
+    },
+    {
+      "id": "B1_linear_regression_nuisance_interior",
+      "family": "linear_regression_known_sigma",
+      "hypotheses": "y_i = alpha + beta*x_i + sigma*z_i, sigma known, full-rank design, interior optimum.",
+      "units_scale": "x dimensionless 1..6, y O(1); declare consistent units",
+      "data": {
+        "x": [
+          1.0,
+          2.0,
+          3.0,
+          4.0,
+          5.0,
+          6.0
+        ],
+        "y": [
+          1.32,
+          1.55,
+          1.71,
+          1.98,
+          2.12,
+          2.41
+        ],
+        "sigma": 0.2
+      },
+      "parameters": [
+        {
+          "name": "alpha",
+          "lower": 0.01,
+          "upper": 5.0
+        },
+        {
+          "name": "beta",
+          "lower": 0.01,
+          "upper": 2.0
+        }
+      ],
+      "profiled": "beta",
+      "grid": [
+        0.08,
+        0.12,
+        0.17,
+        0.21,
+        0.24,
+        0.26,
+        0.3,
+        0.34
+      ],
+      "starts_proposed": [
+        [
+          0.5,
+          0.05
+        ],
+        [
+          3.0,
+          1.0
+        ]
+      ],
+      "formulas": {
+        "beta_hat": "Sxy/Sxx",
+        "alpha_hat": "ybar - beta_hat*xbar",
+        "alpha_hat_of_beta": "ybar - beta*xbar",
+        "delta": "Sxx*(beta-beta_hat)^2/sigma^2"
+      },
+      "expected": {
+        "alpha_hat": {
+          "value": 1.1053333333333333,
+          "provenance": "analytic_derivation"
+        },
+        "beta_hat": {
+          "value": 0.2122857142857143,
+          "provenance": "analytic_derivation"
+        },
+        "Sxx": {
+          "value": 17.5,
+          "provenance": "analytic_derivation"
+        },
+        "chi2_baseline": {
+          "value": 0.1310476190476187,
+          "provenance": "own_oracle"
+        },
+        "alpha_hat_of_beta": {
+          "value": [
+            1.5683333333333334,
+            1.4283333333333335,
+            1.2533333333333334,
+            1.1133333333333333,
+            1.0083333333333333,
+            0.9383333333333334,
+            0.7983333333333333,
+            0.6583333333333332
+          ],
+          "provenance": "own_oracle"
+        },
+        "points": [
+          {
+            "grid_value": 0.08,
+            "delta_chi2": {
+              "value": 7.6560357142857125,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": false,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 0.12,
+            "delta_chi2": {
+              "value": 3.726035714285715,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": true,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 0.17,
+            "delta_chi2": {
+              "value": 0.7822857142857143,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": true,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 0.21,
+            "delta_chi2": {
+              "value": 0.0022857142857143293,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": true,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 0.24,
+            "delta_chi2": {
+              "value": 0.33603571428571366,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": true,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 0.26,
+            "delta_chi2": {
+              "value": 0.9960357142857139,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": true,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 0.3,
+            "delta_chi2": {
+              "value": 3.3660357142857116,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": true,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 0.34,
+            "delta_chi2": {
+              "value": 7.136035714285713,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": false,
+              "provenance": "own_oracle"
+            }
+          }
+        ],
+        "accepted_grid": {
+          "value": [
+            0.12,
+            0.17,
+            0.21,
+            0.24,
+            0.26,
+            0.3
+          ],
+          "provenance": "own_oracle"
+        },
+        "edge_status": {
+          "value": [
+            "REJECTED",
+            "REJECTED"
+          ],
+          "provenance": "proposed"
+        },
+        "bound_limited_any": {
+          "value": false,
+          "provenance": "proposed"
+        },
+        "status": {
+          "value": "COMPLETE",
+          "provenance": "proposed"
+        }
+      },
+      "applicability": "Regular interior; delta exactly chi2(1) at truth (linear Gaussian, known sigma)."
+    },
+    {
+      "id": "B2_linear_regression_bounded_nuisance",
+      "family": "linear_regression_known_sigma",
+      "hypotheses": "Data as B1; alpha restricted to [1.12, 5] so alpha_hat=1.1053 is infeasible.",
+      "data": "same as B1",
+      "parameters": [
+        {
+          "name": "alpha",
+          "lower": 1.12,
+          "upper": 5.0
+        },
+        {
+          "name": "beta",
+          "lower": 0.01,
+          "upper": 2.0
+        }
+      ],
+      "profiled": "beta",
+      "grid": [
+        0.08,
+        0.12,
+        0.17,
+        0.21,
+        0.24,
+        0.26,
+        0.3,
+        0.34
+      ],
+      "starts_proposed": [
+        [
+          1.5,
+          0.05
+        ],
+        [
+          3.0,
+          1.0
+        ]
+      ],
+      "formulas": {
+        "alpha_restricted_of_beta": "clip(ybar - beta*xbar, alpha_lo, alpha_hi) (exact: chi2 is a convex 1-D quadratic in alpha)",
+        "restricted_baseline": "alpha=alpha_lo, beta=clip(sum(x*(y-alpha_lo))/sum(x^2), beta_lo, beta_hi); confirmed by BVLS",
+        "delta": "chi2(alpha_restricted(beta), beta) - chi2_restricted_baseline"
+      },
+      "expected": {
+        "restricted_baseline": {
+          "value": {
+            "alpha": 1.12,
+            "beta": 0.20890109890109887,
+            "chi2": 0.137252747252748
+          },
+          "provenance": "own_oracle"
+        },
+        "alpha_restricted_of_beta": {
+          "value": [
+            1.5683333333333334,
+            1.4283333333333335,
+            1.2533333333333334,
+            1.12,
+            1.12,
+            1.12,
+            1.12,
+            1.12
+          ],
+          "provenance": "own_oracle"
+        },
+        "nuisance_at_bound": {
+          "value": [
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "provenance": "own_oracle"
+        },
+        "chi2_profile": {
+          "value": [
+            7.787083333333337,
+            3.8570833333333345,
+            0.9133333333333333,
+            0.14000000000000004,
+            2.337500000000002,
+            6.077500000000001,
+            19.017500000000002,
+            39.237500000000026
+          ],
+          "provenance": "own_oracle"
+        },
+        "points": [
+          {
+            "grid_value": 0.08,
+            "delta_chi2": {
+              "value": 7.649830586080589,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": false,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 0.12,
+            "delta_chi2": {
+              "value": 3.7198305860805867,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": true,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 0.17,
+            "delta_chi2": {
+              "value": 0.7760805860805853,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": true,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 0.21,
+            "delta_chi2": {
+              "value": 0.0027472527472520436,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": true,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 0.24,
+            "delta_chi2": {
+              "value": 2.2002472527472543,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": true,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 0.26,
+            "delta_chi2": {
+              "value": 5.940247252747253,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": false,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 0.3,
+            "delta_chi2": {
+              "value": 18.880247252747253,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": false,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 0.34,
+            "delta_chi2": {
+              "value": 39.10024725274728,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": false,
+              "provenance": "own_oracle"
+            }
+          }
+        ],
+        "accepted_grid": {
+          "value": [
+            0.12,
+            0.17,
+            0.21,
+            0.24
+          ],
+          "provenance": "own_oracle"
+        },
+        "edge_status": {
+          "value": [
+            "REJECTED",
+            "REJECTED"
+          ],
+          "provenance": "proposed"
+        },
+        "point_bound_limited": {
+          "value": [
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "provenance": "proposed"
+        },
+        "baseline_bound_parameters": {
+          "value": [
+            "alpha"
+          ],
+          "provenance": "proposed"
+        }
+      },
+      "wrong_formula_for_contrast": {
+        "interior_formula": {
+          "value": [
+            7.6560357142857125,
+            3.726035714285715,
+            0.7822857142857143,
+            0.0022857142857143293,
+            0.33603571428571366,
+            0.9960357142857139,
+            3.3660357142857116,
+            7.136035714285713
+          ],
+          "provenance": "own_oracle"
+        }
+      },
+      "applicability": "Nuisance on a bound: test of bound reporting (F02). The chi2(1) cutoff is not justified asymptotically here; algebraic reference only."
+    },
+    {
+      "id": "B3_fixed_correlated_covariance_whitening",
+      "family": "linear_regression_known_covariance",
+      "hypotheses": "Same design/data as B1 with fixed known Sigma_ij = sigma^2*rho^|i-j|, rho=0.5. Sigma does not depend on parameters, so log det Sigma is constant.",
+      "data": "same as B1",
+      "formulas": {
+        "whitening": "Sigma = L L^T (Cholesky); r = L^{-1}(h - y); r^T r = (h-y)^T Sigma^{-1} (h-y)",
+        "gls": "theta_hat = (X^T Sigma^-1 X)^-1 X^T Sigma^-1 y",
+        "delta": "(beta - beta_gls)^2 / [(X^T Sigma^-1 X)^-1]_{beta,beta}"
+      },
+      "expected": {
+        "rTr_at_theta_test": {
+          "value": 1.971666666666666,
+          "provenance": "own_oracle"
+        },
+        "quadratic_form_at_theta_test": {
+          "value": 1.9716666666666662,
+          "provenance": "own_oracle"
+        },
+        "theta_test": [
+          1.0,
+          0.2
+        ],
+        "gls": {
+          "value": [
+            1.098249999999999,
+            0.21550000000000025
+          ],
+          "provenance": "own_oracle"
+        },
+        "var_beta_gls": {
+          "value": 0.0030000000000000014,
+          "provenance": "own_oracle"
+        },
+        "chi2_baseline": {
+          "value": 0.34116666666666723,
+          "provenance": "own_oracle"
+        },
+        "grid_beta": [
+          0.08,
+          0.12,
+          0.17,
+          0.21,
+          0.24,
+          0.26,
+          0.3,
+          0.34
+        ],
+        "delta_gls": {
+          "value": [
+            6.120083333333331,
+            3.040083333333332,
+            0.6900833333333338,
+            0.010083333333333777,
+            0.20008333333333378,
+            0.6600833333333307,
+            2.380083333333328,
+            5.166750000000002
+          ],
+          "provenance": "own_oracle"
+        },
+        "delta_if_correlation_ignored": {
+          "value": [
+            7.6560357142857125,
+            3.726035714285715,
+            0.7822857142857143,
+            0.0022857142857143293,
+            0.33603571428571366,
+            0.9960357142857139,
+            3.3660357142857116,
+            7.136035714285713
+          ],
+          "provenance": "own_oracle"
+        }
+      },
+      "applicability": "Algebraic contrast only. profile_gaussian_known_sigma accepts any user-supplied whitened residual, so a user could pass L^{-1}(h-y); LinearBatchObjective builds diagonal (h-y)/sigma only (batch_objective.py:114-116) and must not be described as supporting general covariance. Parameter-dependent Sigma requires the log-det term: outside the current API."
+    },
+    {
+      "id": "C1_product_ridge_bounded",
+      "family": "product_ridge",
+      "hypotheses": "y_i = a*b + sigma*z_i, a,b>0 with finite bounds; only the product ab is identified.",
+      "units_scale": "dimensionless, ab ~ 2",
+      "data": {
+        "y": [
+          1.95,
+          2.08,
+          2.02,
+          1.9,
+          2.05
+        ],
+        "sigma": 0.1,
+        "ybar": 2.0
+      },
+      "parameters": [
+        {
+          "name": "a",
+          "lower": 0.5,
+          "upper": 4.0
+        },
+        {
+          "name": "b",
+          "lower": 0.8,
+          "upper": 3.0
+        }
+      ],
+      "profiled": "a",
+      "grid": [
+        0.5,
+        0.6,
+        0.65,
+        0.7,
+        1.0,
+        2.0,
+        2.5,
+        2.6,
+        2.8,
+        3.0,
+        4.0
+      ],
+      "starts_proposed": [
+        [
+          0.6,
+          2.5
+        ],
+        [
+          3.0,
+          1.0
+        ]
+      ],
+      "formulas": {
+        "b_hat_of_a": "clip(ybar/a, b_lo, b_hi)",
+        "chi2_min_global_feasible": "sum((y-ybar)^2)/sigma^2, attained on the ridge a*b=ybar, a in [ybar/b_hi, ybar/b_lo]",
+        "delta_off_ridge": "n*(a*b_bound - ybar)^2/sigma^2"
+      },
+      "expected": {
+        "chi2_min_global_feasible": {
+          "value": 2.1800000000000015,
+          "provenance": "own_oracle"
+        },
+        "argmin_set": {
+          "value": "{(a, ybar/a): a in [0.6666666666666666, 2.5]}",
+          "provenance": "analytic_derivation"
+        },
+        "b_hat_of_a": {
+          "value": [
+            3.0,
+            3.0,
+            3.0,
+            2.857142857142857,
+            2.0,
+            1.0,
+            0.8,
+            0.8,
+            0.8,
+            0.8,
+            0.8
+          ],
+          "provenance": "own_oracle"
+        },
+        "nuisance_at_bound": {
+          "value": [
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "provenance": "own_oracle"
+        },
+        "points": [
+          {
+            "grid_value": 0.5,
+            "delta_chi2": {
+              "value": 124.99999999999999,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": false,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 0.6,
+            "delta_chi2": {
+              "value": 20.00000000000003,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": false,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 0.65,
+            "delta_chi2": {
+              "value": 1.2499999999999893,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": true,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 0.7,
+            "delta_chi2": {
+              "value": 0.0,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": true,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 1.0,
+            "delta_chi2": {
+              "value": 0.0,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": true,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 2.0,
+            "delta_chi2": {
+              "value": 0.0,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": true,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 2.5,
+            "delta_chi2": {
+              "value": 0.0,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": true,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 2.6,
+            "delta_chi2": {
+              "value": 3.20000000000001,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": true,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 2.8,
+            "delta_chi2": {
+              "value": 28.799999999999955,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": false,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 3.0,
+            "delta_chi2": {
+              "value": 80.00000000000016,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": false,
+              "provenance": "own_oracle"
+            }
+          },
+          {
+            "grid_value": 4.0,
+            "delta_chi2": {
+              "value": 720.0000000000002,
+              "provenance": "own_oracle"
+            },
+            "accepted": {
+              "value": false,
+              "provenance": "own_oracle"
+            }
+          }
+        ],
+        "accepted_grid": {
+          "value": [
+            0.65,
+            0.7,
+            1.0,
+            2.0,
+            2.5,
+            2.6
+          ],
+          "provenance": "own_oracle"
+        },
+        "edge_status": {
+          "value": [
+            "REJECTED",
+            "REJECTED"
+          ],
+          "provenance": "proposed"
+        },
+        "point_bound_limited": {
+          "value": [
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "provenance": "proposed"
+        },
+        "baseline_parameters": {
+          "value": "any point of the ridge; not comparable",
+          "provenance": "analytic_derivation"
+        }
+      },
+      "interpretation": "Every rejection in this grid happens where b is pinned at a bound. edge_status=REJECTED/REJECTED looks closed, but the closure comes from the bounds of b, not from information about a. A perfect fit (delta=0 over the ridge) does not identify a and b separately: the likelihood depends on ab only.",
+      "variant_wide_b_bounds": {
+        "b_bounds": [
+          0.001,
+          1000.0
+        ],
+        "delta": {
+          "value": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "provenance": "own_oracle"
+        },
+        "edge_status": {
+          "value": [
+            "BOUND_LIMITED",
+            "BOUND_LIMITED"
+          ],
+          "provenance": "proposed"
+        },
+        "accepted_grid": {
+          "value": [
+            0.5,
+            0.6,
+            0.65,
+            0.7,
+            1.0,
+            2.0,
+            2.5,
+            2.6,
+            2.8,
+            3.0,
+            4.0
+          ],
+          "provenance": "own_oracle"
+        }
+      },
+      "applicability": "Non-identifiable; no chi2(1) calibration applies. Use to test reporting (bound flags, edge statuses), never coverage."
+    },
+    {
+      "id": "ADV1_baseline_inconsistent_local_minimum",
+      "family": "adverse_contract",
+      "callback": "r(t) = [(t1-1)*(t1-3), 0.1*(t1-3), t2-1]",
+      "parameters": [
+        {
+          "name": "t1",
+          "lower": 0.5,
+          "upper": 5.0
+        },
+        {
+          "name": "t2",
+          "lower": 0.5,
+          "upper": 2.0
+        }
+      ],
+      "starts": [
+        [
+          0.8,
+          1.5
+        ]
+      ],
+      "profiled": "t1",
+      "grid": [
+        1.0,
+        3.0
+      ],
+      "derivation": {
+        "local_minimum": {
+          "value": {
+            "t1": 1.0050252533383,
+            "t2": 1.0,
+            "chi2": 0.0398997481060284,
+            "curvature_t1": 7.899697077040634
+          },
+          "provenance": "own_oracle"
+        },
+        "global_minimum": {
+          "value": {
+            "t1": 3.0,
+            "t2": 1.0,
+            "chi2": 0.0
+          },
+          "provenance": "analytic_derivation"
+        }
+      },
+      "precondition": "Check that the recorded baseline trial chi2 is ~0.0399. If the optimizer reached the global basin, report NOT_EXERCISED, not PASS.",
+      "expected_contract": {
+        "value": {
+          "baseline_inconsistent": true,
+          "status": "BASELINE_INCONSISTENT",
+          "delta_chi2_at_3.0": -0.0398997481060284,
+          "delta_clipped": false,
+          "accepted_all_points": null,
+          "accepted_grid": [],
+          "edge_status": [
+            "UNAVAILABLE",
+            "UNAVAILABLE"
+          ]
+        },
+        "provenance": "proposed"
+      },
+      "code_basis": "profile.py:247-251, 256-257, 265-267, 272"
+    },
+    {
+      "id": "ADV2_budget_exhausted_during_baseline",
+      "family": "adverse_contract",
+      "setup": "B1 data/parameters/starts, max_callback_calls=3",
+      "derivation": "least_squares evaluates fun(x0) (call 1), then a 3-point Jacobian needs 2n=4 more calls; call 4 is refused (profile.py:104-106).",
+      "expected_contract": {
+        "value": {
+          "status": "BUDGET_EXHAUSTED",
+          "budget_exhausted": true,
+          "callback_calls": 3,
+          "baseline_trials": [
+            {
+              "status": "BUDGET_EXHAUSTED",
+              "callback_calls": 3,
+              "chi2": "last finite evaluation (not None)"
+            },
+            {
+              "status": "BUDGET_EXHAUSTED",
+              "callback_calls": 0
+            }
+          ],
+          "baseline_chi2": null,
+          "points_trials": "() for every grid point",
+          "points_chi2": null,
+          "accepted_grid": [],
+          "edge_status": [
+            "UNAVAILABLE",
+            "UNAVAILABLE"
+          ]
+        },
+        "provenance": "proposed"
+      },
+      "code_basis": "profile.py:104-109, 170-176, 239-246, 266-267, 272-275",
+      "note": "BUDGET_EXHAUSTED takes precedence over BASELINE_FAILED (profile.py:272-274)."
+    },
+    {
+      "id": "ADV3_budget_exhausted_mid_profile",
+      "family": "adverse_contract",
+      "setup": "B1; phase 1 unlimited run records N_base = sum(baseline trial callback_calls); phase 2 uses max_callback_calls = N_base + 5 (two-phase so no count is guessed).",
+      "expected_contract": {
+        "value": {
+          "status": "BUDGET_EXHAUSTED",
+          "callback_calls": "N_base + 5",
+          "baseline_preserved": true,
+          "some_points_chi2_None": true,
+          "later_trials_callback_calls": 0,
+          "silent_retry": false
+        },
+        "provenance": "proposed"
+      }
+    },
+    {
+      "id": "ADV4_failed_trial_below_baseline",
+      "family": "adverse_contract",
+      "callback": "r(t) = [(t1-1)*(t1-3), 0.1*(t1-3), t2-1]; raises RuntimeError when t1 > 2.9 and t2 != 1.0 (a pure function of theta, not stateful)",
+      "parameters": [
+        {
+          "name": "t1",
+          "lower": 0.5,
+          "upper": 5.0
+        },
+        {
+          "name": "t2",
+          "lower": 0.5,
+          "upper": 2.0
+        }
+      ],
+      "starts": [
+        [
+          0.8,
+          1.5
+        ],
+        [
+          0.8,
+          1.0
+        ]
+      ],
+      "profiled": "t1",
+      "grid": [
+        1.0,
+        3.0
+      ],
+      "derivation": "At t1=3, start t2=1.0 evaluates chi2=0 exactly (first call), then the Jacobian perturbs t2 and the callback raises: trial ERROR with recorded chi2=0 < baseline 0.0399.",
+      "expected_by_current_code": {
+        "value": {
+          "status": "INCOMPLETE",
+          "baseline_inconsistent": false,
+          "point_3.0_chi2": null,
+          "point_1.0_accepted": true
+        },
+        "provenance": "proposed"
+      },
+      "recommended_contract": {
+        "value": {
+          "baseline_inconsistent": true,
+          "reason": "a recorded attained chi2 at a feasible theta is below baseline - tolerance"
+        },
+        "provenance": "proposed"
+      },
+      "code_basis": "profile.py:170-176, 181-185, 247-251",
+      "finding": "F01"
+    }
+  ]
+}

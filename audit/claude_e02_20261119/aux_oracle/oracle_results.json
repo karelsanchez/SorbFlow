@@ -1,0 +1,721 @@
+{
+  "provenance": "own_oracle",
+  "pyfast_imported": false,
+  "environment": {
+    "python": "3.7.0 (v3.7.0:1bf9cc5093, Jun 27 2018, 04:59:51) [MSC v.1914 64 bit (AMD64)]",
+    "numpy": "1.19.5",
+    "scipy": "1.7.3",
+    "platform": "Windows-10-10.0.26100-SP0"
+  },
+  "oracle_sha256": "002b3500ef01b77eaeab950f5dce66187b56294eb9ef0d5b3f622f06f152b0ad",
+  "cutoff_chi2_1_095": 3.841458820694124,
+  "A": {
+    "A1": {
+      "y": [
+        2.1,
+        1.7,
+        2.4,
+        1.9,
+        2.6,
+        2.2,
+        1.8,
+        2.3
+      ],
+      "sigma": 0.5,
+      "bounds": [
+        0.1,
+        10.0
+      ],
+      "grid": [
+        1.7,
+        1.8,
+        2.0,
+        2.4,
+        2.5
+      ],
+      "muhat": 2.125,
+      "chi2_baseline": 2.7,
+      "delta": [
+        5.780000000000001,
+        3.379999999999999,
+        0.5,
+        2.4199999999999986,
+        4.5
+      ],
+      "accepted_grid": [
+        1.8,
+        2.0,
+        2.4
+      ]
+    },
+    "A2": {
+      "bounds": [
+        2.3,
+        5.0
+      ],
+      "grid": [
+        2.3,
+        2.5,
+        2.6,
+        2.7
+      ],
+      "mu_tilde": 2.3,
+      "chi2_baseline_restricted": 3.679999999999998,
+      "delta": [
+        0.0,
+        3.5200000000000022,
+        6.240000000000005,
+        9.600000000000009
+      ],
+      "accepted_grid": [
+        2.3,
+        2.5
+      ],
+      "interior_formula_with_unrestricted_muhat_WRONG": [
+        0.979999999999998,
+        4.5,
+        7.220000000000002,
+        10.580000000000007
+      ],
+      "interior_formula_centered_at_mu_tilde_WRONG": [
+        0.0,
+        1.2800000000000022,
+        2.8800000000000052,
+        5.120000000000009
+      ]
+    }
+  },
+  "B": {
+    "B1": {
+      "x": [
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0
+      ],
+      "y": [
+        1.32,
+        1.55,
+        1.71,
+        1.98,
+        2.12,
+        2.41
+      ],
+      "sigma": 0.2,
+      "bounds": {
+        "alpha": [
+          0.01,
+          5.0
+        ],
+        "beta": [
+          0.01,
+          2.0
+        ]
+      },
+      "alpha_hat": 1.1053333333333333,
+      "beta_hat": 0.2122857142857143,
+      "Sxx": 17.5,
+      "chi2_baseline": 0.1310476190476187,
+      "grid_beta": [
+        0.08,
+        0.12,
+        0.17,
+        0.21,
+        0.24,
+        0.26,
+        0.3,
+        0.34
+      ],
+      "alpha_hat_of_beta": [
+        1.5683333333333334,
+        1.4283333333333335,
+        1.2533333333333334,
+        1.1133333333333333,
+        1.0083333333333333,
+        0.9383333333333334,
+        0.7983333333333333,
+        0.6583333333333332
+      ],
+      "delta": [
+        7.6560357142857125,
+        3.726035714285715,
+        0.7822857142857143,
+        0.0022857142857143293,
+        0.33603571428571366,
+        0.9960357142857139,
+        3.3660357142857116,
+        7.136035714285713
+      ],
+      "accepted_grid": [
+        0.12,
+        0.17,
+        0.21,
+        0.24,
+        0.26,
+        0.3
+      ]
+    },
+    "B2": {
+      "bounds": {
+        "alpha": [
+          1.12,
+          5.0
+        ],
+        "beta": [
+          0.01,
+          2.0
+        ]
+      },
+      "unrestricted_alpha_hat_infeasible": true,
+      "restricted_baseline": {
+        "alpha": 1.12,
+        "beta": 0.20890109890109887,
+        "chi2": 0.137252747252748
+      },
+      "grid_beta": [
+        0.08,
+        0.12,
+        0.17,
+        0.21,
+        0.24,
+        0.26,
+        0.3,
+        0.34
+      ],
+      "alpha_restricted_of_beta": [
+        1.5683333333333334,
+        1.4283333333333335,
+        1.2533333333333334,
+        1.12,
+        1.12,
+        1.12,
+        1.12,
+        1.12
+      ],
+      "alpha_at_bound": [
+        false,
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "chi2_profile": [
+        7.787083333333337,
+        3.8570833333333345,
+        0.9133333333333333,
+        0.14000000000000004,
+        2.337500000000002,
+        6.077500000000001,
+        19.017500000000002,
+        39.237500000000026
+      ],
+      "delta": [
+        7.649830586080589,
+        3.7198305860805867,
+        0.7760805860805853,
+        0.0027472527472520436,
+        2.2002472527472543,
+        5.940247252747253,
+        18.880247252747253,
+        39.10024725274728
+      ],
+      "accepted_grid": [
+        0.12,
+        0.17,
+        0.21,
+        0.24
+      ],
+      "interior_formula_WRONG_here": [
+        7.6560357142857125,
+        3.726035714285715,
+        0.7822857142857143,
+        0.0022857142857143293,
+        0.33603571428571366,
+        0.9960357142857139,
+        3.3660357142857116,
+        7.136035714285713
+      ]
+    },
+    "B3": {
+      "rho": 0.5,
+      "Sigma_definition": "sigma^2 * rho^|i-j|",
+      "theta_test": [
+        1.0,
+        0.2
+      ],
+      "rTr": 1.971666666666666,
+      "eT_Sigma_inv_e": 1.9716666666666662,
+      "gls": [
+        1.098249999999999,
+        0.21550000000000025
+      ],
+      "var_beta_gls": 0.0030000000000000014,
+      "chi2_baseline_gls": 0.34116666666666723,
+      "grid_beta": [
+        0.08,
+        0.12,
+        0.17,
+        0.21,
+        0.24,
+        0.26,
+        0.3,
+        0.34
+      ],
+      "delta_gls": [
+        6.120083333333331,
+        3.040083333333332,
+        0.6900833333333338,
+        0.010083333333333777,
+        0.20008333333333378,
+        0.6600833333333307,
+        2.380083333333328,
+        5.166750000000002
+      ],
+      "delta_if_correlation_ignored_diag_sigma": [
+        7.6560357142857125,
+        3.726035714285715,
+        0.7822857142857143,
+        0.0022857142857143293,
+        0.33603571428571366,
+        0.9960357142857139,
+        3.3660357142857116,
+        7.136035714285713
+      ],
+      "note": "algebraic contrast only; LinearBatchObjective supports diagonal sigma only"
+    }
+  },
+  "C": {
+    "y": [
+      1.95,
+      2.08,
+      2.02,
+      1.9,
+      2.05
+    ],
+    "sigma": 0.1,
+    "ybar": 2.0,
+    "bounds": {
+      "a": [
+        0.5,
+        4.0
+      ],
+      "b": [
+        0.8,
+        3.0
+      ]
+    },
+    "chi2_min_global_feasible": 2.1800000000000015,
+    "argmin_set": "{(a, ybar/a): a in [0.6666666666666666, 2.5]}",
+    "grid_a": [
+      0.5,
+      0.6,
+      0.65,
+      0.7,
+      1.0,
+      2.0,
+      2.5,
+      2.6,
+      2.8,
+      3.0,
+      4.0
+    ],
+    "b_hat_of_a": [
+      3.0,
+      3.0,
+      3.0,
+      2.857142857142857,
+      2.0,
+      1.0,
+      0.8,
+      0.8,
+      0.8,
+      0.8,
+      0.8
+    ],
+    "b_at_bound": [
+      true,
+      true,
+      true,
+      false,
+      false,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "delta": [
+      124.99999999999999,
+      20.00000000000003,
+      1.2499999999999893,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      3.20000000000001,
+      28.799999999999955,
+      80.00000000000016,
+      720.0000000000002
+    ],
+    "accepted_grid": [
+      0.65,
+      0.7,
+      1.0,
+      2.0,
+      2.5,
+      2.6
+    ],
+    "delta_outside_ridge_formula": "n*(a*b_bound - ybar)^2/sigma^2",
+    "delta_with_wide_b_bounds": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "adverse_local_baseline": {
+    "t1_local": 1.0050252533383,
+    "chi2_local": 0.0398997481060284,
+    "curvature": 7.899697077040634,
+    "chi2_global": 0.0,
+    "expected_delta_at_t1_3": -0.0398997481060284
+  },
+  "demo_closed_form": {
+    "sha256": {
+      "specification": "41ecd491f8fbdd47bd3cf0b058a25f53a9698c64dbe1149cd177251119b8de8e",
+      "data_0": "949269c899f8cca1d2a829a5c96c09339331b0db7296004b0df59b5ee6eabb9d",
+      "data_1": "0a32c4c82d269102c0d455dc2b0ace785617ec7d50be068b35e7275c0d59e4fb",
+      "report": "52ede1e458a62731f754876a1efd3ab59ed0b23afb7ecc63de79b251880f5fb8"
+    },
+    "z_at_truth_K0.5_k0.02": [
+      [
+        -1.6599829411611393,
+        0.7526771899452056,
+        -0.6085214187628949,
+        -1.3448685345070557,
+        -0.6547844415760554,
+        -0.14549933800111872
+      ],
+      [
+        1.1849274290675997,
+        0.40161575837097985,
+        -0.029039182870838065,
+        -1.214698948191848,
+        0.40528256331686524,
+        -1.4613862757058846
+      ]
+    ],
+    "chi2_at_truth": 11.292537573058032,
+    "n_observations": 12,
+    "max_abs_z": 1.6599829411611393,
+    "min_concentration_over_sigma": 31.87194807295943,
+    "evaluations_at_reported_parameters": [
+      {
+        "where": "baseline",
+        "params": [
+          0.5162415560832208,
+          0.019253118807030813
+        ],
+        "reported_chi2": 8.441487663463336,
+        "closed_form_chi2": 8.441487494846443,
+        "closed_minus_reported": -1.6861689289271453e-07
+      },
+      {
+        "where": "profile K=0.4",
+        "params": [
+          0.4,
+          0.028201778850226098
+        ],
+        "reported_chi2": 195.40584482701624,
+        "closed_form_chi2": 195.40584051422212,
+        "closed_minus_reported": -4.312794118277452e-06
+      },
+      {
+        "where": "profile K=0.5",
+        "params": [
+          0.5,
+          0.020206463181467887
+        ],
+        "reported_chi2": 11.124101564792163,
+        "closed_form_chi2": 11.124100833184926,
+        "closed_minus_reported": -7.316072370144866e-07
+      },
+      {
+        "where": "profile K=0.6",
+        "params": [
+          0.6,
+          0.015321088985655634
+        ],
+        "reported_chi2": 62.827438745169275,
+        "closed_form_chi2": 62.82744123162163,
+        "closed_minus_reported": 2.486452352457036e-06
+      }
+    ],
+    "max_abs_closed_minus_reported_chi2": 4.312794118277452e-06,
+    "profile_chi2_K0.5_le_chi2_truth": true,
+    "sum_trial_callback_calls": 213,
+    "reported_callback_calls": 213,
+    "reported_physical_solves": 426,
+    "solves_equal_2x_calls": true,
+    "cutoff_recomputed": 3.841458820694124,
+    "cutoff_reported": 3.841458820694124,
+    "deltas_recomputed": [
+      186.9643571635529,
+      2.6826139013288266,
+      54.38595108170594
+    ],
+    "deltas_reported": [
+      186.9643571635529,
+      2.6826139013288266,
+      54.38595108170594
+    ],
+    "note": "own_oracle evaluation of closed-form truth model at REPORTED parameters; no refit"
+  },
+  "wilson_design": {
+    "z": 1.959963984540054,
+    "p_design": 0.95,
+    "half_width": {
+      "50": 0.06648182562933022,
+      "100": 0.0451033950387756,
+      "500": 0.019337207963849086,
+      "1000": 0.013591778925751002,
+      "1825": 0.010033274695933904,
+      "2000": 0.00958143765783208
+    },
+    "M_needed": {
+      "0.02": 469,
+      "0.015": 824,
+      "0.0135": 1014,
+      "0.01": 1838
+    },
+    "note": "Wilson score half-width evaluated at hypothesised p=0.95; design precision only"
+  },
+  "checks": [
+    {
+      "check": "A1 baseline numeric vs closed",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "check": "A1 delta closed vs direct",
+      "passed": true,
+      "detail": 8.881784197001252e-16
+    },
+    {
+      "check": "A1: grid decisions robust (|delta-cutoff| >= 0.05)",
+      "passed": true,
+      "detail": 0.461458820694125
+    },
+    {
+      "check": "A2 restricted baseline BVLS vs closed",
+      "passed": true,
+      "detail": [
+        4.440892098500626e-16,
+        2.3
+      ]
+    },
+    {
+      "check": "A2 delta closed vs direct",
+      "passed": true,
+      "detail": 8.881784197001252e-16
+    },
+    {
+      "check": "A2 (excluding the bound point, delta=0): grid decisions robust (|delta-cutoff| >= 0.05)",
+      "passed": true,
+      "detail": 0.3214588206941218
+    },
+    {
+      "check": "B1 OLS closed vs lstsq",
+      "passed": true,
+      "detail": [
+        -2.220446049250313e-16,
+        -5.551115123125783e-17
+      ]
+    },
+    {
+      "check": "B1 profile delta closed vs direct",
+      "passed": true,
+      "detail": 5.329070518200751e-15
+    },
+    {
+      "check": "B1: grid decisions robust (|delta-cutoff| >= 0.05)",
+      "passed": true,
+      "detail": 0.11542310640840903
+    },
+    {
+      "check": "B1 all profile nuisance interior",
+      "passed": true,
+      "detail": [
+        1.5683333333333334,
+        1.4283333333333335,
+        1.2533333333333334,
+        1.1133333333333333,
+        1.0083333333333333,
+        0.9383333333333334,
+        0.7983333333333333,
+        0.6583333333333332
+      ]
+    },
+    {
+      "check": "B2 restricted baseline: bvls vs explicit edge solution",
+      "passed": true,
+      "detail": {
+        "bvls": [
+          1.12,
+          0.20890109890109892
+        ],
+        "edge_beta": 0.20890109890109887
+      }
+    },
+    {
+      "check": "B2 profile beta=0.08 BVLS vs clip",
+      "passed": true,
+      "detail": -1.7763568394002505e-15
+    },
+    {
+      "check": "B2 profile beta=0.12 BVLS vs clip",
+      "passed": true,
+      "detail": -4.440892098500626e-16
+    },
+    {
+      "check": "B2 profile beta=0.17 BVLS vs clip",
+      "passed": true,
+      "detail": 3.3306690738754696e-16
+    },
+    {
+      "check": "B2 profile beta=0.21 BVLS vs clip",
+      "passed": true,
+      "detail": 3.0531133177191805e-16
+    },
+    {
+      "check": "B2 profile beta=0.24 BVLS vs clip",
+      "passed": true,
+      "detail": 8.881784197001252e-16
+    },
+    {
+      "check": "B2 profile beta=0.26 BVLS vs clip",
+      "passed": true,
+      "detail": 9.769962616701378e-15
+    },
+    {
+      "check": "B2 profile beta=0.3 BVLS vs clip",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "check": "B2 profile beta=0.34 BVLS vs clip",
+      "passed": true,
+      "detail": -7.105427357601002e-15
+    },
+    {
+      "check": "B2: grid decisions robust (|delta-cutoff| >= 0.05)",
+      "passed": true,
+      "detail": 0.12162823461353733
+    },
+    {
+      "check": "B3 whitening r^T r == e^T Sigma^-1 e",
+      "passed": true,
+      "detail": -2.220446049250313e-16
+    },
+    {
+      "check": "B3 GLS profile delta closed vs direct",
+      "passed": true,
+      "detail": 2.3092638912203256e-14
+    },
+    {
+      "check": "C feasible ridge exists",
+      "passed": true,
+      "detail": [
+        0.4,
+        2.0,
+        12.0
+      ]
+    },
+    {
+      "check": "C profile a=0.5 BVLS vs clip",
+      "passed": true,
+      "detail": -5.684341886080802e-14
+    },
+    {
+      "check": "C profile a=0.6 BVLS vs clip",
+      "passed": true,
+      "detail": 2.1316282072803006e-14
+    },
+    {
+      "check": "C profile a=0.65 BVLS vs clip",
+      "passed": true,
+      "detail": 6.661338147750939e-15
+    },
+    {
+      "check": "C profile a=0.7 BVLS vs clip",
+      "passed": true,
+      "detail": 2.6645352591003757e-15
+    },
+    {
+      "check": "C profile a=1.0 BVLS vs clip",
+      "passed": true,
+      "detail": 3.1086244689504383e-15
+    },
+    {
+      "check": "C profile a=2.0 BVLS vs clip",
+      "passed": true,
+      "detail": 3.1086244689504383e-15
+    },
+    {
+      "check": "C profile a=2.5 BVLS vs clip",
+      "passed": true,
+      "detail": 3.1086244689504383e-15
+    },
+    {
+      "check": "C profile a=2.6 BVLS vs clip",
+      "passed": true,
+      "detail": 1.0658141036401503e-14
+    },
+    {
+      "check": "C profile a=2.8 BVLS vs clip",
+      "passed": true,
+      "detail": 4.263256414560601e-14
+    },
+    {
+      "check": "C profile a=3.0 BVLS vs clip",
+      "passed": true,
+      "detail": -9.947598300641403e-14
+    },
+    {
+      "check": "C profile a=4.0 BVLS vs clip",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "check": "C (off-ridge points): grid decisions robust (|delta-cutoff| >= 0.05)",
+      "passed": true,
+      "detail": 0.6414588206941141
+    },
+    {
+      "check": "ADV1 local minimum near 1 is strict",
+      "passed": true,
+      "detail": [
+        1.0050252533383,
+        7.899697077040634
+      ]
+    },
+    {
+      "check": "PyFAST never imported",
+      "passed": true,
+      "detail": "ok"
+    }
+  ]
+}

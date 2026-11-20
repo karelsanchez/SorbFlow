@@ -217,3 +217,47 @@ def test_invalid_inputs_rejected_before_callback(kwargs):
 def test_invalid_parameter_metadata(name, unit, lower, upper):
     with pytest.raises(ValueError):
         ProfileParameter(name, unit, lower, upper)
+
+
+def test_endpoint_roundoff_is_canonicalized_and_audited():
+    grid = np.logspace(np.log10(.2), np.log10(.3), 5)
+    result = profile_gaussian_known_sigma(
+        lambda theta: [theta[0] - .25], [ProfileParameter("x", "1", .2, .3)],
+        [[.25]], parameter="x", grid=grid,
+    )
+    assert result.requested_grid == tuple(grid)
+    assert result.edge_status == ("BOUND_LIMITED", "BOUND_LIMITED")
+    assert result.points[0].value == .2
+    assert result.points[-1].value == .3
+
+
+def test_failed_trial_lower_objective_invalidates_baseline(monkeypatch):
+    from types import SimpleNamespace
+
+    import pyfast.calibration.profile as module
+
+    def optimizer(fun, x, **kwargs):
+        fun(np.log([2.0]))
+        return SimpleNamespace(x=np.log([1.0]), fun=np.array([1.0]),
+                               success=True, active_mask=np.array([0]), message="mock")
+
+    monkeypatch.setattr(module, "least_squares", optimizer)
+    result = profile_gaussian_known_sigma(
+        lambda theta: [theta[0] - 2], [ProfileParameter("x", "1", .1, 5)],
+        [[1]], parameter="x", grid=[1],
+    )
+    assert result.baseline_trials[0].lowest_evaluated_chi2 == 0
+    assert result.baseline_chi2 == 1
+    assert result.status == "BASELINE_INCONSISTENT"
+    assert result.points[0].accepted is None
+
+
+def test_bound_diagnostic_does_not_claim_causality():
+    result = profile_gaussian_known_sigma(
+        lambda t: [(t[0] * t[1] - 5) / .1],
+        [ProfileParameter("a", "1", .1, 10), ProfileParameter("b", "1", 1, 2)],
+        [[3, 1.5]], parameter="a", grid=[.5, 8], bound_log_tolerance=1e-5,
+    )
+    assert result.edge_status == ("REJECTED", "REJECTED")
+    assert all("WITH_NUISANCE_BOUND_EVIDENCE" in x for x in result.edge_diagnostics)
+    assert result.bound_log_tolerance == 1e-5

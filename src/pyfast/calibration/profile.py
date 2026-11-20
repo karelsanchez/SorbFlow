@@ -55,6 +55,7 @@ class ProfileTrial:
     message: str
     callback_calls: int
     bound_parameters: tuple[str, ...]
+    lowest_evaluated_chi2: float | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -86,6 +87,9 @@ class GaussianProfile:
     budget_exhausted: bool
     baseline_inconsistent: bool
     status: str
+    edge_diagnostics: tuple[str, str] = ("UNAVAILABLE", "UNAVAILABLE")
+    requested_grid: tuple[float, ...] = ()
+    bound_log_tolerance: float = 1e-7
 
 
 class _BudgetExhausted(RuntimeError):
@@ -99,6 +103,7 @@ class _Evaluator:
     calls: int = 0
     size: int | None = None
     exhausted: bool = False
+    lowest_chi2: float | None = None
 
     def __call__(self, values: FloatArray) -> FloatArray:
         if self.limit is not None and self.calls >= self.limit:
@@ -113,13 +118,19 @@ class _Evaluator:
         if self.size is not None and residual.size != self.size:
             raise ValueError("Weighted residual length changed")
         self.size = residual.size
+        with np.errstate(over="ignore", invalid="ignore"):
+            score = float(np.dot(residual, residual))
+        if np.isfinite(score):
+            self.lowest_chi2 = score if self.lowest_chi2 is None else min(self.lowest_chi2, score)
         return residual
 
 
-def _bounds_at(values: FloatArray, specs: tuple[ProfileParameter, ...]) -> tuple[str, ...]:
+def _bounds_at(
+    values: FloatArray, specs: tuple[ProfileParameter, ...], tolerance: float,
+) -> tuple[str, ...]:
     return tuple(spec.name for value, spec in zip(values, specs, strict=True)
-                 if abs(np.log(value) - np.log(spec.lower)) <= 1e-7
-                 or abs(np.log(value) - np.log(spec.upper)) <= 1e-7)
+                 if abs(np.log(value) - np.log(spec.lower)) <= tolerance
+                 or abs(np.log(value) - np.log(spec.upper)) <= tolerance)
 
 
 def _trial(
@@ -128,6 +139,7 @@ def _trial(
     start: FloatArray,
     max_nfev: int,
     fixed: tuple[int, float] | None,
+    bound_log_tolerance: float,
 ) -> ProfileTrial:
     initial = start.copy()
     if fixed is not None:
@@ -138,9 +150,11 @@ def _trial(
     count = evaluate.calls
     last_values: FloatArray | None = None
     last_chi2: float | None = None
+    lowest_chi2: float | None = None
+    active_names: tuple[str, ...] = ()
 
     def residual(log_values: FloatArray) -> FloatArray:
-        nonlocal last_values, last_chi2
+        nonlocal last_values, last_chi2, lowest_chi2
         values = initial.copy()
         values[indices] = np.clip(np.exp(log_values), lower, upper)
         r = evaluate(values)
@@ -149,6 +163,7 @@ def _trial(
         if not np.isfinite(objective):
             raise ValueError("Sum of squared residuals is not finite")
         last_values, last_chi2 = values, objective
+        lowest_chi2 = objective if lowest_chi2 is None else min(lowest_chi2, objective)
         return r
 
     try:
@@ -161,6 +176,8 @@ def _trial(
             values[indices] = np.clip(np.exp(fitted.x), lower, upper)
             objective = float(np.dot(fitted.fun, fitted.fun))
             success = bool(fitted.success)
+            active_names = tuple(specs[i].name for i, mask in zip(
+                indices, fitted.active_mask, strict=True) if mask != 0)
             status, message = ("CONVERGED" if success else "OPTIMIZER_FAILED"), str(fitted.message)
         else:
             residual(np.empty(0))
@@ -172,10 +189,14 @@ def _trial(
             tuple(initial), None if last_values is None else tuple(last_values), last_chi2,
             False, "BUDGET_EXHAUSTED" if isinstance(exc, _BudgetExhausted) else "ERROR",
             f"{type(exc).__name__}: {exc}", evaluate.calls - count,
-            () if last_values is None else _bounds_at(last_values, specs),
+            () if last_values is None else _bounds_at(last_values, specs, bound_log_tolerance),
+            lowest_chi2,
         )
     return ProfileTrial(tuple(initial), tuple(values), objective, success, status, message,
-                        evaluate.calls - count, _bounds_at(values, specs))
+                        evaluate.calls - count,
+                        tuple(dict.fromkeys((
+                            *_bounds_at(values, specs, bound_log_tolerance), *active_names))),
+                        lowest_chi2)
 
 
 def _best(trials: tuple[ProfileTrial, ...]) -> ProfileTrial | None:
@@ -196,6 +217,7 @@ def profile_gaussian_known_sigma(
     max_nfev: int = 200,
     max_callback_calls: int | None = None,
     baseline_tolerance: float = 1e-6,
+    bound_log_tolerance: float = 1e-7,
 ) -> GaussianProfile:
     """Reoptimize nuisance on a supplied grid, recording every multi-start attempt.
 
@@ -213,6 +235,9 @@ def profile_gaussian_known_sigma(
         raise ValueError("weighted_residual must be callable")
     confidence = finite_scalar(confidence, "confidence")
     tolerance = finite_scalar(baseline_tolerance, "baseline_tolerance")
+    bound_log_tolerance = finite_scalar(bound_log_tolerance, "bound_log_tolerance")
+    if bound_log_tolerance < 0:
+        raise ValueError("bound_log_tolerance must be nonnegative")
     if not 0 < confidence < 1 or tolerance < 0:
         raise ValueError("Require 0 < confidence < 1 and nonnegative baseline_tolerance")
     if type(max_nfev) is not int or max_nfev < 1:
@@ -232,23 +257,33 @@ def profile_gaussian_known_sigma(
     values = real_array(grid, "grid")
     if values.ndim != 1 or not values.size or np.any(np.diff(values) <= 0):
         raise ValueError("grid must be a nonempty strictly increasing 1D vector")
+    requested_grid = tuple(float(value) for value in values)
+    values = values.copy()
+    # Canonicalize endpoint roundoff only; do not use the proximity diagnostic tolerance.
+    for bound in (lower[index], upper[index]):
+        rounding = 4 * abs(np.spacing(bound))
+        values[np.abs(values - bound) <= rounding] = bound
+    if np.any(np.diff(values) <= 0):
+        raise ValueError("grid has duplicate points after endpoint rounding")
     if np.any(values < lower[index]) or np.any(values > upper[index]):
         raise ValueError("grid must lie inside physical bounds")
 
     evaluate = _Evaluator(weighted_residual, max_callback_calls)
-    baseline_trials = tuple(_trial(evaluate, specs, start, max_nfev, None) for start in initial)
+    baseline_trials = tuple(
+        _trial(evaluate, specs, start, max_nfev, None, bound_log_tolerance)
+        for start in initial
+    )
     baseline = _best(baseline_trials)
     profiled: list[tuple[float, tuple[ProfileTrial, ...], ProfileTrial | None]] = []
     for value in values:
         trials = (() if baseline is None else tuple(
-            _trial(evaluate, specs, start, max_nfev, (index, float(value))) for start in initial
+            _trial(evaluate, specs, start, max_nfev, (index, float(value)), bound_log_tolerance)
+            for start in initial
         ))
         profiled.append((float(value), trials, _best(trials)))
     reference = None if baseline is None else baseline.chi2
-    inconsistent = reference is not None and any(
-        best is not None and best.chi2 is not None and best.chi2 < reference - tolerance
-        for _, _, best in profiled
-    )
+    inconsistent = (reference is not None and evaluate.lowest_chi2 is not None
+                    and evaluate.lowest_chi2 < reference - tolerance)
     cutoff = float(chi2.ppf(confidence, 1))
     points: list[ProfilePoint] = []
     for value, trials, best in profiled:
@@ -273,6 +308,13 @@ def profile_gaussian_known_sigma(
               "BUDGET_EXHAUSTED" if evaluate.exhausted else
               "BASELINE_FAILED" if baseline is None else
               "INCOMPLETE" if any(point.chi2 is None for point in points) else "COMPLETE")
+
+    def diagnostic(point: ProfilePoint, physical_bound: float) -> str:
+        coarse = edge(point, physical_bound)
+        best = _best(point.trials)
+        nuisance = best is not None and any(name != parameter for name in best.bound_parameters)
+        return f"{coarse}_WITH_NUISANCE_BOUND_EVIDENCE" if nuisance else coarse
+
     return GaussianProfile(
         specs, parameter, confidence, cutoff, baseline_trials,
         None if baseline is None else baseline.parameters, reference, tuple(points),
@@ -280,4 +322,6 @@ def profile_gaussian_known_sigma(
         (edge(points[0], float(lower[index])), edge(points[-1], float(upper[index]))),
         evaluate.calls, evaluate.exhausted,
         inconsistent, status,
+        (diagnostic(points[0], float(lower[index])),
+         diagnostic(points[-1], float(upper[index]))), requested_grid, bound_log_tolerance,
     )

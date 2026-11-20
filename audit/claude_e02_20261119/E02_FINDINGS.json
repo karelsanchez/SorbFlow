@@ -1,0 +1,200 @@
+{
+  "title": "E02 statistical review - structured findings",
+  "reviewer": "Claude (independent; PyFAST not imported or executed)",
+  "date": "2026-11-19",
+  "audited_sources_sha256_match_demo_manifest": true,
+  "sources": {
+    "S1": {"ref": "SciPy scipy.optimize.least_squares reference (stable page, v1.18.0)", "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html", "sections": "Parameters max_nfev, x0; Returns nfev, active_mask, status, success; Notes (trf strictly feasible)", "status": "VERIFIED_v1.18.0; v1.17.1 page (demo version) returned 404, so the semantics for 1.17.1 are inferred from the 1.18.0 page plus its changelog notes"},
+    "S2": {"ref": "Wilks, S.S. (1938) Ann. Math. Statist. 9(1):60-62", "doi": "10.1214/aoms/1177732360", "supports": "asymptotic chi2 law of -2 log Lambda under regular interior conditions", "status": "METADATA_VERIFIED (Crossref); full text not re-read in this session"},
+    "S3": {"ref": "Chernoff, H. (1954) Ann. Math. Statist. 25(3):573-578", "doi": "10.1214/aoms/1177728725", "supports": "LR limit is not chi2 when the true parameter is on the boundary of the parameter set", "status": "METADATA_VERIFIED (Crossref); full text not re-read"},
+    "S4": {"ref": "Self, S.G. & Liang, K.-Y. (1987) JASA", "doi": "10.1080/01621459.1987.10478472", "supports": "chi-bar-squared mixtures for boundary parameters/nuisance", "status": "PENDING (Crossref HTTP 429; no retry, per brief)"},
+    "S5": {"ref": "Venzon, D.J. & Moolgavkar, S.H. (1988) Applied Statistics", "doi": "10.2307/2347496", "supports": "profile-likelihood interval endpoints by root finding", "status": "PENDING (HTTP 429)"},
+    "S6": {"ref": "Raue, A. et al. (2009) Bioinformatics", "doi": "10.1093/bioinformatics/btp358", "supports": "profile likelihood for structural/practical identifiability; flat profiles", "status": "PENDING (HTTP 429)"},
+    "S7": {"ref": "Wilson, E.B. (1927) JASA 22:209-212", "doi": "10.1080/01621459.1927.10502953", "supports": "score interval for binomial proportion", "status": "PENDING (HTTP 429; seen only as a secondary citation in S8)"},
+    "S8": {"ref": "Brown, L.D., Cai, T.T., DasGupta, A. (2001) Statist. Sci. 16(2):101-133", "doi": "10.1214/ss/1009213286", "supports": "Wilson interval recommended over Wald; coverage oscillation", "status": "METADATA_VERIFIED (Crossref)"},
+    "S9": {"ref": "Clopper, C.J. & Pearson, E.S. (1934) Biometrika 26(4):404-413", "doi": "10.1093/biomet/26.4.404", "supports": "exact (conservative) binomial interval", "status": "METADATA_VERIFIED (Crossref)"}
+  },
+  "findings": [
+    {
+      "id": "F01", "severity": "P2", "disposition": "BUG",
+      "file": "PyFAST/src/pyfast/calibration/profile.py", "function": "_best / profile_gaussian_known_sigma", "lines": "170-176, 181-185, 247-251",
+      "claim": "The baseline-inconsistency check ignores chi2 values attained by failed trials (ERROR, OPTIMIZER_FAILED, BUDGET_EXHAUSTED).",
+      "expected": "Every recorded trial chi2 is the objective at a feasible theta that the callback actually evaluated (last_chi2 or fitted.fun). If any such value, from a baseline or profile trial, is below baseline_chi2 - baseline_tolerance, the selected baseline is provably not the minimum found. The run should then be flagged BASELINE_INCONSISTENT, or at least carry a dedicated diagnostic, with accepted withheld.",
+      "actual": "_best keeps only success=True trials, and the inconsistency check compares only those bests against the reference. A failed trial below the baseline leaves baseline_inconsistent=False, and points elsewhere can still be accepted against the wrong reference.",
+      "evidence": "Code reading. ANALYTIC_REFERENCE_CASES.json case ADV4_failed_trial_below_baseline gives a deterministic reproducer: current code is expected to return INCOMPLETE with baseline_inconsistent=False even though a recorded chi2 of 0 sits below a baseline of 0.0399.",
+      "recommended_action": "Compute min_attained = min(trial.chi2 over all recorded trials with chi2 not None). Flag inconsistency, or add a field such as attained_below_baseline, when min_attained < reference - tolerance. Keep the rule that failed trials are never selected as an optimum.",
+      "primary_sources": ["S1"],
+      "verification_limits": "Not executed. The ADV4 expectations are proposed from code reading."
+    },
+    {
+      "id": "F02", "severity": "P2", "disposition": "PENDING",
+      "file": "PyFAST/src/pyfast/calibration/profile.py", "function": "_bounds_at", "lines": "119-122, 259-261",
+      "claim": "Nuisance-at-bound detection uses a 1e-7 absolute tolerance in log coordinates, but trf keeps iterates strictly feasible.",
+      "expected": "A nuisance pinned at a physical bound, such as alpha in case B2 for beta>=0.21 or b in case C1 at a<=0.65 and a>=2.5, is reported in bound_parameters and makes the point bound_limited.",
+      "actual": "Unknown without execution. SciPy states that trf 'generates a sequence of strictly feasible iterates' and that active_mask 'is determined within a tolerance threshold'. A converged value 1e-6 (relative) from the bound would not be flagged.",
+      "evidence": "S1, plus the code at profile.py:121-122. B2 and C1 are reference cases with nuisance values known to sit at the bound.",
+      "recommended_action": "Run B2 and C1. Record least_squares active_mask and the log-distance to each bound in ProfileTrial. Use a documented tolerance tied to xtol and diff_step rather than a fixed 1e-7.",
+      "primary_sources": ["S1"],
+      "verification_limits": "Behaviour depends on the SciPy version (demo 1.17.1; documentation read for 1.18.0)."
+    },
+    {
+      "id": "F03", "severity": "P2", "disposition": "DOC_GAP",
+      "file": "PyFAST/src/pyfast/calibration/profile.py", "function": "profile_gaussian_known_sigma (edge)", "lines": "259-263, 265-270",
+      "claim": "edge_status=REJECTED does not say whether the rejection was produced by a nuisance bound.",
+      "expected": "When a rejecting extreme point is bound_limited because of a nuisance at its bound, that rejection is an artefact of the domain, not of the data. The user-facing status should make this visible.",
+      "actual": "edge() looks only at accepted and the value of the profiled parameter. In case C1 (product ridge), every rejected point has b pinned at a bound, yet the edges read REJECTED/REJECTED, which looks like a closed profile.",
+      "evidence": "ANALYTIC_REFERENCE_CASES.json C1_product_ridge_bounded (own_oracle): accepted_grid [0.65..2.6]; with wide b bounds the same grid is flat (delta = 0 everywhere).",
+      "recommended_action": "Add an edge status such as REJECTED_NUISANCE_BOUND, or document that consumers must check points[i].bound_limited at the extremes. Mention the case in profile_likelihood.md lines 69-73.",
+      "primary_sources": ["S6"],
+      "verification_limits": "Depends on F02: the per-point flag works only if bound detection works. S6 is PENDING."
+    },
+    {
+      "id": "F04", "severity": "P3", "disposition": "BUG",
+      "file": "PyFAST/src/pyfast/calibration/profile.py", "function": "profile_gaussian_known_sigma", "lines": "258, 270",
+      "claim": "Grid points at the profiled parameter's physical bound are detected by exact float equality.",
+      "expected": "A grid generated with np.logspace or np.linspace whose endpoint equals the bound up to rounding should yield BOUND_LIMITED.",
+      "actual": "value in (lower, upper) and point.value == physical_bound fail for 1.9999999999999998 against 2.0. The edge would then be reported GRID_TRUNCATED, and the point bound_limited=False if the nuisance is interior.",
+      "evidence": "Code reading. Grid validation (lines 235-236) accepts values within the bounds but does not snap them to the bounds.",
+      "recommended_action": "Use the same log-tolerance as _bounds_at, or snap grid values within tolerance to the exact bound during validation, and document the rule.",
+      "primary_sources": [],
+      "verification_limits": "Not executed; the demo grid does not touch the bounds."
+    },
+    {
+      "id": "F05", "severity": "P3", "disposition": "DOC_GAP",
+      "file": "PyFAST/docs/profile_likelihood.md", "function": "n/a", "lines": "55-59",
+      "claim": "The doc states 'delta_chi2 = chi2_profile - chi2_baseline es -2 log Lambda' without qualification.",
+      "expected": "Lambda = L_profile(a)/L_max = exp(-delta/2) lies in (0,1]. The identity holds with sigma known and fixed, because log L = -chi2/2 + constant and the constant (log det of 2*pi*Sigma) is parameter-free. It holds only if the baseline is the maximum over the same bounded domain. In practice it is relative to the best converged minimum found.",
+      "actual": "The code computes the difference correctly and never clips it (profile.py:256). The doc does not say that a local baseline that no profile point beats leaves the statistic biased low with no signal.",
+      "evidence": "ANALYTIC_REFERENCE_CASES.json A2: with the restricted baseline the correct delta is n[(mu-muhat)^2-(mu_tilde-muhat)^2]/sigma^2; the interior formulas differ (own_oracle).",
+      "recommended_action": "Reword: '-2 log Lambda relative to the best converged minimum found on the declared bounded domain; Lambda = exp(-delta_chi2/2)'.",
+      "primary_sources": ["S2"],
+      "verification_limits": "S2 metadata verified, full text not re-read."
+    },
+    {
+      "id": "F06", "severity": "P3", "disposition": "CONTRACT_OK",
+      "file": "PyFAST/src/pyfast/calibration/profile.py", "function": "profile_gaussian_known_sigma", "lines": "142-152, 243-257, 265-283",
+      "claim": "Known-sigma chi2 objective, full nuisance reoptimisation and the baseline-inconsistency contract.",
+      "expected": "chi2 = r^T r; all nuisance reoptimised from every start at each grid point; failed trials kept; delta not clipped; accepted=None and edges UNAVAILABLE when inconsistent; BASELINE_INCONSISTENT takes precedence.",
+      "actual": "As expected: line 148 (r.r), lines 243-245 (all starts, target fixed, nuisance free), lines 170-178 (every trial recorded), line 256 (no clipping), line 257 (accepted None), lines 266-267 and 272.",
+      "evidence": "Code reading. The demo report.json profile.points[*].delta_chi2 equals chi2 - baseline_chi2 exactly (own_oracle recomputation).",
+      "recommended_action": "Accept as the current API contract.",
+      "primary_sources": [],
+      "verification_limits": "Not executed."
+    },
+    {
+      "id": "F07", "severity": "P3", "disposition": "CONTRACT_OK",
+      "file": "PyFAST/src/pyfast/calibration/batch_objective.py", "function": "BatchExperiment.__post_init__ / LinearBatchObjective.__call__", "lines": "35-36, 113-117",
+      "claim": "The batch builder supports only diagonal, known, positive sigma.",
+      "expected": "r_i = (h_i - y_i)/sigma_i with sigma_i > 0, finite and matching the observations; no general covariance.",
+      "actual": "Line 116 builds (model - measured)/sigma per observation. sigma is required (lines 35-36), positive and finite with matching length (dependency schemas.py:435-436, 443). There is no covariance or correlation path. The profile API itself accepts any user-whitened residual, so a fixed Sigma can be handled as L^{-1}(h - y) by the user (case B3) but not by this builder.",
+      "evidence": "Code reading. Case B3 (own_oracle) checks the identity r^T r = e^T Sigma^{-1} e and shows that ignoring the correlation changes delta.",
+      "recommended_action": "Accept. The docs must not claim covariance support for the builder. A parameter-dependent Sigma needs the log det term and is out of scope.",
+      "primary_sources": [],
+      "verification_limits": "Read-only dependency: PyFAST/src/pyfast/schemas.py (Observations)."
+    },
+    {
+      "id": "F08", "severity": "P3", "disposition": "CONTRACT_OK",
+      "file": "PyFAST/docs/inverse_study_plan.md", "function": "n/a", "lines": "88-92, 129-133",
+      "claim": "The known-sigma and estimated-scale noise branches are not mixed.",
+      "expected": "Known sigma: LR = delta chi2. Unknown common scale profiled by MLE: LR = n log(RSS_w(a)/RSS_w_min). An unbiased residual variance is not a likelihood substitute.",
+      "actual": "The plan states both branches correctly and forbids the RSS/(n-p) substitution. profile.py implements only known sigma. The demo uses fixed sigma = 1e-4 kg/m^3 (specification.json known_sigma_kg_m3, data_*.json sigma_kg_m3). No n log RSS appears in the code or the demo.",
+      "evidence": "Reading of the documents, code and demo JSON.",
+      "recommended_action": "Accept. Branch B is not implemented and must not be claimed.",
+      "primary_sources": [],
+      "verification_limits": "None beyond reading."
+    },
+    {
+      "id": "F09", "severity": "P3", "disposition": "CONTRACT_OK",
+      "file": "PyFAST/src/pyfast/calibration/profile.py; batch_objective.py", "function": "_Evaluator.__call__; LinearBatchObjective.__call__", "lines": "profile.py:103-116, 156-159; batch_objective.py:109-112",
+      "claim": "Three distinct budget counters.",
+      "expected": "Callback calls include finite-difference Jacobians and calls that raise. max_nfev is per trial and excludes Jacobian evaluations. Physical solves are counted inside the callback.",
+      "actual": "The counter is incremented before the callback runs (line 109), so calls that raise are counted. The limit is checked before invocation (lines 104-106). SciPy documents that nfev excludes numerical-Jacobian calls (S1). The solve counter increments before simulate_batch (batch_objective.py:109-110), so attempted solves count as well. In the demo, report.json physical_solves = 426 = 2 x profile.callback_calls = 213, and the sum of the trials' callback_calls is 213 (own_oracle).",
+      "evidence": "Code reading, S1, and demo arithmetic (aux_oracle/oracle_results.json demo_closed_form).",
+      "recommended_action": "Accept. See F10 for documentation gaps.",
+      "primary_sources": ["S1"],
+      "verification_limits": "The S1 text was read for 1.18.0, not 1.17.1."
+    },
+    {
+      "id": "F10", "severity": "P3", "disposition": "DOC_GAP",
+      "file": "PyFAST/src/pyfast/calibration/profile.py; batch_objective.py; docs/profile_likelihood.md", "function": "profile_gaussian_known_sigma; LinearBatchObjective", "lines": "profile.py:104-106, 243; batch_objective.py:77, 109-110; profile_likelihood.md:85-88",
+      "claim": "Budget semantics have undocumented edges.",
+      "expected": "The docs say 'Intentos que no pudieron comenzar quedan registrados' and define a solve unit.",
+      "actual": "(a) When baseline is None, grid points get trials=() (line 243), so nothing is recorded for them. (b) budget_exhausted is True only if a call was refused, so a run that uses exactly max_callback_calls reports False. (c) physical_solves accumulates over the object's lifetime, not per profile call. (d) One 'solve' is one simulate_batch call; ODE right-hand-side evaluations are not counted.",
+      "evidence": "Code reading. The demo resets the counter by building a fresh objective (examples/profile_batch.py:82, 86).",
+      "recommended_action": "Document (a)-(d). For Monte Carlo, snapshot physical_solves before and after each profile, and record the skipped grid points explicitly.",
+      "primary_sources": [],
+      "verification_limits": "Read-only dependency: PyFAST/examples/profile_batch.py."
+    },
+    {
+      "id": "F11", "severity": "P2", "disposition": "DOC_GAP",
+      "file": "PyFAST/src/pyfast/schemas.py (dependency); PyFAST/examples/profile_batch.py", "function": "Observations.__post_init__; main", "lines": "schemas.py:436; profile_batch.py:52-53",
+      "claim": "Gaussian signed noise can produce negative concentrations, which the schema rejects.",
+      "expected": "The coverage protocol keeps every generated dataset in the denominator. Regimes are chosen so that P(any c<0) is negligible, and that probability is computed and frozen.",
+      "actual": "Observations rejects concentration < 0. The example raises instead of clipping (correct), but a Monte Carlo driver that redraws after the exception would condition on positive data. The plan acknowledges the limitation (inverse_study_plan.md:101-105). In the demo, min(c)/sigma = 31.9 (own_oracle), so it does not matter there.",
+      "evidence": "Code reading; oracle_results.json demo_closed_form.min_concentration_over_sigma.",
+      "recommended_action": "In the protocol, record GENERATION_REJECTED as a failure that counts in M, never redraw. Freeze per-scenario bounds on P(c<0).",
+      "primary_sources": [],
+      "verification_limits": "Read-only dependencies: schemas.py, examples/profile_batch.py."
+    },
+    {
+      "id": "F12", "severity": "P3", "disposition": "DOC_GAP",
+      "file": "PyFAST/src/pyfast/calibration/profile.py", "function": "profile_gaussian_known_sigma", "lines": "198, 247-251",
+      "claim": "baseline_tolerance = 1e-6 (absolute, in chi2) is not tied to the predictor's numerical error.",
+      "expected": "The tolerance exceeds the chi2 jitter that comes from integration error and from trf stopping slightly short of an active bound.",
+      "actual": "The own_oracle closed-form evaluation at the reported demo parameters differs from the reported chi2 by -1.7e-7 at the baseline and up to 4.3e-6 at K=0.4. That is the same order as the tolerance, though it corresponds to less than 1e-6 sigma per residual. Case A2 (baseline at a bound) may give delta(bound point) < 0 by roughly the trf stopping distance times the gradient.",
+      "evidence": "aux_oracle/oracle_results.json demo_closed_form.evaluations_at_reported_parameters; ANALYTIC_REFERENCE_CASES.json A2 note.",
+      "recommended_action": "Justify the tolerance relative to the predictor error and chi2 scale before freezing E02. Run A2 to see whether spurious BASELINE_INCONSISTENT occurs.",
+      "primary_sources": ["S1"],
+      "verification_limits": "The closed-form vs numerical-solver discrepancy is own_oracle. A2 behaviour is PENDING execution."
+    },
+    {
+      "id": "F13", "severity": "P3", "disposition": "DOC_GAP",
+      "file": "PyFAST/src/pyfast/calibration/profile.py; PyFAST/docs/inverse_study_plan.md", "function": "profile_gaussian_known_sigma", "lines": "profile.py:243-245; inverse_study_plan.md:122-127",
+      "claim": "The plan requires continuation, warm starts and baseline updates; the API does not provide them.",
+      "expected": "Keep the current API contract separate from proposed extensions.",
+      "actual": "Profile trials restart only from the user starts with the target coordinate replaced. There is no warm start from the baseline nuisance or from neighbouring points, and no automatic baseline update or recomputation. This is consistent with profile_likelihood.md:42-43 and 57-59 (refit outside the call).",
+      "evidence": "Reading of the code and both documents.",
+      "recommended_action": "Mark continuation and baseline update as PROPOSED in the plan. Include the baseline optimum's nuisance among the starts in any E02 driver, and state this in the protocol.",
+      "primary_sources": [],
+      "verification_limits": "None."
+    },
+    {
+      "id": "F14", "severity": "P3", "disposition": "CONTRACT_OK",
+      "file": "PyFAST/docs/profile_likelihood.md; profile.py", "function": "ProfileParameter; GaussianProfile", "lines": "profile_likelihood.md:38, 61-73; profile.py:26-43, 73, 252",
+      "claim": "Positivity and log coordinates, the chi2(1) cutoff, and accepted_grid are interpreted correctly.",
+      "expected": "Zero is not representable; the cutoff is only asymptotic, regular and interior; accepted_grid is not an interval.",
+      "actual": "Bounds 0 < lower < upper (profile.py:40-41). The docs state all three limits explicitly. report.json carries continuous_confidence_interval_estimated=false and coverage_study_completed=false.",
+      "evidence": "Reading of the code and docs. Boundary theory in S3 (and S4, PENDING).",
+      "recommended_action": "Accept. Coverage scenarios with the truth at or near a bound must be analysed separately (see COVERAGE_PROTOCOL_PROPOSAL.md).",
+      "primary_sources": ["S2", "S3", "S4"],
+      "verification_limits": "S4 is PENDING."
+    },
+    {
+      "id": "F15", "severity": "P3", "disposition": "CONTRACT_OK",
+      "file": "PyFAST/runs/profile_batch_demo_20261119_release/*.json", "function": "n/a", "lines": "n/a",
+      "claim": "The demo is internally consistent and is engineering evidence only.",
+      "expected": "SI units, a closed-form truth, signed unclipped noise, numerical error negligible relative to the noise, and counts that add up.",
+      "actual": "Units: m^3/kg, 1/s, kg/m^3. The truth (data_*.json truth_parameters [0.5, 0.02]) is the closed form c_eq + (c0 - c_eq) exp(-k(1 + beta K)t), with beta = 2 and 4 kg/m^3 (from config_json). The 12 standardized residuals at the truth have max |z| = 1.66 and include negative ones, so there is no clipping. chi2_at_truth = 11.29 >= profile chi2 at K=0.5 (11.124), as required. The closed-form vs reported chi2 discrepancy is at most 4.3e-6. cutoff = 3.841458820694124 recomputed; deltas recomputed exactly; callback_calls 213 = sum of trials; physical_solves 426 = 2 x 213. The source SHA-256 values in specification.json source_sha256 match the audited files.",
+      "evidence": "aux_oracle/oracle_results.json demo_closed_form (own_oracle, evaluation without refit).",
+      "recommended_action": "Accept as an engineering smoke artefact. It cannot support coverage, interval, identifiability or validation claims. One grid with three points and truth K = 0.5 on a grid node is not representative.",
+      "primary_sources": [],
+      "verification_limits": "No refit was done. One realization only."
+    },
+    {
+      "id": "F16", "severity": "P3", "disposition": "DOC_GAP",
+      "file": "PyFAST/runs/profile_batch_demo_20261119_release/data_0.json, data_1.json; examples/profile_batch.py", "function": "main", "lines": "profile_batch.py:38-39, 51",
+      "claim": "Both data files record the same seed (20261119) although data_1 uses draws 7-12 of one shared stream.",
+      "expected": "Each dataset records its own stream identity (spawn key or draw offset) so it can be regenerated on its own.",
+      "actual": "The data JSON key seed = 20261119 is identical in both files. The noise is independent, because it comes from one sequential stream, but data_1 cannot be regenerated without first replaying data_0's draws.",
+      "evidence": "examples/profile_batch.py lines 39 and 51 (read-only); the z-scores differ between experiments (own_oracle).",
+      "recommended_action": "In E02, use SeedSequence.spawn per dataset and per stream, and record the spawn keys (see the protocol).",
+      "primary_sources": [],
+      "verification_limits": "Read-only dependency: examples/profile_batch.py."
+    }
+  ],
+  "dependencies_read_only": [
+    "PyFAST/src/pyfast/schemas.py (Observations, lines 411-444)",
+    "PyFAST/src/pyfast/_arrays.py (real_array, lines 22-32)",
+    "PyFAST/examples/profile_batch.py (lines 30-99)"
+  ]
+}

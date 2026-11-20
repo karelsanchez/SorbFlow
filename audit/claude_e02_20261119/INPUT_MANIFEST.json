@@ -1,0 +1,13 @@
+{
+  "purpose": "independent Claude E02 statistical review",
+  "git_base_revision": "db308b579b4d06aacf4ced65c0d24feb03fde076",
+  "ongoing_changes": "E04 metadata integration only; no changes to listed inputs",
+  "input_sha256": {
+    "src/pyfast/calibration/profile.py": "bc2e7e6cb51c05cf6fd7faf31841256cf2c1d119b4c1e4750443ff65c2f82158",
+    "src/pyfast/calibration/batch_objective.py": "83942833d0110f325ba2d6c54be6ce9b2ed8566764bc70352ce358f88577b4fa",
+    "docs/profile_likelihood.md": "071cd873e9877a215ab363532dc2ef5919b40475626984acf0d58143534c682e",
+    "docs/inverse_study_plan.md": "d6f50f0f91bd6185f6d8739a9ec2ff2c057eebc43056a9618a235be8a7219496"
+  },
+  "outputs_directory": "outputs/CLAUDE_E02_REVIEW",
+  "coverage_protocol_status": "DRAFT_NOT_FROZEN"
+}

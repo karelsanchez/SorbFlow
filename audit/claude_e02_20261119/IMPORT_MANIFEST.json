@@ -1,0 +1,45 @@
+{
+  "originals": [
+    {
+      "path": "ANALYTIC_REFERENCE_CASES.json",
+      "sha256": "7726217e775070caf39dfac0982267ad7ee86eb94e6e3b92616359e4744d982e"
+    },
+    {
+      "path": "COVERAGE_PROTOCOL_PROPOSAL.md",
+      "sha256": "13229fb6908ab1dc9b9fe26798e0f3be35abe85ba615462468172486f131076d"
+    },
+    {
+      "path": "E02_FINDINGS.json",
+      "sha256": "d9c7c8f7cba53fd9a8a421ce4dd88be80579b3db47fc947f51902318d474b306"
+    },
+    {
+      "path": "E02_STATISTICAL_REVIEW.md",
+      "sha256": "5ad5f7c51f239304252ba602d5c907ed0cd5e80777a7a8337726f6dc43c8769d"
+    },
+    {
+      "path": "ENCARGO_E02.md",
+      "sha256": "5f7cb7f89e84a80770f1dd8d1e2e99ea50aeb81457f60d0602a2eff6614d0c54"
+    },
+    {
+      "path": "INPUT_MANIFEST.json",
+      "sha256": "ba2b6707c745140ca8bf341eb0aedc38222f10cbf571ebdd269825ebb5922566"
+    },
+    {
+      "path": "TASK.md",
+      "sha256": "0dbc44464777950b96afcb0543a82bdf3b044c1fced2b594f1f78938776b3919"
+    },
+    {
+      "path": "aux_oracle/build_cases.py",
+      "sha256": "9e1d8e9be3f9c4f353e5011a22c779855b8b9f25c60ef11214e6c3d0f0167ff5"
+    },
+    {
+      "path": "aux_oracle/oracle.py",
+      "sha256": "002b3500ef01b77eaeab950f5dce66187b56294eb9ef0d5b3f622f06f152b0ad"
+    },
+    {
+      "path": "aux_oracle/oracle_results.json",
+      "sha256": "04082a1152561a44d676072feddd0f38ca16a77246416793c844ff8be16a549d"
+    }
+  ],
+  "status": "DRAFT_NOT_FROZEN; no coverage execution"
+}
