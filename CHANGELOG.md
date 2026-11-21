@@ -1,5 +1,19 @@
 # Registro de cambios
 
+## 0.3.0.dev0 — SorbFlow, 2026-11-20
+
+- **Nuevo nombre: SorbFlow** (antes PyFAST). Distribución, paquete importable y
+  comando pasan a `sorbflow`; la interfaz local se inicia con `python -m sorbflow.web`.
+  Cambio incompatible de importación: sustituir `import pyfast` por `import sorbflow`.
+- Resultados JSON con `result_schema_version: 2` y el campo `result_kind:
+  numerical_simulation`; metadatos Parquet con prefijo `sorbflow.`.
+- Documentación reorganizada como herramienta general: capacidades, configuraciones,
+  rendimiento, galería de ejemplos, preguntas frecuentes y referencia de API generada.
+- Read the Docs y CI reforzados: dependencias de documentación fijadas, construcción
+  estricta, caché, cancelación de ejecuciones obsoletas e instalación del wheel construido.
+- La evidencia congelada (`audit/`, protocolos, captura de reproducción) conserva el
+  nombre anterior como registro histórico.
+
 ## Cambios locales sin publicar — 2026-11-19
 
 - E01-B: referencia ADE continua finita independiente, Pe2/10, promedios de celda,
