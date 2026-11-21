@@ -8,7 +8,7 @@ sintéticos; el material y la especie se suministran como configuración.
 ## 1. Unidades y equilibrio
 
 ```python
-from pyfast import Langmuir, quantity, to_si
+from sorbflow import Langmuir, quantity, to_si
 
 c = to_si(quantity(100, "mg/L"), "kg/m^3")
 model = Langmuir(qmax_kg_kg=0.01, affinity_m3_kg=10)
@@ -21,10 +21,10 @@ Los parámetros anteriores solo ilustran la construcción del modelo.
 
 ```python
 from pathlib import Path
-from pyfast import BatchConfig
-from pyfast.simulate import batch
-from pyfast.io import export_result
-from pyfast.validate import mass_balance
+from sorbflow import BatchConfig
+from sorbflow.simulate import batch
+from sorbflow.io import export_result
+from sorbflow.validate import mass_balance
 
 config = BatchConfig.from_json(Path("examples/batch_ldf.json").read_text())
 result = batch(config)
@@ -32,17 +32,17 @@ assert mass_balance(result).passed
 export_result(result, Path("runs/tutorial_batch"))
 ```
 
-La carpeta de salida debe ser nueva. Los archivos exportados conservan los datos
-de configuración y resultados; un balance cerrado no demuestra por sí solo
-precisión de la cinética ni adecuación experimental.
+La carpeta de salida debe ser nueva. Los archivos exportados conservan la
+configuración, los resultados y el balance de masa, de modo que cada simulación
+puede reproducirse y auditarse.
 
 ## 3. Columna LDF con memoria reducida
 
 ```python
 from pathlib import Path
-from pyfast import SimulationConfig
-from pyfast.simulate import column
-from pyfast.solvers import SolverOptions
+from sorbflow import SimulationConfig
+from sorbflow.simulate import column
+from sorbflow.solvers import SolverOptions
 
 config = SimulationConfig.from_json(Path("examples/column_ldf.json").read_text())
 options = SolverOptions(axial_cells=40, history="streaming", jacobian="analytic")
@@ -57,7 +57,7 @@ El [Jacobiano analítico](analytic_jacobian.md) y el modo
 ## 4. Columna HSDM mediante CLI
 
 ```powershell
-python -m pyfast column examples/column_hsdm.json --output runs/tutorial_hsdm --cells 20 --radial-cells 8
+python -m sorbflow column examples/column_hsdm.json --output runs/tutorial_hsdm --cells 20 --radial-cells 8
 ```
 
 HSDM agrega difusión radial y película. Sus coeficientes no se obtienen

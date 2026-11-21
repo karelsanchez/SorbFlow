@@ -1,7 +1,7 @@
 import pytest
 
-from pyfast import Bed
-from pyfast.design import CostBasis, cost_estimate, export_dxf, hydraulics
+from sorbflow import Bed
+from sorbflow.design import CostBasis, cost_estimate, export_dxf, hydraulics
 
 
 @pytest.fixture

@@ -6,10 +6,10 @@ import numpy as np
 import pytest
 from numpy.testing import assert_allclose
 
-from pyfast import LDF, BatchConfig, Linear, Species
-from pyfast.io.parquet import export_parquet
-from pyfast.simulate import batch, column
-from pyfast.solvers import SolverOptions
+from sorbflow import LDF, BatchConfig, Linear, Species
+from sorbflow.io.parquet import export_parquet
+from sorbflow.simulate import batch, column
+from sorbflow.solvers import SolverOptions
 
 HAS_ARROW = importlib.util.find_spec("pyarrow") is not None
 
@@ -66,17 +66,17 @@ def test_parquet_roundtrip_si_units_and_reproducibility_metadata(
     assert table.schema.field("time_s").metadata[b"unit"] == b"s"
     assert table.schema.field("outlet_concentration_kg_m3").metadata[b"unit"] == b"kg/m^3"
     metadata = table.schema.metadata
-    assert metadata[b"pyfast.export_schema_version"] == b"1"
-    assert metadata[b"pyfast.export_scope"] == b"outlet_timeseries_and_global_mass_balance"
-    assert metadata[b"pyfast.reactor"] == reactor.encode()
-    assert metadata[b"pyfast.numerical_sha256"].decode() == result.numerical_sha256
-    assert json.loads(metadata[b"pyfast.config_json"]) == json.loads(result.config_json)
-    assert json.loads(metadata[b"pyfast.solver_options_json"]) == json.loads(result.options_json)
+    assert metadata[b"sorbflow.export_schema_version"] == b"1"
+    assert metadata[b"sorbflow.export_scope"] == b"outlet_timeseries_and_global_mass_balance"
+    assert metadata[b"sorbflow.reactor"] == reactor.encode()
+    assert metadata[b"sorbflow.numerical_sha256"].decode() == result.numerical_sha256
+    assert json.loads(metadata[b"sorbflow.config_json"]) == json.loads(result.config_json)
+    assert json.loads(metadata[b"sorbflow.solver_options_json"]) == json.loads(result.options_json)
     assert (
-        json.loads(metadata[b"pyfast.manifest_json"])["config_sha256"]
+        json.loads(metadata[b"sorbflow.manifest_json"])["config_sha256"]
         == result.manifest.config_sha256
     )
-    assert metadata[b"pyfast.experimental_validation"] == b"not_performed"
+    assert metadata[b"sorbflow.result_kind"] == b"numerical_simulation"
     assert "radial_loading_kg_kg" not in table.column_names
 
 
@@ -92,9 +92,9 @@ def test_parquet_missing_optional_dependency_is_actionable(batch_result, tmp_pat
     def unavailable(name):
         raise ModuleNotFoundError(name)
 
-    monkeypatch.setattr("pyfast.io.parquet.import_module", unavailable)
+    monkeypatch.setattr("sorbflow.io.parquet.import_module", unavailable)
     target = tmp_path / "missing" / "result.parquet"
-    with pytest.raises(ImportError, match=r"pyfast-adsorption\[parquet\]"):
+    with pytest.raises(ImportError, match=r"sorbflow\[parquet\]"):
         export_parquet(batch_result, target)
     assert not target.exists()
     assert not target.parent.exists()

@@ -13,14 +13,14 @@ from pathlib import Path
 import numpy as np
 from run_ldf import configuration
 
-from pyfast import HSDM, Langmuir
-from pyfast.design import export_dxf, hydraulics
-from pyfast.equilibrium import isotherm_from_parameters
-from pyfast.fit import isotherm
-from pyfast.io import export_parquet, export_result
-from pyfast.simulate import column
-from pyfast.solvers import SolverOptions
-from pyfast.uncertainty import monte_carlo
+from sorbflow import HSDM, Langmuir
+from sorbflow.design import export_dxf, hydraulics
+from sorbflow.equilibrium import isotherm_from_parameters
+from sorbflow.fit import isotherm
+from sorbflow.io import export_parquet, export_result
+from sorbflow.simulate import column
+from sorbflow.solvers import SolverOptions
+from sorbflow.uncertainty import monte_carlo
 
 
 def main(output: Path) -> None:
@@ -116,7 +116,7 @@ def main(output: Path) -> None:
         ax.set(
             xlabel="Time (min)",
             ylabel="Outlet concentration / inlet concentration",
-            title="PyFAST — synthetic aqueous column (distinct kinetic assumptions)",
+            title="SorbFlow — synthetic aqueous column (distinct kinetic assumptions)",
         )
         ax.grid(alpha=0.25)
         ax.legend()

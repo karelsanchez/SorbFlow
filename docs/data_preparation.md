@@ -4,9 +4,11 @@
 
 ## Identidad, unidades y procedencia
 
-La [revisión integrada E04](e04_integration.md) conserva cero curvas admitidas y
-prioriza banana peel solo de forma condicionada. No transforma la matriz de
-metadatos en entradas del solver ni corrige unidades por suposición.
+La [revisión integrada E04](e04_integration.md) seleccionó el caso de columna
+prioritario. Las ocho curvas candidatas importadas después (379 puntos con
+indicadores de calidad) alimentaron las campañas C-A y C-B. La matriz de metadatos
+no se convierte automáticamente en entradas del solver ni se corrigen unidades por
+suposición.
 
 Conserve originales sin editar y genere derivados identificados por separado.
 Registre especie, material/receta, lote, protocolo, tiempo, concentración, incertidumbre,
@@ -32,7 +34,7 @@ time_min,C_mg_L,sd_mg_L
 La correspondencia de columnas y unidades siempre es explícita:
 
 ```python
-from pyfast.io import load_breakthrough_csv
+from sorbflow.io import load_breakthrough_csv
 
 observations = load_breakthrough_csv(
     "datos/mi_ensayo.csv",
@@ -76,7 +78,10 @@ colorantes y compuestos orgánicos pueden necesitar química y datos diferentes.
 
 El [catálogo de fuentes](../benchmarks/data_catalog/DATASET_REGISTRY.json) y la
 [preparación de datos candidatos](../benchmarks/data_catalog/DATASET_READINESS.md)
-mantienen **0 curvas listas** para validación física; E04 permanece BLOCKED_METADATA.
+conservan el inventario y los metadatos de cada fuente. El estado formal
+BLOCKED_METADATA del registro de 2026-11-19 es histórico: las curvas candidatas
+importadas se usaron en las campañas C-A/C-B
+(ver [estado científico](scientific_status.md)).
 Los originales de `datasets_benchmark_pyfast/` son una colección separada y no deben
 modificarse para hacer pasar una prueba.
 

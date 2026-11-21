@@ -7,7 +7,7 @@ Fuente de la auditoría local: IP_LICENSE_AUDIT.md y audit/fast_inventory.json e
 ## 1. Decisión de proyecto y condición de publicación
 
 Estrategia propuesta por el usuario: **Apache-2.0 para el núcleo científico** y una
-distribución independiente, p.ej. `pyfast-design-pro`, para capacidades empresariales.
+distribución independiente, p.ej. `sorbflow-design-pro`, para capacidades empresariales.
 Antes de conceder/publicar la licencia: identificar titulares, contratos universitarios,
 financiación, aportaciones externas, cesiones y permisos sobre código/datos. El
 metadato actual LicenseRef-Proprietary refleja que no se ha otorgado aún esa concesión;
@@ -40,11 +40,11 @@ No tratar gratuidad como permiso open source o comercial. El
 [texto legal CC BY-NC-ND 3.0](https://creativecommons.org/licenses/by-nc-nd/3.0/legalcode)
 no es una autorización general para adaptar/redistribuir comercialmente software.
 
-El solver PyFAST es independiente. El adaptador FAST sigue pendiente de contrato
+El solver SorbFlow es independiente. El adaptador FAST sigue pendiente de contrato
 I/O real, versión/hash e instalación legal aportada por el usuario, condiciones
 compatibles y directorios de trabajo aislados. No automatizar clics ni ejecutar
 simulaciones originales para llenar una tabla de benchmarking. No redistribuir
-EXE, imágenes, código o archivos de terceros como parte de PyFAST.
+EXE, imágenes, código o archivos de terceros como parte de SorbFlow.
 Si el benchmark no puede realizarse legal/técnicamente, declararlo NOT_RUN con causa;
 no inventar concordancia ni presentar FAST como verdad única de validación.
 
@@ -53,7 +53,7 @@ no inventar concordancia ni presentar FAST como verdad única de validación.
 | Componente | Uso actual/propuesto | Obligación de preparación |
 |---|---|---|
 | NumPy/SciPy/Pint | Arrays, integradores y unidades del core | Versiones/licencias/avisos de cada distribución y componentes incluidos |
-| pymoo | Extra opcional NSGA-II, licencia principal Apache-2.0 | No afirmar que el algoritmo sea original de PyFAST; citarlo y revisar transitivas |
+| pymoo | Extra opcional NSGA-II, licencia principal Apache-2.0 | No afirmar que el algoritmo sea original de SorbFlow; citarlo y revisar transitivas |
 | moocore | Transitiva de pymoo, LGPL-2.1-or-later declarada | Revisar condiciones de empaquetado/redistribución de la edición elegida; no omitirla del SBOM |
 | PyArrow | Extra Parquet, licencia principal Apache-2.0 | Revisar avisos incluidos y declarar extra/versión |
 | ezdxf | Verificación de desarrollo, MIT | No atribuir al exportador una validación mecánica por leer DXF correctamente |
@@ -66,7 +66,7 @@ conservar avisos y verificar que el modo de empaquetar componentes comerciales c
 las condiciones aplicables. No describir todo el árbol opcional como permisivo.
 Fuente primaria de licencia transitiva: [moocore](https://pypi.org/project/moocore/).
 
-No se han descargado/copiado fuentes de competidores para construir PyFAST. Consultar
+No se han descargado/copiado fuentes de competidores para construir SorbFlow. Consultar
 documentación o citar un paper no autoriza reproducir sus figuras, tablas o datasets.
 Los balances y métodos generales se formulan y citan independientemente; una publicación
 no otorga exclusividad sobre ecuaciones/métodos ni acredita una patente o marca.

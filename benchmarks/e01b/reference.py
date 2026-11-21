@@ -1,7 +1,7 @@
 """Independent continuous Danckwerts/Neumann ADE eigenfunction reference.
 
 Coordinates x=z/L and theta=t*v/L; returned concentrations are divided by c_in.
-No production PyFAST equation, matrix or Jacobian is used here.
+No production SorbFlow equation, matrix or Jacobian is used here.
 """
 
 from __future__ import annotations

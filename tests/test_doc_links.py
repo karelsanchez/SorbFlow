@@ -9,7 +9,7 @@ import pytest
 @pytest.fixture
 def checker():
     path = Path(__file__).resolve().parents[1] / "scripts" / "check_doc_links.py"
-    spec = importlib.util.spec_from_file_location("pyfast_doc_link_checker", path)
+    spec = importlib.util.spec_from_file_location("sorbflow_doc_link_checker", path)
     assert spec is not None and spec.loader is not None
     module = importlib.util.module_from_spec(spec)
     sys.modules[spec.name] = module

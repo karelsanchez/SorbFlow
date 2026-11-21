@@ -1,3 +1,3 @@
 """Single source version for runtime provenance."""
 
-VERSION = "0.2.0.dev0"
+VERSION = "0.3.0.dev0"

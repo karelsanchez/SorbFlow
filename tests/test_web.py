@@ -14,11 +14,11 @@ from urllib.request import ProxyHandler, Request, build_opener
 
 import pytest
 
-import pyfast.web.server as web_server
-from pyfast.web import create_server
-from pyfast.web.app import guarded_output_root
-from pyfast.web.config import MAX_REQUEST_BYTES, examples, parse_request, strict_object
-from pyfast.web.server import PyFASTHTTPServer, RequestHandler, main
+import sorbflow.web.server as web_server
+from sorbflow.web import create_server
+from sorbflow.web.app import guarded_output_root
+from sorbflow.web.config import MAX_REQUEST_BYTES, examples, parse_request, strict_object
+from sorbflow.web.server import RequestHandler, SorbFlowHTTPServer, main
 
 
 class DrainConnection:
@@ -135,7 +135,7 @@ def test_fragmented_unauthorized_post_returns_403_after_bounded_discard(client):
 
 @dataclass
 class Client:
-    server: PyFASTHTTPServer
+    server: SorbFlowHTTPServer
     output: Path
 
     @property
@@ -143,7 +143,7 @@ class Client:
         return f"http://127.0.0.1:{self.server.server_port}"
 
     def call(self, path, body=None, *, headers=None, raw=None):
-        supplied = {"X-PyFAST-Token": self.server.application.token}
+        supplied = {"X-SorbFlow-Token": self.server.application.token}
         data = raw
         if body is not None or raw is not None:
             supplied |= {"Origin": self.base, "Content-Type": "application/json"}
@@ -204,7 +204,7 @@ def test_home_has_local_assets_csp_and_scientific_status(client):
     code, headers, page = client.call("/")
     assert code == 200
     text = page.decode()
-    assert "Sin validación experimental" in text
+    assert "Resultados trazables" in text
     assert "__TOKEN__" not in text
     assert client.server.application.token in text
     assert "textContent" in text and "innerHTML" not in text
@@ -225,7 +225,7 @@ def test_examples_and_read_only_validation(client):
         assert status == 200
         assert validation["ok"]
         assert len(validation["config_sha256"]) == 64
-        assert "sin validación experimental" in validation["scientific_status"]
+        assert "balance de masa verificado" in validation["scientific_status"]
     assert not client.output.exists()
 
 
@@ -270,8 +270,8 @@ def test_duplicate_keys_nonfinite_units_and_unknown_config_are_rejected(client):
 @pytest.mark.parametrize(
     "headers",
     [
-        {"X-PyFAST-Token": "wrong"},
-        {"X-PyFAST-Token": "é"},
+        {"X-SorbFlow-Token": "wrong"},
+        {"X-SorbFlow-Token": "é"},
         {"Origin": "https://other.example"},
         {"Origin": "null"},
         {"Host": "other.example"},
@@ -290,7 +290,7 @@ def test_origin_is_required_and_large_body_rejected(client):
         client.json("/api/validate", request_for(), headers={"Content-Type": "text/plain"})[0]
         == 415
     )
-    assert client.json("/api/info", headers={"X-PyFAST-Token": ""})[0] == 403
+    assert client.json("/api/info", headers={"X-SorbFlow-Token": ""})[0] == 403
     assert not client.output.exists()
 
 
@@ -304,7 +304,7 @@ def test_completed_batch_max_preview_payload_and_downloads(client):
     code, headers, raw = client.call(f"/api/jobs/{job['id']}/files/result.json")
     assert code == 200 and "attachment" in headers["Content-Disposition"]
     report = json.loads(raw)
-    assert report["experimental_validation"] == "not_performed"
+    assert report["result_kind"] == "numerical_simulation"
     assert report["config"]["material"] == "Adsorbente sintético"
     code, _, csv = client.call(f"/api/jobs/{job['id']}/files/timeseries.csv")
     assert code == 200 and b"outlet_concentration_kg_m3" in csv

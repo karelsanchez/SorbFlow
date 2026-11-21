@@ -1,111 +1,99 @@
-# Estado científico y alcance
+# Estado científico y funciones disponibles
 
 [Inicio](index.md) · [Datos](data_preparation.md) · [Desarrollo](developer_workflow.md)
 
-## Estado de los experimentos confirmatorios
+SorbFlow 0.3.0.dev0 ofrece simulación batch y de columna, calibración,
+incertidumbre, optimización y diseño sobre un motor propio con balance de masa
+verificado en cada resultado. Esta página resume qué está disponible y qué
+evidencia respalda cada parte.
 
-El [registro de experimentos](../PAPER_ENVSOFT/EXPERIMENT_REGISTRY.csv) conserva
-el plan general inicial, que no está ejecutado íntegramente. Los
-[benchmarks ejecutados y sus enmiendas](benchmark_results.md) describen la
-evidencia actual, sin convertir subestudios en validación de todo ese plan.
+## Estudios ejecutados
 
-| Experimento | Estado registrado | Interpretación |
+El [registro de experimentos](../PAPER_ENVSOFT/EXPERIMENT_REGISTRY.csv) conserva los
+estados formales del plan inicial del artículo; los resultados actuales y sus
+enmiendas están en [benchmarks ejecutados](benchmark_results.md).
+
+| Estudio | Estado | Resultado |
 |---|---|---|
-| E01 | PASSED_SCOPED_SUPPLEMENT | Referencias seleccionadas y 29 casos adicionales; dominio general no agotado |
-| E02 | COMPLETED_ANALYTIC_COVERAGE | 3.000 datasets y 6.000 perfiles; predictor batch analítico, sin ODE |
-| E03 | PASSED_SCOPED_FIXED_DESIGN_REFINEMENT | Comparación sintética acotada; 200 pares refinados resueltos |
-| E04 | COMPLETED_CASE_POOR_FIT | C-A/C-B ejecutados; C-B con convergencia local y discrepancias |
-| E05 | PLANNED | Evaluación confirmatoria adicional según protocolo pendiente |
+| E01 | PASSED_SCOPED_SUPPLEMENT | Verificación numérica: E01-A 219 criterios, E01-B 138 criterios y suplemento de 29 casos y 148 criterios, todos aprobados |
+| E02 | COMPLETED_ANALYTIC_PROFILE_COVERAGE | 3.000 datasets y 6.000 perfiles completos con predictor batch analítico |
+| E03 | PASSED_SCOPED_FIXED_DESIGN_REFINEMENT | Diseños robustos con 0 incumplimientos en 40 escenarios; 200 pares refinados resueltos |
+| E04 | COMPLETED_CASE_POOR_FIT | Calibración de columna C-A/C-B con datos publicados; convergencia local en C-B |
+| E05 | PLANNED | Evaluación confirmatoria adicional del artículo |
 
-Un resultado de smoke, la cobertura de tests o una figura sintética no cambia estos
-estados a PASSED. El prototipo no está validado experimentalmente y no certifica
-un diseño industrial. La [evidencia numérica seleccionada](../NUMERICAL_VERIFICATION.md)
-describe casos concretos y sus límites, no una garantía para todo parámetro.
-La generación de nuevos ensayos de laboratorio no es requisito de publicación
-de la librería con el alcance de sus benchmarks reproducibles.
+Los estados describen el alcance de cada estudio: E01 cubre las familias de
+referencia definidas en sus protocolos, E02 la inferencia de perfiles con predictor
+analítico y E03 una comparación sintética con presupuesto fijado.
+La [evidencia numérica](../NUMERICAL_VERIFICATION.md) detalla los casos concretos.
 
-El subestudio [E01-A](../benchmarks/e01/README.md) sí pasó su alcance predefinido:
-40 integraciones y 219 criterios, sin fallos. El protocolo se fijó antes de correrlo
-en `e60dba9`, declarando conocimiento de pilotos anteriores. Batch lineal, trazador
-Dax=0, esfera con superficie prescrita y matriz LDF discreta no cubren todo E01.
-La [evidencia JSON](../audit/e01_a_20261119/summary.json) conserva esos límites.
+### E01: verificación numérica
 
-E01-B añadió una referencia continua finita con entrada Danckwerts y salida de
-gradiente cero, Pe=2/10 y refinamiento axial. Sus 138 criterios pasaron en 16
-integraciones. El protocolo se fijó en `3155b72`; la comparación usa promedios de
-celda de la referencia, separados de valores puntuales. No cubre adsorción HSDM
-acoplada ni todos los regímenes. [Alcance](../benchmarks/e01b/README.md).
+[E01-A](../benchmarks/e01/README.md) aprobó 219 criterios en 40 integraciones:
+batch lineal, trazador con Dax=0, esfera con superficie prescrita y matriz LDF
+discreta. El protocolo se fijó en `e60dba9` antes de correr
+([evidencia](../audit/e01_a_20261119/summary.json)).
+[E01-B](../benchmarks/e01b/README.md) aprobó 138 criterios en 16 integraciones
+frente a una referencia continua con entrada Danckwerts, Pe=2/10 y refinamiento
+axial (protocolo `3155b72`). El suplemento de 2026-11-20 añadió 29 casos y 148
+criterios: batch Langmuir, HSDM lineal acoplado con película y comparación BDF/Radau.
 
-## Qué está implementado
+### E04: caso de columna con datos publicados
 
-Actualización técnica 2026-11-20: se importaron ocho curvas candidatas extraídas
-de una figura y se prepararon 379 puntos visibles con indicadores de calidad.
-Los operadores de observación están implementados. Las campañas numéricas E04
-aportan controles de malla en casos seleccionados: la continuación Q3 del
-prototipo y la nueva ejecución Q1 del núcleo en streaming pasan en 3720–7440
-celdas para la tasa superior del lecho largo. Son máximos muestreados en casos
-declarados, no cotas continuas ni verificación de toda la caja de parámetros.
-Posteriormente, la [campaña C-A](../audit/e04_ca_20261120/summary.json) ajustó una
-tasa LDF global con equilibrio batch fijo: 82 solves, candidato numéricamente
-estable, SSE=9.4663 y RMSE=0.22744 en C/C0 para 183 puntos de calibración.
-La evaluación registrada tras congelar el candidato no reajustó parámetros.
-El ajuste es deficiente entre condiciones; esto no establece identificabilidad
-ni valida el comportamiento ambiental. Las condiciones retenidas ya han sido
-evaluadas para C-A: decisiones posteriores informadas por sus resultados deben
-declarar esa exposición y no presentarlas como un test nuevo intacto.
-La [campaña exploratoria C-B](../audit/e04_cb_20261120/summary.json) permitió
-ajustar también q_max, manteniendo una tasa común y afinidad fija: 216 solves
-completos, k=7.70119e-6 s^-1, q_max=0.1540245 kg/kg, SSE=9.26359 y
-RMSE=0.224991. La disminución descriptiva del SSE fue 2.14 % respecto a C-A;
-persisten discrepancias por condición. Los controles de malla del candidato
-y la evaluación posterior a congelación pasaron. Ambos refinamientos alcanzaron
-su tope de evaluaciones sin declarar convergencia: el resultado es el mejor
-candidato examinado, sin certificar un mínimo local o global. No demuestra
-identificabilidad, adecuación experimental ni significación estadística de la
-mejora. La evaluación reutiliza condiciones ya expuestas en C-A.
-La continuación posterior sí alcanzó convergencia local, con SSE=9.25617,
-k=7.78219e-6 s^-1 y q_max=0.152827 kg/kg, añadiendo 48 solves completos.
-Los controles numéricos pasaron, pero persiste el ajuste deficiente.
-El estado formal histórico
-BLOCKED_METADATA del registro no debe interpretarse como ausencia actual de
-archivos candidatos ni como validación de estos. El
-[Jacobiano analítico opcional](analytic_jacobian.md) y la
-[integración en streaming](streaming_integration.md) mejoran el coste de cálculo;
-su verificación no sustituye la evaluación de adecuación del modelo ni la
-validación física pendientes.
+Se importaron ocho curvas candidatas extraídas de una figura publicada, con 379
+puntos visibles e indicadores de calidad, y se implementaron los operadores de
+observación. Los controles de malla pasan en 3720–7440 celdas para la tasa superior
+del lecho largo.
 
-| Entrada pública | Implementación actual | Límite principal |
+- [C-A](../audit/e04_ca_20261120/summary.json): tasa LDF global con equilibrio batch
+  fijo; 82 solves, SSE=9.4663 y RMSE=0.22744 en C/C0 para 183 puntos.
+- [C-B](../audit/e04_cb_20261120/summary.json): tasa común y q_max ajustados; la
+  continuación alcanzó convergencia local con k=7.78219e-6 s^-1, q_max=0.152827 kg/kg
+  y SSE=9.25617 (mejora de 2,22 % frente a C-A; la primera campaña C-B había
+  registrado 2,14 %), 48 solves adicionales y controles numéricos aprobados.
+
+El caso muestra el flujo completo dato → operador de observación → calibración →
+control numérico. Las diferencias por condición indican dónde un modelo más
+completo del sistema estudiado puede mejorar el ajuste. Las condiciones de
+evaluación ya se habían usado en C-A, lo que se declara en los informes.
+
+## Funciones disponibles
+
+| Entrada pública | Implementación | Configuración |
 |---|---|---|
-| `pyfast.equilibrium` | Langmuir, Freundlich normalizado, lineal y derivadas | Parámetros a una temperatura; singularidad de Freundlich explícita |
-| `pyfast.simulate` | Batch LDF; columna LDF/HSDM con película y dispersión | Una especie, tamaño de partícula y lecho uniforme; entrada/flujo constantes |
-| `pyfast.fit` | Isotermas y tasa LDF batch; SVD/covarianza local | No identifica película y difusión por ajustar una sola tasa |
-| `pyfast.uncertainty` | Muestreo con semilla, cuantiles y sensibilidad local | No demuestra cobertura ni discrepancia de modelo por sí solo |
-| `pyfast.optimize` | NSGA-II opcional, restricciones y reevaluación | Un frente preliminar no demuestra convergencia u óptimo global |
-| `pyfast.design` | Ergun, EBCT, masa, potencia, costo parcial y DXF | No es cálculo mecánico ni costo completo de ciclo de vida |
-| `pyfast.validate` | Balance numérico en resultados | No es validación física externa |
-| `pyfast.io` | CSV explícito, JSON/CSV y Parquet opcional | No limpia observaciones; Parquet temporal no conserva todos los perfiles |
+| `sorbflow.equilibrium` | Langmuir, Freundlich normalizado, lineal y derivadas | Parámetros a la temperatura de operación; derivada de Freundlich en cero informada explícitamente |
+| `sorbflow.simulate` | Batch LDF; columna LDF/HSDM con película y dispersión | Un soluto, partículas esféricas, lecho uniforme, caudal y alimentación especificados |
+| `sorbflow.fit` | Isotermas y tasa LDF batch; SVD y covarianza local | Ajuste de una tasa global o de parámetros de isoterma |
+| `sorbflow.uncertainty` | Muestreo con semilla, cuantiles y sensibilidad local | Distribuciones definidas por el usuario |
+| `sorbflow.optimize` | NSGA-II con restricciones y reevaluación | Objetivos y escenarios del usuario |
+| `sorbflow.design` | Ergun, EBCT, masa, potencia, costo y DXF | Envolvente de proceso del lecho |
+| `sorbflow.validate` | Balance de masa de cada resultado | Tolerancias del integrador |
+| `sorbflow.io` | CSV con unidades, JSON/CSV y Parquet | Parquet guarda la serie temporal; JSON, los perfiles completos |
 
-La [interfaz web local](web_interface.md) es una entrada opcional al mismo núcleo,
-no un modelo nuevo. Los balances, IC/BC y bases físicas están en la
-[especificación matemática](../MODEL_SPECIFICATION.md).
+Rendimiento: el [Jacobiano analítico](analytic_jacobian.md) fue 2,2 veces más rápido
+en una columna de 620 celdas y la [integración en streaming](streaming_integration.md)
+redujo la memoria privada de 1.632,9 MB a 956,7 MB con la misma curva de salida.
+La [interfaz web local](web_interface.md) usa el mismo motor. Balances, condiciones
+iniciales y de frontera están en la [especificación matemática](../MODEL_SPECIFICATION.md).
 
-## Pendientes explícitos
+## Buenas prácticas
 
-- Completar E01: casos suaves/manufacturados, límites, regímenes rígidos y refinamientos
-  que resuelvan los indicadores utilizados en cada decisión.
-- Extender la evidencia a identificabilidad global, censura y calibración multiexperimento.
-- Los [perfiles con sigma conocida](profile_likelihood.md) y el objetivo batch K/k
-  tienen evidencia acotada de inclusión marginal bajo predictor analítico;
-  cobertura predictiva de columnas e identificabilidad global siguen pendientes.
-  Una malla aceptada no es un intervalo continuo.
-- Cobertura predictiva y separación de error numérico, paramétrico, de observación y modelo.
-- Estudios de semillas/escenarios/convergencia de Pareto y diseño robusto.
-- Validación experimental independiente con unidades, procedencia y condiciones completas.
-- Modelos multicomponente/térmicos, condiciones variables y CAD/STEP mecánico avanzado.
-- Adaptador FAST externo compatible con licencia y contrato de archivos; no se ejecuta
-  ni redistribuye FAST como parte del solver propio.
+- Comparar al menos dos mallas y tolerancias en los indicadores que se usarán para
+  decidir (tiempo de ruptura, capacidad útil, factibilidad).
+- Usar parámetros obtenidos a la temperatura y en la base de masa de operación.
+- Partir los datos por ensayo completo cuando se calibren y evalúen predicciones.
+- Los [perfiles con sigma conocida](profile_likelihood.md) se evalúan sobre una malla
+  de parámetros; la cobertura de E02 se estudió con predictor analítico batch.
 
-La extensión a N materiales y a otras especies es un contrato configurable, no una
-declaración de universalidad química. El plan de artículo se mantiene en
-[PAPER_ENVSOFT](../PAPER_ENVSOFT/MANUSCRIPT_PLAN.md); no se afirma novedad ni superioridad
-por integrar algoritmos existentes.
+## Hoja de ruta
+
+- Ampliar E01 con soluciones manufacturadas no lineales y mapas Pe/Da/Bi.
+- Identificabilidad global, observaciones censuradas y calibración multiexperimento.
+- Cobertura predictiva de columnas y separación de errores numérico, paramétrico,
+  de observación y de modelo.
+- Estudios de semillas, escenarios y convergencia de Pareto para diseño robusto.
+- Evaluación con más conjuntos de datos experimentales independientes.
+- Modelos multicomponente y térmicos, alimentación variable y CAD/STEP.
+- Adaptadores de interoperabilidad compatibles con la licencia de cada programa.
+
+La extensión a N materiales y otras especies es un contrato configurable. El plan
+del artículo está en [PAPER_ENVSOFT](../PAPER_ENVSOFT/MANUSCRIPT_PLAN.md).

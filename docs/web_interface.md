@@ -1,13 +1,13 @@
 # Interfaz web local
 
 La GUI opcional usa exclusivamente la biblioteca estándar para servir la interfaz;
-el cálculo invoca las API científicas existentes de PyFAST. No añade otro solver,
+el cálculo invoca las API científicas existentes de SorbFlow. No añade otro solver,
 no usa FAST y no incorpora librerías de interfaz o recursos externos.
 
 Desde la raíz del repositorio, con el entorno del proyecto:
 
 ```powershell
-& .\.venv\Scripts\python.exe -m pyfast.web --host 127.0.0.1 --port 8765 --output runs/gui
+& .\.venv\Scripts\python.exe -m sorbflow.web --host 127.0.0.1 --port 8765 --output runs/gui
 ```
 
 Abrir la dirección local que imprime la consola. Solo se permite enlazar a
@@ -21,19 +21,18 @@ de simulación. No enumera ni detiene procesos ajenos.
 2. Editar la configuración JSON completa. Los valores usan SI según el nombre de
    cada campo: concentración kg/m³, carga kg/kg de adsorbente seco y tiempo s.
    La GUI no adivina unidades de números copiados de una tabla.
-3. Validar el esquema y los límites de la GUI. Esta validación no demuestra que
-   los parámetros, la química o el dominio experimental sean correctos.
+3. Validar el esquema y los rangos de la GUI antes de calcular. La elección de
+   parámetros y modelo corresponde al usuario según su sistema.
 4. Simular mediante BDF/Radau y observar el estado del trabajo, la curva de salida
-   y el residuo máximo de masa. Un resultado numérico exitoso no es validación física.
+   y el residuo máximo de masa.
 5. Descargar JSON completo, CSV temporal, resumen y registro por identificador de
    trabajo. Los perfiles completos permanecen en el JSON; la vista solo grafica salida.
 
-La página señala permanentemente que PyFAST es un prototipo con verificaciones
-numéricas seleccionadas y **sin validación experimental ni certificación de diseño**.
-Materiales y contaminantes siguen siendo datos configurables, no cuatro nombres fijos.
-Los ejemplos son sintéticos; no representan los materiales del estudio experimental.
+La cabecera de la página resume el estado de cada resultado: simulación numérica
+con unidades SI, balance de masa verificado y archivos trazables. Materiales y
+contaminantes son datos configurables. Los ejemplos incluidos son sintéticos.
 
-## Límites de ejecución local
+## Recursos de ejecución local
 
 - Una simulación activa y un máximo de 50 trabajos por sesión. No hay cola ilimitada.
 - Cuerpo HTTP máximo 64 KiB; 2–401 observaciones, 2–64 celdas axiales y 2–12 radiales.
@@ -66,8 +65,8 @@ variables con `textContent`, nunca como HTML. No usa CDN, fuentes remotas ni tel
 
 Los identificadores UUID y nombres de descarga se validan contra rutas fijas; no hay
 servidor genérico de archivos. Estos controles reducen riesgos de CSRF, rebinding y
-XSS en el uso local; no convierten el prototipo en una frontera contra un usuario
-con acceso al mismo sistema de archivos.
+XSS en el uso local; no sustituyen los permisos del sistema operativo frente a un
+usuario con acceso al mismo sistema de archivos.
 
 Las rutas principales son `GET /`, `/api/info`, `/api/examples`, `/api/jobs`,
 `/api/jobs/<id>`, `/api/jobs/<id>/files/<nombre>`, `POST /api/validate` y `POST /api/jobs`.

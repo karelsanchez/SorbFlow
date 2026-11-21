@@ -7,32 +7,39 @@ import subprocess
 import sys
 from pathlib import Path
 
-LANDING = """# PyFAST
+LANDING = """# SorbFlow
 
-Framework Python para modelación reproducible de adsorción acuosa: equilibrio,
-batch, columnas LDF/HSDM, calibración, incertidumbre y diseño multiobjetivo.
+Herramienta en Python para **modelar, simular, calibrar y diseñar procesos de
+adsorción acuosa** en reactores batch y columnas de lecho fijo: isotermas lineal,
+Langmuir y Freundlich; cinética LDF y HSDM; calibración, incertidumbre, diseño
+hidráulico y optimización multiobjetivo, con unidades SI y resultados trazables.
 
-La versión **0.2.0.dev0** es experimental. Sus
-[benchmarks ejecutados](docs/benchmark_results.md) delimitan la evidencia disponible.
-Materiales y especies son configurables; no se limita al caso inicial de aplicación.
+Versión **0.3.0.dev0**. Cualquier soluto, adsorbente o mezcla se describe como
+configuración; los modelos se intercambian sin tocar código.
 
 ## Empezar
 
-1. [Instalar y ejecutar el primer caso](docs/getting_started.md).
-2. [Seguir los tutoriales](docs/tutorials.md).
-3. [Consultar la API](API_REFERENCE.md) y las [ecuaciones](MODEL_SPECIFICATION.md).
-4. [Reproducir los benchmarks](benchmarks/reproduction_20261120/README.md).
+1. [Qué es SorbFlow](docs/capabilities.md): capacidades y casos de uso.
+2. [Instalar y ejecutar el primer caso](docs/getting_started.md).
+3. [Seguir los tutoriales](docs/tutorials.md) y la [galería de ejemplos](docs/examples_gallery.md).
+4. [Configuraciones disponibles](docs/configurations.md): modelos y opciones numéricas.
+5. [Consultar la API](API_REFERENCE.md), la [referencia generada](docs/api_generated.md)
+   y las [ecuaciones](MODEL_SPECIFICATION.md).
+
+## Calidad y rendimiento
+
+[Rendimiento medido](docs/performance.md): Jacobiano analítico 2,2 veces más
+rápido y modo streaming con 41 % menos memoria. [Benchmarks](docs/benchmark_results.md)
+de verificación numérica, calibración y diseño robusto, y
+[reproducción](benchmarks/reproduction_20261120/README.md).
 
 ## Trabajar con resultados
 
-Las configuraciones usan SI y masa seca. Cada simulación conserva configuración,
-opciones, versiones y huellas. La [preparación de datos](docs/data_preparation.md)
-explica procedencia y unidades; el [estado científico](docs/scientific_status.md)
-separa capacidades, evidencia y extensiones pendientes.
-
-La [interfaz local](docs/web_interface.md) utiliza el mismo núcleo científico.
-No se requiere FAST. La [licencia actual](LICENSE.md) permanece provisional;
-la documentación local no implica publicación ni autorización de redistribución.
+Cada simulación conserva configuración, opciones, versiones y huellas SHA-256.
+La [preparación de datos](docs/data_preparation.md) explica unidades y procedencia.
+La [interfaz local](docs/web_interface.md) usa el mismo motor desde el navegador.
+[Preguntas frecuentes](docs/faq.md) · [Cómo citar](docs/citation.md) ·
+[Licencia actual](LICENSE.md).
 """
 
 

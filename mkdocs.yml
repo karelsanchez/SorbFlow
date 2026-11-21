@@ -1,25 +1,86 @@
-site_name: PyFAST
-site_description: Modelación reproducible de adsorción acuosa en Python
+site_name: SorbFlow
+site_description: Herramienta en Python para modelar, simular, calibrar y diseñar procesos de adsorción acuosa
 site_url: ''
+repo_url: https://github.com/karelsanchez/SorbFlow
+repo_name: karelsanchez/SorbFlow
+edit_uri: edit/main/
 docs_dir: .work/docs_source
 site_dir: .work/site
 use_directory_urls: false
 strict: true
 theme:
-  name: readthedocs
-  locale: es
+  name: material
+  language: es
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Cambiar a modo oscuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Cambiar a modo claro
+  features:
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.action.edit
+    - toc.follow
 plugins:
   - search:
       lang: [es, en]
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          paths: [src]
+          options:
+            docstring_style: google
+            show_source: false
+            show_root_heading: true
+            show_signature_annotations: true
+            separate_signature: true
+            members_order: source
+            filters: ["!^_"]
 markdown_extensions:
   - tables
-  - fenced_code
   - admonition
+  - attr_list
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
   - toc:
       permalink: true
+# Supporting records reachable through links but intentionally outside the menu.
+# Any other page missing from nav fails the strict build.
+not_in_nav: |
+  /AGENTS.md
+  /AUDIT_REPORT.md
+  /CHANGELOG.md
+  /CONTINUE_HERE.md
+  /docs/index.md
+  /PAPER_ENVSOFT/*.md
+  /REGISTRATION_PREPARATION/*.md
+  /audit/**/*.md
+  /benchmarks/data_catalog/*.md
+  /benchmarks/e01/README.md
+  /benchmarks/e01b/README.md
 validation:
   nav:
-    omitted_files: info
+    omitted_files: warn
+    not_found: warn
   links:
     not_found: warn
     absolute_links: warn
@@ -27,15 +88,21 @@ validation:
     anchors: warn
 nav:
   - Inicio: index.md
+  - Qué es SorbFlow: docs/capabilities.md
   - Primeros pasos:
       - Instalación y CLI: docs/getting_started.md
       - Tutoriales: docs/tutorials.md
+      - Galería de ejemplos: docs/examples_gallery.md
+      - Configuraciones disponibles: docs/configurations.md
       - Datos y unidades: docs/data_preparation.md
       - Interfaz local: docs/web_interface.md
+      - Preguntas frecuentes: docs/faq.md
   - API y modelos:
       - Referencia pública: API_REFERENCE.md
+      - Referencia generada del código: docs/api_generated.md
       - Formulación matemática: MODEL_SPECIFICATION.md
       - Arquitectura: ARCHITECTURE.md
+      - Notas de implementación: IMPLEMENTATION_NOTES.md
       - Operadores de observación: docs/observation_operators.md
       - Jacobiano analítico: docs/analytic_jacobian.md
       - Integración en streaming: docs/streaming_integration.md
@@ -43,14 +110,21 @@ nav:
       - Objetivo batch: docs/batch_objective.md
       - Perfiles gaussianos: docs/profile_likelihood.md
       - Ejemplo de perfiles: docs/profile_batch_example.md
-  - Benchmarks:
-      - Resultados y límites: docs/benchmark_results.md
+      - Estudio inverso E02: docs/inverse_study_plan.md
+      - Integración E04: docs/e04_integration.md
+  - Rendimiento y verificación:
+      - Rendimiento: docs/performance.md
+      - Resultados de benchmarks: docs/benchmark_results.md
       - Estado científico: docs/scientific_status.md
       - Verificación numérica: NUMERICAL_VERIFICATION.md
+      - Plan de verificación: VALIDATION_PLAN.md
       - Reproducción: benchmarks/reproduction_20261120/README.md
   - Desarrollo:
       - Flujo de trabajo: docs/developer_workflow.md
       - Documentación y publicación: docs/documentation_site.md
+      - Hoja de ruta: DEVELOPMENT_ROADMAP.md
+      - Trabajos relacionados: RELATED_WORK.md
       - Licencias: IP_LICENSE_AUDIT.md
       - Licencia actual: LICENSE.md
       - Equipo: CONTRIBUTORS.md
+      - Cómo citar: docs/citation.md

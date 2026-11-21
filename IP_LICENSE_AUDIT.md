@@ -30,7 +30,7 @@ Se considera provisionalmente que la declaración web corresponde al ZIP con nom
 No se debe tratar disponibilidad gratuita como permiso open source ni comercial.
 La ausencia de aviso textual dentro del ZIP no elimina derechos.
 
-## Decisiones para PyFAST
+## Decisiones para SorbFlow
 
 | Activo | Decisión actual | Pendiente |
 |---|---|---|
@@ -40,18 +40,19 @@ La ausencia de aviso textual dentro del ZIP no elimina derechos.
 | Balances científicos generales | Formular independientemente y citar literatura | Completar bibliografía primaria para artículo |
 | Datos experimentales | No suministrados en el ZIP | Titularidad, uso, anonimización y permiso de publicación |
 | Adaptador opcional | Solo diseño, sin binarios ni invocaciones | Contrato I/O, permisos aplicables y pruebas aisladas |
-| Código nuevo PyFAST | Original de esta tarea, sin derivación del binario | Titular y licencia de publicación por confirmar |
+| Código nuevo SorbFlow | Original de esta tarea, sin derivación del binario | Titular y licencia de publicación por confirmar |
 
 Se propone Apache-2.0 para el core por compatibilidad con extensiones comerciales,
 pero no se concede licencia en nombre de un titular aún no definido. LICENSE.md deja
 esta situación explícita. El paquete se prepara técnicamente para pip; publicación y
 licencia abierta definitiva son hitos posteriores. No registrar como BSD código ajeno.
 Separar servicio comercial, plugins y branding del core y de datos privados.
-PyFAST no afirma afiliación con FAST; revisar nombre, marca y distribución antes de publicar.
+SorbFlow no afirma afiliación con FAST; revisar nombre, marca y distribución antes de publicar.
 
 ## Dependencias
 
-Pint es la única dependencia runtime inicial; pytest/pytest-cov, Ruff, mypy, build,
+En la fundación 0.1, Pint era la única dependencia runtime; desde 0.2 el núcleo usa
+Pint, NumPy y SciPy (ver la actualización 0.2 abajo). pytest/pytest-cov, Ruff, mypy, build,
 setuptools y herramientas transitivas son dependencias de desarrollo o empaquetado.
 Registrar versiones instaladas y metadatos de licencia en `audit/dependency_metadata.json`;
 metadatos son una primera revisión, no una auditoría exhaustiva de todas las licencias
@@ -73,7 +74,7 @@ El ZIP original se verifica por hash al finalizar; no se mueve, modifica ni ejec
 
 ## Actualización 0.2 — Open Core y dependencias opcionales
 
-Se adopta la propuesta del usuario: core Apache-2.0 y pyfast-design-pro independiente, sujetos a titularidad universitaria. No se concede una licencia pública en nombre de titulares no confirmados. NumPy y SciPy se incorporan como dependencias de sus integradores/arrays, con avisos de sus respectivos paquetes; no se copia código ni se incluyen sus wheels en PyFAST.
+Se adopta la propuesta del usuario: core Apache-2.0 y sorbflow-design-pro independiente, sujetos a titularidad universitaria. No se concede una licencia pública en nombre de titulares no confirmados. NumPy y SciPy se incorporan como dependencias de sus integradores/arrays, con avisos de sus respectivos paquetes; no se copia código ni se incluyen sus wheels en SorbFlow.
 
 NSGA-II usa el extra pymoo 0.6.2 (metadatos Apache-2.0). Su dependencia moocore 0.3.2 declara LGPL-2.1-or-later: no debe describirse todo el árbol como permisivo ni eliminar avisos/obligaciones en una distribución comercial. El extra está separado del core obligatorio; no se cargan sus módulos hasta llamar nsga2. Fuentes: [pymoo](https://pymoo.org/algorithms/moo/nsga2.html) y [moocore](https://pypi.org/project/moocore/). El inventario local de metadatos se actualiza con versiones y licencias; no sustituye revisión jurídica completa de una edición comercial empaquetada.
 
@@ -83,4 +84,4 @@ PyArrow es un extra de exportación Parquet, con licencia principal Apache-2.0 y
 
 ## Frontera de apertura del artículo
 
-El objetivo EnvSoft exige, como decisión del proyecto, que ninguna capacidad, configuración o script indispensable para reconstruir resultados centrales quede detrás de pyfast-design-pro. Ver PAPER_ENVSOFT/IP_AND_LICENSING.md. Esto no afirma que Apache-2.0 sea una licencia impuesta por la revista: su concesión sigue pendiente de titularidad universitaria y revisión de dependencias.
+El objetivo EnvSoft exige, como decisión del proyecto, que ninguna capacidad, configuración o script indispensable para reconstruir resultados centrales quede detrás de sorbflow-design-pro. Ver PAPER_ENVSOFT/IP_AND_LICENSING.md. Esto no afirma que Apache-2.0 sea una licencia impuesta por la revista: su concesión sigue pendiente de titularidad universitaria y revisión de dependencias.

@@ -1,11 +1,12 @@
 # E02-A: diseño sintético de identificabilidad e intervalos
 
-**Estado: DISEÑO PROPUESTO; estudio no ejecutado ni confirmatorio.** Ya existen
-una [API experimental de perfiles](profile_likelihood.md) y un
-[objetivo batch K/k](batch_objective.md), probados separadamente. El estudio de
-identificabilidad/cobertura completo sigue pendiente. E01 continúa parcial;
-E04 continúa BLOCKED_METADATA, con 0 curvas listas. La interfaz web es opcional y
-no participa en los criterios científicos del artículo.
+**Documento de diseño (2026-11-19).** Este plan precedió a la ejecución de E02:
+3.000 datasets y 6.000 perfiles con predictor batch analítico, cuyos resultados están
+en [benchmarks ejecutados](benchmark_results.md). Usa la
+[API de perfiles](profile_likelihood.md) y el [objetivo batch K/k](batch_objective.md).
+Se conserva como registro del diseño; las secciones que hablan de trabajo pendiente
+describen la situación previa a esa ejecución. La interfaz web no participa en los
+criterios científicos del artículo.
 
 Este subestudio concreta [E02 del protocolo](../PAPER_ENVSOFT/BENCHMARK_PROTOCOL.md)
 y las afirmaciones candidatas C03/C04 de la
@@ -18,11 +19,11 @@ enmienda registrada; sus datos no se reutilizan como confirmación independiente
 
 | Capa real | Uso permitido en E02-A | Trabajo pendiente |
 |---|---|---|
-| [pyfast.fit](../src/pyfast/fit.py) | Baseline de isoterma y tasa batch LDF | Ajuste conjunto de equilibrio/tasa, multiinicio y perfiles |
-| [calibration.least_squares](../src/pyfast/calibration/least_squares.py) | SVD y covarianza local en coordenadas logarítmicas | Likelihood general, límites físicos explícitos y resultado de perfiles |
-| [pyfast.simulate](../src/pyfast/simulate.py) | Predictor batch LDF; comprobar error numérico | Generador independiente y contador de solves |
-| [esquemas](../src/pyfast/schemas.py) y [unidades](../src/pyfast/units.py) | Parámetros SI, especie, material y condiciones explícitas | Esquema del estudio y observaciones sintéticas con ruido firmado |
-| [pyfast.uncertainty](../src/pyfast/uncertainty/__init__.py) | Utilidades de propagación y sensibilidad | Estudio repetido de cobertura de estimadores/intervalos |
+| [sorbflow.fit](../src/sorbflow/fit.py) | Baseline de isoterma y tasa batch LDF | Ajuste conjunto de equilibrio/tasa, multiinicio y perfiles |
+| [calibration.least_squares](../src/sorbflow/calibration/least_squares.py) | SVD y covarianza local en coordenadas logarítmicas | Likelihood general, límites físicos explícitos y resultado de perfiles |
+| [sorbflow.simulate](../src/sorbflow/simulate.py) | Predictor batch LDF; comprobar error numérico | Generador independiente y contador de solves |
+| [esquemas](../src/sorbflow/schemas.py) y [unidades](../src/sorbflow/units.py) | Parámetros SI, especie, material y condiciones explícitas | Esquema del estudio y observaciones sintéticas con ruido firmado |
+| [sorbflow.uncertainty](../src/sorbflow/uncertainty/__init__.py) | Utilidades de propagación y sensibilidad | Estudio repetido de cobertura de estimadores/intervalos |
 
 La [API pública](../API_REFERENCE.md) actual `isotherm` estima parámetros de un
 modelo con c sin error; Freundlich mantiene c_ref fijo. `batch_rate` estima
@@ -211,5 +212,5 @@ debe conservar semillas y resultados, sin presentarlo como ejecución distribuid
 5. Tablas/figuras sintéticas E02-A con denominadores, incertidumbre Monte Carlo,
    anchuras, fallos y costos; actualización del registro solo tras revisar evidencias.
 
-Hasta completar estos entregables, E02 permanece pendiente. Este diseño no habilita
-afirmaciones de solver validado, cobertura demostrada ni validación experimental.
+Los resultados de la ejecución de E02 y su alcance se resumen en
+[benchmarks ejecutados](benchmark_results.md).

@@ -3,16 +3,16 @@ requires = ["setuptools>=77", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pyfast-adsorption"
-version = "0.2.0.dev0"
-description = "Independent aqueous adsorption models and conservative LDF simulations"
+name = "sorbflow"
+version = "0.3.0.dev0"
+description = "Configurable aqueous adsorption modelling: batch and fixed-bed LDF/HSDM simulation, calibration, uncertainty and design"
 readme = "README.md"
 requires-python = ">=3.11"
 license = "LicenseRef-Proprietary"
 license-files = ["LICENSE.md"]
 dependencies = ["pint>=0.24,<0.26", "numpy>=1.26,<3", "scipy>=1.12,<2"]
 classifiers = [
-  "Development Status :: 2 - Pre-Alpha",
+  "Development Status :: 3 - Alpha",
   "Intended Audience :: Science/Research",
   "Programming Language :: Python :: 3",
   "Topic :: Scientific/Engineering :: Chemistry",
@@ -24,13 +24,13 @@ optimize = ["pymoo>=0.6.1,<0.7"]
 parquet = ["pyarrow>=17,<27"]
 
 [project.scripts]
-pyfast = "pyfast.cli:main"
+sorbflow = "sorbflow.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [tool.setuptools.package-data]
-pyfast = ["py.typed"]
+sorbflow = ["py.typed"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests", "benchmarks/data_catalog"]
@@ -47,7 +47,7 @@ select = ["E", "F", "I", "UP", "B"]
 # Follow the active interpreter so installed dependency stubs use matching syntax.
 # Python 3.11 remains covered by requires-python, Ruff and the CI matrix.
 strict = true
-files = ["src/pyfast"]
+files = ["src/sorbflow"]
 
 [[tool.mypy.overrides]]
 module = ["pymoo.*", "pyarrow.*"]

@@ -3,7 +3,7 @@ import math
 import pint
 import pytest
 
-from pyfast import UnitError, quantity, to_si
+from sorbflow import UnitError, quantity, to_si
 
 
 @pytest.mark.parametrize(
@@ -36,7 +36,7 @@ def test_invalid_scalar(value):
         quantity(value, "m")
 
 
-@pytest.mark.parametrize("unit", ["", "no_such_unit_pyfast", None])
+@pytest.mark.parametrize("unit", ["", "no_such_unit_sorbflow", None])
 def test_invalid_unit(unit):
     with pytest.raises(UnitError):
         quantity(1, unit)

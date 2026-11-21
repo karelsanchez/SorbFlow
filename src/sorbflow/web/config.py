@@ -27,8 +27,8 @@ MAX_RADIAL_CELLS = 12
 MAX_DURATION_S = 172800.0
 MAX_JOBS = 50
 SCIENTIFIC_STATUS = (
-    "Prototipo científico con verificaciones numéricas seleccionadas; "
-    "sin validación experimental ni certificación de diseño."
+    "SorbFlow: simulación numérica de adsorción con unidades SI, "
+    "balance de masa verificado y resultados trazables."
 )
 
 

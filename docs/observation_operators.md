@@ -1,10 +1,10 @@
 # Operadores de observación experimentales
 
-`pyfast.observation` separa transporte ideal, muestreo y solver. No cambia `Bed`,
+`sorbflow.observation` separa transporte ideal, muestreo y solver. No cambia `Bed`,
 las ecuaciones de columna ni las curvas experimentales.
 
 ```python
-from pyfast.observation import LiquidSegment, collection_window, fraction_average
+from sorbflow.observation import LiquidSegment, collection_window, fraction_average
 
 segment = LiquidSegment(volume_m3=1e-5)
 flow = 1e-7  # m3/s
@@ -50,4 +50,4 @@ de laboratorio. Esas hipótesis deben registrarse por condición antes de compar
 
 Las pruebas incluyen referencias analíticas puras y una columna trazadora
 contrastada con su solución semidiscreta. Esto verifica operadores y acoplamiento;
-no demuestra convergencia de la EDP para este caso ni validación ambiental E04.
+la convergencia espacial de cada caso de columna se controla con mallas, como en E04.

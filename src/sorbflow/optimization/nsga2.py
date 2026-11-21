@@ -91,7 +91,7 @@ def nsga2(
         from pymoo.core.problem import ElementwiseProblem
         from pymoo.optimize import minimize
     except ImportError as exc:
-        raise ImportError("Install pyfast-adsorption[optimize] to use NSGA-II") from exc
+        raise ImportError("Install sorbflow[optimize] to use NSGA-II") from exc
 
     def checked(x: FloatArray) -> tuple[FloatArray, FloatArray]:
         output = evaluate(x.copy())

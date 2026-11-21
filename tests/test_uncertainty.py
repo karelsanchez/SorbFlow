@@ -2,7 +2,7 @@ import numpy as np
 import pytest
 from numpy.testing import assert_allclose
 
-from pyfast.uncertainty import local_sensitivity, monte_carlo
+from sorbflow.uncertainty import local_sensitivity, monte_carlo
 
 
 def test_monte_carlo_linear_gaussian_reference_and_reproducibility():

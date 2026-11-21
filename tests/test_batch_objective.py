@@ -4,9 +4,9 @@ import numpy as np
 import pytest
 from numpy.testing import assert_allclose
 
-from pyfast import LDF, BatchConfig, Langmuir, Linear, Observations, Species
-from pyfast.calibration.batch_objective import BatchExperiment, LinearBatchObjective
-from pyfast.solvers.integration import SimulationError
+from sorbflow import LDF, BatchConfig, Langmuir, Linear, Observations, Species
+from sorbflow.calibration.batch_objective import BatchExperiment, LinearBatchObjective
+from sorbflow.solvers.integration import SimulationError
 
 
 def experiment(identity: str = "one", mass: float = 0.002) -> BatchExperiment:
@@ -83,7 +83,7 @@ def test_shared_parameters_require_compatible_experiments() -> None:
 def test_failed_physical_attempt_is_still_counted(monkeypatch: pytest.MonkeyPatch) -> None:
     def fail(*args: object, **kwargs: object) -> None:
         raise SimulationError("deliberate failure")
-    monkeypatch.setattr("pyfast.calibration.batch_objective.simulate_batch", fail)
+    monkeypatch.setattr("sorbflow.calibration.batch_objective.simulate_batch", fail)
     objective = LinearBatchObjective((experiment(),))
     with pytest.raises(SimulationError):
         objective([0.5, 0.02])

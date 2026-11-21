@@ -4,7 +4,7 @@ from dataclasses import FrozenInstanceError, replace
 
 import pytest
 
-from pyfast import (
+from sorbflow import (
     HSDM,
     LDF,
     Bed,
@@ -214,7 +214,7 @@ def manifest(**kwargs):
         config_sha256="a" * 64,
         code_revision="uncommitted",
         python_version="3.11.2",
-        package_versions=("pint==0.25", "pyfast-adsorption==0.1.0.dev0"),
+        package_versions=("pint==0.25", "sorbflow==0.1.0.dev0"),
         seed=42,
     )
     return RunManifest(**(defaults | kwargs))

@@ -133,7 +133,7 @@ def git_state(repo: Path) -> dict[str, object]:
 
 def runtime_version(repo: Path) -> str | None:
     """Read the literal version; never import or execute inventoried source."""
-    path = repo / "src/pyfast/_version.py"
+    path = repo / "src/sorbflow/_version.py"
     if not path.is_file() or any(linked(part) for part in (path, path.parent, path.parent.parent)):
         return None
     tree = ast.parse(path.read_text(encoding="utf-8"))
@@ -153,7 +153,7 @@ def prepare_manifest(repo: Path) -> dict[str, Any]:
         raise ValueError("Linked project metadata is not accepted")
     project = tomllib.loads(metadata_path.read_text(encoding="utf-8"))["project"]
     content = {
-        "schema_version": "pyfast.software-manifest/1",
+        "schema_version": "sorbflow.software-manifest/1",
         "scope": "technical source inventory; ownership and rights not determined",
         "identity": {
             "name": project["name"],

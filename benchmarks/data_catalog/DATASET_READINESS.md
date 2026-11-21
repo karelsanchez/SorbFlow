@@ -1,4 +1,4 @@
-# Catálogo preparatorio de datos benchmark PyFAST
+# Catálogo preparatorio de datos benchmark SorbFlow
 
 Actualización de integración: la revisión Claude de 2026-11-19 está archivada en
 `audit/claude_e04_20261119/`. El registro `E04_REVIEW.json` y `docs/e04_integration.md`
@@ -46,7 +46,7 @@ Los estados siguientes proceden de `README.md`,
 El catálogo local declara **3 series acuosas con reservas**, **2 gaseosas secundarias**
 y **17 series simuladas PSDM**. No son 22 experimentos independientes. El estado
 heredado y conservado es **0 curvas listas para validación física independiente
-del PyFAST actual**. No se ha declarado ningún dataset validado en esta preparación.
+del SorbFlow actual**. No se ha declarado ningún dataset validado en esta preparación.
 
 ## Licencia y procedencia
 
