@@ -76,11 +76,13 @@ class RequestHandler(BaseHTTPRequestHandler):
         self.close_connection = True
 
     def _discard_rejected_body(self) -> None:
-        """Avoid closing over an unread small POST, without trusting its framing.
+        """Avoid closing over an unread bounded POST, without trusting its framing.
 
         A close with incoming bytes can reset TCP before the client receives its
-        error. Discard only an unambiguous bounded body, never parse or execute
-        it. The total drain has a hard deadline, including fragmented uploads.
+        error. Discard up to twice the accepted request limit, so a modestly
+        oversized rejected upload can still receive its 413 response. Never
+        parse or execute the discarded body. The total drain has a hard deadline,
+        including fragmented uploads; larger declared bodies are not drained.
         """
         if getattr(self, "_post_body_started", False):
             return
@@ -92,7 +94,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         if not text.isascii() or not text.isdigit() or len(text) > 10:
             return
         remaining = int(text)
-        if not 0 < remaining <= MAX_REQUEST_BYTES:
+        if not 0 < remaining <= 2 * MAX_REQUEST_BYTES:
             return
         timeout = self.connection.gettimeout()
         deadline = time.monotonic() + 0.5

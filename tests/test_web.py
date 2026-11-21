@@ -36,7 +36,9 @@ class DrainConnection:
     "framing,expected",
     [
         ({"Content-Length": "4"}, 4),
-        ({"Content-Length": str(MAX_REQUEST_BYTES + 1)}, 0),
+        ({"Content-Length": str(MAX_REQUEST_BYTES + 1)}, MAX_REQUEST_BYTES + 1),
+        ({"Content-Length": str(2 * MAX_REQUEST_BYTES)}, 2 * MAX_REQUEST_BYTES),
+        ({"Content-Length": str(2 * MAX_REQUEST_BYTES + 1)}, 0),
         ({"Content-Length": "bad"}, 0),
         ({"Content-Length": "-1"}, 0),
         ({"Content-Length": "4", "Transfer-Encoding": "chunked"}, 0),
@@ -48,7 +50,8 @@ def test_rejected_post_drain_trusts_only_bounded_framing(framing, expected):
     handler.headers = Message()
     for key, value in framing.items():
         handler.headers[key] = value
-    handler.rfile = io.BytesIO(b"bodytrailing")
+    body = b"x" * expected if expected > 4 else b"body"
+    handler.rfile = io.BytesIO(body + b"trailing")
     handler.connection = DrainConnection()
     handler._discard_rejected_body()
     assert handler.rfile.tell() == expected
