@@ -14,7 +14,7 @@ adsorción acuosa** en reactores batch y columnas de lecho fijo: isotermas linea
 Langmuir y Freundlich; cinética LDF y HSDM; calibración, incertidumbre, diseño
 hidráulico y optimización multiobjetivo, con unidades SI y resultados trazables.
 
-Versión **0.3.0.dev0**. Cualquier soluto, adsorbente o mezcla se describe como
+Versión **0.3.0**. Cualquier soluto, adsorbente o mezcla se describe como
 configuración; los modelos se intercambian sin tocar código.
 
 ## Empezar

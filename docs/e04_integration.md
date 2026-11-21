@@ -18,7 +18,7 @@ Se comprobaron hechos críticos en XML/XLSX/DOCX, sin ejecutar `_aux` ni motores
 No se certificó cada afirmación ni se determinaron licencias. Los auxiliares no
 se incluyen. El manifiesto explica las bases de rutas y los localizadores abreviados.
 
-Claude declara creación y eliminación accidental de `mar_formulas.txt` bajo datos.
+La revisión E04 declara creación y eliminación accidental de `mar_formulas.txt` bajo datos.
 Actualmente no está presente; no corresponde afirmar ausencia absoluta de escrituras.
 Los originales comprobados coinciden en hash. Esta integración no altera datasets.
 
@@ -56,10 +56,10 @@ se convirtió automáticamente a configuraciones del solver.
 ## LAPSE pendiente
 
 Usuario e informe comunican tres intentos HTTP 429, agrupados en dos entradas
-narrativas, sin tres registros HTTP brutos independientes. Codex no volvió a
+narrativas, sin tres registros HTTP brutos independientes. La integración no volvió a
 consultar [LAPSE:2021.0468](https://psecommunity.org/LAPSE:2021.0468).
-La coincidencia de registro/autores/DOI se conserva como búsqueda reportada por
-Claude; la lista de archivos no se verificó aquí. Suplemento: **UNKNOWN**.
+La coincidencia de registro/autores/DOI se conserva como búsqueda reportada en la
+revisión E04; la lista de archivos no se verificó aquí. Suplemento: **UNKNOWN**.
 
 [Índice](index.md) · [Preparación de datos](data_preparation.md) ·
 [Estado científico](scientific_status.md)

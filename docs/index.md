@@ -15,6 +15,8 @@ estos documentos. Los [tutoriales funcionales](tutorials.md) conectan unidades,
 simulaciones, trazabilidad y evaluación de resultados.
 
 1. [Primeros pasos](getting_started.md): entorno, casos de ejemplo y CLI.
+   [Modelos y ecuaciones](models.md), [motores de cálculo](engines.md),
+   [figuras](figures.md) y [comparación con otras herramientas](comparison.md).
 2. [Preparación de datos](data_preparation.md): unidades, procedencia y mezclas.
    [Revisión E04 integrada](e04_integration.md): selección del caso de columna.
 3. [Estado científico](scientific_status.md): funciones disponibles y evidencia.

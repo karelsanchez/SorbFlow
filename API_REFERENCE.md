@@ -1,4 +1,8 @@
-# API pública — SorbFlow 0.3.0.dev0
+# API pública — SorbFlow 0.3
+
+Guía narrativa de la API. Visión general de cada motor en
+[motores de cálculo](docs/engines.md); referencia generada del código en
+[API generada](docs/api_generated.md).
 
 Python >=3.11, unidades SI y masa seca. Se conservan las API de datos de 0.1;
 `Linear` se añade como variante del esquema v1. Un lector antiguo no entenderá esa

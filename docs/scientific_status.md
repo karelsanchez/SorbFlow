@@ -2,7 +2,7 @@
 
 [Inicio](index.md) · [Datos](data_preparation.md) · [Desarrollo](developer_workflow.md)
 
-SorbFlow 0.3.0.dev0 ofrece simulación batch y de columna, calibración,
+SorbFlow 0.3 ofrece simulación batch y de columna, calibración,
 incertidumbre, optimización y diseño sobre un motor propio con balance de masa
 verificado en cada resultado. Esta página resume qué está disponible y qué
 evidencia respalda cada parte.

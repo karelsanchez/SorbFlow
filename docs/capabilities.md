@@ -52,4 +52,6 @@ referencia. Detalle en [benchmarks](benchmark_results.md) y [rendimiento](perfor
 ## Siguiente paso
 
 [Instalar y ejecutar el primer caso](getting_started.md) ·
+[Modelos y ecuaciones](models.md) · [Motores de cálculo](engines.md) ·
+[Figuras](figures.md) · [Comparación con otras herramientas](comparison.md) ·
 [Galería de ejemplos](examples_gallery.md) · [Preguntas frecuentes](faq.md)

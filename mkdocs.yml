@@ -52,6 +52,9 @@ plugins:
             separate_signature: true
             members_order: source
             filters: ["!^_"]
+extra_javascript:
+  - docs/assets/javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js
 markdown_extensions:
   - tables
   - admonition
@@ -60,13 +63,20 @@ markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.arithmatex:
+      generic: true
   - toc:
       permalink: true
 # Supporting records reachable through links but intentionally outside the menu.
 # Any other page missing from nav fails the strict build.
 not_in_nav: |
   /AGENTS.md
+  /PYPI_README.md
   /AUDIT_REPORT.md
   /CHANGELOG.md
   /CONTINUE_HERE.md
@@ -89,6 +99,11 @@ validation:
 nav:
   - Inicio: index.md
   - Qué es SorbFlow: docs/capabilities.md
+  - Modelos y motores:
+      - Modelos y ecuaciones: docs/models.md
+      - Motores de cálculo: docs/engines.md
+      - Galería de figuras: docs/figures.md
+      - Comparación con otras herramientas: docs/comparison.md
   - Primeros pasos:
       - Instalación y CLI: docs/getting_started.md
       - Tutoriales: docs/tutorials.md
