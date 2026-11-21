@@ -85,3 +85,14 @@ PyArrow es un extra de exportación Parquet, con licencia principal Apache-2.0 y
 ## Frontera de apertura del artículo
 
 El objetivo EnvSoft exige, como decisión del proyecto, que ninguna capacidad, configuración o script indispensable para reconstruir resultados centrales quede detrás de sorbflow-design-pro. Ver PAPER_ENVSOFT/IP_AND_LICENSING.md. Esto no afirma que Apache-2.0 sea una licencia impuesta por la revista: su concesión sigue pendiente de titularidad universitaria y revisión de dependencias.
+
+## Decisión de licencia — 2026-11-21
+
+El responsable del proyecto decidió publicar SorbFlow bajo **Apache-2.0** (texto
+canónico en `LICENSE`, avisos en `NOTICE`), con titularidad declarada de Karel Aldrin
+Sanchez Hernandez y autores K. A. Sanchez Hernandez, D. E. Rodriguez Saiz,
+D. X. Cabrera Obando y G. J. Romo Cadena. La licencia es compatible con el registro
+de la obra ante la DNDA. Las secciones anteriores que hablan de licencia pendiente o
+de `LicenseRef-Proprietary` describen el estado previo a esta decisión. El extra
+`[optimize]` instala pymoo y moocore (LGPL-2.1-or-later), que conservan sus licencias;
+SorbFlow no los incorpora en su distribución.

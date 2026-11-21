@@ -1,17 +1,43 @@
 # Cómo citar SorbFlow
 
-SorbFlow aún no tiene DOI ni publicación asociada. Mientras tanto, cite la versión y
-la revisión del código que utilizó:
+Si SorbFlow contribuye a un trabajo publicado, cite la versión utilizada:
 
 ```text
-SorbFlow, versión 0.3.0.dev0. Herramienta en Python para modelación de adsorción
-acuosa en batch y columnas de lecho fijo. Revisión <commit>. Repositorio privado
-https://github.com/karelsanchez/SorbFlow (consultado <fecha>).
+Sanchez Hernandez, K. A., Rodriguez Saiz, D. E., Cabrera Obando, D. X. y
+Romo Cadena, G. J. (2026). SorbFlow: modelación configurable de adsorción en fase
+acuosa (versión 0.3.0) [Software]. https://github.com/karelsanchez/SorbFlow
 ```
 
-- La revisión exacta aparece en el manifiesto de cada resultado (`code_revision`) y
-  en `sorbflow --help`/`sorbflow.__version__` para la versión.
-- La autoría formal del software está pendiente de confirmación; el equipo y los
-  roles declarados figuran en [equipo y contribuciones](../CONTRIBUTORS.md).
-- Cuando exista un DOI o un artículo de referencia, esta página indicará la cita
-  definitiva.
+BibTeX:
+
+```bibtex
+@software{sorbflow_2026,
+  author  = {Sanchez Hernandez, Karel Aldrin and Rodriguez Saiz, David Esteban and
+             Cabrera Obando, Dayana Ximena and Romo Cadena, Gabriela Johana},
+  title   = {SorbFlow: modelación configurable de adsorción en fase acuosa},
+  version = {0.3.0},
+  year    = {2026},
+  url     = {https://github.com/karelsanchez/SorbFlow},
+  license = {Apache-2.0}
+}
+```
+
+Los metadatos en formato estándar están en
+[`CITATION.cff`](https://github.com/karelsanchez/SorbFlow/blob/main/CITATION.cff);
+GitHub los usa para el botón *Cite this repository*.
+
+## Autores
+
+| Orden | Autor | Contribución |
+|---|---|---|
+| 1 | Karel Aldrin Sanchez Hernandez (K. A. Sanchez Hernandez) | Concepción, diseño, desarrollo y documentación |
+| 2 | David Esteban Rodriguez Saiz | Pruebas del software |
+| 3 | Dayana Ximena Cabrera Obando | Pruebas del software |
+| 4 | Gabriela Johana Romo Cadena | Validación técnica de los fenómenos químicos |
+
+## Reproducibilidad
+
+Indique también la revisión exacta del código. Cada resultado la guarda en su
+manifiesto (`code_revision`), junto con las versiones de las dependencias y la
+huella `numerical_sha256` del cálculo. La versión instalada se consulta con
+`python -c "import sorbflow; print(sorbflow.__version__)"`.

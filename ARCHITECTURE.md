@@ -1,6 +1,8 @@
-# SorbFlow — arquitectura propuesta
+# SorbFlow — arquitectura
 
-Fecha: 2026-11-18; actualizado 2026-11-20. Estado: SorbFlow 0.3.0.dev0, motor propio LDF/HSDM con verificación numérica (E01), calibración, incertidumbre, diseño, CLI e interfaz web local.
+Fecha: 2026-11-18; actualizado 2026-11-20. Estado: SorbFlow 0.3, motor propio LDF/HSDM con verificación numérica (E01), calibración, incertidumbre, diseño, CLI e interfaz web local.
+
+Diagrama de motores y flujo de datos en [motores de cálculo](docs/engines.md).
 
 ## Alcance y procedencia
 

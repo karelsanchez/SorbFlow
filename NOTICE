@@ -1,0 +1,12 @@
+SorbFlow
+Copyright 2026 Karel Aldrin Sanchez Hernandez
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Authors: Karel Aldrin Sanchez Hernandez, David Esteban Rodriguez Saiz,
+Dayana Ximena Cabrera Obando and Gabriela Johana Romo Cadena.
+
+SorbFlow is an independent implementation. It does not contain code, executables,
+images or documentation of FAST or of any other adsorption software. Third-party
+dependencies (Pint, NumPy, SciPy and optional extras) are installed separately and
+remain under their own licenses.

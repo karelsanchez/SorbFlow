@@ -19,7 +19,7 @@ historical evidence. Do not rewrite downloaded source data to correct metadata.
   experimental evidence separate; split independent complete experiments.
 - FAST is an optional external interoperability proposal. Never package its ZIP,
   executables or resources, or claim legal permission from interoperability alone.
-  Publication licensing remains subject to ownership review.
+  SorbFlow is licensed under Apache-2.0 (owner decision, 2026-11-21; see LICENSE, NOTICE).
 
 ## Changes, documentation and version control
 
@@ -32,8 +32,12 @@ historical evidence. Do not rewrite downloaded source data to correct metadata.
 - Run `.venv/Scripts/python.exe scripts/project_checks.py --output runs/<new-id>`
   after integration. It records logs and source hashes; it does not execute E01/E04.
   `--quick` skips pytest and is not the complete quality gate.
-- Version in `pyproject.toml` and `src/sorbflow/_version.py` must match. Keep the dev
-  designation until the release criteria and rights are satisfied. Build artifacts
+- Version in `pyproject.toml` and `src/sorbflow/_version.py` must match. Releases are
+  published to PyPI by `.github/workflows/publish.yml` when a GitHub release is published. Build artifacts
   from a known commit; publishing/uploading is a separate user-authorized action.
 - Create focused local commits after checks. Remote CI is configured, not claimed
   successful until its actual run is available. Never fabricate benchmark outputs.
+
+- Authors: K. A. Sanchez Hernandez, D. E. Rodriguez Saiz, D. X. Cabrera Obando and
+  G. J. Romo Cadena (CONTRIBUTORS.md, CITATION.cff). Do not add AI tools as authors
+  or co-authors in commits, pull requests, metadata or documentation.

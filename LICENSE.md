@@ -1,11 +1,16 @@
-# Licensing status
+# Licencia
 
-Publication license and copyright holder for the newly authored SorbFlow code are
-pending confirmation by the project owner. No public redistribution license is
-granted by this file. Apache-2.0 is proposed for the independent scientific core.
-Package metadata uses LicenseRef-Proprietary to avoid asserting an unapproved
-open-source grant. Change this file and metadata together before public release.
+SorbFlow se distribuye bajo la **Licencia Apache, versión 2.0**. El texto completo
+está en [LICENSE](https://github.com/karelsanchez/SorbFlow/blob/main/LICENSE) y los avisos de atribución en [NOTICE](https://github.com/karelsanchez/SorbFlow/blob/main/NOTICE).
 
-SorbFlow does not include FAST executables, source, help images or experimental data.
-FAST is a separate third-party work; see IP_LICENSE_AUDIT.md. Dependency licenses
-remain those of their respective authors.
+- Titular de los derechos de autor: Karel Aldrin Sanchez Hernandez (2026), según
+  declaración del responsable del proyecto.
+- Autores: Karel Aldrin Sanchez Hernandez, David Esteban Rodriguez Saiz, Dayana
+  Ximena Cabrera Obando y Gabriela Johana Romo Cadena (ver [CONTRIBUTORS.md](CONTRIBUTORS.md)).
+- La licencia permite usar, modificar y redistribuir el software, conservando los
+  avisos de copyright y de licencia. El registro de la obra ante la Dirección
+  Nacional de Derecho de Autor es compatible con esta licencia.
+
+SorbFlow es una implementación independiente: no incluye ejecutables, código, imágenes
+ni datos de FAST ni de otro programa de adsorción. Las dependencias conservan sus
+propias licencias; ver [IP_LICENSE_AUDIT.md](IP_LICENSE_AUDIT.md).

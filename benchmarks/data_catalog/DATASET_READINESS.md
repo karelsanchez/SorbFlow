@@ -1,8 +1,8 @@
 # Catálogo preparatorio de datos benchmark SorbFlow
 
-Actualización de integración: la revisión Claude de 2026-11-19 está archivada en
+Actualización de integración: la revisión técnica asistida E04 de 2026-11-19 está archivada en
 `audit/claude_e04_20261119/`. El registro `E04_REVIEW.json` y `docs/e04_integration.md`
-incorporan las salvedades de Codex. Decisión NOT_READY; banana peel es candidato
+incorporan las salvedades de la integración. Decisión NOT_READY; banana peel es candidato
 condicionado. La descripción siguiente se conserva como snapshot anterior.
 
 Fecha del contexto: **2026-11-19**. Raíz inspeccionada solo en lectura:

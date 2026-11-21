@@ -2,6 +2,7 @@
 
 Estado: formulación implementada para batch LDF y columna LDF/HSDM, con verificación numérica E01. Fecha: 2026-11-18; actualizado 2026-11-20.
 Ecuaciones formuladas desde balances físicos; no transcripción de código FAST.
+Resumen con ecuaciones renderizadas y figuras en [modelos y ecuaciones](docs/models.md).
 
 ## Hipótesis y unidades
 
