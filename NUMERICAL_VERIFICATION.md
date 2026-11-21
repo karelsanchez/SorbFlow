@@ -82,8 +82,8 @@ y estimación mecánica/costos completos. STEP e interfaz web aún no están imp
 
 V2 requiere ensayos independientes con geometría, flujo, unidades, masa seca/humedad,
 analítica, incertidumbres, censura, lotes y derechos de uso. El ZIP de FAST no aporta
-esos datos. La publicación científica, nombre PyPI, licencia abierta definitiva y
-titularidad universitaria siguen pendientes; no impiden continuar la verificación técnica.
+esos datos. El software se publica en PyPI como `sorbflow` bajo Apache-2.0; la
+publicación científica asociada es una etapa posterior.
 
 ## Separación de dependencias y derechos
 

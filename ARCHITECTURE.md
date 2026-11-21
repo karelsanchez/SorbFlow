@@ -108,7 +108,7 @@ Referencias técnicas: [Pint](https://pint.readthedocs.io/en/stable/getting/tuto
 
 ## Ampliación acordada
 
-La investigación de cuatro materiales es una primera aplicación, no un límite del producto. AdsorbentBlend admite N componentes sin una ley de mezcla implícita. Open Core propuesto: Apache-2.0 para core y distribución independiente sorbflow-design-pro; la titularidad universitaria se resuelve antes de conceder/publicar la licencia. El nombre de distribución actual sigue siendo provisional. Detalles de ecuaciones implementadas, patrones dispersos y flujo robusto en IMPLEMENTATION_NOTES.md.
+La investigación de cuatro materiales es una primera aplicación, no un límite del producto. AdsorbentBlend admite N componentes sin una ley de mezcla implícita. SorbFlow se publica bajo Apache-2.0 (titular: K. A. Sanchez Hernandez) con el nombre de distribución `sorbflow` en PyPI; una posible edición `sorbflow-design-pro` se mantendría como distribución independiente. Detalles de ecuaciones implementadas, patrones dispersos y flujo robusto en IMPLEMENTATION_NOTES.md.
 
 ## Objetivo editorial y cambios exigidos (2026-11-18)
 
