@@ -32,7 +32,7 @@ time_min,C_mg_L,sd_mg_L
 La correspondencia de columnas y unidades siempre es explícita:
 
 ```python
-from pyfast.io import load_breakthrough_csv
+from sorbflow.io import load_breakthrough_csv
 
 observations = load_breakthrough_csv(
     "datos/mi_ensayo.csv",

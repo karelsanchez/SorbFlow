@@ -1,13 +1,13 @@
 # Interfaz web local
 
 La GUI opcional usa exclusivamente la biblioteca estándar para servir la interfaz;
-el cálculo invoca las API científicas existentes de PyFAST. No añade otro solver,
+el cálculo invoca las API científicas existentes de SorbFlow. No añade otro solver,
 no usa FAST y no incorpora librerías de interfaz o recursos externos.
 
 Desde la raíz del repositorio, con el entorno del proyecto:
 
 ```powershell
-& .\.venv\Scripts\python.exe -m pyfast.web --host 127.0.0.1 --port 8765 --output runs/gui
+& .\.venv\Scripts\python.exe -m sorbflow.web --host 127.0.0.1 --port 8765 --output runs/gui
 ```
 
 Abrir la dirección local que imprime la consola. Solo se permite enlazar a
@@ -28,7 +28,7 @@ de simulación. No enumera ni detiene procesos ajenos.
 5. Descargar JSON completo, CSV temporal, resumen y registro por identificador de
    trabajo. Los perfiles completos permanecen en el JSON; la vista solo grafica salida.
 
-La página señala permanentemente que PyFAST es un prototipo con verificaciones
+La página señala permanentemente que SorbFlow es un prototipo con verificaciones
 numéricas seleccionadas y **sin validación experimental ni certificación de diseño**.
 Materiales y contaminantes siguen siendo datos configurables, no cuatro nombres fijos.
 Los ejemplos son sintéticos; no representan los materiales del estudio experimental.

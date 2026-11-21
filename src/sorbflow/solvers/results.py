@@ -86,9 +86,9 @@ class SimulationResult:
     def to_json(self) -> str:
         """Serialize full fields plus units, inputs and numerical evidence."""
         data = {
-            "result_schema_version": 1,
+            "result_schema_version": 2,
             "reactor": self.reactor,
-            "experimental_validation": "not_performed",
+            "result_kind": "numerical_simulation",
             "units": {
                 "time_s": "s",
                 "z_m": "m",
@@ -313,6 +313,6 @@ def result_metadata(
         python_version=platform.python_version(),
         seed=0,
         package_versions=tuple(f"{p}=={version(p)}" for p in ("numpy", "scipy", "pint"))
-        + (f"pyfast-adsorption=={VERSION}",),
+        + (f"sorbflow=={VERSION}",),
     )
     return options_json, fingerprint, manifest

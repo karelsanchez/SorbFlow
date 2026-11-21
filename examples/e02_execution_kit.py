@@ -18,10 +18,10 @@ from typing import Any
 
 import numpy as np
 
-from pyfast import LDF, BatchConfig, Linear, Species
-from pyfast.calibration.batch_objective import BatchExperiment, LinearBatchObjective
-from pyfast.calibration.measurements import SignedGaussianMeasurements
-from pyfast.calibration.profile import ProfileParameter, profile_gaussian_known_sigma
+from sorbflow import LDF, BatchConfig, Linear, Species
+from sorbflow.calibration.batch_objective import BatchExperiment, LinearBatchObjective
+from sorbflow.calibration.measurements import SignedGaussianMeasurements
+from sorbflow.calibration.profile import ProfileParameter, profile_gaussian_known_sigma
 
 ROOT_SEED = 20261120
 CAP = 250
@@ -81,7 +81,7 @@ def run(table_path: Path, output: Path) -> None:
         raise ValueError("Exactly seven uniquely named scenarios are required")
     root = Path(__file__).resolve().parents[1]
     files = {p.relative_to(root).as_posix(): sha(p.read_bytes())
-             for p in sorted((root / "src/pyfast").rglob("*.py"))}
+             for p in sorted((root / "src/sorbflow").rglob("*.py"))}
     specification = dict(study="seven_dataset_integration_not_coverage_or_pilot",
         table_sha256=sha(table_raw), source_sha256=files,
         runner_sha256=sha(Path(__file__).read_bytes()), seed=ROOT_SEED,

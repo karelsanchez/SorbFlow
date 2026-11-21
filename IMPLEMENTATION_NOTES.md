@@ -13,11 +13,11 @@ por promedio de parámetros sin datos. El dominio numérico inicial sigue siendo
 especie acuosa y una temperatura fija por ensayo. Configurar otro contaminante no
 implementa competencia, especiación de metales ni cambios de pH automáticamente.
 
-La superficie prevista es `pyfast.fit`, `pyfast.simulate`, `pyfast.optimize`,
-`pyfast.uncertainty`, `pyfast.design`, `pyfast.validate`, API/CLI y web posterior.
+La superficie prevista es `sorbflow.fit`, `sorbflow.simulate`, `sorbflow.optimize`,
+`sorbflow.uncertainty`, `sorbflow.design`, `sorbflow.validate`, API/CLI y web posterior.
 El core científico y diagnósticos serán independientes de la edición comercial.
-Se adopta como propuesta del propietario Apache-2.0 para `pyfast-core` y repositorio
-separado `pyfast-design-pro`. Titularidad universitaria y licencia definitiva pendientes:
+Se adopta como propuesta del propietario Apache-2.0 para `sorbflow-core` y repositorio
+separado `sorbflow-design-pro`. Titularidad universitaria y licencia definitiva pendientes:
 no se cambia aún la concesión de derechos ni el nombre provisional de distribución.
 
 ## E2
@@ -53,7 +53,7 @@ Una derivada singular puede causar fallo numérico: se reporta, no se oculta.
 
 Jacobiano disperso por diferencias finitas con patrón de dependencias de transporte,
 cinética local y cuadraturas. BDF/Radau de SciPy son integradores externos permisivos;
-las ecuaciones y flujos de PyFAST son originales y no usan FAST.
+las ecuaciones y flujos de SorbFlow son originales y no usan FAST.
 
 ## Evidencia requerida antes de entregar
 
@@ -67,7 +67,7 @@ versiones y diagnósticos exportables sin confundirlos con validación experimen
 Dependencias nuevas revisadas: [licencia NumPy](https://numpy.org/doc/stable/license.html)
 y [licencia SciPy](https://github.com/scipy/scipy/blob/main/LICENSE.txt), BSD de tres
 cláusulas en sus núcleos. Los wheels pueden incluir bibliotecas adicionales con sus
-avisos. Se instalan como dependencias y no se redistribuyen dentro del código PyFAST.
+avisos. Se instalan como dependencias y no se redistribuyen dentro del código SorbFlow.
 [solve_ivp](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html)
 documenta los integradores y tolerancias usados.
 
@@ -102,10 +102,10 @@ benchmark del operador radial, separado del problema físico con película finit
 
 ## Ajuste inverso inicial
 
-`pyfast.fit.isotherm` ajustará parámetros positivos en coordenadas logarítmicas por
+`sorbflow.fit.isotherm` ajustará parámetros positivos en coordenadas logarítmicas por
 mínimos cuadrados, con incertidumbres de medición opcionales. En Freundlich se fija
 c_ref: ajustar simultáneamente q_ref y c_ref introduciría redundancia estructural.
-`pyfast.fit.batch_rate` estimará únicamente k_LDF cuando equilibrio y condiciones se
+`sorbflow.fit.batch_rate` estimará únicamente k_LDF cuando equilibrio y condiciones se
 dan como conocidos. Usará tolerancias de simulación más estrictas que el cambio
 de parámetros empleado para diferencias finitas.
 

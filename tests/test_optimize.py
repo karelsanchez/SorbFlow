@@ -4,7 +4,7 @@ import numpy as np
 import pytest
 from numpy.testing import assert_allclose
 
-from pyfast.optimize import Evaluation, OptimizationError, nsga2
+from sorbflow.optimize import Evaluation, OptimizationError, nsga2
 
 pytest.importorskip("pymoo")
 

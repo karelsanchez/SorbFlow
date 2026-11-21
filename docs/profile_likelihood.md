@@ -4,10 +4,10 @@ Esta API implementa una pieza de [E02-A](inverse_study_plan.md), no su estudio
 confirmatorio. No cambia el [ajuste local existente](../API_REFERENCE.md) ni prueba
 identificabilidad global, cobertura nominal o validez experimental.
 
-Importar desde `pyfast.calibration.profile`:
+Importar desde `sorbflow.calibration.profile`:
 
 ```python
-from pyfast.calibration.profile import ProfileParameter, profile_gaussian_known_sigma
+from sorbflow.calibration.profile import ProfileParameter, profile_gaussian_known_sigma
 
 parameters = (ProfileParameter("K", "m^3/kg", 0.01, 10.0),)
 result = profile_gaussian_known_sigma(
@@ -133,7 +133,7 @@ file without draw order/state. It is engineering evidence, not coverage evidence
 
 ## Signed Gaussian measurements (experimental, 2026-11-20)
 
-`pyfast.calibration.measurements.SignedGaussianMeasurements` now provides the
+`sorbflow.calibration.measurements.SignedGaussianMeasurements` now provides the
 explicit signed measurement contract with required known positive diagonal sigma.
 `BatchExperiment` accepts it alongside `Observations`; physical states and the
 existing nonnegative `Observations` contract are unchanged. Negative noisy

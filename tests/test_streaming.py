@@ -6,7 +6,7 @@ import numpy as np
 import pytest
 from numpy.testing import assert_allclose
 
-from pyfast import (
+from sorbflow import (
     HSDM,
     LDF,
     BatchConfig,
@@ -18,10 +18,10 @@ from pyfast import (
     SimulationConfig,
     Species,
 )
-from pyfast.simulate import batch, column
-from pyfast.solvers import SolverOptions
-from pyfast.solvers.integration import IntegrationOutput, integrate_streaming
-from pyfast.solvers.results import PhysicsViolation, StreamingPhysics, check_physics
+from sorbflow.simulate import batch, column
+from sorbflow.solvers import SolverOptions
+from sorbflow.solvers.integration import IntegrationOutput, integrate_streaming
+from sorbflow.solvers.results import PhysicsViolation, StreamingPhysics, check_physics
 
 
 def problem(case="langmuir"):
@@ -97,7 +97,7 @@ def test_accumulator_matches_dense_and_mass_failure_message():
 
 @pytest.mark.parametrize("method,expected", [("BDF", [1, 2, 2]), ("Radau", [1, 1, 2])])
 def test_step_boundary_ownership_and_internal_violation(monkeypatch, method, expected):
-    import pyfast.solvers.integration as module
+    import sorbflow.solvers.integration as module
 
     class Fake:
         def __init__(self, rhs, t, y, tf, **kw):

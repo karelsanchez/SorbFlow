@@ -4,9 +4,9 @@ import numpy as np
 import pytest
 from numpy.testing import assert_allclose
 
-from pyfast import LDF, BatchConfig, Linear, Observations, Species
-from pyfast.calibration.batch_objective import BatchExperiment, LinearBatchObjective
-from pyfast.calibration.measurements import SignedGaussianMeasurements
+from sorbflow import LDF, BatchConfig, Linear, Observations, Species
+from sorbflow.calibration.batch_objective import BatchExperiment, LinearBatchObjective
+from sorbflow.calibration.measurements import SignedGaussianMeasurements
 
 
 def measurements(**changes):

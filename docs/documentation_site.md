@@ -46,14 +46,14 @@ construir con `mkdocs.yml`. Tras conectar el repositorio al servicio, sus builds
 pueden seguir ramas y versiones. La configuración local no crea una cuenta,
 proyecto ni URL remota, ni garantiza compatibilidad del plan con repositorios privados.
 
-La primera etapa de PyFAST es privada: revisión de documentación como artefacto
+La primera etapa de SorbFlow es privada: revisión de documentación como artefacto
 o sitio local. La publicación abierta de código y sitio requiere que el titular
 defina la licencia y la visibilidad. La versión experimental y sus límites
 científicos deben mantenerse visibles en cualquier publicación.
 
 ## Qué subir al repositorio
 
-Subir el checkout de PyFAST mediante Git, conservando su historial. No cargar el
+Subir el checkout de SorbFlow mediante Git, conservando su historial. No cargar el
 directorio padre completo: contiene entornos de prueba, datasets y resultados.
 Los paquetes wheel/sdist se adjuntan a una release cuando se decida publicarla;
 las salidas masivas se conservan como artefactos seleccionados, no como fuente.

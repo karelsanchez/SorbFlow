@@ -76,14 +76,14 @@ validación física pendientes.
 
 | Entrada pública | Implementación actual | Límite principal |
 |---|---|---|
-| `pyfast.equilibrium` | Langmuir, Freundlich normalizado, lineal y derivadas | Parámetros a una temperatura; singularidad de Freundlich explícita |
-| `pyfast.simulate` | Batch LDF; columna LDF/HSDM con película y dispersión | Una especie, tamaño de partícula y lecho uniforme; entrada/flujo constantes |
-| `pyfast.fit` | Isotermas y tasa LDF batch; SVD/covarianza local | No identifica película y difusión por ajustar una sola tasa |
-| `pyfast.uncertainty` | Muestreo con semilla, cuantiles y sensibilidad local | No demuestra cobertura ni discrepancia de modelo por sí solo |
-| `pyfast.optimize` | NSGA-II opcional, restricciones y reevaluación | Un frente preliminar no demuestra convergencia u óptimo global |
-| `pyfast.design` | Ergun, EBCT, masa, potencia, costo parcial y DXF | No es cálculo mecánico ni costo completo de ciclo de vida |
-| `pyfast.validate` | Balance numérico en resultados | No es validación física externa |
-| `pyfast.io` | CSV explícito, JSON/CSV y Parquet opcional | No limpia observaciones; Parquet temporal no conserva todos los perfiles |
+| `sorbflow.equilibrium` | Langmuir, Freundlich normalizado, lineal y derivadas | Parámetros a una temperatura; singularidad de Freundlich explícita |
+| `sorbflow.simulate` | Batch LDF; columna LDF/HSDM con película y dispersión | Una especie, tamaño de partícula y lecho uniforme; entrada/flujo constantes |
+| `sorbflow.fit` | Isotermas y tasa LDF batch; SVD/covarianza local | No identifica película y difusión por ajustar una sola tasa |
+| `sorbflow.uncertainty` | Muestreo con semilla, cuantiles y sensibilidad local | No demuestra cobertura ni discrepancia de modelo por sí solo |
+| `sorbflow.optimize` | NSGA-II opcional, restricciones y reevaluación | Un frente preliminar no demuestra convergencia u óptimo global |
+| `sorbflow.design` | Ergun, EBCT, masa, potencia, costo parcial y DXF | No es cálculo mecánico ni costo completo de ciclo de vida |
+| `sorbflow.validate` | Balance numérico en resultados | No es validación física externa |
+| `sorbflow.io` | CSV explícito, JSON/CSV y Parquet opcional | No limpia observaciones; Parquet temporal no conserva todos los perfiles |
 
 La [interfaz web local](web_interface.md) es una entrada opcional al mismo núcleo,
 no un modelo nuevo. Los balances, IC/BC y bases físicas están en la

@@ -6,11 +6,11 @@ import pytest
 from numpy.testing import assert_allclose
 from scipy.integrate import solve_ivp
 
-from pyfast import HSDM, Bed, Freundlich, Langmuir, Linear, Operation, SimulationConfig, Species
-from pyfast.equilibrium import isotherm_from_parameters
-from pyfast.kinetics.sphere import SphereGrid, diffusion_rhs, film_flux
-from pyfast.simulate import column
-from pyfast.solvers import SolverOptions
+from sorbflow import HSDM, Bed, Freundlich, Langmuir, Linear, Operation, SimulationConfig, Species
+from sorbflow.equilibrium import isotherm_from_parameters
+from sorbflow.kinetics.sphere import SphereGrid, diffusion_rhs, film_flux
+from sorbflow.simulate import column
+from sorbflow.solvers import SolverOptions
 
 
 def test_sphere_diffusion_against_series_and_radial_convergence():

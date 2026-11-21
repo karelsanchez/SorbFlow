@@ -4,9 +4,9 @@ import numpy as np
 import pytest
 from numpy.testing import assert_allclose
 
-from pyfast import LDF, BatchConfig, Freundlich, Langmuir, Linear, Observations, Species
-from pyfast.equilibrium import isotherm_from_parameters
-from pyfast.fit import FitError, batch_rate, isotherm
+from sorbflow import LDF, BatchConfig, Freundlich, Langmuir, Linear, Observations, Species
+from sorbflow.equilibrium import isotherm_from_parameters
+from sorbflow.fit import FitError, batch_rate, isotherm
 
 
 @pytest.mark.parametrize(

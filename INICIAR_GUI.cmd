@@ -6,6 +6,6 @@ if not exist ".venv\Scripts\python.exe" (
   pause
   exit /b 1
 )
-echo PyFAST local: abra http://127.0.0.1:8765 en Chrome.
+echo SorbFlow local: abra http://127.0.0.1:8765 en Chrome.
 echo Mantenga esta ventana abierta. Ctrl+C cierra el servidor.
-".venv\Scripts\python.exe" -m pyfast.web --host 127.0.0.1 --port 8765 --output runs/gui
+".venv\Scripts\python.exe" -m sorbflow.web --host 127.0.0.1 --port 8765 --output runs/gui

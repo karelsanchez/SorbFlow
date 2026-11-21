@@ -12,10 +12,10 @@ from pathlib import Path
 
 import numpy as np
 
-from pyfast import LDF, BatchConfig, Linear, Observations, Species
-from pyfast.calibration.batch_objective import BatchExperiment, LinearBatchObjective
-from pyfast.calibration.profile import ProfileParameter, profile_gaussian_known_sigma
-from pyfast.solvers import SolverOptions
+from sorbflow import LDF, BatchConfig, Linear, Observations, Species
+from sorbflow.calibration.batch_objective import BatchExperiment, LinearBatchObjective
+from sorbflow.calibration.profile import ProfileParameter, profile_gaussian_known_sigma
+from sorbflow.solvers import SolverOptions
 
 
 def main(output: Path) -> None:
@@ -32,7 +32,7 @@ def main(output: Path) -> None:
     dirty = state.returncode != 0 or bool(state.stdout.strip())
     code_revision = base_revision if base_revision is not None and not dirty else "uncommitted"
     source_hashes = {p.relative_to(root).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
-                     for p in sorted((root / "src/pyfast").rglob("*.py"))}
+                     for p in sorted((root / "src/sorbflow").rglob("*.py"))}
     demo_sha = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     source_hashes["examples/profile_batch.py"] = demo_sha
     seed, sigma = 20261119, 1e-4
@@ -77,7 +77,7 @@ def main(output: Path) -> None:
                      "git_base_revision": base_revision, "worktree_dirty": dirty,
                      "source_sha256": source_hashes, "solver_options": asdict(options),
                      "packages": {name: importlib.metadata.version(name)
-                                  for name in ("numpy", "scipy", "pint", "pyfast-adsorption")}}
+                                  for name in ("numpy", "scipy", "pint", "sorbflow")}}
     (output / "specification.json").write_text(json.dumps(specification, indent=2) + "\n")
     objective = LinearBatchObjective(experiments, options=options, code_revision=code_revision)
     profile = profile_gaussian_known_sigma(objective, parameters, starts,

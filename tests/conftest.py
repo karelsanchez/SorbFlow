@@ -1,6 +1,6 @@
 import pytest
 
-from pyfast import LDF, Bed, Langmuir, Operation, SimulationConfig, Species
+from sorbflow import LDF, Bed, Langmuir, Operation, SimulationConfig, Species
 
 
 @pytest.fixture

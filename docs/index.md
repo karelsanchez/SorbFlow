@@ -1,6 +1,6 @@
-# Documentación de PyFAST
+# Documentación de SorbFlow
 
-PyFAST es un prototipo Python para adsorción acuosa y diseño de columnas. Tiene
+SorbFlow es un prototipo Python para adsorción acuosa y diseño de columnas. Tiene
 [benchmarks ejecutados](benchmark_results.md) de verificación numérica,
 inferencia sintética y diseño bajo incertidumbre, con alcance explícito.
 El caso de columna disponible conserva discrepancias; no se exige generar
@@ -61,14 +61,14 @@ configurables; otro contaminante requiere parámetros y supuestos químicos adec
 
 | Módulo | Disponible en el prototipo |
 |---|---|
-| `pyfast.simulate` | Batch LDF y columna LDF/HSDM |
-| `pyfast.fit` | Ajuste de isotermas y tasa batch LDF; diagnósticos locales |
-| `pyfast.uncertainty` | Monte Carlo reproducible y sensibilidad local |
-| `pyfast.optimize` | NSGA-II mediante dependencia opcional |
-| `pyfast.design` | Hidráulica, costo parcial y envolvente DXF |
-| `pyfast.validate` | Comprobación numérica del balance de masa |
-| `pyfast.io` | CSV experimental explícito y exportación JSON/CSV/Parquet opcional |
-| `pyfast.web` | Entrada web local opcional; no amplía la evidencia científica |
+| `sorbflow.simulate` | Batch LDF y columna LDF/HSDM |
+| `sorbflow.fit` | Ajuste de isotermas y tasa batch LDF; diagnósticos locales |
+| `sorbflow.uncertainty` | Monte Carlo reproducible y sensibilidad local |
+| `sorbflow.optimize` | NSGA-II mediante dependencia opcional |
+| `sorbflow.design` | Hidráulica, costo parcial y envolvente DXF |
+| `sorbflow.validate` | Comprobación numérica del balance de masa |
+| `sorbflow.io` | CSV experimental explícito y exportación JSON/CSV/Parquet opcional |
+| `sorbflow.web` | Entrada web local opcional; no amplía la evidencia científica |
 
 Los modelos multicomponente/térmicos, STEP/CAD mecánico, adaptador FAST y validación
 experimental siguen pendientes. No se requiere FAST para resolver los modelos propios.

@@ -8,7 +8,7 @@ local; **la reconstrucción externa del artículo completo no está demostrada**
 
 | Control | Estado actual | Cierre requerido para el artículo |
 |---|---|---|
-| Git independiente y código tipado/modular | Implementado, repositorio local PyFAST | Release/tag inmutable y revisión humana identificada |
+| Git independiente y código tipado/modular | Implementado, repositorio local SorbFlow | Release/tag inmutable y revisión humana identificada |
 | pytest | 269 pasan en el registro 0.2 local | Suite científica completa + CI externa, sin confundir cobertura con validez |
 | Instalación wheel fuera del checkout | Verificada reutilizando dependencias | Instalación desde cero y reproducción en equipo/entorno ajeno |
 | Versiones/semillas/hash de entradas y opciones | Implementación parcial | Dataset, estudio, tarea, escenario y algoritmo con IDs enlazados |
@@ -76,7 +76,7 @@ Antes de depósito, verificar:
 5. Los claims enlazan a experimentos confirmatorios realmente ejecutados.
 6. No hay FAST propietario, secretos, datos personales o datasets sin autorización.
 7. El core y todos los componentes necesarios para el paper son accesibles y licenciados;
-   no dependen de `pyfast-design-pro` ni de credenciales comerciales.
+   no dependen de `sorbflow-design-pro` ni de credenciales comerciales.
 8. DOI/release, referencias de software, contacto y declaración de disponibilidad son reales.
 
 Un archivo zip local y una semilla no sustituyen estos controles.

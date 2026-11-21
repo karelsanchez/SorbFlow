@@ -1,6 +1,6 @@
 # Objetivo batch para perfiles con ruido conocido
 
-Contrato experimental: `pyfast.calibration.batch_objective.BatchExperiment` reúne
+Contrato experimental: `sorbflow.calibration.batch_objective.BatchExperiment` reúne
 un `BatchConfig` lineal/LDF y una serie `Observations` con desviaciones estándar
 conocidas, positivas, en kg/m³. No estima ni imputa esas desviaciones.
 

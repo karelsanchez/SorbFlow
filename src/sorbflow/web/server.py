@@ -1,4 +1,4 @@
-"""Loopback-only HTTP boundary for the optional stdlib PyFAST interface."""
+"""Loopback-only HTTP boundary for the optional stdlib SorbFlow interface."""
 
 from __future__ import annotations
 
@@ -18,7 +18,7 @@ from .config import MAX_REQUEST_BYTES, SCIENTIFIC_STATUS, examples, parse_reques
 from .ui import page
 
 
-class PyFASTHTTPServer(ThreadingHTTPServer):
+class SorbFlowHTTPServer(ThreadingHTTPServer):
     """Local development server; it does not expose the filesystem as static content."""
 
     daemon_threads = True
@@ -35,12 +35,12 @@ class PyFASTHTTPServer(ThreadingHTTPServer):
 
 
 class RequestHandler(BaseHTTPRequestHandler):
-    server_version = "PyFAST-local"
+    server_version = "SorbFlow-local"
     sys_version = ""
 
     @property
     def application(self) -> WebApplication:
-        return cast(PyFASTHTTPServer, self.server).application
+        return cast(SorbFlowHTTPServer, self.server).application
 
     def setup(self) -> None:
         super().setup()
@@ -133,7 +133,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         if origins and origins[0] != f"http://{hosts[0].lower()}":
             self._json(403, {"error": "Cross-origin requests are not accepted"})
             return False
-        tokens = self.headers.get_all("X-PyFAST-Token", [])
+        tokens = self.headers.get_all("X-SorbFlow-Token", [])
         if token and (
             len(tokens) != 1
             or len(tokens[0]) > 200
@@ -270,18 +270,18 @@ def create_server(
     port: int = 8765,
     output: str | Path = "runs/gui",
     job_timeout_s: float = 30,
-) -> PyFASTHTTPServer:
+) -> SorbFlowHTTPServer:
     """Build a server without starting its request loop; port=0 supports isolated tests."""
     if host not in ("127.0.0.1", "localhost"):
         raise ValueError("The local GUI binds only to 127.0.0.1 (or localhost)")
     if type(port) is not int or not 0 <= port <= 65535:
         raise ValueError("port must be an integer within [0,65535]")
-    return PyFASTHTTPServer(WebApplication(output, job_timeout_s=job_timeout_s), port)
+    return SorbFlowHTTPServer(WebApplication(output, job_timeout_s=job_timeout_s), port)
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
-        description="PyFAST local scientific interface (not production)"
+        description="SorbFlow local scientific interface (not production)"
     )
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8765)
@@ -289,7 +289,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     try:
         with create_server(host=args.host, port=args.port, output=args.output) as server:
-            print(f"PyFAST local: http://127.0.0.1:{server.server_port}", flush=True)
+            print(f"SorbFlow local: http://127.0.0.1:{server.server_port}", flush=True)
             print(SCIENTIFIC_STATUS, flush=True)
             print("Press Ctrl+C to close this GUI and its own running job.", flush=True)
             try:
@@ -297,6 +297,6 @@ def main(argv: list[str] | None = None) -> int:
             except KeyboardInterrupt:
                 pass
     except (OSError, ValueError) as exc:
-        print(f"PyFAST web error: {exc}", file=sys.stderr)
+        print(f"SorbFlow web error: {exc}", file=sys.stderr)
         return 2
     return 0

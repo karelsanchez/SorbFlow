@@ -1,4 +1,4 @@
-# Especificación matemática — PyFAST
+# Especificación matemática — SorbFlow
 
 Estado: formulación implementada para batch LDF y columna LDF/HSDM; validación experimental pendiente. Fecha: 2026-11-18.
 Ecuaciones formuladas desde balances físicos; no transcripción de código FAST.

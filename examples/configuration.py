@@ -1,6 +1,6 @@
 """Create and round-trip a synthetic configuration, without running a solver."""
 
-from pyfast import LDF, Bed, Langmuir, Operation, SimulationConfig, Species, quantity
+from sorbflow import LDF, Bed, Langmuir, Operation, SimulationConfig, Species, quantity
 
 config = SimulationConfig(
     species=Species(name="synthetic-solute"),

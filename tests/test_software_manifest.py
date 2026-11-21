@@ -28,13 +28,13 @@ def manifest_tool() -> ModuleType:
 @pytest.fixture
 def repository(tmp_path: Path) -> Path:
     repo = tmp_path / "project"
-    (repo / "src/pyfast").mkdir(parents=True)
+    (repo / "src/sorbflow").mkdir(parents=True)
     (repo / "pyproject.toml").write_text(
         '[project]\nname="test-package"\nversion="0.1.dev0"\n'
         'dependencies=["pint>=0.24"]\nlicense="LicenseRef-Proprietary"\n',
         encoding="utf-8",
     )
-    (repo / "src/pyfast/_version.py").write_text('VERSION = "0.1.dev0"\n', encoding="utf-8")
+    (repo / "src/sorbflow/_version.py").write_text('VERSION = "0.1.dev0"\n', encoding="utf-8")
     (repo / "README.md").write_text("# Synthetic fixture\n", encoding="utf-8")
     return repo
 
@@ -121,7 +121,7 @@ def test_binary_raw_and_unlisted_config_excluded(
 
 def test_source_hash_change_and_no_execution(manifest_tool: ModuleType, repository: Path) -> None:
     first = manifest_tool.prepare_manifest(repository)
-    path = repository / "src/pyfast/_version.py"
+    path = repository / "src/sorbflow/_version.py"
     path.write_text('VERSION = "0.1.dev0"\nraise RuntimeError("never execute")\n', encoding="utf-8")
     second = manifest_tool.prepare_manifest(repository)
     assert first["content_sha256"] != second["content_sha256"]

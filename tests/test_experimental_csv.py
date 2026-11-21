@@ -2,7 +2,7 @@ import hashlib
 
 import pytest
 
-from pyfast.io.experimental import load_breakthrough_csv
+from sorbflow.io.experimental import load_breakthrough_csv
 
 
 def load(path, **kwargs):

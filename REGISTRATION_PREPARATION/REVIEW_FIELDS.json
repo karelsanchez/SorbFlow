@@ -1,5 +1,5 @@
 {
-  "schema_version": "pyfast.registration-review-fields/1",
+  "schema_version": "sorbflow.registration-review-fields/1",
   "status": "pending_human_review",
   "authors": null,
   "rights_holder": null,

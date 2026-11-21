@@ -6,10 +6,10 @@ No experimental parameters, calibration or physical validation are claimed.
 
 import argparse
 
-from pyfast import LDF, Bed, Langmuir, Operation, SimulationConfig, Species
-from pyfast.io import export_result
-from pyfast.simulate import column
-from pyfast.solvers import SolverOptions
+from sorbflow import LDF, Bed, Langmuir, Operation, SimulationConfig, Species
+from sorbflow.io import export_result
+from sorbflow.simulate import column
+from sorbflow.solvers import SolverOptions
 
 
 def configuration() -> SimulationConfig:
