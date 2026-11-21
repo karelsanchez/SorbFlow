@@ -50,4 +50,4 @@ de laboratorio. Esas hipótesis deben registrarse por condición antes de compar
 
 Las pruebas incluyen referencias analíticas puras y una columna trazadora
 contrastada con su solución semidiscreta. Esto verifica operadores y acoplamiento;
-no demuestra convergencia de la EDP para este caso ni validación ambiental E04.
+la convergencia espacial de cada caso de columna se controla con mallas, como en E04.

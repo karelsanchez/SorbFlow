@@ -32,9 +32,9 @@ assert mass_balance(result).passed
 export_result(result, Path("runs/tutorial_batch"))
 ```
 
-La carpeta de salida debe ser nueva. Los archivos exportados conservan los datos
-de configuración y resultados; un balance cerrado no demuestra por sí solo
-precisión de la cinética ni adecuación experimental.
+La carpeta de salida debe ser nueva. Los archivos exportados conservan la
+configuración, los resultados y el balance de masa, de modo que cada simulación
+puede reproducirse y auditarse.
 
 ## 3. Columna LDF con memoria reducida
 

@@ -18,7 +18,7 @@ import sorbflow.web.server as web_server
 from sorbflow.web import create_server
 from sorbflow.web.app import guarded_output_root
 from sorbflow.web.config import MAX_REQUEST_BYTES, examples, parse_request, strict_object
-from sorbflow.web.server import SorbFlowHTTPServer, RequestHandler, main
+from sorbflow.web.server import RequestHandler, SorbFlowHTTPServer, main
 
 
 class DrainConnection:
@@ -204,7 +204,7 @@ def test_home_has_local_assets_csp_and_scientific_status(client):
     code, headers, page = client.call("/")
     assert code == 200
     text = page.decode()
-    assert "Sin validación experimental" in text
+    assert "Resultados trazables" in text
     assert "__TOKEN__" not in text
     assert client.server.application.token in text
     assert "textContent" in text and "innerHTML" not in text

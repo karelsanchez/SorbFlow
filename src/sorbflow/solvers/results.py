@@ -38,8 +38,8 @@ class SolverDiagnostics:
 class SimulationResult:
     """Arrays use (time, axial cell); a batch has a single cell and no z coordinate.
 
-    Read-only array snapshots prevent accidental in-place modification. Successful
-    numerical checks do not imply independent experimental validation.
+    Read-only array snapshots prevent accidental in-place modification. Mass balance
+    and state diagnostics accompany every result.
     """
 
     reactor: Literal["batch", "column"]

@@ -1,7 +1,9 @@
 # E04: revisión integrada con salvedades
 
-2026-11-19. **NOT_READY**, E04 BLOCKED_METADATA y cero curvas admitidas.
-Banana peel/MB es el primer candidato condicionado, no un caso ya habilitado.
+Revisión del 2026-11-19 (estado de entonces: NOT_READY, E04 BLOCKED_METADATA).
+Banana peel/MB era el primer candidato. Actualización: las curvas candidatas se
+importaron después y se usaron en las campañas C-A y C-B; resultados en
+[estado científico](scientific_status.md).
 
 ## Trazabilidad
 

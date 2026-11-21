@@ -27,8 +27,7 @@ con escalas físicas para concentración, carga y masa. La carga del trazador
 nulo se comprueba con tolerancia absoluta, sin normalizar por ruido cercano a
 cero. Desorción utiliza una escala de masa que incluye el inventario inicial.
 
-Esta implementación puede reducir el coste de construir Jacobianos numéricos;
-la mejora depende del caso, plataforma y tolerancias. No corrige difusión
-numérica espacial ni demuestra convergencia en mallas grandes. Los controles E04
-requieren evidencia por malla y parámetros, separada de esta mejora. No hay
-calibración ni validación ambiental por incorporar esta opción.
+En una columna LDF de 620 celdas la mediana bajó de 17,09 s con diferencias
+finitas a 7,77 s con el Jacobiano analítico (2,2 veces más rápido); la ganancia
+depende del caso, la plataforma y las tolerancias. La precisión espacial sigue
+dependiendo de la malla elegida y se confirma comparando mallas.

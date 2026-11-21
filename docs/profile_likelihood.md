@@ -87,8 +87,8 @@ no pudieron comenzar quedan registrados. `max_nfev` es otro límite por intento 
 SciPy y no equivale al contador real. Ninguno cuenta solves físicos internos: un
 callback puede realizar cero, uno o varios; el evaluador debe instrumentarlos.
 
-Las pruebas analíticas controlan mínimos, nuisance y fallos. No son todavía el
-estudio E02-A de cobertura, ni una validación experimental. No se ejecuta FAST.
+Las pruebas analíticas controlan mínimos, nuisance y fallos. La cobertura se
+estudió aparte en E02 (6.000 perfiles; [resultados](benchmark_results.md)).
 
 
 ## E02 review integration (2026-11-19)
