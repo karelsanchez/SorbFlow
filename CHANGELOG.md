@@ -1,5 +1,17 @@
 # Registro de cambios
 
+## 0.3.0 — SorbFlow, 2026-11-21
+
+- Primera publicación en PyPI: `pip install sorbflow`. Publicación automática por
+  *trusted publishing* al publicar una release de GitHub (`.github/workflows/publish.yml`).
+- Licencia **Apache-2.0** (`LICENSE`, `NOTICE`); titular K. A. Sanchez Hernandez.
+- Autores: K. A. Sanchez Hernandez, D. E. Rodriguez Saiz, D. X. Cabrera Obando y
+  G. J. Romo Cadena; metadatos de cita en `CITATION.cff`.
+- Documentación: modelos y ecuaciones (MathJax), motores de cálculo, comparación con
+  otras herramientas, galería de figuras generadas por `scripts/make_figures.py` y
+  diagrama de arquitectura.
+- Distribución fuente reducida a código, pruebas, ejemplos, scripts y documentación.
+
 ## 0.3.0.dev0 — SorbFlow, 2026-11-20
 
 - **Nuevo nombre: SorbFlow** (antes PyFAST). Distribución, paquete importable y
