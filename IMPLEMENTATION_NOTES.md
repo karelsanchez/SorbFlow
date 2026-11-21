@@ -16,9 +16,9 @@ implementa competencia, especiación de metales ni cambios de pH automáticament
 La superficie prevista es `sorbflow.fit`, `sorbflow.simulate`, `sorbflow.optimize`,
 `sorbflow.uncertainty`, `sorbflow.design`, `sorbflow.validate`, API/CLI y web posterior.
 El core científico y diagnósticos serán independientes de la edición comercial.
-Se adopta como propuesta del propietario Apache-2.0 para `sorbflow-core` y repositorio
-separado `sorbflow-design-pro`. Titularidad universitaria y licencia definitiva pendientes:
-no se cambia aún la concesión de derechos ni el nombre provisional de distribución.
+SorbFlow se publica bajo Apache-2.0 (decisión del titular, K. A. Sanchez Hernandez,
+2026-11-21) con el nombre de distribución `sorbflow`. Una posible edición
+`sorbflow-design-pro` se mantendría en un repositorio separado.
 
 ## E2
 
