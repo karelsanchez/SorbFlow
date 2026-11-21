@@ -1,4 +1,4 @@
-"""Numerical diagnostics, distinct from independent experimental validation."""
+"""Numerical diagnostics: mass balance and state checks of simulation results."""
 
 from __future__ import annotations
 

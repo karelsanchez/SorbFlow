@@ -48,8 +48,8 @@ proyecto ni URL remota, ni garantiza compatibilidad del plan con repositorios pr
 
 La primera etapa de SorbFlow es privada: revisión de documentación como artefacto
 o sitio local. La publicación abierta de código y sitio requiere que el titular
-defina la licencia y la visibilidad. La versión experimental y sus límites
-científicos deben mantenerse visibles en cualquier publicación.
+defina la licencia y la visibilidad. Toda publicación incluye el estado de los
+estudios y la hoja de ruta descritos en [estado científico](scientific_status.md).
 
 ## Qué subir al repositorio
 

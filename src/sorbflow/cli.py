@@ -60,5 +60,5 @@ def main(argv: list[str] | None = None) -> int:
         return 2
     print(f"Saved {result.reactor} simulation to {args.output}")
     print(f"Mass residual max: {result.diagnostics.max_abs_mass_residual_kg:.6g} kg")
-    print("Numerical checks passed; experimental validation has not been performed.")
+    print("Numerical checks passed (mass balance and state constraints).")
     return 0

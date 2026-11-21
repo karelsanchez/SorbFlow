@@ -1,11 +1,12 @@
 # E02-A: diseño sintético de identificabilidad e intervalos
 
-**Estado: DISEÑO PROPUESTO; estudio no ejecutado ni confirmatorio.** Ya existen
-una [API experimental de perfiles](profile_likelihood.md) y un
-[objetivo batch K/k](batch_objective.md), probados separadamente. El estudio de
-identificabilidad/cobertura completo sigue pendiente. E01 continúa parcial;
-E04 continúa BLOCKED_METADATA, con 0 curvas listas. La interfaz web es opcional y
-no participa en los criterios científicos del artículo.
+**Documento de diseño (2026-11-19).** Este plan precedió a la ejecución de E02:
+3.000 datasets y 6.000 perfiles con predictor batch analítico, cuyos resultados están
+en [benchmarks ejecutados](benchmark_results.md). Usa la
+[API de perfiles](profile_likelihood.md) y el [objetivo batch K/k](batch_objective.md).
+Se conserva como registro del diseño; las secciones que hablan de trabajo pendiente
+describen la situación previa a esa ejecución. La interfaz web no participa en los
+criterios científicos del artículo.
 
 Este subestudio concreta [E02 del protocolo](../PAPER_ENVSOFT/BENCHMARK_PROTOCOL.md)
 y las afirmaciones candidatas C03/C04 de la
@@ -211,5 +212,5 @@ debe conservar semillas y resultados, sin presentarlo como ejecución distribuid
 5. Tablas/figuras sintéticas E02-A con denominadores, incertidumbre Monte Carlo,
    anchuras, fallos y costos; actualización del registro solo tras revisar evidencias.
 
-Hasta completar estos entregables, E02 permanece pendiente. Este diseño no habilita
-afirmaciones de solver validado, cobertura demostrada ni validación experimental.
+Los resultados de la ejecución de E02 y su alcance se resumen en
+[benchmarks ejecutados](benchmark_results.md).

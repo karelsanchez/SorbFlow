@@ -41,8 +41,8 @@ python -m sorbflow column examples/column_hsdm.json --output runs/primera_hsdm -
 ```
 
 Cada carpeta de salida debe ser nueva: no se sobrescribe una simulación anterior.
-Esas mallas son ejemplos de uso, no una resolución suficiente para toda decisión.
-Refine mallas y tolerancias según el [plan de validación](../VALIDATION_PLAN.md).
+Las mallas de estos ejemplos son rápidas; para indicadores de diseño compare dos
+mallas y tolerancias según el [plan de verificación](../VALIDATION_PLAN.md).
 
 ## Leer los resultados
 
@@ -53,8 +53,9 @@ Cada simulación exporta:
 - `files.sha256.json`: integridad de esos archivos exportados.
 
 El resultado de columna representa celdas finitas; HSDM conserva además los perfiles
-radiales. Un balance cerrado o un integrador exitoso no demuestra precisión espacial
-ni validez experimental. Consulte los límites en [estado científico](scientific_status.md).
+radiales. Cada resultado incluye su balance de masa y diagnósticos del integrador;
+la precisión espacial se confirma comparando mallas. Funciones y evidencia en
+[estado científico](scientific_status.md).
 La [API](../API_REFERENCE.md) explica cómo usar resultados y cantidades desde Python.
 
 Para la interfaz de navegador, vea [interfaz web](web_interface.md). Su entrada es

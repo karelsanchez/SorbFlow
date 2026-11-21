@@ -51,7 +51,7 @@ def test_cli_batch_success_and_failures(problem, tmp_path, capsys):
     config = tmp_path / "batch.json"
     config.write_text(problem.to_json())
     assert main(["batch", str(config), "--output", str(tmp_path / "out"), "--samples", "3"]) == 0
-    assert "experimental validation" in capsys.readouterr().out
+    assert "Numerical checks passed" in capsys.readouterr().out
     assert main(["batch", str(config), "--output", str(tmp_path / "out")]) == 2
     assert "already exists" in capsys.readouterr().err
     assert main(["batch", str(config), "--output", str(tmp_path / "new"), "--samples", "1"]) == 2
