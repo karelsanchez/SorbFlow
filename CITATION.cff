@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "Si usa SorbFlow en un trabajo publicado, cítelo con estos metadatos."
+title: "SorbFlow: modelación configurable de adsorción en fase acuosa"
+type: software
+version: 0.3.0
+date-released: 2026-11-21
+license: Apache-2.0
+repository-code: "https://github.com/karelsanchez/SorbFlow"
+url: "https://sorbflow.readthedocs.io"
+keywords:
+  - adsorption
+  - water treatment
+  - fixed-bed column
+  - breakthrough curve
+  - LDF
+  - HSDM
+  - Python
+authors:
+  - family-names: "Sanchez Hernandez"
+    given-names: "Karel Aldrin"
+    affiliation: "Universidad de Cundinamarca"
+  - family-names: "Rodriguez Saiz"
+    given-names: "David Esteban"
+  - family-names: "Cabrera Obando"
+    given-names: "Dayana Ximena"
+  - family-names: "Romo Cadena"
+    given-names: "Gabriela Johana"
+abstract: >-
+  SorbFlow es una herramienta en Python para modelar, simular, calibrar y diseñar
+  procesos de adsorción en fase acuosa en reactores batch y columnas de lecho fijo,
+  con isotermas lineal, Langmuir y Freundlich, cinética LDF y difusión superficial
+  homogénea (HSDM), calibración, incertidumbre, optimización multiobjetivo y
+  resultados trazables.

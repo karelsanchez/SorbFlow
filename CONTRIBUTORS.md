@@ -1,26 +1,15 @@
-# Equipo y contribuciones declaradas
+# Autores y colaboradores
 
-Información proporcionada por Karel Aldrin Sanchez Hernandez el 20 de noviembre
-de 2026. Este registro documenta personas y roles declarados; las contribuciones
-específicas deben completarse con evidencia del trabajo realizado.
-
-| Persona | Rol declarado | Contexto |
+| Orden | Persona | Rol |
 |---|---|---|
-| Karel Aldrin Sanchez Hernandez | Responsable del proyecto; docente | Universidad de Cundinamarca, Ingeniería Ambiental, Facatativá |
-| David Esteban Rodriguez Saiz | Estudiante asistente | Ingeniería Ambiental |
-| Dayana Ximena Cabrera Obando | Estudiante asistente | Ingeniería Ambiental |
+| 1 | Karel Aldrin Sanchez Hernandez (K. A. Sanchez Hernandez) | Autor principal y responsable del proyecto: concepción, diseño, desarrollo del software y documentación. Docente de Ingeniería Ambiental, Universidad de Cundinamarca, Facatativá |
+| 2 | David Esteban Rodriguez Saiz | Estudiante de Ingeniería Ambiental; pruebas del software |
+| 3 | Dayana Ximena Cabrera Obando | Estudiante de Ingeniería Ambiental; pruebas del software |
+| 4 | Gabriela Johana Romo Cadena | Validación técnica de los fenómenos químicos |
 
-El responsable declara que el proyecto no contó con financiación y que la
-titularidad del software le corresponde. Esa declaración se conserva como
-proveniencia; el registro de derechos y las condiciones del vínculo institucional
-se revisan por separado.
+Información declarada por el responsable del proyecto (20 y 21 de noviembre de 2026).
+El proyecto no contó con financiación. La titularidad de los derechos patrimoniales
+corresponde, según la misma declaración, a Karel Aldrin Sanchez Hernandez.
 
-Pendientes de describir por persona: desarrollo de código, diseño metodológico,
-curación de datos, verificación numérica, experimentación, documentación y
-supervisión, según corresponda. No se atribuyen tareas específicas sin evidencia.
-Los créditos de software, los autores de código registrables, la titularidad y
-la autoría/orden del artículo son registros diferentes.
-
-Las herramientas de asistencia utilizadas durante el desarrollo deben declararse
-en la documentación metodológica pertinente; no se presentan como personas
-autoras o titulares. La licencia actual figura en [LICENSE.md](LICENSE.md).
+Para citar el software, ver [CITATION.cff](https://github.com/karelsanchez/SorbFlow/blob/main/CITATION.cff) y la
+[guía de citación](docs/citation.md). Licencia: [Apache-2.0](LICENSE.md).
