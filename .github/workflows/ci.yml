@@ -36,7 +36,7 @@ jobs:
           "$PY" -m sorbflow --help
           "$PY" -c "import sorbflow; print(sorbflow.__version__ if hasattr(sorbflow, '__version__') else 'ok')"
       - if: matrix.os == 'ubuntu-latest' && matrix.python == '3.12'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: sorbflow-dist
           path: dist/
