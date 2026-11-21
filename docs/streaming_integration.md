@@ -32,10 +32,10 @@ La selección se guarda en las opciones y en el fingerprint. Añadir el campo
 Los protocolos históricos deben permanecer intactos; no se reanudan mezclando
 fuentes nuevas con evidencia antigua sin una importación comprobada.
 
-Reducir memoria y completar una simulación no demuestran convergencia espacial,
-identificabilidad ni validación ambiental. E04 requiere controles de malla por
-condición y parámetros antes de calibrar; no hay calibración automática al activar
-esta opción.
+En la medición registrada, streaming redujo la memoria privada de 1.632,9 MB a
+956,7 MB con la misma curva de salida, y permitió resolver 7.440 celdas y 4.767
+instantes en ≤262,4 s. La convergencia espacial se confirma comparando mallas en
+cada condición, como en los controles E04; activar esta opción no calibra parámetros.
 
 La [evidencia seleccionada](../audit/streaming_20261120/summary.json) conserva la
 distinción entre la nueva escalera Q1 del núcleo y la escalera Q3 del prototipo

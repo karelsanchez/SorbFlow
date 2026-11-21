@@ -6,7 +6,7 @@ import numpy as np
 import pytest
 from numpy.testing import assert_allclose
 
-from pyfast import (
+from sorbflow import (
     HSDM,
     LDF,
     BatchConfig,
@@ -18,11 +18,11 @@ from pyfast import (
     SimulationConfig,
     Species,
 )
-from pyfast.equilibrium import isotherm_from_parameters
-from pyfast.equilibrium.isotherms import trial_loading
-from pyfast.reactors._ldf_jacobian import LDFColumnJacobian
-from pyfast.simulate import batch, column
-from pyfast.solvers import SolverOptions
+from sorbflow.equilibrium import isotherm_from_parameters
+from sorbflow.equilibrium.isotherms import trial_loading
+from sorbflow.reactors._ldf_jacobian import LDFColumnJacobian
+from sorbflow.simulate import batch, column
+from sorbflow.solvers import SolverOptions
 
 
 def problem(equilibrium=None):

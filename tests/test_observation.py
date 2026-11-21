@@ -4,7 +4,7 @@ import math
 import numpy as np
 import pytest
 
-from pyfast.observation import (
+from sorbflow.observation import (
     CollectionWindow,
     LiquidSegment,
     SampledSignal,

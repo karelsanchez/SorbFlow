@@ -1,9 +1,9 @@
-# Descripción técnica de PyFAST para revisión
+# Descripción técnica de SorbFlow para revisión
 
 [Preparación](README.md) · [Arquitectura](../ARCHITECTURE.md) ·
 [Ecuaciones](../MODEL_SPECIFICATION.md) · [API](../API_REFERENCE.md)
 
-PyFAST es un prototipo modular Python para adsorción acuosa en batch y columnas de
+SorbFlow es una herramienta modular Python para adsorción acuosa en batch y columnas de
 lecho fijo. Especie, adsorbente y proporciones son datos configurables; el núcleo
 no fija los cuatro materiales del estudio inicial. La configuración tipada utiliza
 unidades físicas SI, convenciones de masa seca y distinción entre velocidad
@@ -12,16 +12,16 @@ la configuración numérica requiere valores SI según su esquema.
 
 ## Componentes implementados
 
-- `pyfast.equilibrium`: modelos lineal, Langmuir y Freundlich normalizado.
-- `pyfast.simulate`: batch LDF y columna LDF/HSDM; discretización conservativa,
+- `sorbflow.equilibrium`: modelos lineal, Langmuir y Freundlich normalizado.
+- `sorbflow.simulate`: batch LDF y columna LDF/HSDM; discretización conservativa,
   dispersión axial, película y condiciones Danckwerts; integración mediante SciPy.
-- `pyfast.fit`, `uncertainty` y `optimize`: ajuste, diagnósticos locales de
+- `sorbflow.fit`, `uncertainty` y `optimize`: ajuste, diagnósticos locales de
   identificabilidad, muestreo reproducible y NSGA-II opcional mediante pymoo.
-- `pyfast.design`: geometría, Ergun, EBCT, potencia/costo parcial y exportación DXF
+- `sorbflow.design`: geometría, Ergun, EBCT, potencia/costo parcial y exportación DXF
   de proceso. No constituye certificación mecánica.
-- `pyfast.io` y `validate`: configuración, resultados y controles de balance;
+- `sorbflow.io` y `validate`: configuración, resultados y controles de balance;
   CSV/JSON y Parquet opcional para series temporales.
-- API Python, CLI `pyfast` e interfaz web local opcional stdlib. La GUI utiliza
+- API Python, CLI `sorbflow` e interfaz web local opcional stdlib. La GUI utiliza
   el mismo núcleo, impone límites de recursos y crea resultados en carpetas nuevas.
 
 El motor propio utiliza NumPy/SciPy/Pint como dependencias declaradas. Los extras

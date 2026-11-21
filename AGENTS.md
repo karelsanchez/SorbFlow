@@ -1,4 +1,4 @@
-# PyFAST research workflow
+# SorbFlow research workflow
 
 Use this repository's `.venv/Scripts/python.exe` on this Windows workstation.
 The working repository moved from D: to C:; commands in current documentation
@@ -32,7 +32,7 @@ historical evidence. Do not rewrite downloaded source data to correct metadata.
 - Run `.venv/Scripts/python.exe scripts/project_checks.py --output runs/<new-id>`
   after integration. It records logs and source hashes; it does not execute E01/E04.
   `--quick` skips pytest and is not the complete quality gate.
-- Version in `pyproject.toml` and `src/pyfast/_version.py` must match. Keep the dev
+- Version in `pyproject.toml` and `src/sorbflow/_version.py` must match. Keep the dev
   designation until the release criteria and rights are satisfied. Build artifacts
   from a known commit; publishing/uploading is a separate user-authorized action.
 - Create focused local commits after checks. Remote CI is configured, not claimed

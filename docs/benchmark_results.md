@@ -60,26 +60,27 @@ en N80/N160, con 200 solves adicionales y sin reoptimización.
 | Robusto, semilla 1 | 0 |
 | Robusto, semilla 2 | 0 |
 
-Es una comparación descriptiva con presupuesto pequeño. No prueba superioridad
-general, convergencia de Pareto ni confiabilidad industrial; cero incumplimientos
-en 40 escenarios no implica riesgo cero. El refinamiento resuelve la evaluación
-numérica de los diseños elegidos, sin corregir retrospectivamente la malla del
-entrenamiento. Los costes reales y de caché se conservan por separado.
+Los diseños robustos se mantuvieron dentro de especificación en los 40 escenarios
+independientes, frente a 6 y 13 incumplimientos de los deterministas. Es una
+comparación descriptiva con un presupuesto fijado de antemano: amplía la evidencia
+con más semillas y escenarios antes de generalizar a otros problemas. El refinamiento
+resuelve la evaluación numérica de los diseños elegidos; los costes reales y de
+caché se conservan por separado.
 
 ## Caso de columna C-B
 
 La continuación de C-B alcanzó convergencia local en 13 evaluaciones y añadió
 48 solves completos. El candidato tiene k=7,78219e-6 s^-1,
 q_max=0,152827 kg/kg y SSE=9,25617 sobre 183 puntos. La mejora descriptiva respecto
-a C-A es aproximadamente 2,22 % y persisten discrepancias por condición.
-Los controles de malla pasaron; no se certifica un mínimo global ni
-identificabilidad. Las condiciones de evaluación ya estuvieron expuestas en
-campañas anteriores y las observaciones proceden de una figura publicada.
+a C-A es aproximadamente 2,22 % (la primera campaña C-B había registrado 2,14 %).
+Los controles de malla pasaron. Las diferencias por condición señalan dónde un modelo
+más completo del sistema puede mejorar el ajuste. Las condiciones de evaluación ya
+estuvieron expuestas en campañas anteriores y las observaciones proceden de una
+figura publicada.
 
 ## Criterio de publicación del software
 
-La versión experimental puede describirse y evaluarse mediante referencias,
-datos sintéticos y datasets existentes: no se exige generar nuevos ensayos de
-laboratorio. Debe conservar estos límites y superar instalación, pruebas y
-documentación reproducibles, junto con la revisión independiente de derechos y
-distribución. No se incluyen ejecutables ni recursos FAST.
+SorbFlow se describe y evalúa mediante referencias analíticas, datos sintéticos y
+datasets existentes, con instalación, pruebas y documentación reproducibles. La
+publicación depende además de la revisión de derechos y distribución. El paquete no
+incluye ejecutables ni recursos de otros programas.

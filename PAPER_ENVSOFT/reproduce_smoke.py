@@ -1,6 +1,6 @@
 """Reproduce selected synthetic references/demos, not confirmatory paper benchmarks.
 
-Run with the PyFAST environment, --output NEW_DIR and --jobs 1/2. --resume only
+Run with the SorbFlow environment, --output NEW_DIR and --jobs 1/2. --resume only
 reuses intact artifacts at a matching source/environment fingerprint, not integrator
 checkpoints or distributed execution.
 E01 completo PENDIENTE (solo referencias seleccionadas); E02-E05 pendientes.

@@ -1,4 +1,4 @@
-# Protocolo confirmatorio de benchmarking — PyFAST / EnvSoft
+# Protocolo confirmatorio de benchmarking — SorbFlow / EnvSoft
 
 Versión 0.1; fecha de preparación 2026-11-18, America/Bogota. **Propuesta aún no
 congelada ni ejecutada íntegramente.** Los números de diseño muestral y umbrales

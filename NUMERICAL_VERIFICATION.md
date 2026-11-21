@@ -1,7 +1,7 @@
 # Estado científico y verificación numérica — 0.2.0.dev0
 
 Fecha: 2026-11-18 (America/Bogota). Repositorio independiente `D:\PyFAST`.
-Estado: **prototipo con referencias numéricas seleccionadas, sin validación experimental**.
+Estado: **referencias numéricas seleccionadas para el motor LDF/HSDM** (registro del 2026-11-18; estudios posteriores en docs/benchmark_results.md).
 No se ha comparado contra salidas FAST ni se ha alegado novedad por usar Python o NSGA-II.
 
 ## Implementado y ejecutado
@@ -87,7 +87,7 @@ titularidad universitaria siguen pendientes; no impiden continuar la verificaci�
 
 ## Separación de dependencias y derechos
 
-El solver de PyFAST usa NumPy/SciPy y balances/discretización propios; no usa FAST.
+El solver de SorbFlow usa NumPy/SciPy y balances/discretización propios; no usa FAST.
 El extra NSGA-II usa pymoo Apache-2.0 y moocore LGPL-2.1-or-later. Sus condiciones
 de redistribución no se trasladan a una supuesta licencia propietaria por omisión;
 el árbol opcional debe revisarse al preparar un producto comercial. Detalle en
@@ -104,4 +104,4 @@ La envolvente DXF fue leída y auditada por ezdxf 1.4.5: unidades metros, geomet
 
 ## Comprobaciones de distribución
 
-Ruff (lint/formato), mypy estricto (37 archivos), pip check y construcción wheel/sdist pasan. El wheel se instaló en un directorio/entorno independiente y los 269 casos también pasaron contra esa instalación; se comprobó su ruta de importación y contenido byte a byte. Para esa prueba se reutilizaron dependencias del entorno ya verificado sin procesar sus archivos editable .pth: se verifica aislamiento del paquete PyFAST, no una resolución de dependencias desde cero en otro sistema. La ejecución remota de la matriz CI sigue pendiente.
+Ruff (lint/formato), mypy estricto (37 archivos), pip check y construcción wheel/sdist pasan. El wheel se instaló en un directorio/entorno independiente y los 269 casos también pasaron contra esa instalación; se comprobó su ruta de importación y contenido byte a byte. Para esa prueba se reutilizaron dependencias del entorno ya verificado sin procesar sus archivos editable .pth: se verifica aislamiento del paquete SorbFlow, no una resolución de dependencias desde cero en otro sistema. La ejecución remota de la matriz CI sigue pendiente.

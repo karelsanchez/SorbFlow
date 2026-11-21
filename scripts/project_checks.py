@@ -38,7 +38,7 @@ def source_snapshot(repo: Path) -> dict[str, str]:
 
 def check_version(repo: Path) -> str:
     project_version = tomllib.loads((repo / "pyproject.toml").read_text())["project"]["version"]
-    tree = ast.parse((repo / "src/pyfast/_version.py").read_text())
+    tree = ast.parse((repo / "src/sorbflow/_version.py").read_text())
     versions = [ast.literal_eval(node.value) for node in tree.body
                 if isinstance(node, ast.Assign)
                 and any(isinstance(target, ast.Name) and target.id == "VERSION"
@@ -82,7 +82,7 @@ def main() -> int:
                               "--repo", "."]),
     ]
     if not args.quick:
-        commands.append(("pytest", ["-m", "pytest", "--cov=pyfast", "--cov-report=term",
+        commands.append(("pytest", ["-m", "pytest", "--cov=sorbflow", "--cov-report=term",
                                     "--cov-fail-under=90"]))
     if args.build:
         commands.append(("build", ["-m", "build", "--no-isolation", "--outdir",

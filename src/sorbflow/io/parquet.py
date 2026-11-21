@@ -32,7 +32,7 @@ def export_parquet(result: SimulationResult, destination: str | Path) -> Path:
         arrow = import_module("pyarrow")
         parquet = import_module("pyarrow.parquet")
     except ImportError as exc:
-        raise ImportError("Install pyfast-adsorption[parquet] to export Parquet") from exc
+        raise ImportError("Install sorbflow[parquet] to export Parquet") from exc
 
     columns = {
         "time_s": (result.time_s, "s"),
@@ -59,15 +59,15 @@ def export_parquet(result: SimulationResult, destination: str | Path) -> Path:
         arrays.append(arrow.array(numeric, type=arrow.float64(), from_pandas=False))
 
     metadata = {
-        b"pyfast.export_schema_version": b"1",
-        b"pyfast.export_scope": b"outlet_timeseries_and_global_mass_balance",
-        b"pyfast.reactor": result.reactor.encode("ascii"),
-        b"pyfast.experimental_validation": b"not_performed",
-        b"pyfast.config_json": result.config_json.encode("utf-8"),
-        b"pyfast.solver_options_json": result.options_json.encode("utf-8"),
-        b"pyfast.numerical_sha256": result.numerical_sha256.encode("ascii"),
-        b"pyfast.manifest_json": result.manifest.to_json().encode("utf-8"),
-        b"pyfast.diagnostics_json": json.dumps(
+        b"sorbflow.export_schema_version": b"1",
+        b"sorbflow.export_scope": b"outlet_timeseries_and_global_mass_balance",
+        b"sorbflow.reactor": result.reactor.encode("ascii"),
+        b"sorbflow.result_kind": b"numerical_simulation",
+        b"sorbflow.config_json": result.config_json.encode("utf-8"),
+        b"sorbflow.solver_options_json": result.options_json.encode("utf-8"),
+        b"sorbflow.numerical_sha256": result.numerical_sha256.encode("ascii"),
+        b"sorbflow.manifest_json": result.manifest.to_json().encode("utf-8"),
+        b"sorbflow.diagnostics_json": json.dumps(
             asdict(result.diagnostics), sort_keys=True, allow_nan=False
         ).encode("utf-8"),
     }

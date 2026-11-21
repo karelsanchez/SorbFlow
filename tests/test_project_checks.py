@@ -32,9 +32,9 @@ def test_quality_snapshot_excludes_external_data_and_generated_results(tmp_path:
 
 
 def test_release_version_must_match_runtime(tmp_path: Path) -> None:
-    (tmp_path / "src/pyfast").mkdir(parents=True)
+    (tmp_path / "src/sorbflow").mkdir(parents=True)
     (tmp_path / "pyproject.toml").write_text('[project]\nversion="0.2.0.dev0"')
-    version = tmp_path / "src/pyfast/_version.py"
+    version = tmp_path / "src/sorbflow/_version.py"
     version.write_text('VERSION = "0.2.0.dev0"')
     assert checks.check_version(tmp_path) == "0.2.0.dev0"
     version.write_text('VERSION = "0.3.0.dev0"')

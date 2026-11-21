@@ -1,7 +1,7 @@
-"""Independent linear affine-matrix reference for the discrete PyFAST equations.
+"""Independent linear affine-matrix reference for the discrete SorbFlow equations.
 
 This constructs a separate full matrix and evaluates its exponential. It does not
-reuse PyFAST RHS closures, Jacobian patterns or film-flux code. It verifies the
+reuse SorbFlow RHS closures, Jacobian patterns or film-flux code. It verifies the
 discrete system, not convergence of the continuum PDE or experimental validity.
 
 Run with the project virtual-environment Python interpreter.
@@ -14,9 +14,9 @@ import json
 import numpy as np
 from scipy.linalg import expm
 
-from pyfast import HSDM, LDF, Bed, Linear, Operation, SimulationConfig, Species
-from pyfast.simulate import column
-from pyfast.solvers import SolverOptions
+from sorbflow import HSDM, LDF, Bed, Linear, Operation, SimulationConfig, Species
+from sorbflow.simulate import column
+from sorbflow.solvers import SolverOptions
 
 
 def run_reference() -> dict[str, dict[str, float]]:

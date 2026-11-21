@@ -40,7 +40,7 @@ La selección usa raíces/extensiones explícitas y excluye enlaces/junctions, d
 CSV, binarios, recursos, descargas, auditorías generadas, resultados y entornos.
 Por ello **no constituye una copia completa, SBOM, prueba de autoría o archivo de
 preservación**. Un texto elegible puede contener material de procedencia pendiente:
-su inclusión no lo convierte en propiedad de PyFAST. No modificar entradas mientras
+su inclusión no lo convierte en propiedad de SorbFlow. No modificar entradas mientras
 se genera el inventario; no existe una instantánea atómica del sistema de archivos.
 
 Antes de cualquier presentación futura, una persona responsable debe revisar los

@@ -3,10 +3,10 @@ import numpy as np
 from numpy.testing import assert_allclose
 from scipy.special import gammainc
 
-from pyfast import LDF, Bed, Linear, Operation, SimulationConfig, Species
-from pyfast.observation import CollectionWindow, SampledSignal, fraction_average
-from pyfast.simulate import column
-from pyfast.solvers import SolverOptions
+from sorbflow import LDF, Bed, Linear, Operation, SimulationConfig, Species
+from sorbflow.observation import CollectionWindow, SampledSignal, fraction_average
+from sorbflow.simulate import column
+from sorbflow.solvers import SolverOptions
 
 
 def test_tracer_fraction_means_from_solver_mass_at_requested_endpoints():

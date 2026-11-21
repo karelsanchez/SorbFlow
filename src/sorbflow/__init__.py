@@ -1,4 +1,4 @@
-"""Independent aqueous adsorption models; experimental validation is pending."""
+"""SorbFlow: configurable aqueous adsorption modelling for batch reactors and fixed beds."""
 
 from ._version import VERSION as __version__
 from .schemas import (

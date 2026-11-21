@@ -15,11 +15,11 @@ from pathlib import Path
 import numpy as np
 from run_ldf import configuration
 
-from pyfast import Langmuir
-from pyfast.design import export_dxf, hydraulics
-from pyfast.optimize import Evaluation, nsga2
-from pyfast.simulate import column
-from pyfast.solvers import SolverOptions
+from sorbflow import Langmuir
+from sorbflow.design import export_dxf, hydraulics
+from sorbflow.optimize import Evaluation, nsga2
+from sorbflow.simulate import column
+from sorbflow.solvers import SolverOptions
 
 
 def main(output: Path, population: int, generations: int) -> None:

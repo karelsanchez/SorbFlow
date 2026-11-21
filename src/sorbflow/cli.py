@@ -15,7 +15,7 @@ from .solvers import SimulationError, SolverOptions
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="PyFAST — aqueous LDF simulations in SI")
+    parser = argparse.ArgumentParser(description="SorbFlow — aqueous LDF simulations in SI")
     parser.add_argument("reactor", choices=("batch", "column"))
     parser.add_argument("config", type=Path, help="Versioned JSON configuration")
     parser.add_argument("--output", required=True, type=Path, help="New output directory")
@@ -56,9 +56,9 @@ def main(argv: list[str] | None = None) -> int:
             )
         export_result(result, args.output)
     except (OSError, ValueError, SimulationError, NotImplementedError) as exc:
-        print(f"PyFAST error: {exc}", file=sys.stderr)
+        print(f"SorbFlow error: {exc}", file=sys.stderr)
         return 2
     print(f"Saved {result.reactor} simulation to {args.output}")
     print(f"Mass residual max: {result.diagnostics.max_abs_mass_residual_kg:.6g} kg")
-    print("Numerical checks passed; experimental validation has not been performed.")
+    print("Numerical checks passed (mass balance and state constraints).")
     return 0

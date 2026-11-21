@@ -10,10 +10,10 @@ from run_ldf import configuration
 from scipy.integrate import solve_ivp, trapezoid
 from scipy.special import gammainc
 
-from pyfast import LDF, BatchConfig, Linear, Species
-from pyfast.kinetics.sphere import SphereGrid, diffusion_rhs
-from pyfast.simulate import batch, column
-from pyfast.solvers import SolverOptions
+from sorbflow import LDF, BatchConfig, Linear, Species
+from sorbflow.kinetics.sphere import SphereGrid, diffusion_rhs
+from sorbflow.simulate import batch, column
+from sorbflow.solvers import SolverOptions
 
 
 def main(path: Path) -> None:

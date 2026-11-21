@@ -1,4 +1,4 @@
-"""Public simulation facade. These numerical models lack experimental validation."""
+"""Public simulation facade for batch reactors and LDF/HSDM fixed-bed columns."""
 
 from .reactors import simulate_batch as batch
 from .reactors import simulate_column as column

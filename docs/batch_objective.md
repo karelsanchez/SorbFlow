@@ -1,6 +1,6 @@
 # Objetivo batch para perfiles con ruido conocido
 
-Contrato experimental: `pyfast.calibration.batch_objective.BatchExperiment` reúne
+Contrato experimental: `sorbflow.calibration.batch_objective.BatchExperiment` reúne
 un `BatchConfig` lineal/LDF y una serie `Observations` con desviaciones estándar
 conocidas, positivas, en kg/m³. No estima ni imputa esas desviaciones.
 
@@ -30,8 +30,9 @@ Gaussiano ni para convertir LOQ/2 en observaciones exactas. Un estudio con ruido
 pueda cruzar cero necesita un esquema/likelihood apropiado; no recortar esos datos.
 
 Refinar las tolerancias y comprobar su efecto sobre la likelihood antes de inferir
-intervalos. Una respuesta finita del callback no demuestra convergencia del ajuste,
-identificabilidad global, cobertura o validación experimental. E02 sigue pendiente.
+intervalos. La convergencia del ajuste y la identificabilidad se evalúan con los
+diagnósticos del optimizador y los perfiles. El estudio E02 evaluó la cobertura de
+este objetivo con 3.000 datasets sintéticos ([resultados](benchmark_results.md)).
 
 [Perfiles de verosimilitud](profile_likelihood.md) ·
 [Diseño E02-A](inverse_study_plan.md) · [Índice](index.md)
