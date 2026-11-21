@@ -1,4 +1,4 @@
-# API pública — prototipo 0.2
+# API pública — SorbFlow 0.3.0.dev0
 
 Python >=3.11, unidades SI y masa seca. Se conservan las API de datos de 0.1;
 `Linear` se añade como variante del esquema v1. Un lector antiguo no entenderá esa
@@ -112,7 +112,7 @@ los diagnósticos del solver incluyen también pasos internos. No es validación
 
 `python -m sorbflow.web --host 127.0.0.1 --port 8765 --output runs/gui` inicia un
 servidor local que invoca los mismos esquemas y simuladores. No requiere extras
-de interfaz. El contrato HTTP es interno de este prototipo, no una API remota
+de interfaz. El contrato HTTP es interno de la interfaz local, no una API remota
 estable. Flujo, límites y descargas: [guía de la GUI](docs/web_interface.md).
 
 ## Calibración experimental con sigma conocida
