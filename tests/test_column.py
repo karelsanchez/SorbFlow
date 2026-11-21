@@ -6,7 +6,7 @@ from numpy.testing import assert_allclose
 from scipy.integrate import trapezoid
 from scipy.special import gammainc
 
-from pyfast import (
+from sorbflow import (
     HSDM,
     LDF,
     Bed,
@@ -17,9 +17,9 @@ from pyfast import (
     SimulationConfig,
     Species,
 )
-from pyfast.simulate import column
-from pyfast.solvers import SolverOptions
-from pyfast.validate import mass_balance
+from sorbflow.simulate import column
+from sorbflow.solvers import SolverOptions
+from sorbflow.validate import mass_balance
 
 
 @pytest.fixture

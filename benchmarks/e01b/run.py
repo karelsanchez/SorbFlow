@@ -20,10 +20,10 @@ from pathlib import Path
 import numpy as np
 from reference import ADEReference
 
-import pyfast
-from pyfast import LDF, Bed, Linear, Operation, SimulationConfig, Species
-from pyfast.simulate import column
-from pyfast.solvers import SolverOptions
+import sorbflow
+from sorbflow import LDF, Bed, Linear, Operation, SimulationConfig, Species
+from sorbflow.simulate import column
+from sorbflow.solvers import SolverOptions
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -82,7 +82,7 @@ def validate(p):
 
 
 def source_snapshot():
-    core = ROOT / "src/pyfast"
+    core = ROOT / "src/sorbflow"
     paths = sorted(core.glob("*.py"))
     for folder in ("equilibrium", "kinetics", "reactors", "solvers"):
         paths.extend(sorted((core / folder).glob("*.py")))
@@ -315,8 +315,8 @@ def main(argv=None):
         ]
         if output == ROOT or any(output == x or x in output.parents for x in protected):
             raise ValueError("Output must be outside source/benchmarks/original data")
-        if Path(pyfast.__file__).resolve() != ROOT / "src/pyfast/__init__.py":
-            raise ValueError("Imported pyfast differs from hashed source")
+        if Path(sorbflow.__file__).resolve() != ROOT / "src/sorbflow/__init__.py":
+            raise ValueError("Imported sorbflow differs from hashed source")
         output.mkdir(parents=True, exist_ok=False)
     except (ValueError, OSError) as exc:
         parser.exit(2, f"Invalid input: {exc}\n")
@@ -404,8 +404,8 @@ def main(argv=None):
             finished_utc=datetime.now(UTC).isoformat(),
             python=sys.version,
             platform=platform.platform(),
-            versions={name: version(name) for name in ("pyfast-adsorption", "numpy", "scipy")},
-            pyfast_import_path=pyfast.__file__,
+            versions={name: version(name) for name in ("sorbflow", "numpy", "scipy")},
+            sorbflow_import_path=sorbflow.__file__,
             git_before=git_before,
             git_after=dict(
                 head=git("rev-parse", "HEAD"), status_porcelain=git("status", "--porcelain")

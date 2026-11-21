@@ -3,7 +3,7 @@
 Consulta de fuentes primarias: 2026-11-18. No se descargó ni incorporó código de
 estas herramientas. Una descripción de funcionalidad no prueba su exactitud científica.
 
-| Proyecto | Lo que declara su fuente oficial | Implicación para PyFAST |
+| Proyecto | Lo que declara su fuente oficial | Implicación para SorbFlow |
 |---|---|---|
 | [pysorb](https://pypi.org/project/pysorb/) | Ajuste, mezclas, ruptura y difusión; MIT | No alegar novedad por ser una biblioteca Python de adsorción |
 | [RUPTURA](https://iraspa.org/ruptura/) | Ruptura para gases, IAST e isotermas; MIT | Distinguir transporte acuoso y validar, sin reclamar primacía del motor |

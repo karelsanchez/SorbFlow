@@ -22,11 +22,11 @@ from scipy.integrate import solve_ivp, trapezoid
 from scipy.linalg import expm
 from scipy.special import gammainc
 
-import pyfast
-from pyfast import LDF, BatchConfig, Bed, Linear, Operation, SimulationConfig, Species
-from pyfast.kinetics.sphere import SphereGrid, diffusion_rhs
-from pyfast.simulate import batch, column
-from pyfast.solvers import SolverOptions
+import sorbflow
+from sorbflow import LDF, BatchConfig, Bed, Linear, Operation, SimulationConfig, Species
+from sorbflow.kinetics.sphere import SphereGrid, diffusion_rhs
+from sorbflow.simulate import batch, column
+from sorbflow.solvers import SolverOptions
 
 ROOT = Path(__file__).resolve().parents[2]
 BASELINE = "e60dba9"
@@ -171,7 +171,7 @@ def affine_matrix(p):
 
 
 def sources():
-    core = ROOT / "src" / "pyfast"
+    core = ROOT / "src" / "sorbflow"
     paths = sorted(core.glob("*.py"))
     for directory in ("equilibrium", "kinetics", "reactors", "solvers"):
         paths.extend(sorted((core / directory).rglob("*.py")))
@@ -551,8 +551,8 @@ def main(argv=None):
         ]
         if output == ROOT or any(output == x or x in output.parents for x in forbidden):
             raise ValueError("Output must be outside source, benchmarks and original data")
-        if Path(pyfast.__file__).resolve() != ROOT / "src" / "pyfast" / "__init__.py":
-            raise ValueError("Imported pyfast differs from hashed repository source")
+        if Path(sorbflow.__file__).resolve() != ROOT / "src" / "sorbflow" / "__init__.py":
+            raise ValueError("Imported sorbflow differs from hashed repository source")
         output.mkdir(parents=True, exist_ok=False)
     except (ValueError, OSError) as exc:
         parser.exit(2, f"Invalid input: {exc}\n")
@@ -661,8 +661,8 @@ def main(argv=None):
         finished_utc=datetime.now(UTC).isoformat(),
         python=sys.version,
         platform=platform.platform(),
-        versions={x: version(x) for x in ("pyfast-adsorption", "numpy", "scipy")},
-        pyfast_import_path=pyfast.__file__,
+        versions={x: version(x) for x in ("sorbflow", "numpy", "scipy")},
+        sorbflow_import_path=sorbflow.__file__,
         git_before=git_before,
         git_after={
             "head": git("rev-parse", "HEAD"),

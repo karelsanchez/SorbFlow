@@ -8,7 +8,7 @@ from pathlib import Path
 import pytest
 
 MODULE = Path(__file__).resolve().parents[1] / "scripts" / "build_docs.py"
-SPEC = importlib.util.spec_from_file_location("pyfast_build_docs", MODULE)
+SPEC = importlib.util.spec_from_file_location("sorbflow_build_docs", MODULE)
 assert SPEC is not None and SPEC.loader is not None
 BUILDER = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(BUILDER)

@@ -1,4 +1,4 @@
-"""Start the optional local interface with python -m pyfast.web."""
+"""Start the optional local interface with python -m sorbflow.web."""
 
 from .server import main
 

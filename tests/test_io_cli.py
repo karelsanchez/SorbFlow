@@ -6,14 +6,14 @@ from types import SimpleNamespace
 import numpy as np
 import pytest
 
-from pyfast import LDF, BatchConfig, Linear, Species
-from pyfast.cli import main
-from pyfast.io import export_result
-from pyfast.simulate import batch
-from pyfast.solvers import SimulationError, SolverOptions
-from pyfast.solvers.integration import IntegrationOutput
-from pyfast.solvers.results import check_physics
-from pyfast.validate import mass_balance
+from sorbflow import LDF, BatchConfig, Linear, Species
+from sorbflow.cli import main
+from sorbflow.io import export_result
+from sorbflow.simulate import batch
+from sorbflow.solvers import SimulationError, SolverOptions
+from sorbflow.solvers.integration import IntegrationOutput
+from sorbflow.solvers.results import check_physics
+from sorbflow.validate import mass_balance
 
 
 @pytest.fixture
@@ -109,6 +109,6 @@ def test_integrator_status_and_finiteness(problem, monkeypatch, mode):
             success=True, sol=lambda t: np.full((2, len(t)), np.nan), y=np.zeros((2, 2))
         )
 
-    monkeypatch.setattr("pyfast.solvers.integration.solve_ivp", broken)
+    monkeypatch.setattr("sorbflow.solvers.integration.solve_ivp", broken)
     with pytest.raises(SimulationError):
         batch(problem)

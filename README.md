@@ -1,4 +1,4 @@
-# PyFAST
+# SorbFlow
 
 Prototipo científico **0.2.0.dev0** para adsorción acuosa: equilibrio, simulación
 batch LDF y columna LDF/HSDM, ajuste inverso inicial, incertidumbre, sensibilidad,
@@ -20,7 +20,7 @@ caudal/entrada constantes y columna cilíndrica uniforme.
 ## Instalación y ejemplo
 
 Python >=3.11. En este equipo usar el Python del entorno local: el `python` global
-es 3.7 y el launcher `py` selecciona 2.7. Desde la raíz del repositorio PyFAST:
+es 3.7 y el launcher `py` selecciona 2.7. Desde la raíz del repositorio SorbFlow:
 
 ```powershell
 & .\.venv\Scripts\python.exe -m pip install -e '.[dev,optimize]'
@@ -41,7 +41,7 @@ datos, límites científicos, desarrollo y la [interfaz local](docs/web_interfac
 En Windows, `INICIAR_GUI.cmd` inicia el servidor; también se puede ejecutar:
 
 ```powershell
-& .\.venv\Scripts\python.exe -m pyfast.web --output runs/gui
+& .\.venv\Scripts\python.exe -m sorbflow.web --output runs/gui
 ```
 
 La GUI usa la misma API para validar configuraciones y simular batch/columnas.
@@ -61,13 +61,13 @@ El [inventario técnico](REGISTRATION_PREPARATION/README.md) prepara una revisi�
 posterior; autoría, titularidad y jurisdicción siguen pendientes de confirmar.
 
 ```python
-from pyfast.simulate import batch, column
-from pyfast.fit import isotherm, batch_rate
-from pyfast.uncertainty import monte_carlo, local_sensitivity
-from pyfast.optimize import nsga2, Evaluation
-from pyfast.design import hydraulics, cost_estimate, export_dxf
-from pyfast.validate import mass_balance
-from pyfast.io import export_result, export_parquet, load_breakthrough_csv
+from sorbflow.simulate import batch, column
+from sorbflow.fit import isotherm, batch_rate
+from sorbflow.uncertainty import monte_carlo, local_sensitivity
+from sorbflow.optimize import nsga2, Evaluation
+from sorbflow.design import hydraulics, cost_estimate, export_dxf
+from sorbflow.validate import mass_balance
+from sorbflow.io import export_result, export_parquet, load_breakthrough_csv
 ```
 
 Las configuraciones tipadas usan SI y base seca. `quantity`/`to_si` convierten
@@ -77,7 +77,7 @@ de salida y masa acumulada. DXF contiene únicamente la envolvente de proceso,
 no un plano de fabricación. CLI para simulaciones:
 
 ```powershell
-& .\.venv\Scripts\python.exe -m pyfast column examples\column_ldf.json --output runs\caso --cells 100 --radial-cells 20 --method BDF
+& .\.venv\Scripts\python.exe -m sorbflow column examples\column_ldf.json --output runs\caso --cells 100 --radial-cells 20 --method BDF
 ```
 
 `examples/column_ldf.json`, `column_hsdm.json` y `batch_ldf.json` son configuraciones sintéticas listas para la CLI. `examples/configuration.py` muestra cómo generar JSON. `SimulationConfig` selecciona
@@ -87,7 +87,7 @@ LDF o HSDM por el contrato cinético; no invoca FAST. API detallada en API_REFER
 
 ```powershell
 & .\.venv\Scripts\python.exe scripts/project_checks.py --output runs/control_nuevo
-& .\.venv\Scripts\python.exe -m pytest --cov=pyfast --cov-report=term-missing --cov-fail-under=90
+& .\.venv\Scripts\python.exe -m pytest --cov=sorbflow --cov-report=term-missing --cov-fail-under=90
 & .\.venv\Scripts\python.exe -m ruff check .
 & .\.venv\Scripts\python.exe -m mypy
 & .\.venv\Scripts\python.exe -m build

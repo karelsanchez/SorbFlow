@@ -2,8 +2,8 @@ import numpy as np
 import pytest
 from numpy.testing import assert_allclose
 
-from pyfast import Freundlich, Langmuir, Linear
-from pyfast.equilibrium import isotherm_from_parameters
+from sorbflow import Freundlich, Langmuir, Linear
+from sorbflow.equilibrium import isotherm_from_parameters
 
 
 @pytest.mark.parametrize(

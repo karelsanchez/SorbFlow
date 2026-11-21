@@ -1,4 +1,4 @@
-"""Run the same CLI using python -m pyfast."""
+"""Run the same CLI using python -m sorbflow."""
 
 from .cli import main
 

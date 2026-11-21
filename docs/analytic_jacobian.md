@@ -3,9 +3,9 @@
 La columna LDF con isoterma Langmuir o lineal admite:
 
 ```python
-from pyfast.solvers import SolverOptions
+from sorbflow.solvers import SolverOptions
 options = SolverOptions(jacobian="analytic", method="BDF", axial_cells=100)
-# result = pyfast.simulate.column(config, options=options)
+# result = sorbflow.simulate.column(config, options=options)
 ```
 
 El valor por defecto sigue siendo `finite_difference`. Ambos caminos resuelven

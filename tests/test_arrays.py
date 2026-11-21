@@ -2,7 +2,7 @@ import numpy as np
 import pytest
 from numpy.testing import assert_array_equal
 
-from pyfast._arrays import real_array
+from sorbflow._arrays import real_array
 
 
 @pytest.mark.parametrize("value", [

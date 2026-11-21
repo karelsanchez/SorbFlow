@@ -18,11 +18,11 @@ enmienda registrada; sus datos no se reutilizan como confirmación independiente
 
 | Capa real | Uso permitido en E02-A | Trabajo pendiente |
 |---|---|---|
-| [pyfast.fit](../src/pyfast/fit.py) | Baseline de isoterma y tasa batch LDF | Ajuste conjunto de equilibrio/tasa, multiinicio y perfiles |
-| [calibration.least_squares](../src/pyfast/calibration/least_squares.py) | SVD y covarianza local en coordenadas logarítmicas | Likelihood general, límites físicos explícitos y resultado de perfiles |
-| [pyfast.simulate](../src/pyfast/simulate.py) | Predictor batch LDF; comprobar error numérico | Generador independiente y contador de solves |
-| [esquemas](../src/pyfast/schemas.py) y [unidades](../src/pyfast/units.py) | Parámetros SI, especie, material y condiciones explícitas | Esquema del estudio y observaciones sintéticas con ruido firmado |
-| [pyfast.uncertainty](../src/pyfast/uncertainty/__init__.py) | Utilidades de propagación y sensibilidad | Estudio repetido de cobertura de estimadores/intervalos |
+| [sorbflow.fit](../src/sorbflow/fit.py) | Baseline de isoterma y tasa batch LDF | Ajuste conjunto de equilibrio/tasa, multiinicio y perfiles |
+| [calibration.least_squares](../src/sorbflow/calibration/least_squares.py) | SVD y covarianza local en coordenadas logarítmicas | Likelihood general, límites físicos explícitos y resultado de perfiles |
+| [sorbflow.simulate](../src/sorbflow/simulate.py) | Predictor batch LDF; comprobar error numérico | Generador independiente y contador de solves |
+| [esquemas](../src/sorbflow/schemas.py) y [unidades](../src/sorbflow/units.py) | Parámetros SI, especie, material y condiciones explícitas | Esquema del estudio y observaciones sintéticas con ruido firmado |
+| [sorbflow.uncertainty](../src/sorbflow/uncertainty/__init__.py) | Utilidades de propagación y sensibilidad | Estudio repetido de cobertura de estimadores/intervalos |
 
 La [API pública](../API_REFERENCE.md) actual `isotherm` estima parámetros de un
 modelo con c sin error; Freundlich mantiene c_ref fijo. `batch_rate` estima

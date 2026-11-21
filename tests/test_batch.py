@@ -5,10 +5,10 @@ import numpy as np
 import pytest
 from numpy.testing import assert_allclose
 
-from pyfast import LDF, BatchConfig, Freundlich, Langmuir, Linear, Species
-from pyfast.simulate import batch
-from pyfast.solvers import SimulationError, SolverOptions
-from pyfast.validate import mass_balance
+from sorbflow import LDF, BatchConfig, Freundlich, Langmuir, Linear, Species
+from sorbflow.simulate import batch
+from sorbflow.solvers import SimulationError, SolverOptions
+from sorbflow.validate import mass_balance
 
 
 @pytest.fixture
@@ -69,7 +69,7 @@ def test_equilibrium_empty_system_and_result_metadata(problem):
     empty = batch(replace(problem, initial_concentration_kg_m3=0))
     assert_allclose(empty.concentration_kg_m3, 0, atol=0)
     data = json.loads(empty.to_json())
-    assert data["experimental_validation"] == "not_performed"
+    assert data["result_kind"] == "numerical_simulation"
     assert data["z_m"] is None
     with pytest.raises(ValueError):
         empty.concentration_kg_m3[0, 0] = 1
@@ -101,6 +101,6 @@ def test_invalid_problem_options_and_failed_integration(problem, monkeypatch):
     def fail(*args, **kwargs):
         raise ValueError("forced solver failure")
 
-    monkeypatch.setattr("pyfast.solvers.integration.solve_ivp", fail)
+    monkeypatch.setattr("sorbflow.solvers.integration.solve_ivp", fail)
     with pytest.raises(SimulationError, match="forced solver failure"):
         batch(problem)

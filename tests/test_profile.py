@@ -5,7 +5,7 @@ from dataclasses import FrozenInstanceError
 import numpy as np
 import pytest
 
-from pyfast.calibration.profile import ProfileParameter, profile_gaussian_known_sigma
+from sorbflow.calibration.profile import ProfileParameter, profile_gaussian_known_sigma
 
 
 def parameters():
@@ -234,7 +234,7 @@ def test_endpoint_roundoff_is_canonicalized_and_audited():
 def test_failed_trial_lower_objective_invalidates_baseline(monkeypatch):
     from types import SimpleNamespace
 
-    import pyfast.calibration.profile as module
+    import sorbflow.calibration.profile as module
 
     def optimizer(fun, x, **kwargs):
         fun(np.log([2.0]))

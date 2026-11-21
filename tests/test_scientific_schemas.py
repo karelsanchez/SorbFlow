@@ -3,8 +3,8 @@ from dataclasses import replace
 
 import pytest
 
-from pyfast import LDF, AdsorbentBlend, BatchConfig, BlendComponent, Linear, Species
-from pyfast.solvers import SolverOptions
+from sorbflow import LDF, AdsorbentBlend, BatchConfig, BlendComponent, Linear, Species
+from sorbflow.solvers import SolverOptions
 
 
 @pytest.fixture

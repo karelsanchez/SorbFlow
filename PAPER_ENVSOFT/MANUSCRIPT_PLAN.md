@@ -1,4 +1,4 @@
-# Plan del manuscrito metodológico PyFAST
+# Plan del manuscrito metodológico SorbFlow
 
 Versión del protocolo: 0.1, 2026-11-18 (America/Bogota). Estado: propuesta de estudio,
 no manuscrito con resultados completos ni prerregistro público. Revista objetivo:
@@ -7,7 +7,7 @@ no manuscrito con resultados completos ni prerregistro público. Revista objetiv
 ## Pregunta y contribución candidata
 
 Título provisional:
-*PyFAST: An open and reproducible framework for physics-based simulation, uncertainty
+*SorbFlow: An open and reproducible framework for physics-based simulation, uncertainty
 quantification, and robust multi-objective design of fixed-bed adsorption systems*.
 
 Hipótesis central H: bajo presupuestos de información y cómputo comparables, un flujo

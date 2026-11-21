@@ -1,4 +1,4 @@
-site_name: PyFAST
+site_name: SorbFlow
 site_description: Modelación reproducible de adsorción acuosa en Python
 site_url: ''
 docs_dir: .work/docs_source

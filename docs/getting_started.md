@@ -12,7 +12,7 @@ en lugar de confiar en el Python global. En PowerShell:
 .\.venv\Scripts\Activate.ps1
 python -c "import sys; print(sys.executable); print(sys.version)"
 python -m pip check
-python -m pyfast --help
+python -m sorbflow --help
 ```
 
 Para una instalación nueva en un entorno compatible:
@@ -35,9 +35,9 @@ Estos tres archivos están versionados y **no contienen observaciones experiment
 - [Columna Langmuir/HSDM](../examples/column_hsdm.json).
 
 ```powershell
-python -m pyfast batch examples/batch_ldf.json --output runs/primer_batch
-python -m pyfast column examples/column_ldf.json --output runs/primera_columna --cells 40
-python -m pyfast column examples/column_hsdm.json --output runs/primera_hsdm --cells 40 --radial-cells 12
+python -m sorbflow batch examples/batch_ldf.json --output runs/primer_batch
+python -m sorbflow column examples/column_ldf.json --output runs/primera_columna --cells 40
+python -m sorbflow column examples/column_hsdm.json --output runs/primera_hsdm --cells 40 --radial-cells 12
 ```
 
 Cada carpeta de salida debe ser nueva: no se sobrescribe una simulación anterior.

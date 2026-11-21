@@ -7,7 +7,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-LANDING = """# PyFAST
+LANDING = """# SorbFlow
 
 Framework Python para modelación reproducible de adsorción acuosa: equilibrio,
 batch, columnas LDF/HSDM, calibración, incertidumbre y diseño multiobjetivo.

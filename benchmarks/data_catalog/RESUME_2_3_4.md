@@ -1,7 +1,7 @@
 Ubicación actual: `C:\Users\Karel\Documents\Codex\2026-11-18\empaqueta-x20\PyFAST`. El usuario trasladó el repositorio desde D:.
 Las rutas D: de las inspecciones anteriores se conservan como antecedentes.
 
-# Retomar PyFAST: etapas 2, 3 y 4
+# Retomar SorbFlow: etapas 2, 3 y 4
 
 Guía de continuación, no acta de congelación ni resultado de validación. Se revisaron
 en lectura el dossier de `work/envsoft_dossier/PAPER_ENVSOFT` y los listados/README
@@ -18,10 +18,10 @@ alteraron originales y no se verificaron aquí licencias ni contenidos de descar
 | PSDM/EPA y salidas simuladas | Comparación numérica externa tras alinear modelo, parámetros, unidades y fronteras | Observaciones experimentales; las plantillas con efluente cero no son mediciones |
 | FAST original | Eventual comparación externa autorizada, con instalación/versionado y contrato I/O | El ZIP no aporta curvas de referencia; no asignar error cero ni ejecutar para llenar una tabla |
 | Experimentales acuosos candidatos | E04, después de cerrar procedencia, metadatos y compatibilidad | La descarga, una figura o una extracción numérica no los hacen aptos para validación |
-| RUPTURA | Antecedente y datos secundarios gaseosos según inventario | No equivale al PyFAST acuoso monocomponente |
+| RUPTURA | Antecedente y datos secundarios gaseosos según inventario | No equivale al SorbFlow acuoso monocomponente |
 
 El README del inventario declara **cero curvas listas para validación física del
-PyFAST actual**. Esta guía no certifica ese inventario ni sus declaraciones de licencia.
+SorbFlow actual**. Esta guía no certifica ese inventario ni sus declaraciones de licencia.
 Antes de reutilizar/publicar, revisar avisos, atribuciones y permisos del activo concreto.
 
 Pendientes registrados que no deben resolverse por suposición:
