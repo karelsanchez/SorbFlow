@@ -1,6 +1,6 @@
 # SorbFlow — arquitectura propuesta
 
-Fecha: 2026-11-18. Estado: prototipo 0.2.0.dev0 con LDF/HSDM propios y referencias numéricas seleccionadas; validación experimental pendiente.
+Fecha: 2026-11-18; actualizado 2026-11-20. Estado: SorbFlow 0.3.0.dev0, motor propio LDF/HSDM con verificación numérica (E01), calibración, incertidumbre, diseño, CLI e interfaz web local.
 
 ## Alcance y procedencia
 
@@ -23,8 +23,9 @@ Los cinco documentos de diseño preceden a la implementación de unidades y esqu
    desarrollados aquí. Se reutilizarán integradores públicos de SciPy, no se escribirá
    un integrador rígido desde cero. No se dependerá de FAST para resolver el modelo.
 5. Ninguna dependencia del core importa ejecutables, plugins comerciales ni interfaces gráficas.
-6. La API pública documentada se mantiene durante la serie 0.2; cambios incompatibles
-   requieren versión menor, migración y advertencia. La estabilidad 1.0 es un hito posterior.
+6. La API pública documentada se mantiene durante la serie 0.3 (el renombrado a
+   `sorbflow` abrió esa serie); cambios incompatibles requieren versión menor,
+   migración y advertencia. La estabilidad 1.0 es un hito posterior.
 
 ## Módulos y dirección de dependencias
 
@@ -32,19 +33,19 @@ Los cinco documentos de diseño preceden a la implementación de unidades y esqu
 |---|---|---|
 | `units` | Validación dimensional, escalares finitos, conversiones SI | Implementado |
 | `schemas` | Especie, material, geometría, operación, observaciones, manifiestos | Implementado |
-| `equilibrium` | Langmuir, Freundlich, lineal y derivadas | Prototipo implementado |
-| `kinetics` | LDF y FV radial HSDM/película | Prototipo implementado |
-| `reactors` | Batch LDF y columna LDF/HSDM | Prototipo implementado |
-| `solvers` | FV e integración BDF/Radau con comprobaciones | Prototipo implementado |
-| `calibration` | Ajuste inicial y diagnóstico local SVD | Prototipo implementado |
-| `uncertainty` | Monte Carlo reproducible y sensibilidad local | Prototipo implementado |
-| `optimization` | NSGA-II opcional y verificación de factibilidad | Prototipo implementado |
-| `io` | JSON/CSV y huellas de resultados | Prototipo implementado |
+| `equilibrium` | Langmuir, Freundlich, lineal y derivadas | Implementado |
+| `kinetics` | LDF y FV radial HSDM/película | Implementado |
+| `reactors` | Batch LDF y columna LDF/HSDM | Implementado |
+| `solvers` | FV e integración BDF/Radau con comprobaciones | Implementado |
+| `calibration` | Ajuste inicial y diagnóstico local SVD | Implementado |
+| `uncertainty` | Monte Carlo reproducible y sensibilidad local | Implementado |
+| `optimization` | NSGA-II opcional y verificación de factibilidad | Implementado |
+| `io` | JSON/CSV y huellas de resultados | Implementado |
 | `adapters` | Interoperabilidad externa optativa y aislada | Reservado |
 
 `units <- schemas <- modelos <- reactores <- solvers <- workflows`.
 `io` y adaptadores dependen de contratos públicos; el núcleo nunca depende de ellos.
-La fachada `sorbflow.simulate` ejecuta modelos propios; `fit`, `optimize`, `uncertainty`, `design` y `validate` son superficies públicas. API/CLI implementadas; interfaz web futura.
+La fachada `sorbflow.simulate` ejecuta modelos propios; `fit`, `optimize`, `uncertainty`, `design` y `validate` son superficies públicas. API, CLI e interfaz web local (`sorbflow.web`) implementadas sobre el mismo núcleo.
 
 ## Contratos científicos y extensiones
 
@@ -89,10 +90,10 @@ separados, conectados por contratos públicos. Los derechos sobre datos se contr
 
 ## Calidad y distribución
 
-CI propuesta: Linux/Windows, Python 3.11–3.13; pytest, cobertura, Ruff, mypy,
-construcción e instalación aislada de wheel y sdist. Solo la ejecución local 3.11
-puede darse por verificada hoy. Sin publicación automática ni credenciales.
-Nombre de distribución provisional `sorbflow`; import `sorbflow`.
+CI en GitHub Actions: Linux/Windows, Python 3.11–3.13; pytest, cobertura, Ruff,
+mypy y construcción de wheel y sdist. Las seis combinaciones aprobaron sobre el
+commit `e0d3c01` (2026-11-20). Sin publicación automática ni credenciales.
+Distribución `sorbflow`; import `sorbflow`.
 Disponibilidad en PyPI y posibles marcas pendientes; no afirmar reserva del nombre.
 
 Dependencias runtime del core: Pint, NumPy y SciPy. Desarrollo: pytest, pytest-cov, Ruff, mypy,

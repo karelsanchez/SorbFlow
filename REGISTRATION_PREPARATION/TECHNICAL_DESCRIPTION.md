@@ -3,7 +3,7 @@
 [Preparación](README.md) · [Arquitectura](../ARCHITECTURE.md) ·
 [Ecuaciones](../MODEL_SPECIFICATION.md) · [API](../API_REFERENCE.md)
 
-SorbFlow es un prototipo modular Python para adsorción acuosa en batch y columnas de
+SorbFlow es una herramienta modular Python para adsorción acuosa en batch y columnas de
 lecho fijo. Especie, adsorbente y proporciones son datos configurables; el núcleo
 no fija los cuatro materiales del estudio inicial. La configuración tipada utiliza
 unidades físicas SI, convenciones de masa seca y distinción entre velocidad

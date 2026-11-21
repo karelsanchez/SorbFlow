@@ -51,7 +51,8 @@ SorbFlow no afirma afiliación con FAST; revisar nombre, marca y distribución a
 
 ## Dependencias
 
-Pint es la única dependencia runtime inicial; pytest/pytest-cov, Ruff, mypy, build,
+En la fundación 0.1, Pint era la única dependencia runtime; desde 0.2 el núcleo usa
+Pint, NumPy y SciPy (ver la actualización 0.2 abajo). pytest/pytest-cov, Ruff, mypy, build,
 setuptools y herramientas transitivas son dependencias de desarrollo o empaquetado.
 Registrar versiones instaladas y metadatos de licencia en `audit/dependency_metadata.json`;
 metadatos son una primera revisión, no una auditoría exhaustiva de todas las licencias

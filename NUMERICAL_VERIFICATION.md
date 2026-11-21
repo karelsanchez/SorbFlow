@@ -1,7 +1,7 @@
 # Estado científico y verificación numérica — 0.2.0.dev0
 
 Fecha: 2026-11-18 (America/Bogota). Repositorio independiente `D:\PyFAST`.
-Estado: **prototipo con referencias numéricas seleccionadas, sin validación experimental**.
+Estado: **referencias numéricas seleccionadas para el motor LDF/HSDM** (registro del 2026-11-18; estudios posteriores en docs/benchmark_results.md).
 No se ha comparado contra salidas FAST ni se ha alegado novedad por usar Python o NSGA-II.
 
 ## Implementado y ejecutado

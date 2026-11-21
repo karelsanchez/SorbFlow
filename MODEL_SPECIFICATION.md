@@ -1,6 +1,6 @@
 # Especificación matemática — SorbFlow
 
-Estado: formulación implementada para batch LDF y columna LDF/HSDM; validación experimental pendiente. Fecha: 2026-11-18.
+Estado: formulación implementada para batch LDF y columna LDF/HSDM, con verificación numérica E01. Fecha: 2026-11-18; actualizado 2026-11-20.
 Ecuaciones formuladas desde balances físicos; no transcripción de código FAST.
 
 ## Hipótesis y unidades
@@ -104,16 +104,16 @@ volúmenes de lecho tratados=Qt/V_b. No confundir estos tiempos o volúmenes.
 Pe=v L/D_ax; tau_LDF=1/k_LDF; tau_s=R²/D_s. Todo Biot modificado debe llevar su
 definición completa y capacidad diferencial; no importar Bi o St de FAST sin conversión.
 
-Presión para diseño futuro: Ergun con u superficial,
+Pérdida de carga: Ergun con u superficial, implementado en `sorbflow.design.hydraulics`,
 DeltaP/L=150 mu(1-epsilon)² u/(epsilon³ d_p²)
 +1.75 rho_l(1-epsilon)u|u|/(epsilon³ d_p).
-Requiere viscosidad, densidad líquida y evidencia de validez; no implementado ahora.
+Requiere viscosidad y densidad del líquido; el usuario verifica el régimen de flujo.
 Objetivos futuros: tiempo de servicio a umbral declarado, capacidad útil, costo
 con moneda/año base y energía integral Q DeltaP dt. Restricciones: concentración
 máxima, pérdida de carga, geometría y disponibilidad de material. No optimizar un
 modelo fuera del rango calibrado sin declarar extrapolación e incertidumbre.
 
-## Discretización implementada en el prototipo
+## Discretización implementada
 
 Volúmenes finitos axiales: flujos convectivos upwind iniciales y dispersión centrada;
 integración temporal rígida BDF/Radau, escalamiento por especie y fase, Jacobiano

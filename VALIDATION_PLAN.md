@@ -1,6 +1,6 @@
 # Plan de verificación y validación
 
-Fecha: 2026-11-18. Estado científico: prototipo LDF/HSDM implementado, con referencias numéricas seleccionadas; NO validado experimentalmente.
+Fecha: 2026-11-18. Estado: motor LDF/HSDM implementado con referencias numéricas; los estudios ejecutados se resumen en docs/scientific_status.md.
 Las pruebas actuales incluyen balances dinámicos, referencias analíticas y refinamiento. Los límites de esa evidencia y los casos aún pendientes se detallan en NUMERICAL_VERIFICATION.md.
 Los umbrales siguientes son criterios de aceptación propuestos, no resultados medidos.
 
