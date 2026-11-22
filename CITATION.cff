@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "Si usa SorbFlow en un trabajo publicado, cítelo con estos metadatos."
 title: "SorbFlow: modelación configurable de adsorción en fase acuosa"
 type: software
-version: 0.3.0
-date-released: 2026-11-21
+version: 0.3.1
+date-released: 2026-11-22
 license: Apache-2.0
 repository-code: "https://github.com/karelsanchez/SorbFlow"
 url: "https://sorbflow.readthedocs.io"
