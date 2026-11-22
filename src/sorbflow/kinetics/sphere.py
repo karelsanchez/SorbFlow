@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 import numpy as np
+import numpy.typing as npt
 
 from .._arrays import FloatArray
 from ..equilibrium import Isotherm
@@ -87,19 +88,32 @@ def film_flux(
     absolute = np.abs(target)
     low = np.zeros_like(bulk)
     high = absolute / film_coefficient_m_s
-    bound = 512 * np.finfo(float).eps * np.maximum(absolute, np.finfo(float).tiny)
-    for _ in range(256):
+    eps = np.finfo(float).eps
+    tiny = np.finfo(float).tiny
+    bound = 512 * eps * np.maximum(absolute, tiny)
+
+    def collapsed(lower: FloatArray, upper: FloatArray) -> npt.NDArray[np.bool_]:
+        # The residual is monotone increasing in the surface concentration, so the
+        # bracket always contains the root. Once it shrinks to a few units in the last
+        # place, the midpoint is the best representable root even when the residual
+        # cannot reach ``bound`` (e.g. Freundlich exponents < 1, where dq*/dc is
+        # unbounded near c = 0 and one ulp of c spans a large flux increment).
+        return np.asarray(upper - lower <= 4 * eps * np.maximum(upper, tiny))
+
+    for _ in range(1100):
         mid = (low + high) / 2
         estimate = film_coefficient_m_s * mid + conductance * model.loading(mid)
-        converged = np.abs(estimate - absolute) <= bound
+        converged = (np.abs(estimate - absolute) <= bound) | collapsed(low, high)
         if np.all(converged):
-            low, high = mid, mid
+            keep = collapsed(low, high)
+            low, high = np.where(keep, low, mid), np.where(keep, high, mid)
             break
         low = np.where(converged | (estimate < absolute), mid, low)
         high = np.where(converged | (estimate >= absolute), mid, high)
     surface = sign * (low + high) / 2
     residual = film_coefficient_m_s * surface + conductance * trial_loading(model, surface) - target
-    if not np.all(np.isfinite(surface)) or np.any(np.abs(residual) > bound):
+    accepted = (np.abs(residual) <= bound) | collapsed(low, high)
+    if not np.all(np.isfinite(surface)) or not np.all(accepted):
         raise SimulationError("Film/surface equilibrium root did not converge")
     surface_loading = trial_loading(model, surface)
     film_side = film_coefficient_m_s * (bulk - surface)

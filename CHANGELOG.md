@@ -1,5 +1,16 @@
 # Registro de cambios
 
+## 0.3.1 — 2026-11-22
+
+- Corrección: el modelo HSDM de columna podía abortar con "Film/surface equilibrium root
+  did not converge" cuando la isoterma de Freundlich tiene exponente menor que 1. Cerca de
+  c = 0 la pendiente dq*/dc no está acotada y la tolerancia en el residuo no era alcanzable
+  aunque la raíz ya estuviera determinada. Ahora la raíz, siempre acotada por una función
+  monótona, se acepta también cuando el intervalo de bisección se cierra a precisión de
+  máquina. Los resultados de casos que ya convergían no cambian.
+- Pruebas de regresión con exponentes 0,3–0,6 frente a una raíz independiente y una columna
+  HSDM con exponente 0,43.
+
 ## 0.3.0 — SorbFlow, 2026-11-21
 
 - Primera publicación en PyPI: `pip install sorbflow`. Publicación automática por
