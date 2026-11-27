@@ -6,7 +6,17 @@ import pytest
 from numpy.testing import assert_allclose
 from scipy.integrate import solve_ivp
 
-from sorbflow import HSDM, Bed, Freundlich, Langmuir, Linear, Operation, SimulationConfig, Species
+from sorbflow import (
+    HSDM,
+    LDF,
+    Bed,
+    Freundlich,
+    Langmuir,
+    Linear,
+    Operation,
+    SimulationConfig,
+    Species,
+)
 from sorbflow.equilibrium import isotherm_from_parameters
 from sorbflow.kinetics.sphere import SphereGrid, diffusion_rhs, film_flux
 from sorbflow.simulate import column
@@ -211,3 +221,53 @@ def test_hsdm_column_with_strongly_favourable_freundlich_runs():
     result = column(config, options=SolverOptions(axial_cells=10, radial_cells=6))
     assert result.diagnostics.max_scaled_mass_residual < 1e-8
     assert np.all(np.isfinite(result.outlet_concentration_kg_m3))
+
+
+@pytest.mark.parametrize("desorb", [False, True])
+def test_hsdm_tvd_conserves_mass_and_stays_nonnegative(problem, desorb):
+    if desorb:
+        problem = replace(
+            problem,
+            operation=replace(
+                problem.operation, inlet_concentration_kg_m3=0, initial_loading_kg_kg=0.0005
+            ),
+        )
+    result = column(
+        problem,
+        options=SolverOptions(axial_cells=12, radial_cells=6, axial_scheme="tvd"),
+        time_s=[0, 50, 100, 200, 300],
+    )
+    assert result.diagnostics.max_scaled_mass_residual < 1e-8
+    assert result.diagnostics.min_concentration_kg_m3 >= -1e-12
+    if not desorb:  # adsorption: TVD creates no new maxima above the inlet value
+        inlet = problem.operation.inlet_concentration_kg_m3
+        assert result.concentration_kg_m3.max() <= inlet + 1e-12
+
+
+def test_hsdm_tvd_tracer_matches_ldf_tvd_tracer(problem):
+    tracer = replace(problem, equilibrium=Linear(distribution_m3_kg=0.0))
+    options = SolverOptions(axial_cells=16, radial_cells=4, axial_scheme="tvd")
+    hsdm = column(tracer, options=options, time_s=[0, 50, 100, 200, 300])
+    ldf = column(
+        replace(tracer, kinetics=LDF(rate_s_inv=0.01)),
+        options=options,
+        time_s=[0, 50, 100, 200, 300],
+    )
+    assert_allclose(
+        hsdm.outlet_concentration_kg_m3, ldf.outlet_concentration_kg_m3, rtol=1e-5, atol=1e-9
+    )
+
+
+def test_hsdm_radial_growth_option_is_validated_and_fingerprinted(problem):
+    with pytest.raises(ValueError):
+        SolverOptions(radial_growth=0)
+    with pytest.raises(ValueError):
+        SolverOptions(radial_growth=1.5)
+    base = column(problem, options=SolverOptions(axial_cells=8, radial_cells=6), time_s=[0, 300])
+    refined = column(
+        problem,
+        options=SolverOptions(axial_cells=8, radial_cells=6, radial_growth=0.85),
+        time_s=[0, 300],
+    )
+    assert refined.numerical_sha256 != base.numerical_sha256
+    assert refined.diagnostics.max_scaled_mass_residual < 1e-8

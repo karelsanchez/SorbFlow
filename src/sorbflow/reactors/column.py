@@ -261,9 +261,6 @@ def simulate_column(
     if settings.history == "streaming" and not isinstance(config.kinetics, LDF):
         raise ValueError("Streaming history supports LDF columns only")
     if not isinstance(config.kinetics, LDF):
-        if settings.axial_scheme != "upwind1":
-            # The HSDM liquid balance is assembled in hsdm.py; never fall back silently.
-            raise ValueError("axial_scheme='tvd' is not yet implemented for HSDM columns")
         from .hsdm import simulate_hsdm_column
 
         return simulate_hsdm_column(

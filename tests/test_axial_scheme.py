@@ -231,8 +231,9 @@ def test_scheme_validation_default_and_hsdm_guard():
             SolverOptions(axial_scheme=bad)
     hsdm = replace(klinkenberg_config(duration=10.),
                    kinetics=HSDM(surface_diffusivity_m2_s=1e-12, film_coefficient_m_s=1e-5))
-    with pytest.raises(ValueError, match="HSDM"):
-        column(hsdm, options=SolverOptions(axial_cells=4, radial_cells=3, axial_scheme="tvd"))
+    tvd = SolverOptions(axial_cells=4, radial_cells=3, axial_scheme="tvd")
+    hsdm_tvd = column(hsdm, options=tvd)
+    assert hsdm_tvd.diagnostics.max_scaled_mass_residual < 1e-8
 
 
 def test_upwind1_default_matches_historical_face_fluxes():
