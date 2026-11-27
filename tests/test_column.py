@@ -149,3 +149,33 @@ def test_uniform_equilibrium_column_and_hsdm_tracer(tracer):
     assert_allclose(
         hsdm.outlet_concentration_kg_m3, ldf.outlet_concentration_kg_m3, rtol=1e-5, atol=1e-9
     )
+
+
+@pytest.mark.parametrize(
+    "equilibrium",
+    [
+        Langmuir(qmax_kg_kg=0.01, affinity_m3_kg=10),
+        Freundlich(q_ref_kg_kg=0.001, c_ref_kg_m3=0.01, exponent=0.8),
+    ],
+)
+@pytest.mark.parametrize("desorb", [False, True])
+def test_tvd_column_adsorption_desorption_dispersion_and_mass(tracer, equilibrium, desorb):
+    operation = replace(
+        tracer.operation,
+        duration_s=1000,
+        axial_dispersion_m2_s=1e-5,
+        inlet_concentration_kg_m3=0 if desorb else 0.01,
+        initial_loading_kg_kg=0.001 if desorb else 0,
+    )
+    problem = replace(tracer, equilibrium=equilibrium, operation=operation)
+    options = SolverOptions(axial_cells=40, axial_scheme="tvd")
+    result = column(problem, options=options)
+    upwind = column(problem, options=replace(options, axial_scheme="upwind1"))
+    assert result.diagnostics.max_scaled_mass_residual < 1e-8
+    assert mass_balance(result).passed
+    assert result.diagnostics.min_concentration_kg_m3 >= -1e-9
+    if not desorb:
+        assert np.max(result.concentration_kg_m3) <= 0.01 * (1 + 1e-6)
+    # Same physics, different truncation error: the schemes agree to discretization level.
+    assert_allclose(result.inventory_kg, upwind.inventory_kg, rtol=0.05,
+                    atol=1e-3 * np.max(upwind.inventory_kg))

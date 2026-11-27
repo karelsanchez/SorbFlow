@@ -28,6 +28,8 @@ class SolverOptions:
     radial_cells: int = 20
     jacobian: Literal["finite_difference", "analytic"] = "finite_difference"
     history: Literal["dense", "streaming"] = "dense"
+    # Axial advection: first-order upwind (historical default) or MUSCL/van Albada TVD.
+    axial_scheme: Literal["upwind1", "tvd"] = "upwind1"
 
     def __post_init__(self) -> None:
         if self.method not in ("BDF", "Radau"):
@@ -36,6 +38,8 @@ class SolverOptions:
             raise ValueError("jacobian must be finite_difference or analytic")
         if self.history not in ("dense", "streaming"):
             raise ValueError("history must be dense or streaming")
+        if self.axial_scheme not in ("upwind1", "tvd"):
+            raise ValueError("axial_scheme must be upwind1 or tvd")
         for name in (
             "rtol",
             "atol_concentration_kg_m3",
