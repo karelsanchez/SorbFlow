@@ -74,3 +74,37 @@ def test_finite_output_range_and_unsupported_model():
         model.loading(1e200)
     with pytest.raises(ValueError, match="Unsupported"):
         isotherm_from_parameters(object())
+
+
+@pytest.mark.parametrize(
+    "parameters",
+    [
+        Langmuir(qmax_kg_kg=0.1, affinity_m3_kg=2),
+        Freundlich(q_ref_kg_kg=0.1, c_ref_kg_m3=0.5, exponent=0.43),
+        Freundlich(q_ref_kg_kg=0.1, c_ref_kg_m3=0.5, exponent=1.0),
+        Freundlich(q_ref_kg_kg=0.1, c_ref_kg_m3=0.5, exponent=1.5),
+        Linear(distribution_m3_kg=0.2),
+    ],
+)
+def test_unchecked_kernels_match_public_api_exactly(parameters):
+    from sorbflow.equilibrium.isotherms import (
+        _loading_kernel,
+        _trial_loading_unchecked,
+        trial_loading,
+    )
+
+    model = isotherm_from_parameters(parameters)
+    c = np.concatenate(([0.0], np.logspace(-300, 2, 40)))
+    np.testing.assert_array_equal(model._loading_unchecked(c), model.loading(c))
+    np.testing.assert_array_equal(_loading_kernel(model, c), model.loading(c))
+    positive = c[1:]
+    np.testing.assert_array_equal(model._derivative_unchecked(positive), model.derivative(positive))
+    signed = np.concatenate((-c, c))
+    np.testing.assert_array_equal(
+        _trial_loading_unchecked(model, signed), trial_loading(model, signed)
+    )
+    # Public validation is unchanged.
+    with pytest.raises(ValueError):
+        model.loading([-1.0])
+    with pytest.raises(ValueError):
+        model.loading([np.nan])

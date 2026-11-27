@@ -55,7 +55,9 @@ y las convierten. Plantillas listas: `examples/batch_ldf.json`,
 | `mass_rtol`, `mass_reference_kg` | 1e-6, 1e-12 | Criterio del balance de masa |
 | `max_step_s` | sin límite | Paso máximo del integrador |
 | `axial_cells` | 100 | Celdas axiales |
-| `radial_cells` | 20 | Celdas radiales (HSDM) |
+| `radial_cells` | 20 | Celdas radiales (HSDM, columna y batch) |
+| `axial_scheme` | `"upwind1"` | Esquema de advección axial: `"upwind1"` (primer orden) o `"tvd"` (MUSCL con limitador van Albada, segundo orden; ver [esquemas axiales](axial_schemes.md)) |
+| `radial_growth` | 1,0 | Razón de anchos de capa del centro a la superficie en HSDM; 1 = uniforme, < 1 refina hacia la superficie |
 | `jacobian` | `finite_difference` | `analytic`: Jacobiano exacto para columna LDF con isoterma Langmuir o lineal |
 | `history` | `dense` | `streaming`: historia por pasos con menor memoria en columna LDF |
 

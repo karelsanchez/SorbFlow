@@ -104,6 +104,9 @@ nav:
       - Motores de cálculo: docs/engines.md
       - Galería de figuras: docs/figures.md
       - Comparación con otras herramientas: docs/comparison.md
+      - Esquemas axiales (upwind y TVD): docs/axial_schemes.md
+      - HSDM en reactor batch: docs/batch_hsdm.md
+      - Control de error orientado a la decisión: docs/decision_error_control.md
   - Primeros pasos:
       - Instalación y CLI: docs/getting_started.md
       - Tutoriales: docs/tutorials.md

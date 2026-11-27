@@ -14,13 +14,15 @@ from ..solvers.integration import integrate
 from ..solvers.options import SolverOptions, sample_times
 from ..solvers.results import SimulationResult, check_physics, result_metadata
 from ..units import finite_scalar
+from .column import AxialTransport
 
 
-def _pattern(axial: int, radial: int) -> csc_matrix:
+def _pattern(axial: int, radial: int, scheme: str = "upwind1") -> csc_matrix:
     rows: list[int] = []
     cols: list[int] = []
+    lower = 1 if scheme == "upwind1" else 2  # TVD: c[i] depends on c[i-2]
     for i in range(axial):
-        for j in range(max(0, i - 1), min(axial, i + 2)):
+        for j in range(max(0, i - lower), min(axial, i + 2)):
             rows.append(i)
             cols.append(j)
         rows.append(i)
@@ -34,8 +36,9 @@ def _pattern(axial: int, radial: int) -> csc_matrix:
                 rows.append(index)
                 cols.append(i)
     states = axial * (radial + 1) + 2
-    rows.append(states - 1)
-    cols.append(axial - 1)
+    outlet = [axial - 1] if scheme == "upwind1" else [axial - 2, axial - 1]
+    rows.extend([states - 1] * len(outlet))
+    cols.extend(outlet)
     return csc_matrix((np.ones(len(rows)), (rows, cols)), shape=(states, states))
 
 
@@ -62,13 +65,16 @@ def simulate_hsdm_column(
     )
     bed, op, kinetics = config.bed, config.operation, config.kinetics
     n, nr = settings.axial_cells, settings.radial_cells
-    grid = SphereGrid(bed.particle_diameter_m / 2, nr)
+    # Uniform shells unless ``radial_growth`` < 1 refines them toward the surface.
+    grid = SphereGrid(bed.particle_diameter_m / 2, nr, growth=settings.radial_growth)
     dz = bed.length_m / n
     area = finite_scalar(bed.volume_m3 / bed.length_m, "cross-sectional area")
-    velocity = finite_scalar(op.flow_m3_s / area, "superficial velocity")
+    finite_scalar(op.flow_m3_s / area, "superficial velocity")  # validated; AxialTransport uses it
     eps, rho = bed.porosity, bed.particle_density_kg_m3
     specific_area = 3 * (1 - eps) / grid.radius_m
     model = isotherm_from_parameters(config.equilibrium)
+    transport = AxialTransport.from_config(config, n, settings.axial_scheme)
+    upwind = settings.axial_scheme == "upwind1"
     initial = np.concatenate(
         (
             np.full(n, op.initial_concentration_kg_m3),
@@ -102,14 +108,13 @@ def simulate_hsdm_column(
             diffusivity_m2_s=kinetics.surface_diffusivity_m2_s,
             particle_density_kg_m3=rho,
         )
-        flux = np.empty(n + 1)
-        flux[0] = velocity * op.inlet_concentration_kg_m3
-        flux[1:n] = velocity * c[:-1] - eps * op.axial_dispersion_m2_s * np.diff(c) / dz
-        flux[-1] = velocity * c[-1]
+        flux = transport.face_flux(c)  # faces 0..N, central dispersion included
         dc = (-np.diff(flux) / dz - specific_area * transfer) / eps
-        return np.concatenate(
-            (dc, dq.ravel(), [op.flow_m3_s * op.inlet_concentration_kg_m3, op.flow_m3_s * c[-1]])
-        )
+        if upwind:  # historical expressions: bit-identical trajectories
+            rates = [op.flow_m3_s * op.inlet_concentration_kg_m3, op.flow_m3_s * c[-1]]
+        else:  # the same face fluxes as the cells: exact conservation
+            rates = [area * flux[0], area * flux[n]]
+        return np.concatenate((dc, dq.ravel(), rates))
 
     atol = np.concatenate(
         (
@@ -118,7 +123,9 @@ def simulate_hsdm_column(
             np.full(2, settings.atol_mass_kg),
         )
     )
-    solution = integrate(rhs, initial, times, atol, settings, _pattern(n, nr))
+    solution = integrate(
+        rhs, initial, times, atol, settings, _pattern(n, nr, settings.axial_scheme)
+    )
 
     def average(states: FloatArray) -> FloatArray:
         q = states[n:-2].reshape(n, nr, states.shape[1])

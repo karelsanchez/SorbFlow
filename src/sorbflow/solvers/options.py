@@ -26,8 +26,12 @@ class SolverOptions:
     max_step_s: float | None = None
     axial_cells: int = 100
     radial_cells: int = 20
+    # HSDM radial shell width ratio, centre -> surface; 1 = uniform (historical).
+    radial_growth: float = 1.0
     jacobian: Literal["finite_difference", "analytic"] = "finite_difference"
     history: Literal["dense", "streaming"] = "dense"
+    # Axial advection: first-order upwind (historical default) or MUSCL/van Albada TVD.
+    axial_scheme: Literal["upwind1", "tvd"] = "upwind1"
 
     def __post_init__(self) -> None:
         if self.method not in ("BDF", "Radau"):
@@ -36,6 +40,8 @@ class SolverOptions:
             raise ValueError("jacobian must be finite_difference or analytic")
         if self.history not in ("dense", "streaming"):
             raise ValueError("history must be dense or streaming")
+        if self.axial_scheme not in ("upwind1", "tvd"):
+            raise ValueError("axial_scheme must be upwind1 or tvd")
         for name in (
             "rtol",
             "atol_concentration_kg_m3",
@@ -60,6 +66,8 @@ class SolverOptions:
             raise ValueError("axial_cells must be an integer >=2")
         if type(self.radial_cells) is not int or self.radial_cells < 2:
             raise ValueError("radial_cells must be an integer >=2")
+        if not 0 < finite_scalar(self.radial_growth, "radial_growth") <= 1:
+            raise ValueError("radial_growth must satisfy 0 < radial_growth <= 1")
 
 
 def sample_times(duration_s: float, requested: ArrayLike | None) -> FloatArray:

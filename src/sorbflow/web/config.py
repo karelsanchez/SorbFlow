@@ -101,6 +101,9 @@ def parse_request(data: dict[str, Any]) -> RequestSpec:
         _range(config.liquid_volume_m3, "liquid_volume_m3", 1e-9, 10)
         _range(config.adsorbent_mass_kg, "adsorbent_mass_kg", 1e-9, 1e5)
         _range(config.adsorbent_mass_kg / config.liquid_volume_m3, "mass/volume", 1e-9, 1e6)
+        if config.particle is not None:
+            _range(config.particle.diameter_m, "particle diameter_m", 1e-5, 0.1)
+            _range(config.particle.density_kg_m3, "particle density_kg_m3", 1, 1e4)
         material = config.material
     else:
         config = SimulationConfig.from_json(payload)

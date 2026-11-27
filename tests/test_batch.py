@@ -104,3 +104,16 @@ def test_invalid_problem_options_and_failed_integration(problem, monkeypatch):
     monkeypatch.setattr("sorbflow.solvers.integration.solve_ivp", fail)
     with pytest.raises(SimulationError, match="forced solver failure"):
         batch(problem)
+
+
+def test_ldf_ignores_declared_particle_in_schema_v2(problem):
+    from sorbflow.schemas import BatchParticle
+
+    v2 = replace(
+        problem, particle=BatchParticle(diameter_m=5e-4, density_kg_m3=1000), schema_version=2
+    )
+    a = batch(problem, time_s=[0, 150, 300])
+    b = batch(v2, time_s=[0, 150, 300])
+    assert_allclose(a.concentration_kg_m3, b.concentration_kg_m3, rtol=0, atol=0)
+    assert b.radial_loading_kg_kg is None and b.r_m is None
+    assert a.manifest.config_sha256 != b.manifest.config_sha256

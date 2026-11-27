@@ -31,3 +31,27 @@ En una columna LDF de 620 celdas la mediana bajó de 17,09 s con diferencias
 finitas a 7,77 s con el Jacobiano analítico (2,2 veces más rápido); la ganancia
 depende del caso, la plataforma y las tolerancias. La precisión espacial sigue
 dependiendo de la malla elegida y se confirma comparando mallas.
+
+## Esquema axial TVD (`axial_scheme="tvd"`)
+
+Con `axial_scheme="tvd"` el Jacobiano analítico usa la **derivada exacta** del
+limitador van Albada, `s(a,b) = ab(a+b)/(a²+b²)` si `ab>0` y `0` en otro caso:
+
+```
+ds/da = b²(b² + 2ab − a²)/(a²+b²)²,   ds/db = a²(a² + 2ab − b²)/(a²+b²)²
+```
+
+evaluadas tras escalar por `max(|a|,|b|)` para evitar subdesbordamiento. En el
+conjunto de conmutación `ab=0` (extremos locales) el limitador no es
+diferenciable; allí se usa la rama de pendiente nula, que es una dirección de
+Newton válida (BDF/Radau solo necesitan un Jacobiano aproximado). También se
+derivan exactamente la cara de entrada (valor de Danckwerts `c_b`) y la cara de
+salida (extrapolación lineal limitada), incluida la fila de masa de salida
+acumulada, que con TVD depende de `c[N-2]` y `c[N-1]`.
+
+La estructura CSC (banda `i-2..i+1` en el bloque líquido) se ensambla una sola
+vez; en cada llamada solo se suman los valores. Las diferencias finitas usan el
+patrón ensanchado `_jacobian_pattern(cells, "tvd")`. Las pruebas comparan el
+producto Jacobiano-vector con diferencias centrales de un `rhs` escrito de forma
+independiente (error relativo ~1e-12) y comprueban que el patrón cubre todos
+los no ceros. Ver `docs/axial_schemes.md` para precisión y coste.

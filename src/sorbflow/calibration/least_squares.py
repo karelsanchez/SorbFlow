@@ -182,6 +182,8 @@ def fit_batch_rate(
     """
     if observations.species_name != config.species.name:
         raise ValueError("Observation species does not match the problem")
+    if not isinstance(config.kinetics, LDF):
+        raise ValueError("fit_batch_rate requires a batch configuration with LDF kinetics")
     times = np.asarray(observations.time_s)
     measured = np.asarray(observations.concentration_kg_m3)
     options = SolverOptions(rtol=1e-9, atol_concentration_kg_m3=1e-13, atol_loading_kg_kg=1e-15)

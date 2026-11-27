@@ -263,7 +263,7 @@ class LDF:
 
 @dataclass(frozen=True, slots=True, kw_only=True)
 class HSDM:
-    """Future surface diffusion plus film parameter contract; no solver attached."""
+    """Homogeneous surface diffusion plus external film; column and batch (v2) solvers."""
 
     surface_diffusivity_m2_s: float
     film_coefficient_m_s: float
@@ -355,8 +355,48 @@ class SimulationConfig:
 
 
 @dataclass(frozen=True, slots=True, kw_only=True)
+class BatchParticle:
+    """Single spherical particle size for batch HSDM; dry mass per particle volume.
+
+    ``density_kg_m3`` is the apparent (envelope) particle density on the dry mass
+    basis, the same convention as ``Bed.particle_density_kg_m3``. Together with the
+    diameter it fixes the external film area per kg of dry adsorbent, 6/(rho_p*d_p).
+    """
+
+    diameter_m: float
+    density_kg_m3: float
+
+    def __post_init__(self) -> None:
+        _number(self, "diameter_m", positive=True)
+        _number(self, "density_kg_m3", positive=True)
+
+
+_BATCH_V1_FIELDS = frozenset(
+    {
+        "species",
+        "material",
+        "liquid_volume_m3",
+        "adsorbent_mass_kg",
+        "duration_s",
+        "initial_concentration_kg_m3",
+        "initial_loading_kg_kg",
+        "equilibrium",
+        "kinetics",
+        "temperature_k",
+        "schema_version",
+    }
+)
+
+
+@dataclass(frozen=True, slots=True, kw_only=True)
 class BatchConfig:
-    """Closed, perfectly mixed liquid plus dry adsorbent; all fields are SI."""
+    """Closed, perfectly mixed liquid plus dry adsorbent; all fields are SI.
+
+    Batch schema v1 is the original LDF-only contract and serializes without a
+    ``particle`` key, so v1 documents, hashes and fingerprints are unchanged.
+    Batch schema v2 adds ``particle`` (always serialized, ``null`` allowed for LDF)
+    and the HSDM kinetics kind, which requires a declared particle.
+    """
 
     species: Species
     material: str
@@ -366,28 +406,46 @@ class BatchConfig:
     initial_concentration_kg_m3: float
     initial_loading_kg_kg: float
     equilibrium: Langmuir | Freundlich | Linear
-    kinetics: LDF
+    kinetics: LDF | HSDM
     temperature_k: float = 298.15
+    particle: BatchParticle | None = None
     schema_version: int = 1
 
     def __post_init__(self) -> None:
         _instance(self.species, Species, "species")
         _instance(self.equilibrium, (Langmuir, Freundlich, Linear), "equilibrium")
-        _instance(self.kinetics, LDF, "kinetics")
+        _instance(self.kinetics, (LDF, HSDM), "kinetics")
         _text(self.material, "material")
         for name in ("liquid_volume_m3", "adsorbent_mass_kg", "duration_s", "temperature_k"):
             _number(self, name, positive=True)
         for name in ("initial_concentration_kg_m3", "initial_loading_kg_kg"):
             _number(self, name)
-        if type(self.schema_version) is not int or self.schema_version != 1:
-            raise ValueError("Only integer schema_version=1 is supported")
+        if type(self.schema_version) is not int or self.schema_version not in (1, 2):
+            raise ValueError("Only integer batch schema_version 1 or 2 is supported")
+        if self.particle is not None:
+            _instance(self.particle, BatchParticle, "particle")
+        if self.schema_version == 1 and (
+            self.particle is not None or isinstance(self.kinetics, HSDM)
+        ):
+            raise ValueError(
+                "Batch schema_version=1 is LDF-only without particle; "
+                "use schema_version=2 for HSDM kinetics or a declared particle"
+            )
+        if isinstance(self.kinetics, HSDM) and self.particle is None:
+            raise ValueError(
+                "HSDM batch kinetics requires particle=BatchParticle(diameter_m, "
+                "density_kg_m3): the particle radius and dry density fix the film area"
+            )
         if isinstance(self.equilibrium, Langmuir):
             if self.initial_loading_kg_kg > self.equilibrium.qmax_kg_kg:
                 raise ValueError("Initial loading exceeds Langmuir capacity")
 
     def to_json(self) -> str:
         """Canonical SI problem description, independent of numerical options."""
-        return _canonical(asdict(self))
+        data = asdict(self)
+        if self.schema_version == 1:
+            del data["particle"]
+        return _canonical(data)
 
     @property
     def sha256(self) -> str:
@@ -396,15 +454,24 @@ class BatchConfig:
 
     @classmethod
     def from_json(cls, payload: str) -> BatchConfig:
-        """Read strict batch schema v1, without dropping unknown data."""
+        """Read strict batch schema v1 or v2, without dropping unknown data."""
         data = _json_object(payload)
-        if set(data) != {f.name for f in fields(cls)}:
-            raise ValueError("Batch fields must match schema v1 exactly")
+        version = data.get("schema_version")
+        if type(version) is not int or version not in (1, 2):
+            raise ValueError("Only integer batch schema_version 1 or 2 is supported")
+        expected = _BATCH_V1_FIELDS | ({"particle"} if version == 2 else set())
+        if set(data) != expected:
+            raise ValueError(f"Batch fields must match schema v{version} exactly")
         data["species"] = _construct(Species, data["species"])
         data["equilibrium"] = _model(
             data["equilibrium"], {"langmuir": Langmuir, "freundlich": Freundlich, "linear": Linear}
         )
-        data["kinetics"] = _model(data["kinetics"], {"ldf": LDF})
+        kinetics: dict[str, type[Any]] = {"ldf": LDF}
+        if version == 2:
+            kinetics["hsdm"] = HSDM
+            if data["particle"] is not None:
+                data["particle"] = _construct(BatchParticle, data["particle"])
+        data["kinetics"] = _model(data["kinetics"], kinetics)
         return cls(**data)
 
 
