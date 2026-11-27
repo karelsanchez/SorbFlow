@@ -77,9 +77,8 @@ la extrapolación de segundo orden a `z = L`.
   del limitador; ver `analytic_jacobian.md`. En el caso Klinkenberg reduce el
   tiempo de CPU un 15–20 % frente a diferencias finitas (100 celdas: 0.72 s
   frente a 0.88 s; 800 celdas: 8.1 s frente a 10.1 s), con resultados iguales.
-- HSDM: el balance axial vive en `hsdm.py` y todavía no usa `AxialTransport`;
-  `simulate_column` rechaza `HSDM + "tvd"` con `ValueError`. El parche está
-  descrito en `S2_hsdm_patch.md`.
+- HSDM: las columnas HSDM usan los mismos flujos de cara (`AxialTransport`); con `"tvd"`
+  las masas acumuladas de entrada y salida usan esos flujos y la conservación es exacta.
 
 ## Verificación: Klinkenberg/Thomas LDF, isoterma lineal, flujo pistón
 

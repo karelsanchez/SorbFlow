@@ -1,4 +1,4 @@
-"""Command-line interface for independent batch and column LDF simulations."""
+"""Command-line interface for batch and column LDF/HSDM simulations."""
 
 from __future__ import annotations
 
@@ -15,13 +15,27 @@ from .solvers import SimulationError, SolverOptions
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="SorbFlow — aqueous LDF simulations in SI")
+    parser = argparse.ArgumentParser(description="SorbFlow — aqueous LDF/HSDM simulations in SI")
     parser.add_argument("reactor", choices=("batch", "column"))
     parser.add_argument("config", type=Path, help="Versioned JSON configuration")
     parser.add_argument("--output", required=True, type=Path, help="New output directory")
     parser.add_argument("--method", choices=("BDF", "Radau"), default="BDF")
     parser.add_argument("--cells", type=int, default=100)
-    parser.add_argument("--radial-cells", type=int, default=20)
+    parser.add_argument(
+        "--radial-cells", type=int, default=20, help="Radial shells for HSDM (column and batch)"
+    )
+    parser.add_argument(
+        "--axial-scheme",
+        choices=("upwind1", "tvd"),
+        default="upwind1",
+        help="Axial advection scheme: first-order upwind or second-order TVD (MUSCL)",
+    )
+    parser.add_argument(
+        "--radial-growth",
+        type=float,
+        default=1.0,
+        help="HSDM shell width ratio toward the surface (1 = uniform, <1 refines)",
+    )
     parser.add_argument("--samples", type=int, default=201)
     parser.add_argument("--rtol", type=float, default=1e-7)
     parser.add_argument("--code-revision", default="uncommitted")
@@ -36,6 +50,8 @@ def main(argv: list[str] | None = None) -> int:
             axial_cells=args.cells,
             radial_cells=args.radial_cells,
             rtol=args.rtol,
+            axial_scheme=args.axial_scheme,
+            radial_growth=args.radial_growth,
         )
         payload = args.config.read_text(encoding="utf-8-sig")
         if args.reactor == "batch":

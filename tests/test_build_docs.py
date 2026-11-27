@@ -67,7 +67,11 @@ def test_docs_requirements_are_exactly_pinned() -> None:
     pins = [x.strip() for x in lines if x.strip() and not x.lstrip().startswith("#")]
     assert pins, "documentation requirements must not be empty"
     for pin in pins:
-        assert "==" in pin and not any(op in pin for op in (">", "<", "~=", "!=")), pin
+        # Environment markers (after ";") may select between exact pins, e.g. by Python version.
+        requirement = pin.split(";", 1)[0].strip()
+        assert "==" in requirement and not any(
+            op in requirement for op in (">", "<", "~=", "!=")
+        ), pin
     names = {p.split("==")[0].split("[")[0].lower() for p in pins}
     assert {"mkdocs", "mkdocs-material", "mkdocstrings", "mkdocstrings-python"} <= names
 

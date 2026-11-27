@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sorbflow"
-version = "0.3.1"
+version = "0.4.0"
 description = "Configurable aqueous adsorption modelling: batch and fixed-bed LDF/HSDM simulation, calibration, uncertainty and design"
 readme = "PYPI_README.md"
 requires-python = ">=3.11"
