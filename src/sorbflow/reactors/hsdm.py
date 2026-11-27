@@ -62,7 +62,11 @@ def simulate_hsdm_column(
     )
     bed, op, kinetics = config.bed, config.operation, config.kinetics
     n, nr = settings.axial_cells, settings.radial_cells
-    grid = SphereGrid(bed.particle_diameter_m / 2, nr)
+    # Uniform shells unless the solver options carry a geometric surface refinement
+    # (``radial_growth`` < 1, see docs/S1_options_patch.md); options are fingerprinted.
+    grid = SphereGrid(
+        bed.particle_diameter_m / 2, nr, growth=getattr(settings, "radial_growth", 1.0)
+    )
     dz = bed.length_m / n
     area = finite_scalar(bed.volume_m3 / bed.length_m, "cross-sectional area")
     velocity = finite_scalar(op.flow_m3_s / area, "superficial velocity")
